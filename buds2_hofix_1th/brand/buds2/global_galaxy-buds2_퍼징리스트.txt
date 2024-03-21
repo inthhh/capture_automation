@@ -1,0 +1,24 @@
+[galaxy-buds2]
+1. html 수정
+2. 이미지 추가
+
+[Modified Resource]
+https://org-glx.samsung.com/global/galaxy/galaxy-buds2/index.html
+
+[Purging File List]
+https://www.samsung.com/global/galaxy/galaxy-buds2/
+
+[추가]
+/global/galaxy/galaxy-buds2/images/galaxy-buds2-ai-facetoface-0305_mo.png
+/global/galaxy/galaxy-buds2/images/galaxy-buds2-ai-facetoface-0305_pc.png
+/global/galaxy/galaxy-buds2/images/galaxy-buds2-ai-facetoface-active0.png
+/global/galaxy/galaxy-buds2/images/galaxy-buds2-ai-facetoface-default0.png
+/global/galaxy/galaxy-buds2/images/galaxy-buds2-ai-logo.png
+/global/galaxy/galaxy-buds2/images/galaxy-buds2-ai-overthephone_pc.png
+/global/galaxy/galaxy-buds2/images/galaxy-buds2-ai-overthephone-active0.png
+/global/galaxy/galaxy-buds2/images/galaxy-buds2-ai-overthephone-default0.png
+
+
+
+[삭제]
+삭제 없음
