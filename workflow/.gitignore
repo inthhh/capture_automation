@@ -1,0 +1,26 @@
+# Ignore build output
+/build/
+
+# Ignore log files
+*.log
+
+# Include specific file in ignored directory
+web.config
+*.config
+
+### Sass ###
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+html/css/common.css
+html/css/common.css.map
+html/css/main.css
+html/css/main.css.map
+html/css/dashboard.css
+html/css/dashboard.css.map
+html/css/sub.css
+html/css/sub.css.map
+guide/guide.css
+guide/guide.css.map

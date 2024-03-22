@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="../guide/guide.css" />
+
+<div class="page-guide-nav">
+  <h1 class="nav-title">Connect+ Workflow <br /><span>2023</span></h1>
+  <ul class="nav">
+    <li class="on">
+      <a href="index.html">PC</a>
+    </li>
+    <!--
+        <li>
+            <a href="admin.html">관리자</a>
+        </li>
+		<li>
+			<a href="mail.html">이메일</a>
+		</li>-->
+  </ul>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    var url = window.location.pathname;
+    url = url.split("/");
+    url = url[url.length - 1];
+    $(".nav li a").each(function () {
+      if (url == $(this).attr("href")) {
+        $(this).parent("li").siblings().removeClass("on");
+        $(this).parent("li").addClass("on");
+      }
+    });
+  });
+</script>

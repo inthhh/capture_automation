@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <?php include '../layout/meta.html'?>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- header -->
+      <?php include '../layout/header.html'?>
+      <!-- //header -->
+
+      <div class="container">
+        <div class="title-wrap">
+          <h3 class="title-type">Story Ticket</h3>
+        </div>
+        <!--content-->
+        <section id="content">
+          여기는 풀로 꽉찬 컨텐츠영역<br />여기는 풀로 꽉찬 컨텐츠영역여기는
+          풀로 꽉찬 컨텐츠영역여기는 풀로 꽉찬 컨텐츠영역여기는 풀로 꽉찬
+          컨텐츠영역여기는 풀로 꽉찬 컨텐츠영역여기는 풀로 꽉찬 컨텐츠영역여기는
+          풀로 꽉찬 컨텐츠영역여기는 풀로 꽉찬 컨텐츠영역여기는 풀로 꽉찬
+          컨텐츠영역여기는 풀로 꽉찬 컨텐츠영역여기는 풀로 꽉찬 컨텐츠영역여기는
+          풀로 꽉찬 컨텐츠영역여기는 풀로 꽉찬 컨텐츠영역여기는 풀로 꽉찬
+          컨텐츠영역여기는 풀로 꽉찬 컨텐츠영역여기는 풀로 꽉찬 컨텐츠영역여기는
+          풀로 꽉찬 컨텐츠영역여기는 풀로 꽉찬 컨텐츠영역여기는 풀로 꽉찬
+          컨텐츠영역여기는 풀로 꽉찬 컨텐츠영역여기는 풀로 꽉찬 컨텐츠영역여기는
+          풀로 꽉찬 컨텐츠영역여기는 풀로 꽉찬 컨텐츠영역
+          <div class="inner-box">
+            여기는 여백있는 컨텐츠영역 <br />
+            여기는 여백있는 컨텐츠영역 여기는 여백있는 컨텐츠영역 여기는
+            여백있는 컨텐츠영역 여기는 여백있는 컨텐츠영역 여기는 여백있는
+            컨텐츠영역 여기는 여백있는 컨텐츠영역 여기는 여백있는 컨텐츠영역
+            여기는 여백있는 컨텐츠영역 여기는 여백있는 컨텐츠영역 여기는
+            여백있는 컨텐츠영역 여기는 여백있는 컨텐츠영역 여기는 여백있는
+            컨텐츠영역 여기는 여백있는 컨텐츠
+          </div>
+        </section>
+        <!--//content-->
+      </div>
+
+      <!-- 메인팝업 -->
+      <div class="pop-layer pop-main" id="pop-main">
+        <div class="dim"></div>
+        <div class="pop-wrap">
+          <div class="pop-contentbox">
+            <h1>Epic Ticket</h1>
+            <div class="pop-box">Dummy Contents</div>
+            <div class="pop-box">Dummy Contents</div>
+            <div class="pop-box">Dummy Contents</div>
+          </div>
+          <button class="pop-close">
+            <span class="hidden">팝업닫기</span>
+          </button>
+        </div>
+      </div>
+      <!-- //메인팝업 -->
+    </div>
+
+    <?php if(isset($_GET['pop'])){?>
+    <script>
+      UI.layerPopUp({ selId: "#pop-main" });
+    </script>
+    <?}?>
+  </body>
+</html>

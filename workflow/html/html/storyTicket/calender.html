@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- 2022-10-27 -->
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0, width=device-width, viewport-fit=cover"
+    />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon" />
+
+    <title>Connect Workflow</title>
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/font.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/swiper.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/nice-select.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/daterangepicker.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/sub.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/dashboard.css" />
+
+    <!-- JS -->
+    <script src="../../../assets/js/jquery-3.1.1.min.js"></script>
+    <script src="../../../assets/js/delighters.js"></script>
+    <script src="../../../assets/js/swiper.min.js"></script>
+    <script src="../../../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../../../assets/js/numberCounting.js"></script>
+    <script src="../../../assets/js/TweenMax.min.js"></script>
+    <script src="../../../assets/js/moment.min.js"></script>
+    <script src="../../../assets/js/daterangepicker.min.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/page.js"></script>
+
+    <script src="../../../assets/js/progressbar.js"></script>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Chart.js Datalabels plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- header -->
+      <header
+        class="header-wrap"
+        data-include="../layout/include_header.html"
+      ></header>
+      <!-- //header -->
+      <div class="container ticket">
+        <div class="header-v6">
+					<div class="left-box">
+					<!-- Title -->
+					<div class="header-box">
+							<div class="title-wrap">
+							<p class="title-type">Story Calendar</p>
+							</div>
+					</div>
+					</div>
+					<div class="right-box">
+					<div class="select-type">
+						<select style="display: none;">
+							<option value="1">All list</option>
+							<option value="2">Kanban</option>
+							<option value="3">Calender</option>
+							</select><div class="nice-select" tabindex="0"><span class="current">Calender</span><ul class="list"><li data-value="1" class="option"><a href="list.html">All list</a></li><li data-value="2" class="option"><a href="kanban.html">Kanban</a></li><li data-value="3" class="option" selected><a href="calender.html">Calender</a></li></ul></div>
+					</div>
+					<a href="create.html" class="btn-type btn-m v3">Create new</a>
+					</div>
+        </div>
+        <div class="content-wrap">
+          <aside class="side-list">
+            <div class="side-util">
+                <div class="side-top">
+                    <h4 class="side-title">Story ticket list</h4>
+                </div>
+                <div class="search-box auto-list type2"> <!-- auto-list 추가 -->
+                  <div class="search-form">
+                    <input type="text" class="input-type" placeholder="Search epic ticket">
+                    <button class="btn-clear"><i class="ico-clear"><span class="hidden">검색어지우기</span></i></button>
+                    <button type="submit" class="btn-search"><i class="ico-srch"><span class="hidden">검색</span></i></button>
+                  </div>
+                  <div class="search-list">
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <em>K1P22048004</em>
+                          <p>삼성닷컴 Japan 운영 지원 (TBD)</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <em>K1P22048004</em>
+                          <p>삼성닷컴 Japan 운영 지원 (TBD)</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <em>K1P22048004</em>
+                          <p>삼성닷컴 Japan 운영 지원 (TBD)</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <em>K1P22048004</em>
+                          <p>삼성닷컴 Japan 운영 지원 (TBD)</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <em>K1P22048004</em>
+                          <p>삼성닷컴 Japan 운영 지원 (TBD)</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="check-wrap">
+                  <div class="check-box">
+                    <input type="checkbox" id="assignedTicket" checked>
+                    <label class="checkbox" for="assignedTicket"></label>
+                    <label for="assignedTicket">Assigned ticket only</label>
+                  </div>
+                  <div class="check-box">
+                    <input type="checkbox" id="excludeClosed">
+                    <label class="checkbox" for="excludeClosed"></label>
+                    <label for="excludeClosed">Exclude closed ticket</label>
+                  </div>
+                </div>
+            </div>
+            <div class="key-wrap">
+              <div class="key-list active">
+                 <div class="check-box">
+                    <input type="checkbox" id="listChk01" checked>
+                    <label class="checkbox" for="listChk01"></label>
+                  </div>
+                  <div class="key-box">
+                    <label for="listChk01">
+                      <p class="key-title">K1P22048004</p>
+                      <p class="key-text">삼성닷컴 Japan 운영 지원 (TBD)</p>
+                    </label>
+                  </div>
+              </div>
+              <div class="key-list">
+                 <div class="check-box">
+                    <input type="checkbox" id="listChk02">
+                    <label class="checkbox" for="listChk02"></label>
+                  </div>
+                  <div class="key-box">
+                    <label for="listChk02">
+                      <p class="key-title">K1P22048004</p>
+                      <p class="key-text">삼성닷컴 Japan 운영 지원 (TBD)</p>
+                    </label>
+                  </div>
+              </div>
+              <div class="key-list">
+                 <div class="check-box">
+                    <input type="checkbox" id="listChk03">
+                    <label class="checkbox" for="listChk03"></label>
+                  </div>
+                  <div class="key-box">
+                    <label for="listChk03">
+                      <p class="key-title">K1P22048004</p>
+                      <p class="key-text">삼성닷컴 Japan 운영 지원 (TBD) 삼성닷컴 Japan 운영 지원 (TBD)</p>
+                    </label>
+                  </div>
+              </div>
+              <div class="key-list">
+                 <div class="check-box">
+                    <input type="checkbox" id="listChk04">
+                    <label class="checkbox" for="listChk04"></label>
+                  </div>
+                  <div class="key-box">
+                    <label for="listChk04">
+                      <p class="key-title">K1P22048004</p>
+                      <p class="key-text">삼성닷컴 Japan 운영 지원 (TBD)</p>
+                    </label>
+                  </div>
+              </div>
+              <div class="key-list">
+                 <div class="check-box">
+                    <input type="checkbox" id="listChk05">
+                    <label class="checkbox" for="listChk05"></label>
+                  </div>
+                  <div class="key-box">
+                    <label for="listChk05">
+                      <p class="key-title">K1P22048004</p>
+                      <p class="key-text">삼성닷컴 Japan 운영 지원 (TBD)</p>
+                    </label>
+                  </div>
+              </div>
+              
+              <div class="key-list">
+                 <div class="check-box">
+                    <input type="checkbox" id="listChk06">
+                    <label class="checkbox" for="listChk06"></label>
+                  </div>
+                  <div class="key-box">
+                    <label for="listChk06">
+                      <p class="key-title">K1P22048004</p>
+                      <p class="key-text">삼성닷컴 Japan 운영 지원 (TBD) 삼성닷컴 Japan 운영 지원 (TBD)</p>
+                    </label>
+                  </div>
+              </div>
+            </div>
+            
+            <button type="button" class="btn-slide">
+              <i class="ico-back"><span class="hidden">닫기</span></i>
+            </button>
+          </aside>
+          <!--content-->
+          <section id="content" class="content-space-type">
+            <section class="inner-box">
+							<div class="status-group">
+								<div class="datepickerRange-wrap multi-type">
+									<input type="text" id="datepickerRangeMulti" class="datepickerRange-input">
+									<div class="datepickerRange-box">
+										<p class="date start">
+											<i class="ico-calendar"></i><span>Cal 00/00</span>
+										</p>
+										<p class="date end">
+											<i class="ico-calendar"></i><span>Cal 00/00</span>
+										</p>
+									</div>
+								</div>
+								<div class="status-wrap type2">
+									<dl>
+										<dt>Number of epic ticket</dt>
+										<dd class="status-score">
+											<strong>4</strong>
+										</dd>
+									</dl>
+									<dl>
+										<dt>OPEN</dt>
+										<dd class="status-score">
+											<strong>1</strong>
+										</dd>
+									</dl>
+									<dl>
+										<dt>In Progress</dt>
+										<dd class="status-score">
+											<strong>1</strong>
+										</dd>
+									</dl>
+									<dl>
+										<dt>Freezed</dt>
+										<dd class="status-score v2">
+											<strong>0</strong>
+										</dd>
+									</dl>
+									<dl>
+										<dt>Pending</dt>
+										<dd class="status-score v2">
+											<strong>1</strong>
+										</dd>
+									</dl>
+									<dl>
+										<dt>Closed</dt>
+										<dd class="status-score v4">
+											<strong>1</strong>
+										</dd>
+									</dl>
+								</div>
+							</div>
+            </section>
+
+            <section class="inner-box">
+							<div class="calender-top">
+								<button type="button" class="btn-prev"><i class="ico-arr lft"></i></button>
+								<p>January 2022</p>
+								<button type="button" class="btn-next"><i class="ico-arr"></i></button>
+							</div>
+              <div class="table-wrap type4">
+                <table class="table-type">
+                    <thead>
+                    <tr>
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wen</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="gr">27</td>
+                        <td class="gr">28</td>
+                        <td class="gr">29</td>
+                        <td class="gr">30</td>
+                        <td class="gr">31</td>
+                        <td>1</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td class="border">31</td>
+                        <td class="gr">1</td>
+                        <td class="gr">2</td>
+                        <td class="gr">3</td>
+                        <td class="gr">4</td>
+                        <td class="gr">5</td>
+                        <td class="border gr">6</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            </section>
+          </section>
+          <!--//content-->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

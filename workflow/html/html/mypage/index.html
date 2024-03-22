@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <!-- php수정 include(s) -->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- 2022-10-27 -->
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0, width=device-width, viewport-fit=cover"
+    />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon" />
+
+    <title>Connect Workflow</title>
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/font.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/swiper.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/nice-select.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/daterangepicker.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/sub.css" />
+
+    <!-- JS -->
+    <script src="../../../assets/js/jquery-3.1.1.min.js"></script>
+    <script src="../../../assets/js/delighters.js"></script>
+    <script src="../../../assets/js/swiper.min.js"></script>
+    <script src="../../../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../../../assets/js/numberCounting.js"></script>
+    <script src="../../../assets/js/TweenMax.min.js"></script>
+    <script src="../../../assets/js/moment.min.js"></script>
+    <script src="../../../assets/js/daterangepicker.min.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/page.js"></script>
+  </head>
+  <!-- php수정 include(e) -->
+
+  <body>
+    <div id="wrap">
+      <!-- php수정 include header(s) -->
+      <header
+        class="header-wrap"
+        data-include="../layout/include_header.html"
+      ></header>
+      <!-- php수정 include header(e) -->
+
+      <div class="container mypage">
+        <div class="header-v12">
+          <div class="title-wrap">
+            <h3 class="title-type">My page</h3>
+          </div>
+          <div class="bottom-box">
+            <div class="search-box">
+              <div class="search-form">
+                <input
+                  type="text"
+                  class="input-type"
+                  placeholder="Search epic ticket."
+                />
+                <button class="btn-clear">
+                  <i class="ico-clear"
+                    ><span class="hidden">검색어지우기</span></i
+                  >
+                </button>
+                <button type="submit" class="btn-search">
+                  <i class="ico-srch"><span class="hidden">검색</span></i>
+                </button>
+              </div>
+            </div>
+            <div class="search-box">
+              <div class="search-form">
+                <input
+                  type="text"
+                  class="input-type"
+                  placeholder="Search story ticket"
+                />
+                <button class="btn-clear">
+                  <i class="ico-clear"
+                    ><span class="hidden">검색어지우기</span></i
+                  >
+                </button>
+                <button type="submit" class="btn-search">
+                  <i class="ico-srch"><span class="hidden">검색</span></i>
+                </button>
+              </div>
+            </div>
+            <div class="datepickerRange-wrap multi-type">
+              <input
+                type="text"
+                id="datepickerRangeMulti"
+                class="datepickerRange-input"
+              />
+              <div class="datepickerRange-box">
+                <p class="date start">
+                  <i class="ico-calendar"></i><span>Cal 00/00</span>
+                </p>
+                <p class="date end">
+                  <i class="ico-calendar"></i><span>Cal 00/00</span>
+                </p>
+              </div>
+            </div>
+            <div class="check-box-wrap">
+              <div class="check-box checked">
+                <input type="checkbox" id="check018" checked />
+                <label class="checkbox" for="check018"></label>
+                <label for="check016">Overdue tickets only</label>
+              </div>
+              <div class="check-box">
+                <input type="checkbox" id="check019" />
+                <label class="checkbox" for="check019"></label>
+                <label for="check017">Exclude closed ticket</label>
+              </div>
+            </div>
+            <a href="#" class="btn-type btn-m v4"
+              >Reset
+              <p class="close-btn">X</p></a
+            >
+          </div>
+        </div>
+        <!--content-->
+        <div class="content-wrap">
+          <aside class="side-list">
+            <h4 class="title-type">My profile</h4>
+            <div class="user-info">
+              <div class="img-box">
+                <img src="../../images/temp/alice_turner.png" alt="" />
+              </div>
+              <h5>Jean Kim 김진진</h5>
+              <div class="info-box">
+                <dl>
+                  <dt>Name</dt>
+                  <dd>Jean Kim 김진진</dd>
+                </dl>
+                <dl>
+                  <dt>Email</dt>
+                  <dd>Jean1.kim@cheilpengtai.com</dd>
+                </dl>
+                <dl>
+                  <dt>Center</dt>
+                  <dd>Seoul Center</dd>
+                </dl>
+                <dl>
+                  <dt>Depertment</dt>
+                  <dd>Division 2 /DBG Team 3</dd>
+                </dl>
+                <dl>
+                  <dt>Level</dt>
+                  <dd>C2</dd>
+                </dl>
+                <dl>
+                  <dt>Work type 1</dt>
+                  <dd>Operator</dd>
+                </dl>
+                <dl>
+                  <dt>Work type 2</dt>
+                  <dd>n/a</dd>
+                </dl>
+                <dl>
+                  <dt>Description</dt>
+                  <dd>
+                    Workflow 기획 및 운영 담당자, 프로젝트 AE 담당 병행 중중
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </aside>
+          <!--content-->
+          <section id="content">
+            <section class="status-wrap inner-box">
+              <dl>
+                <dt>Total assigned ticket</dt>
+                <dd class="status-score">
+                  <strong>120</strong>
+                </dd>
+                <dd class="terms">This month</dd>
+              </dl>
+              <dl>
+                <dt>Closed story ticket</dt>
+                <dd class="status-score">
+                  <strong>8</strong><span>/</span><span>120</span>
+                </dd>
+                <dd class="terms">This month</dd>
+              </dl>
+              <dl>
+                <dt>Total work time</dt>
+                <dd class="status-score">
+                  <strong>148H</strong>
+                </dd>
+                <dd class="terms">This month</dd>
+              </dl>
+              <dl>
+                <dt>Working load</dt>
+                <dd class="status-score v3">
+                  <strong>80%</strong>
+                </dd>
+                <dd class="terms">This month</dd>
+              </dl>
+              <dl>
+                <dt>High prority</dt>
+                <dd class="status-score v2">
+                  <strong>5</strong>
+                </dd>
+                <dd class="terms">This month</dd>
+              </dl>
+              <dl>
+                <dt>Overdue tickets</dt>
+                <dd class="status-score v2">
+                  <strong>3</strong>
+                </dd>
+                <dd class="terms">This month</dd>
+              </dl>
+            </section>
+            <section class="inner-box">
+              <h4 class="title-type">Assigned projects</h4>
+              <div class="table-wrap type3 v2">
+                <table class="table-type">
+                  <colgroup>
+                    <col style="width: 10%" />
+                    <col style="width: 15%" />
+                    <col style="width: 17%" />
+                    <col style="width: 15%" />
+                    <col style="width: 12%" />
+                    <col />
+                    <col />
+                    <col />
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>Epic KEY</th>
+                      <th>Story KEY</th>
+                      <th>Story title</th>
+                      <th>Progress Status</th>
+                      <th>Progress rate</th>
+                      <th>Completed</th>
+                      <th>Class</th>
+                      <th>Class detail</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="pu3"><a href="../epicTicket/detail.html">WSC123</a></td>
+                      <td class="pu3">
+                        <a href="../storyTicket/detail.html">WSC20230808-2012</a>
+                      </td>
+                      <td>
+                        <a href="#">
+                          JP / [Global Request] PD
+                          KVdkjejlkdkdksdkjfkljkflddfjkdljfkfjfKVdkjejlkdkdksdkjfkljkflddfjkdljfkfjf
+                        </a>
+                      </td>
+                      <td>In progress</td>
+                      <td>18%</td>
+                      <td>N</td>
+                      <td>AE</td>
+                      <td>QA AE</td>
+                    </tr>
+                    <tr>
+                       <td class="pu3"><a href="../epicTicket/detail.html">WSC123</a></td>
+                      <td class="pu3">
+                        <a href="../storyTicket/detail.html">WSC20230808-2012</a>
+                      </td>
+                      <td>
+                        <a href="#">
+                          JP / [Global Request] PD
+                          KVdkjejlkdkdksdkjfkljkflddfjkdljfkfjfKVdkjejlkdkdksdkjfkljkflddfjkdljfkfjf
+                        </a>
+                      </td>
+                      <td>In progress</td>
+                      <td>18%</td>
+                      <td>N</td>
+                      <td>AE</td>
+                      <td>QA AE</td>
+                    </tr>
+                    <tr>
+                       <td class="pu3"><a href="../epicTicket/detail.html">WSC123</a></td>
+                      <td class="pu3">
+                        <a href="../storyTicket/detail.html">WSC20230808-2012</a>
+                      </td>
+                      <td>
+                        <a href="#">
+                          JP / [Global Request] PD
+                          KVdkjejlkdkdksdkjfkljkflddfjkdljfkfjfKVdkjejlkdkdksdkjfkljkflddfjkdljfkfjf
+                        </a>
+                      </td>
+                      <td>In progress</td>
+                      <td>18%</td>
+                      <td>N</td>
+                      <td>AE</td>
+                      <td>QA AE</td>
+                    </tr>
+                    <tr>
+                       <td class="pu3"><a href="../epicTicket/detail.html">WSC123</a></td>
+                      <td class="pu3">
+                        <a href="../storyTicket/detail.html">WSC20230808-2012</a>
+                      </td>
+                      <td>
+                        <a href="#">
+                          JP / [Global Request] PD
+                          KVdkjejlkdkdksdkjfkljkflddfjkdljfkfjfKVdkjejlkdkdksdkjfkljkflddfjkdljfkfjf
+                        </a>
+                      </td>
+                      <td>In progress</td>
+                      <td>18%</td>
+                      <td>N</td>
+                      <td>AE</td>
+                      <td>QA AE</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section class="inner-box">
+              <h4 class="title-type">My performance evaluation</h4>
+              <h5 class="table-title">Assigned ticket (Closed)</h5>
+              <div class="table-wrap">
+                <table class="table-type border-none">
+                  <colgroup>
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>Total count (#)<br />*Closed story ticket</th>
+                      <th>Total hours of work (h)<br />*Closed story ticket</th>
+                      <th>
+                        Total hours of QA work (h)<br />*Closed story ticket
+                      </th>
+                      <th>My average<br />working hour(h)</th>
+                      <th>My total<br />working days</th>
+                      <th>My total<br />working Month</th>
+                      <th>Epic Ticket</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>10</td>
+                      <td>232</td>
+                      <td>23</td>
+                      <td>23</td>
+                      <td>11</td>
+                      <td>0.4</td>
+                      <td>4</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <h5 class="table-title">Evaluation</h5>
+              <div class="table-wrap">
+                <table class="table-type border-none">
+                  <colgroup>
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>Average working hours<br />(per OP Type & Level)</th>
+                      <th>My work load rate<br />(Relative evaluation)</th>
+                      <th>My work load rate<br />(Absolute evaluation)</th>
+                      <th>Overdue rate</th>
+                      <th>Issue Mngt.</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="evaluation-state box-type">
+                        <span class="state-bar">23.6</span>
+                      </td>
+                      <td class="evaluation-state box-type">
+                        <span class="state-bar v2">101%</span>
+                      </td>
+                      <td>23</td>
+                      <td>23</td>
+                      <td>4</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </section>
+          <!--//content-->
+        </div>
+        <!--//content-->
+      </div>
+    </div>
+  </body>
+</html>

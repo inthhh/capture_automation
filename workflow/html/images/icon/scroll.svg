@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="40px" viewBox="0 0 25 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+     <style type="text/css">
+        #line{ animation: 1s scrolling infinite both;transform-origin: 0 0;}
+        @keyframes scrolling {
+			0% {
+				transform: scaleY(1);
+				opacity: 0;
+			}
+			50% {
+				opacity: 1;
+				transform: scaleY(1.2);
+			}
+			100% {
+				opacity: 1;
+				transform: scaleY(1) translateY(10px);
+			}
+		}
+    </style>
+    <g id="scroll" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M13,0 C19.627417,-1.21743675e-15 25,5.372583 25,12 L25,28 C25,34.627417 19.627417,40 13,40 L12,40 C5.372583,40 8.11624501e-16,34.627417 0,28 L0,12 C-8.11624501e-16,5.372583 5.372583,1.21743675e-15 12,0 L13,0 Z M12.5,2 C6.70101013,2 2,6.70101013 2,12.5 L2,12.5 L2,27.5 C2,33.2989899 6.70101013,38 12.5,38 C18.2989899,38 23,33.2989899 23,27.5 L23,27.5 L23,12.5 C23,6.70101013 18.2989899,2 12.5,2 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+       <g id="line"> <rect id="Rectangle" fill="#FA0000" x="12" y="10" width="2" height="13"></rect></g>
+    </g>
+</svg>

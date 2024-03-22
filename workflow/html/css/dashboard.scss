@@ -1,0 +1,150 @@
+@charset "UTF-8";
+@import "common/variable", "common/base", "common/mixin";
+$inner-box: $inner;
+
+.dashboard {
+  .content-wrap {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+    height: auto;
+    .content-box {
+      width: 24%;
+      padding: 30px;
+      background-color: #fff;
+      border: 1px solid $CLine2;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+      &:last-child {
+        width: 48%;
+      }
+      .graph-box {
+        margin-top: 100px;
+        text-align: center;
+      }
+      .semi-circle-area {
+        position: relative;
+        .progressbar-text {
+          transform: translate(-50%, 0) !important;
+          font-size: 25px !important;
+          font-family: $font !important;
+          color: $CTmain !important;
+          font-weight: 600;
+        }
+        .graph-number {
+          position: absolute;
+          top: 37%;
+          left: 50%;
+          transform: translate(-50%, 0);
+          font-size: 25px;
+          font-family: $font;
+          color: $CTmain;
+          font-weight: 600;
+        }
+        ul {
+          display: flex;
+          margin-top: 25px;
+          padding: 0 10px;
+          li {
+            display: flex;
+            align-items: center;
+            font-size: 0;
+            text-align: left;
+            .circle {
+              display: inline-block;
+              margin-right: 10px;
+              width: 20px;
+              height: 20px;
+              border-radius: 100%;
+              background: #d3bbfe;
+            }
+            .text {
+              font-size: 10px;
+              color: $CTsub;
+              em {
+                display: block;
+                font-size: 14px;
+                color: $CTmain;
+              }
+            }
+
+            &:last-child {
+              margin-left: auto;
+            }
+            &:first-child {
+              .circle {
+                background: $CBrand;
+              }
+            }
+          }
+        }
+      }
+      #semiCircle {
+        padding: 0 10px;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+      #epicChart {
+        width: 100%;
+      }
+      dt {
+        position: relative;
+        font-size: 20px;
+        font-weight: 600;
+        .btn-help {
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+      }
+      dd {
+        max-height: 250px;
+        margin-top: 50px;
+        canvas {
+          width: 100%;
+        }
+      }
+    }
+    &.col2 {
+      .content-box {
+        width: 30%;
+        &:last-child {
+          display: flex;
+          width: 68%;
+          padding: 66px;
+          height: 200px;
+          justify-content: flex-start;
+          align-items: flex-start;
+          .share-money {
+            padding: 0 30px;
+            border-right: 2px dashed $CLine2;
+            text-align: center;
+            strong {
+              font-size: 28px;
+            }
+            p {
+              margin-top: 10px;
+              color: $CTsub;
+              font-size: 16px;
+            }
+            &:last-child {
+              border-right: 0;
+              padding-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include inner-box {
+  .dashboard {
+    .content-wrap {
+      .content-box .semi-circle-area .graph-number {
+        top: 30%;
+      }
+    }
+  }
+}

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- 2022-10-27 -->
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0, width=device-width, viewport-fit=cover"
+    />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon" />
+
+    <title>Connect Workflow</title>
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/font.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/swiper.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/nice-select.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/daterangepicker.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/sub.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/dashboard.css" />
+
+    <!-- JS -->
+    <script src="../../../assets/js/jquery-3.1.1.min.js"></script>
+    <script src="../../../assets/js/delighters.js"></script>
+    <script src="../../../assets/js/swiper.min.js"></script>
+    <script src="../../../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../../../assets/js/numberCounting.js"></script>
+    <script src="../../../assets/js/TweenMax.min.js"></script>
+    <script src="../../../assets/js/moment.min.js"></script>
+    <script src="../../../assets/js/daterangepicker.min.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/page.js"></script>
+
+    <script src="../../../assets/js/progressbar.js"></script>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Chart.js Datalabels plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- header -->
+      <header
+        class="header-wrap"
+        data-include="../layout/include_header.html"
+      ></header>
+      <!-- //header -->
+      <div class="container ticket">
+        <div class="header-v6">
+          <div class="left-box">
+            <!-- Title -->
+            <div class="header-box">
+              <div class="title-wrap">
+                <p class="title-type">Create new epic ticket</p>
+              </div>
+            </div>
+          </div>
+          <div class="right-box">
+            <a href="javascript:UI.layerPopUp({selId:'#pop-info'})" class="btn-type btn-m v3">Save</a>
+            <a href="#" class="btn-type btn-m v4">Cancel</a>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <!--content-->
+          <section id="content">
+            <div class="inner-box">
+              <div class="header-v4">
+                <div class="left-box"> 
+                  <div class="top-box">
+                    <p class="subtitle-wrap">WSC20230808-2012</p>
+                  </div>
+                  <div class="bottom-box">
+                    <div class="input-type medium" data-role="form-active-box">
+                      <input type="text" placeholder="Type ticket title" data-role="form-active-btn">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="issue-wrap">
+                <div class="issue-group col2">
+                  <div class="issue-box">
+                    <div class="issue-heading">
+                      <button type="button" class="btn-arrow-toggle">
+                        <i class="ico-checkbox unfill"></i>
+                      </button>
+                      <h4 class="issue-title">Detail</h4>
+                    </div>
+                    <div class="property-list">
+                      <ul>
+                        <li>  
+                          <p class="title">KEY:</p>
+                          <div class="item">
+                            <p>WSC20230808-2012</p>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Title:</p>
+                          <div class="item form-motion-box">
+                            <div class="input-type small v2" data-role="form-active-box">
+                              <input type="text" placeholder="Type ticket title" data-role="form-active-btn">
+                              <div class="btn-motion-box">
+                                <button type="button" class="ico-check-square" data-role="form-save-btn"><i class="hidden">save</i></button>
+                                <button type="button" class="ico-close-square" data-role="form-save-btn"><i class="hidden">close</i></button>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Epic ticket type:</p>
+                          <div class="item">
+                            <div class="select-type v3">
+                              <select>
+                                <option value="1">제작 Production / Developement</option>
+                                <option value="2">운영 Operation</option>
+                                <option value="3">Proposal</option>
+                                <option value="4">QA (Quality Assurance)</option>
+                              </select>
+                            </div>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Billing type:</p>
+                          <div class="item">
+                            <div class="select-type v3">
+                              <select>
+                                <option value="1">Billing type A</option>
+                                <option value="2">Billing type B</option>
+                                <option value="3">Billing type C</option>
+                                <option value="4">Billing type D</option>
+                              </select>
+                            </div>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Start date:</p>
+                          <div class="item">
+                            <div class="datepickerRange-wrap">
+                              <input type="text" id="datepickerRange" class="datepickerRange-input"/>
+                              <div class="datepickerRange-box">
+                                <p class="date"><span>YYYY.MM.DD</span></p>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Due date:</p>
+                          <div class="item">
+                            <div class="datepickerRange-wrap">
+                              <input type="text" id="datepickerRange" class="datepickerRange-input"/>
+                              <div class="datepickerRange-box">
+                                <p class="date"><span>YYYY.MM.DD</span></p>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Cost settlement status:</p>
+                          <div class="item">
+                            <div class="select-type v3">
+                              <select>
+                                <option value="1">Settled</option>
+                                <option value="2">Unsettled</option>
+                              </select>
+                            </div>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Contract period:</p>
+                          <div class="item">
+                            <div class="select-type v3">
+                              <select>
+                                <option value="1">Short term (3M)</option>
+                                <option value="2">Mid term (6M)</option>
+                                <option value="3">Log term (12M)</option>
+                              </select>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="issue-box">
+                    <div class="issue-heading">
+                      <button type="button" class="btn-arrow-toggle">
+                        <i class="ico-checkbox unfill"></i>
+                      </button>
+                      <h4 class="issue-title">People</h4>
+                    </div>
+                    <div class="property-list type2">
+                      <ul>
+                        <li>  
+                          <p class="title">Assignee:</p>
+                          <div class="item">
+                            <div class="search-box auto-list small" data-role="form-active-box">
+                              <div class="search-form">
+                                <input type="text" class="input-type" placeholder="Assign in" data-role="form-active-btn">
+                              </div>
+                              <div class="search-list">
+                                <ul>
+                                  <li>
+                                    <a href="#" data-role="form-save-btn">
+                                      <em class="info">AE</em>
+                                      <p>홍길동 Gildong Hong</p>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#" data-role="form-save-btn">
+                                      <em class="info">AE</em>
+                                      <p>홍길동 Gildong Hong</p>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#" data-role="form-save-btn">
+                                      <em class="info">AE</em>
+                                      <p>홍길동 Gildong Hong</p>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+
+                        <li>  
+                          <p class="title">Reporter:</p>
+                          <div class="item">
+                            <div class="search-box auto-list small" data-role="form-active-box">
+                              <div class="search-form">
+                                <input type="text" class="input-type" placeholder="Assign in" data-role="form-active-btn">
+                              </div>
+                              <div class="search-list">
+                                <ul>
+                                  <li>
+                                    <a href="#" data-role="form-save-btn">
+                                      <em class="info">AE</em>
+                                      <p>홍길동 Gildong Hong</p>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#" data-role="form-save-btn">
+                                      <em class="info">AE</em>
+                                      <p>홍길동 Gildong Hong</p>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#" data-role="form-save-btn">
+                                      <em class="info">AE</em>
+                                      <p>홍길동 Gildong Hong</p>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+
+                        <li>  
+                          <p class="title">Past assignees:</p>
+                          <div class="item">
+                            <div class="search-box auto-list small" data-role="form-active-box">
+                              <div class="search-form">
+                                <input type="text" class="input-type" placeholder="Assign in" data-role="form-active-btn">
+                              </div>
+                              <div class="search-list">
+                                <ul>
+                                  <li>
+                                    <a href="#" data-role="form-save-btn">
+                                      <em class="info">AE</em>
+                                      <p>홍길동 Gildong Hong</p>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#" data-role="form-save-btn">
+                                      <em class="info">AE</em>
+                                      <p>홍길동 Gildong Hong</p>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#" data-role="form-save-btn">
+                                      <em class="info">AE</em>
+                                      <p>홍길동 Gildong Hong</p>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Watcher:</p>
+                          <div class="item">
+                            <div class="search-box auto-list small" data-role="form-active-box">
+                              <div class="search-form">
+                                <input type="text" class="input-type" placeholder="Assign in" data-role="form-active-btn">
+                              </div>
+                              <div class="search-list">
+                                <ul>
+                                  <li>
+                                    <a href="#" data-role="form-save-btn">
+                                      <em class="info">AE</em>
+                                      <p>홍길동 Gildong Hong</p>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#" data-role="form-save-btn">
+                                      <em class="info">AE</em>
+                                      <p>홍길동 Gildong Hong</p>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#" data-role="form-save-btn">
+                                      <em class="info">AE</em>
+                                      <p>홍길동 Gildong Hong</p>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="issue-group">
+                  <div class="issue-box">
+                    <div class="issue-heading">
+                      <button type="button" class="btn-arrow-toggle">
+                        <i class="ico-checkbox unfill"></i>
+                      </button>
+                      <h4 class="issue-title">Discription</h4>
+                    </div>
+                    <div class="textarea-type v2" data-role="form-active-box">
+                      <div class="menu-editor">
+                        <div class="img-box">
+                          <img src="../../images/sub/menu-bar.svg" alt="">
+                        </div>
+                        <div class="btn-box">
+                          <a href="#" class="btn-type btn-s v3" data-role="form-save-btn">Save</a>
+                          <a href="#" class="btn-type btn-s v6">Cancel</a>
+                        </div>
+                      </div>
+                      <textarea cols="30" rows="5" placeholder="Type in description here" data-role="form-active-btn"></textarea>
+                      <!--span class="count">[<em>278</em>/1,000]</!--span-->
+                      <span class="msg">숫자 및 특수문자를 포함할 수 없습니다.</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="issue-group">
+                  <div class="issue-box">
+                    <div class="issue-heading">
+                      <button type="button" class="btn-arrow-toggle">
+                        <i class="ico-checkbox unfill"></i>
+                      </button>
+                      <h4 class="issue-title">Attatchments</h4>
+                    </div>
+                    <div class="file-wrap">
+                      <div class="file-type">
+                        <label for="input-file" class="btn-file"><i class="ico-upload"></i><p>Drop your file here or <em>Browse</em></p></label>
+                        <input type="file" id="input-file">
+                        <button class="btn-clear"><i class="ico-clear"><span class="hidden">첨부파일삭제</span></i></button>
+                      </div>
+                      <div class="content-inbox-wrap">
+                        <div class="table-wrap type2">
+                          <table class="table-type">
+                            <colgroup>
+                              <col width="24px">
+                              <col width="*">
+                              <col width="60px">
+                              <col width="80px">
+                              <col width="80px">
+                              <col width="28px">
+                              <col width="28px">
+                            </colgroup>
+                            <tbody>
+                              <tr>
+                                <td><i class="ico-attach"></i></td>
+                                <td class="text-title">2308 CONNEC+ One Sales Deck V3.pptx 2308 CONNEC+ One Sales Deck V3.pptx 2308 CONNEC+ One Sales Deck V3.pptx</td>
+                                <td class="thin">23MB</td>
+                                <td class="thin gr">Joan 김조원</td>
+                                <td class="thin gr">2023.08.30</td>
+                                <td><a href="#"><i class="ico-down gray"></i></a></td>
+                                <td><a href="#"><i class="ico-menu black"></i></a></td>
+                              </tr>
+                              <tr>
+                                <td><i class="ico-attach"></i></td>
+                                <td>2308 CONNEC+ One Sales Deck V3.pptx </td>
+                                <td class="thin">23MB</td>
+                                <td class="thin gr">Joan 김조원</td>
+                                <td class="thin gr">2023.08.30</td>
+                                <td><a href="#"><i class="ico-down gray"></i></a></td>
+                                <td><a href="#"><i class="ico-menu black"></i></a></td>
+                              </tr>
+                              <tr>
+                                <td><i class="ico-attach"></i></td>
+                                <td>2308 CONNEC+ One Sales Deck V3.pptx </td>
+                                <td class="thin">23MB</td>
+                                <td class="thin gr">Joan 김조원</td>
+                                <td class="thin gr">2023.08.30</td>
+                                <td><a href="#"><i class="ico-down gray"></i></a></td>
+                                <td><a href="#"><i class="ico-menu black"></i></a></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!--//content-->
+        </div>
+      </div>
+    </div>
+
+    <div class="pop-layer pop-info" id="pop-info">
+      <div class="dim"></div>
+      <div class="pop-wrap">
+        <div class="pop-contentbox">
+          <P class="pop-tit">Are you sure you want to<br>quit the ticket creation?</P>
+          <div class="btn-wrap">
+            <a href="list.html" class="btn-type btn-l v3">Create new</a>
+            <a href="#" class="btn-type btn-l v4 pop-btn-close">No</a>
+          </div>
+        </div>
+        <button class="pop-close v2">
+          <span class="hidden">팝업닫기</span>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

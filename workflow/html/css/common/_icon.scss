@@ -1,0 +1,416 @@
+@charset "UTF-8";
+@import "../common/variable", "../common/mixin";
+$line: 2;
+
+/* svg */
+[class^="ico-"] {
+  display: inline-block;
+  width: 23px;
+  height: 23px;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  background-position: 50% 50%;
+  background-size: contain;
+}
+
+//css
+.ico-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #00328e;
+
+  &.v2 {
+    background-color: #2b9ada;
+  }
+
+  &.v3 {
+    background-color: #b2cddc;
+  }
+
+  &.v4 {
+    background-color: #015fb9;
+  }
+}
+
+.ico-stock {
+  width: 0;
+  height: 0;
+  border-bottom: 5px solid transparent;
+  border-top: 5px solid transparent;
+  border-left: 8px solid $CBrand;
+  border-right: 8px solid transparent;
+  transform: rotate(-90deg) translateX(5px);
+  transform-origin: 50% 50%;
+
+  &.down {
+    border-left: 8px solid #015fb9;
+    transform: rotate(90deg) translateX(2px);
+  }
+}
+
+.ico-required {
+  min-width: 5px;
+  width: 5px;
+  height: 5px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background-color: #f80000;
+  vertical-align: super;
+}
+
+//배경안필요한것
+.ico-down {
+  width: 14px;
+  height: 11px;
+  background-image: url("../images/icon/connect/down.svg");
+  &.gray {
+    width: 18px;
+    height: 14px;
+    background-image: url("../images/icon/connect/down_gr.svg");
+  }
+}
+
+
+.ico-upload {
+  width: 52px;
+  height: 52px;
+  background-image: url("../images/icon/connect/upload.svg");
+}
+
+.ico-pen {
+  width: 24px;
+  height: 24px;
+  background-image: url("../images/icon/connect/pen.svg");
+}
+
+.ico-close {
+  width: 22px;
+  height: 22px;
+  background-image: url("../images/icon/connect/close.svg");
+}
+
+.ico-check-square {
+  width: 21px;
+  height: 21px;
+  background-image: url("../images/icon/connect/check-square.svg");
+}
+
+.ico-close-square {
+  width: 21px;
+  height: 21px;
+  background-image: url("../images/icon/connect/close-square.svg");
+}
+
+.ico-checkbox {
+  width: 20px;
+  height: 20px;
+  background-image: url("../images/icon/connect/checkbox.svg");
+
+  &.unfill {
+    background-image: url("../images/icon/connect/checkbox_unfill.svg");
+    width: 19px;
+    height: 19px;
+  }
+
+  &.fill {
+    background-image: url("../images/icon/connect/checkbox_fill.svg");
+  }
+}
+
+.ico-help {
+  width: 18px;
+  height: 18px;
+  background-image: url("../images/icon/connect/help.svg");
+}
+
+.ico-srch {
+  width: 14px;
+  height: 14px;
+  background-image: url("../images/icon/connect/search.svg");
+  //@include svg(#89868D, $value: search);
+}
+
+.ico-calendar {
+  width: 12px;
+  height: 12px;
+  background-image: url("../images/icon/connect/calendar.svg");
+
+  &.gray {
+    background-image: url("../images/icon/connect/calendar_gr.svg");
+  }
+}
+
+.ico-attach {
+  width: 24px;
+  height: 24px;
+  background-image: url("../images/icon/connect/attach.svg");
+}
+
+.ico-userbox {
+  width: 24px;
+  height: 24px;
+  background-image: url("../images/icon/connect/userbox.svg");
+}
+
+.ico-editorbox-line {
+  width: 12px;
+  height: 12px;
+  background-image: url("../images/icon/connect/editorbox_line.svg");
+}
+
+.ico-user-img {
+  width: 40px;
+  height: 40px;
+  background-image: url("../images/icon/connect/userimg.svg");
+}
+
+.ico-edit {
+  width: 30px;
+  height: 30px;
+  background-image: url("../images/icon/connect/edit.svg");
+}
+
+.ico-plus {
+  width: 27px;
+  height: 30px;
+  background-image: url("../images/icon/connect/plus.svg");
+}
+
+.ico-more {
+  width: 21px;
+  height: 21px;
+  background-image: url("../images/icon/connect/more.svg");
+
+  &.back {
+    background-image: url("../images/icon/connect/more_back.svg");
+  }
+}
+
+//배경 필요한 것
+.ico-logo {
+  width: 132px;
+  height: 29px;
+  background-image: url("../images/icon/connect/logo.svg");
+
+  // &.white {
+  //     background-image: url("../images/icon/logo_w.svg");
+  // }
+}
+
+.ico-dashboard {
+  width: 18px;
+  height: 18px;
+  background-image: url("../images/icon/connect/dashboard.svg");
+}
+
+.ico-menu {
+  width: 17px;
+  height: 17px;
+  background-image: url("../images/icon/connect/menu.svg");
+
+  &.black {
+    background-image: url("../images/icon/connect/menu_bk.svg");
+  }
+}
+
+.ico-menu-horizental {
+  width: 18px;
+  height: 18px;
+  background-image: url("../images/icon/connect/menu_horizental.svg");
+}
+
+.ico-contract {
+  width: 18px;
+  height: 18px;
+  background-image: url("../images/icon/connect/contract.svg");
+}
+
+.ico-users {
+  width: 18px;
+  height: 18px;
+  background-image: url("../images/icon/connect/users.svg");
+
+  &.black {
+    background-image: url("../images/icon/connect/users_bk.svg");
+  }
+}
+
+.ico-setting {
+  width: 18px;
+  height: 18px;
+  background-image: url("../images/icon/connect/setting.svg");
+}
+
+.ico-back {
+  width: 37px;
+  height: 37px;
+  background-image: url("../images/icon/connect/back.svg");
+  background-color: $CBrand;
+  border-radius: 50%;
+}
+
+.ico-menubar {
+  width: 28px;
+  height: 28px;
+  background-image: url("../images/icon/connect/menu-bar__button.svg");
+
+  &.redo {
+    transform: scaleX(-1);
+  }
+}
+
+.ico-align {
+  width: 20px;
+  height: 20px;
+  background-image: url("../images/icon/connect/alignment.svg");
+}
+
+.ico-down-btn {
+  width: 16px;
+  height: 16px;
+  background-image: url("../images/icon/connect/down_btn.svg");
+}
+
+.ico-font-set {
+  width: 28px;
+  height: 28px;
+  background-image: url("../images/icon/connect/font_weight.svg");
+
+  &.italic {
+    background-image: url("../images/icon/connect/font_italic.svg");
+  }
+  &.underline {
+    background-image: url("../images/icon/connect/font_underline.svg");
+  }
+  &.strikethrough {
+    background-image: url("../images/icon/connect/font_strikethrough.svg");
+  }
+  &.inequality {
+    background-image: url("../images/icon/connect/font_inequality.svg");
+  }
+  &.eraser {
+    background-image: url("../images/icon/connect/font_eraser.svg");
+  }
+}
+
+.ico-list-set {
+  width: 28px;
+  height: 28px;
+  background-image: url("../images/icon/connect/list_bullet.svg");
+
+  &.numbering {
+    background-image: url("../images/icon/connect/list_numbering.svg");
+  }
+}
+
+.ico-etc-set {
+  width: 28px;
+  height: 28px;
+  background-image: url("../images/icon/connect/etc_attach.svg");
+  
+  &.pic {
+    background-image: url("../images/icon/connect/etc_pic.svg");
+  }
+  &.code {
+    background-image: url("../images/icon/connect/etc_code.svg");
+  }
+  &.quote {
+    background-image: url("../images/icon/connect/etc_quote.svg");
+  }
+  &.contour {
+    background-image: url("../images/icon/connect/etc_contour.svg");
+  }
+}
+
+.ico-burgermenu {
+  width: 18px;
+  height: 18px;
+  background-image: url("../images/icon/connect/burgermenu.svg");
+
+  &.gr {
+    background-image: url("../images/icon/connect/burgermenu_gr.svg");
+  }
+}
+
+.ico-file {
+  width: 28px;
+  height: 28px;
+  background-image: url("../images/icon/connect/file.svg");
+}
+
+.ico-trashcan {
+  width: 18px;
+  height: 18px;
+  background-image: url("../images/icon/connect/trashcan.svg");
+}
+
+
+// .ico-clear {
+//   width: 23px;
+//   height: 23px;
+//   background-image: url("/html/images/icon/clear.png");
+// }
+
+//data url 처리(두께 변경 가능토록)
+.ico-arr {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  background-image: url("data: image/svg+xml, %3Csvg width='29' height='54' viewBox='0 0 29 54' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M28 53 2 27 28 1' stroke='%23231916' stroke-width='7' fill='none' fill-rule='evenodd' /%3E%3C/svg%3E%0A");
+  transform: rotate(180deg);
+
+  &.lft {
+    transform: rotate(0);
+  }
+
+  &.up {
+    transform: rotate(90deg);
+  }
+
+  &.down {
+    transform: rotate(-90deg);
+  }
+
+  &.dubble {
+    background-image: url("data: image/svg+xml, %3Csvg width='51' height='54' viewBox='0 0 51 54' xmlns='http://www.w3.org/2000/svg' %3E%3Cg stroke='%23231916' stroke-width='4' fill='none' fill-rule='evenodd' %3E%3Cpath d='M28 53 2 27 28 1' /%3E%3Cpath d='M50 53 24 27 50 1' /%3E%3C/g%3E%3C/svg%3E%0A");
+  }
+
+  &.v2 {
+    width: 12px;
+    height: 12px;
+    background-image: url("data: image/svg+xml, %3Csvg width='29' height='54' viewBox='0 0 29 54' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M28 53 2 27 28 1' stroke='%23231916' stroke-width='6' fill='none' fill-rule='evenodd' /%3E%3C/svg%3E%0A");
+  }
+}
+
+//motionArr
+.ico-motion-arr {
+  width: 15px;
+  min-width: 15px;
+  height: 11px;
+  margin-left: 4px;
+  background-image: url(../images/icon/long_arr_unhover_b.svg);
+
+  a:hover & {
+    width: 61px;
+    min-width: 61px;
+    background-image: url(../images/icon/long_arr_hover_b.svg);
+  }
+}
+
+@include tablet {
+  .ico-facebook {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ico-twitter {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ico-url {
+    width: 60px;
+    height: 60px;
+  }
+}

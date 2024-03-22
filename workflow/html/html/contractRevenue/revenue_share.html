@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- 2022-10-27 -->
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0, width=device-width, viewport-fit=cover"
+    />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon" />
+
+    <title>Connect Workflow</title>
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/font.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/swiper.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/nice-select.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/daterangepicker.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/sub.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/dashboard.css" />
+
+    <!-- JS -->
+    <script src="../../../assets/js/jquery-3.1.1.min.js"></script>
+    <script src="../../../assets/js/delighters.js"></script>
+    <script src="../../../assets/js/swiper.min.js"></script>
+    <script src="../../../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../../../assets/js/numberCounting.js"></script>
+    <script src="../../../assets/js/TweenMax.min.js"></script>
+    <script src="../../../assets/js/moment.min.js"></script>
+    <script src="../../../assets/js/daterangepicker.min.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/page.js"></script>
+
+    <script src="../../../assets/js/progressbar.js"></script>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Chart.js Datalabels plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- header -->
+      <header
+        class="header-wrap"
+        data-include="../layout/include_header.html"
+      ></header>
+      <!-- //header -->
+
+      <div class="container contract-revenus">
+        <div class="header-v6">
+          <div class="left-box">
+            <!-- Title -->
+            <div class="header-box">
+              <div class="title-wrap">
+                <p class="title-type">Contract detail</p>
+              </div>
+            </div>
+          </div>
+          <div class="right-box">
+            <div class="toggle-container">
+              <button class="toggle-button " onclick="toggleOption(1)">
+                <i class="ico-burgermenu gr"></i>Contract
+              </button>
+              <button class="toggle-button active" onclick="toggleOption(2)">
+                <i class="ico-burgermenu "></i>Revenue share
+              </button>
+            </div>
+          </div>
+        </div>
+        <!--content-->
+        <div class="box-wrap">
+          <section id="content" class="con-left-box">
+            <div class="upper-box">
+              <p class="title-type">Contract list</p>
+              <div class="search-box">
+                <div class="search-form">
+                  <input
+                    type="text"
+                    class="input-type"
+                    placeholder="Search epic ticket"
+                  />
+                  <button class="btn-clear">
+                    <i class="ico-clear"
+                      ><span class="hidden">검색어지우기</span></i
+                    >
+                  </button>
+                  <button type="submit" class="btn-search">
+                    <i class="ico-srch"><span class="hidden">검색</span></i>
+                  </button>
+                </div>
+              </div>
+              <div class="check-box-wrap">
+                <div class="check-box checked">
+                  <input type="checkbox" id="check016" checked />
+                  <label class="checkbox" for="check016"></label>
+                  <label for="check016">Assigned ticket only</label>
+                </div>
+                <div class="check-box">
+                  <input type="checkbox" id="check017" />
+                  <label class="checkbox" for="check017"></label>
+                  <label for="check017">Exclude closed ticket</label>
+                </div>
+              </div>
+            </div>
+            <div class="result-box">Search epic ticket.</div>
+          </section>
+          <section id="content" class="con-right-box"
+            style="display: none">
+            <!-- 메인팝업 -->
+            <div
+              class="pop-layer pop-main"
+              id="pop-main"
+              data-include="./detail_quotation_popup.html"
+            ></div>
+            <div class="header-v9">
+              <div class="left-box">
+                <div class="top-box">
+                  <a
+                    style="cursor: pointer"
+                    class="subtitle-wrap"
+                    onclick="location.href='../epicTicket/detail.html'"
+                    >K1P22048004</a
+                  >
+                </div>
+                <div class="bottom-box">
+                  <p class="title-wrap">삼성닷컴 Japan 운영 지원 (TBD)</p>
+                </div>
+              </div>
+            </div>
+            <div class="contents-box">
+              <div class="content-box">
+                <div class="title">
+                  <p>Quotation (견적서)</p>
+                  <div class="status blue">Confirmed</div>
+                </div>
+                <div class="content">
+                  <div class="middle-box">
+                    <div>
+                      <div class="file-status-box">
+                        <i class="ico-file"></i>
+                        <div class="file-content-box">
+                          <div class="file-title">
+                            제일재팬_펑타이_프로젝트_2303~202309 삼성닷컴.excel
+                          </div>
+                          <div class="info-box">
+                            <span>500kb</span>
+                            <span>2020.09.19</span>
+                            <span>Jen Kim 김제나 </span>
+                          </div>
+                        </div>
+                        <i class="ico-trashcan"></i>
+                      </div>
+                      <div class="file-status-box">
+                        <i class="ico-file"></i>
+                        <div class="file-content-box">
+                          <div class="file-title">
+                            [날인완료] 제일재팬_펑타이_프로젝트_2303~202309
+                            삼성..
+                          </div>
+                          <div class="info-box">
+                            <span>500kb</span>
+                            <span>2020.09.19</span>
+                            <span>Jen Kim 김제나 </span>
+                          </div>
+                        </div>
+                        <i class="ico-trashcan"></i>
+                      </div>
+                    </div>
+                    <a
+                      href="javascript:UI.layerPopUp({selId:'#pop-main'})"
+                      class="btn-type btn-m v3"
+                      >Edit</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="content-box">
+                <div class="title">
+                  <p>Contact agreement (계약서)</p>
+                  <div class="status red">Pending</div>
+                </div>
+                <div class="content">
+                  <div class="middle-box">
+                    <div>
+                      <div class="file-status-box">
+                        <i class="ico-file"></i>
+                        <div class="file-content-box">
+                          <div class="file-title">
+                            제일재팬_펑타이_프로젝트_2303~202309 삼성닷컴.excel
+                          </div>
+                          <div class="info-box">
+                            <span>500kb</span>
+                            <span>2020.09.19</span>
+                            <span>Jen Kim 김제나 </span>
+                          </div>
+                        </div>
+                        <i class="ico-trashcan"></i>
+                      </div>
+                      <div class="file-status-box">
+                        <i class="ico-file"></i>
+                        <div class="file-content-box">
+                          <div class="file-title">
+                            [날인완료] 제일재팬_펑타이_프로젝트_2303~202309
+                            삼성..
+                          </div>
+                          <div class="info-box">
+                            <span>500kb</span>
+                            <span>2020.09.19</span>
+                            <span>Jen Kim 김제나 </span>
+                          </div>
+                        </div>
+                        <i class="ico-trashcan"></i>
+                      </div>
+                    </div>
+                    <div class="file-type">
+                      <label for="input-file" class="btn-file">
+                        <p>Drop your file here or <em>Browse</em></p></label
+                      >
+                      <input type="file" id="input-file" />
+                      <button class="btn-clear">
+                        <i class="ico-clear"
+                          ><span class="hidden">첨부파일삭제</span></i
+                        >
+                      </button>
+                    </div>
+                    <a href="#" class="btn-type btn-m v3">Download Format</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="content-box full">
+              <div class="title">Invoice(청구서) management</div>
+              <div class="content">
+                <div class="table-wrap type3">
+                  <table class="table-type">
+                    <thead>
+                      <tr>
+                        <th class="wide">Created date</th>
+                        <th class="wide">Completed date</th>
+                        <th class="wide">Invoice title</th>
+                        <th class="wide"></th>
+                        <th class="wide">Invoice status</th>
+                        <th class="wide">Final cost (KRW)</th>
+                        <th class="wide">Task report<br />(=Story)</th>
+                        <th class="wide">Status</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="wide">2023.10.30</td>
+                        <td class="wide">2023.10.30</td>
+                        <td class="wide">9월SEJ 청구내역서</td>
+                        <td class="wide"></td>
+                        <td class="wide">
+                          <div class="invoice-status grey">Closed</div>
+                        </td>
+                        <td class="wide">1,820,000</td>
+                        <td class="wide">3</td>
+                        <td class="wide">
+                          <div class="status grey">Not sent</div>
+                        </td>
+                        <td onclick="toggleDetailBox('detail-box-1', this)">
+                          <i class="ico-arr down"></i>
+                        </td>
+                      </tr>
+                      <tr class="detail-box hidden" id="detail-box-1">
+                        <td colspan="9">
+                          <!-- Task report -->
+                          <div class="invoice-title-box">
+                            <div class="left-box">
+                              <p class="invoice-title">
+                                Task report (작업내역서)
+                              </p>
+                              <div class="search-box">
+                                <div class="search-form">
+                                  <input
+                                    type="text"
+                                    class="input-type"
+                                    placeholder="Search story ticket for task summary"
+                                  />
+                                  <button class="btn-clear hidden">
+                                    <i class="ico-clear"
+                                      ><span class="hidden"
+                                        >검색어지우기</span
+                                      ></i
+                                    >
+                                  </button>
+                                  <button type="submit" class="btn-search">
+                                    <i class="ico-srch"
+                                      ><span class="hidden">검색</span></i
+                                    >
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="btn-wrap">
+                              <a href="#" class="btn-type download-type"
+                                ><span>Download</span
+                                ><i class="ico-down gray"></i>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="table-wrap type3">
+                            <table class="table-type">
+                              <thead>
+                                <tr>
+                                  <th>Story KEY</th>
+                                  <th>Story title</th>
+                                  <th>Epic KEY</th>
+                                  <th>Status</th>
+                                  <th>Start</th>
+                                  <th>Due</th>
+                                  <th>End</th>
+                                  <th>Cost(KRW)</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class="pu3">WSC20230808</td>
+                                  <td class="wide">
+                                    [PK] [Global Request][BAU] Galaxy S23 Series
+                                    <br />Hotfix v.4.0 - Gallery page_(Add alt
+                                    text)
+                                  </td>
+                                  <td class="pu3">K1P22048004</td>
+                                  <td>Closed</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>600,000</td>
+                                </tr>
+                                <tr>
+                                  <td class="pu3">WSC20230808</td>
+                                  <td class="wide">
+                                    [PK] [Global Request][BAU] Galaxy S23 Series
+                                    <br />Hotfix v.4.0 - Gallery page_(Add alt
+                                    text)
+                                  </td>
+                                  <td class="pu3">K1P22048004</td>
+                                  <td>Closed</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>600,000</td>
+                                </tr>
+                                <tr>
+                                  <td class="pu3">WSC20230808</td>
+                                  <td class="wide">
+                                    [PK] [Global Request][BAU] Galaxy S23 Series
+                                    <br />Hotfix v.4.0 - Gallery page_(Add alt
+                                    text)
+                                  </td>
+                                  <td class="pu3">K1P22048004</td>
+                                  <td>Closed</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>600,000</td>
+                                </tr>
+                                <tr>
+                                  <td class="pu3">WSC20230808</td>
+                                  <td class="wide">
+                                    [PK] [Global Request][BAU] Galaxy S23 Series
+                                    <br />Hotfix v.4.0 - Gallery page_(Add alt
+                                    text)
+                                  </td>
+                                  <td class="pu3">K1P22048004</td>
+                                  <td>Closed</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>600,000</td>
+                                </tr>
+                                <tr class="add">
+                                  <td colspan="8">
+                                    Add new task report (Story ticket)
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <!-- Signed invoice -->
+                          <div class="invoice-title-box bottom">
+                            <div class="left-box">
+                              <p class="invoice-title">Signed invoice files</p>
+                            </div>
+                          </div>
+                          <div class="invoice-content-box">
+                            <div>
+                              <div class="file-status-box">
+                                <i class="ico-file"></i>
+                                <div class="file-content-box">
+                                  <div class="file-title">
+                                    제일재팬_펑타이_프로젝트_2303~202309
+                                    삼성닷컴.excel
+                                  </div>
+                                  <div class="info-box">
+                                    <span>500kb</span>
+                                    <span>2020.09.19</span>
+                                    <span>Jen Kim 김제나 </span>
+                                  </div>
+                                </div>
+                                <i class="ico-trashcan"></i>
+                              </div>
+                              <div class="file-status-box">
+                                <i class="ico-file"></i>
+                                <div class="file-content-box">
+                                  <div class="file-title">
+                                    [날인완료]
+                                    제일재팬_펑타이_프로젝트_2303~202309 삼성..
+                                  </div>
+                                  <div class="info-box">
+                                    <span>500kb</span>
+                                    <span>2020.09.19</span>
+                                    <span>Jen Kim 김제나 </span>
+                                  </div>
+                                </div>
+                                <i class="ico-trashcan"></i>
+                              </div>
+                            </div>
+                            <div class="file-type">
+                              <label for="input-file" class="btn-file"
+                                ><i class="ico-upload"></i>
+                                <p>
+                                  Drop your file here or <em>Browse</em>
+                                </p></label
+                              >
+                              <input type="file" id="input-file" />
+                              <button class="btn-clear">
+                                <i class="ico-clear"
+                                  ><span class="hidden">첨부파일삭제</span></i
+                                >
+                              </button>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="wide">2023.10.30</td>
+                        <td class="wide">2023.10.30</td>
+                        <td class="wide">9월SEJ 청구내역서</td>
+                        <td class="wide"></td>
+                        <td class="wide">
+                          <div class="invoice-status blue">In progress</div>
+                        </td>
+                        <td class="wide">1,820,000</td>
+                        <td class="wide">3</td>
+                        <td class="wide">
+                          <div class="status blue">Confirmed</div>
+                        </td>
+                        <td onclick="toggleDetailBox('detail-box-2', this)">
+                          <i class="ico-arr down"></i>
+                        </td>
+                      </tr>
+                      <tr class="detail-box hidden" id="detail-box-2">
+                        <td colspan="9">
+                          <!-- Task report -->
+                          <div class="invoice-title-box">
+                            <div class="left-box">
+                              <p class="invoice-title">
+                                Task report (작업내역서)
+                              </p>
+                              <div class="search-box">
+                                <div class="search-form">
+                                  <input
+                                    type="text"
+                                    class="input-type"
+                                    placeholder="Search story ticket for task summary"
+                                  />
+                                  <button class="btn-clear hidden">
+                                    <i class="ico-clear"
+                                      ><span class="hidden"
+                                        >검색어지우기</span
+                                      ></i
+                                    >
+                                  </button>
+                                  <button type="submit" class="btn-search">
+                                    <i class="ico-srch"
+                                      ><span class="hidden">검색</span></i
+                                    >
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="btn-wrap">
+                              <a href="#" class="btn-type download-type"
+                                ><span>Download</span
+                                ><i class="ico-down gray"></i>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="table-wrap type3">
+                            <table class="table-type">
+                              <thead>
+                                <tr>
+                                  <th>Story KEY</th>
+                                  <th>Story title</th>
+                                  <th>Epic KEY</th>
+                                  <th>Status</th>
+                                  <th>Start</th>
+                                  <th>Due</th>
+                                  <th>End</th>
+                                  <th>Cost(KRW)</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class="pu3">WSC20230808</td>
+                                  <td class="wide">
+                                    [PK] [Global Request][BAU] Galaxy S23 Series
+                                    <br />Hotfix v.4.0 - Gallery page_(Add alt
+                                    text)
+                                  </td>
+                                  <td class="pu3">K1P22048004</td>
+                                  <td>Closed</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>600,000</td>
+                                </tr>
+                                <tr>
+                                  <td class="pu3">WSC20230808</td>
+                                  <td class="wide">
+                                    [PK] [Global Request][BAU] Galaxy S23 Series
+                                    <br />Hotfix v.4.0 - Gallery page_(Add alt
+                                    text)
+                                  </td>
+                                  <td class="pu3">K1P22048004</td>
+                                  <td>Closed</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>600,000</td>
+                                </tr>
+                                <tr>
+                                  <td class="pu3">WSC20230808</td>
+                                  <td class="wide">
+                                    [PK] [Global Request][BAU] Galaxy S23 Series
+                                    <br />Hotfix v.4.0 - Gallery page_(Add alt
+                                    text)
+                                  </td>
+                                  <td class="pu3">K1P22048004</td>
+                                  <td>Closed</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>600,000</td>
+                                </tr>
+                                <tr>
+                                  <td class="pu3">WSC20230808</td>
+                                  <td class="wide">
+                                    [PK] [Global Request][BAU] Galaxy S23 Series
+                                    <br />Hotfix v.4.0 - Gallery page_(Add alt
+                                    text)
+                                  </td>
+                                  <td class="pu3">K1P22048004</td>
+                                  <td>Closed</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>600,000</td>
+                                </tr>
+                                <tr class="add">
+                                  <td colspan="8">
+                                    Add new task report (Story ticket)
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <!-- Signed invoice -->
+                          <div class="invoice-title-box bottom">
+                            <div class="left-box">
+                              <p class="invoice-title">Signed invoice files</p>
+                            </div>
+                          </div>
+                          <div class="invoice-content-box">
+                            <div>
+                              <div class="file-status-box">
+                                <i class="ico-file"></i>
+                                <div class="file-content-box">
+                                  <div class="file-title">
+                                    제일재팬_펑타이_프로젝트_2303~202309
+                                    삼성닷컴.excel
+                                  </div>
+                                  <div class="info-box">
+                                    <span>500kb</span>
+                                    <span>2020.09.19</span>
+                                    <span>Jen Kim 김제나 </span>
+                                  </div>
+                                </div>
+                                <i class="ico-trashcan"></i>
+                              </div>
+                              <div class="file-status-box">
+                                <i class="ico-file"></i>
+                                <div class="file-content-box">
+                                  <div class="file-title">
+                                    [날인완료]
+                                    제일재팬_펑타이_프로젝트_2303~202309 삼성..
+                                  </div>
+                                  <div class="info-box">
+                                    <span>500kb</span>
+                                    <span>2020.09.19</span>
+                                    <span>Jen Kim 김제나 </span>
+                                  </div>
+                                </div>
+                                <i class="ico-trashcan"></i>
+                              </div>
+                            </div>
+                            <div class="file-type">
+                              <label for="input-file" class="btn-file"
+                                ><i class="ico-upload"></i>
+                                <p>
+                                  Drop your file here or <em>Browse</em>
+                                </p></label
+                              >
+                              <input type="file" id="input-file" />
+                              <button class="btn-clear">
+                                <i class="ico-clear"
+                                  ><span class="hidden">첨부파일삭제</span></i
+                                >
+                              </button>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="wide">2023.10.30</td>
+                        <td class="wide">2023.10.30</td>
+                        <td class="wide">9월SEJ 청구내역서</td>
+                        <td class="wide"></td>
+                        <td class="wide">
+                          <div class="invoice-status red">Rejected</div>
+                        </td>
+                        <td class="wide">1,820,000</td>
+                        <td class="wide">3</td>
+                        <td class="wide">
+                          <div class="status red">Pending</div>
+                        </td>
+                        <td onclick="toggleDetailBox('detail-box-3', this)">
+                          <i class="ico-arr down"></i>
+                        </td>
+                      </tr>
+                      <tr class="detail-box hidden" id="detail-box-3">
+                        <td colspan="9">
+                          <!-- Task report -->
+                          <div class="invoice-title-box">
+                            <div class="left-box">
+                              <p class="invoice-title">
+                                Task report (작업내역서)
+                              </p>
+                              <div class="search-box">
+                                <div class="search-form">
+                                  <input
+                                    type="text"
+                                    class="input-type"
+                                    placeholder="Search story ticket for task summary"
+                                  />
+                                  <button class="btn-clear hidden">
+                                    <i class="ico-clear"
+                                      ><span class="hidden"
+                                        >검색어지우기</span
+                                      ></i
+                                    >
+                                  </button>
+                                  <button type="submit" class="btn-search">
+                                    <i class="ico-srch"
+                                      ><span class="hidden">검색</span></i
+                                    >
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="btn-wrap">
+                              <a href="#" class="btn-type download-type"
+                                ><span>Download</span
+                                ><i class="ico-down gray"></i>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="table-wrap type3">
+                            <table class="table-type">
+                              <thead>
+                                <tr>
+                                  <th>Story KEY</th>
+                                  <th>Story title</th>
+                                  <th>Epic KEY</th>
+                                  <th>Status</th>
+                                  <th>Start</th>
+                                  <th>Due</th>
+                                  <th>End</th>
+                                  <th>Cost(KRW)</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class="pu3">WSC20230808</td>
+                                  <td class="wide">
+                                    [PK] [Global Request][BAU] Galaxy S23 Series
+                                    <br />Hotfix v.4.0 - Gallery page_(Add alt
+                                    text)
+                                  </td>
+                                  <td class="pu3">K1P22048004</td>
+                                  <td>Closed</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>600,000</td>
+                                </tr>
+                                <tr>
+                                  <td class="pu3">WSC20230808</td>
+                                  <td class="wide">
+                                    [PK] [Global Request][BAU] Galaxy S23 Series
+                                    <br />Hotfix v.4.0 - Gallery page_(Add alt
+                                    text)
+                                  </td>
+                                  <td class="pu3">K1P22048004</td>
+                                  <td>Closed</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>600,000</td>
+                                </tr>
+                                <tr>
+                                  <td class="pu3">WSC20230808</td>
+                                  <td class="wide">
+                                    [PK] [Global Request][BAU] Galaxy S23 Series
+                                    <br />Hotfix v.4.0 - Gallery page_(Add alt
+                                    text)
+                                  </td>
+                                  <td class="pu3">K1P22048004</td>
+                                  <td>Closed</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>600,000</td>
+                                </tr>
+                                <tr>
+                                  <td class="pu3">WSC20230808</td>
+                                  <td class="wide">
+                                    [PK] [Global Request][BAU] Galaxy S23 Series
+                                    <br />Hotfix v.4.0 - Gallery page_(Add alt
+                                    text)
+                                  </td>
+                                  <td class="pu3">K1P22048004</td>
+                                  <td>Closed</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>2023.10.30</td>
+                                  <td>600,000</td>
+                                </tr>
+                                <tr class="add">
+                                  <td colspan="8">
+                                    Add new task report (Story ticket)
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <!-- Signed invoice -->
+                          <div class="invoice-title-box bottom">
+                            <div class="left-box">
+                              <p class="invoice-title">Signed invoice files</p>
+                            </div>
+                          </div>
+                          <div class="invoice-content-box">
+                            <div class="file-type grey">No file.</div>
+                            <div class="file-type">
+                              <label for="input-file" class="btn-file"
+                                ><i class="ico-upload"></i>
+                                <p>
+                                  Drop your file here or <em>Browse</em>
+                                </p></label
+                              >
+                              <input type="file" id="input-file" />
+                              <button class="btn-clear">
+                                <i class="ico-clear"
+                                  ><span class="hidden">첨부파일삭제</span></i
+                                >
+                              </button>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <a class="btn-type btn-m v3">Create new</a>
+              </div>
+            </div>
+          </section>
+          <!-- Revenue share -->
+          <section
+            id="content"
+            class="con-right-box re_share"
+            data-include="./revenue_share_cont.html"
+          ></section>
+        </div>
+        <!--//content-->
+      </div>
+    </div>
+    <script>
+      function toggleOption(option) {
+        const buttons = document.querySelectorAll(".toggle-button");
+        const icons = document.querySelectorAll(".toggle-button i");
+        const conRightBox = document.querySelector(".con-right-box");
+        const conRightBoxReShare = document.querySelector(
+          ".con-right-box.re_share"
+        );
+
+        buttons.forEach((button, index) => {
+          if (index === option - 1) {
+            button.classList.add("active");
+            icons[index].classList.remove("gr");
+          } else {
+            button.classList.remove("active");
+            icons[index].classList.add("gr");
+          }
+        });
+
+        if (option === 1) {
+          conRightBox.style.display = "";
+          conRightBoxReShare.style.display = "none";
+        } else {
+          conRightBox.style.display = "none";
+          conRightBoxReShare.style.display = "";
+        }
+      }
+
+      // detail-box func
+      function toggleDetailBox(detailBoxId, icon) {
+        const detailBox = document.getElementById(detailBoxId);
+        if (detailBox.classList.contains("hidden")) {
+          detailBox.classList.remove("hidden");
+          icon.querySelector("i").classList.remove("down");
+          icon.querySelector("i").classList.add("up");
+        } else {
+          detailBox.classList.add("hidden");
+          icon.querySelector("i").classList.remove("up");
+          icon.querySelector("i").classList.add("down");
+        }
+      }
+
+      if (page.layerPage("pop-main")) {
+        UI.layerPopUp({ selId: "#pop-main" });
+      }
+
+      // quotation detail 인건비 견적 산출기준 add button
+      function addRow() {
+        var tbody = document.querySelector("table tbody");
+
+        var clone = tbody.lastElementChild.cloneNode(true);
+
+        var inputFields = clone.querySelectorAll("input");
+        inputFields.forEach(function (input) {
+          input.value = "";
+        });
+
+        tbody.appendChild(clone);
+      }
+
+      function addFormGroupModule() {
+        // 새로운 form-group-module을 추가할 부모 요소를 가져옵니다.
+        var parentElement = document.querySelector(".form-group-module");
+
+        // 마지막 form-group-module을 복제합니다.
+        var clone = parentElement.cloneNode(true);
+
+        // 복제된 form-group-module의 입력 값을 지웁니다.
+        var inputFields = clone.querySelectorAll("input");
+        inputFields.forEach(function (input) {
+          input.value = "";
+        });
+
+        // 복제된 form-group-module을 마지막 것 아래에 추가합니다.
+        parentElement.insertAdjacentElement("afterend", clone);
+      }
+    </script>
+  </body>
+</html>

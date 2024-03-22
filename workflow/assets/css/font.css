@@ -1,0 +1,32 @@
+@charset "utf-8";
+@font-face {
+  font-family: "NotoSansCJKkr";
+  font-style: normal;
+  font-weight: 600;
+  src: local("NotoSansCJKkr-Bold"),
+    url("../fonts/NotoSansCJKkr-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "NotoSansCJKkr";
+  font-style: normal;
+  font-weight: 500;
+  src: local("NotoSansCJKkr-Medium"),
+    url("../fonts/NotoSansCJKkr-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "NotoSansCJKkr";
+  font-style: normal;
+  font-weight: 400;
+  src: local("NotoSansCJKkr-Regular"),
+    url("../fonts/NotoSansCJKkr-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "NotoSansCJKkr";
+  font-style: normal;
+  font-weight: 300;
+  src: local("NotoSansCJKkr-Light"),
+    url("../fonts/NotoSansCJKkr-Light.woff") format("woff");
+}

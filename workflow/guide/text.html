@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height, viewport-fit=cover"
+    />
+    <title>Connect Workflow</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/font.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../assets/css/swiper.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../assets/css/nice-select.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../assets/css/daterangepicker.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../html/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../html/css/sub.css" />
+    <link rel="stylesheet" type="text/css" href="../html/css/main.css" />
+    <!-- 메인에만 노출 -->
+
+    <!-- JS -->
+    <script src="../assets/js/jquery-3.1.1.min.js"></script>
+    <script src="../assets/js/delighters.js"></script>
+    <script src="../assets/js/swiper.min.js"></script>
+    <script src="../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../assets/js/numberCounting.js"></script>
+    <script src="../assets/js/TweenMax.min.js"></script>
+    <script src="../assets/js/moment.min.js"></script>
+    <script src="../assets/js/daterangepicker.min.js"></script>
+    <script src="../html/js/ui.js"></script>
+    <script src="../html/js/page.js"></script>
+  </head>
+
+  <body>
+    <nav data-include="nav.html"></nav>
+    <div class="page-guide-content">
+      <h2 class="page-guide-title">text</h2>
+
+      <h3 class="page-guide-title2">page title</h3>
+      <p style="color: #f00; margin: 10px 0">기본 스타일</p>
+
+      <div class="title-wrap">
+        <h3 class="title-type">Story Ticket</h3>
+      </div>
+
+      <p style="color: #f00; margin: 10px 0">타이틀 문장 스타일</p>
+
+      <div class="title-wrap">
+        <h3 class="title-type">
+          <span>World’s Best </span>
+          <span>Cable </span>
+          <span>for your needs </span>
+        </h3>
+        <p>
+          좋은 품질의 제품을 생산하는 것은 고객에게 제공하는 대한전선의 약속이자
+          신뢰입니다.<br />
+          케이블 시스템의 설계에서부터 케이블 및 케이블 접속재의 공급, 접속,
+          시공, 유지보수에 이르기까지<br />
+          전력 공급의 Value Chain 전체를 아우르는 고객 맞춤형 토탈 솔루션을
+          제공합니다.
+        </p>
+      </div>
+
+      <p style="color: #f00; margin: 10px 0">타이틀 사이드버튼 스타일</p>
+
+      <div class="title-wrap">
+        <h3 class="title-type">Story Ticket</h3>
+        <div class="side-box">
+          <a href="#" class="btn-type">목록으로<i class="ico-arr"></i></a>
+        </div>
+      </div>
+
+      <!-- header-v1 by Justin -->
+      <p style="color: #f00; margin: 10px 0">header-v1</p>
+      <div class="header-v1">
+        <div class="header-box">
+          <div class="title-wrap">
+            <p class="title-type">DashBoard</p>
+          </div>
+        </div>
+        <div class="left-box">
+          <div class="search-box">
+            <div class="search-form">
+              <input
+                type="text"
+                class="input-type"
+                placeholder="Search anything here..."
+              />
+              <button class="btn-clear">
+                <i class="ico-clear"
+                  ><span class="hidden">검색어지우기</span></i
+                >
+              </button>
+              <button type="submit" class="btn-search">
+                <i class="ico-srch"><span class="hidden">검색</span></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="right-box">
+          <div class="check-box checked">
+            <input type="checkbox" id="check012" checked />
+            <label class="checkbox" for="check012"></label>
+            <label for="check012">Assigned ticket only</label>
+          </div>
+          <div class="check-box">
+            <input type="checkbox" id="check013" />
+            <label class="checkbox" for="check013"></label>
+            <label for="check013">Exclude closed ticket</label>
+          </div>
+        </div>
+      </div>
+      <!-- header-v1 by Justin -->
+
+      <!-- header-v2 by Jack -->
+      <p style="color: #f00; margin: 10px 0">header-v2</p>
+
+      <div class="header-v2">
+        <div class="left-box">
+          <!-- Title -->
+          <div class="header-box">
+            <div class="title-wrap">
+              <p class="title-type">Epic Ticket</p>
+            </div>
+          </div>
+          <!-- search -->
+          <div class="search-box">
+            <div class="search-form">
+              <input
+                type="text"
+                class="input-type"
+                placeholder="Search anything here..."
+              />
+              <button class="btn-clear">
+                <i class="ico-clear"
+                  ><span class="hidden">검색어지우기</span></i
+                >
+              </button>
+              <button type="submit" class="btn-search">
+                <i class="ico-srch"><span class="hidden">검색</span></i>
+              </button>
+            </div>
+          </div>
+          <!-- Calendar -->
+          <div class="datepickerRange-wrap multi-type">
+            <input
+              type="text"
+              id="datepickerRangeMulti"
+              class="datepickerRange-input"
+            />
+            <div class="datepickerRange-box">
+              <p class="date start">
+                <i class="ico-calendar"></i><span>Cal 00/00</span>
+              </p>
+              <p class="date end">
+                <i class="ico-calendar"></i><span>Cal 00/00</span>
+              </p>
+            </div>
+          </div>
+          <div class="check-box-wrap">
+            <div class="check-box checked">
+              <input type="checkbox" id="check016" checked />
+              <label class="checkbox" for="check016"></label>
+              <label for="check016">Assigned ticket only</label>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" id="check017" />
+              <label class="checkbox" for="check017"></label>
+              <label for="check017">Exclude closed ticket</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- select -->
+        <div class="right-box">
+          <div class="select-type">
+            <select>
+              <option value="1">All list</option>
+              <option value="2">Kanban</option>
+              <option value="3">Calender</option>
+            </select>
+          </div>
+          <!-- //select -->
+          <a href="#" class="btn-type btn-m v3">Create new</a>
+        </div>
+      </div>
+
+      <!-- header-v2 by Jack -->
+
+      <!-- header-v3 by Justin  -->
+      <p style="color: #f00; margin: 10px 0">header-v3</p>
+      <div class="header-v3">
+        <div class="header-box">
+          <div class="title-wrap">
+            <p class="title-type">Epic ticket detail</p>
+          </div>
+        </div>
+        <div class="right-box">
+          <div class="select-type disabled">
+            <!-- invalid 도 있지만 여기선 안씀-->
+            <select disabled>
+              <option data-display="All list">제목</option>
+              <option value="1">글쓴이</option>
+            </select>
+          </div>
+          <a href="#" class="btn-type btn-m v3">Create new</a>
+        </div>
+      </div>
+      <!-- header-v3 by Justin  -->
+
+      <!-- header-v4 by Justin  -->
+      <p style="color: #f00; margin: 10px 0">header-v4</p>
+      <div class="header-v4">
+        <div class="top-box">
+          <p class="subtitle-wrap">WSC20230808</p>
+        </div>
+        <div class="bottom-box">
+          <p class="title-wrap">
+            JP / [Global Request] B5Q5 MKT PD Hotfix ver .01 / Accessories
+          </p>
+        </div>
+      </div>
+      <!-- header-v4 by Justin  -->
+
+      <!-- header-v5 by Justin  -->
+      <p style="color: #f00; margin: 10px 0">header-v5</p>
+      <div class="header-v5">
+        <div class="header-box">
+          <div class="title-wrap">
+            <p class="title-type">Create new story ticket</p>
+          </div>
+        </div>
+        <div class="right-box">
+          <a href="#" class="btn-type btn-m v3">Save</a>
+          <a href="#" class="btn-type btn-m v4">Cancle</a>
+        </div>
+      </div>
+      <!-- header-v5 by Justin  -->
+
+      <!-- header-v6 by Justin  -->
+      <p style="color: #f00; margin: 10px 0">header-v6</p>
+
+      <div class="header-v6">
+        <div class="left-box">
+          <!-- Title -->
+          <div class="header-box">
+            <div class="title-wrap">
+              <p class="title-type">Story Kanban</p>
+            </div>
+          </div>
+        </div>
+        <div class="right-box">
+          <div class="select-type">
+            <select>
+              <option value="1">Kanban</option>
+              <option value="2">Calender</option>
+            </select>
+          </div>
+          <!-- //select -->
+          <a href="#" class="btn-type btn-m v3">Create new</a>
+        </div>
+      </div>
+      <!-- header-v6 by Justin  -->
+
+      <!-- header-v7 by Justin  -->
+      <p style="color: #f00; margin: 10px 0">header-v7</p>
+      <div class="header-v7">
+        <div class="left-box">
+          <div class="header-box">
+            <div class="title-wrap">
+              <p class="title-type">All contract status</p>
+            </div>
+          </div>
+          <div class="search-box">
+            <div class="search-form">
+              <input
+                type="text"
+                class="input-type"
+                placeholder="Search epic ticket"
+              />
+              <button class="btn-clear">
+                <i class="ico-clear"
+                  ><span class="hidden">검색어지우기</span></i
+                >
+              </button>
+              <button type="submit" class="btn-search">
+                <i class="ico-srch"><span class="hidden">검색</span></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="right-box">
+          <a href="#" class="btn-type btn-m v3">Create new</a>
+        </div>
+      </div>
+      <!-- header-v7 by Justin  -->
+
+      <!-- header-v8 by Justin  -->
+      <p style="color: #f00; margin: 10px 0">header-v8</p>
+      <div class="header-v8">
+        <div class="left-box">
+          <div class="header-box">
+            <div class="title-wrap">
+              <p class="title-type">Epic ticket</p>
+            </div>
+          </div>
+          <div class="search-box">
+            <div class="search-form">
+              <input
+                type="text"
+                class="input-type"
+                placeholder="Search epic ticket"
+              />
+              <button class="btn-clear">
+                <i class="ico-clear"
+                  ><span class="hidden">검색어지우기</span></i
+                >
+              </button>
+              <button type="submit" class="btn-search">
+                <i class="ico-srch"><span class="hidden">검색</span></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="right-box">
+          <div class="check-box checked">
+            <input type="checkbox" id="check014" checked />
+            <label class="checkbox" for="check014"></label>
+            <label for="check012">Assigned ticket only</label>
+          </div>
+          <div class="check-box">
+            <input type="checkbox" id="check015" />
+            <label class="checkbox" for="check015"></label>
+            <label for="check013">Exclude closed ticket</label>
+          </div>
+        </div>
+      </div>
+      <!-- header-v8 by Justin  -->
+
+      <!-- header-v9 by Justin  -->
+      <p style="color: #f00; margin: 10px 0">header-v9</p>
+      <div class="header-v9">
+        <div class="left-box">
+          <div class="top-box">
+            <p class="subtitle-wrap">K1P22048004</p>
+          </div>
+          <div class="bottom-box">
+            <p class="title-wrap">삼성닷컴 Japan 운영 지원 (TBD)</p>
+          </div>
+        </div>
+        <div class="right-box">
+          <a href="#" class="btn-type btn-m v3">Save</a>
+          <a href="#" class="btn-type btn-m v4">Print</a>
+        </div>
+      </div>
+      <!-- header-v9 by Justin  -->
+
+      <!-- header-v10 by Justin  -->
+      <p style="color: #f00; margin: 10px 0">header-v10</p>
+      <div class="header-v10">
+        <div class="left-box">
+          <div class="top-box">
+            <p class="subtitle-wrap">K1P22048004</p>
+          </div>
+          <div class="bottom-box">
+            <p class="title-wrap">삼성닷컴 Japan 운영 지원 (TBD)</p>
+          </div>
+        </div>
+        <div class="right-box">
+          <div class="btn-wrap">
+            <a href="#" class="btn-type download-type"
+              ><span>Download</span><i class="ico-down gray"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- header-v10 by Justin  -->
+
+      <!-- header-v11 by Justin  -->
+      <p style="color: #f00; margin: 10px 0">header-v11</p>
+      <div class="header-v11">
+        <div class="left-box">
+          <div class="header-box">
+            <div class="title-wrap">
+              <p class="title-type">User list</p>
+            </div>
+          </div>
+        </div>
+        <div class="center-box">
+          <div class="page-guide-box">
+            <ul class="tab-list js_tab v4">
+              <li class="active"><a href="#" class="btn-type btn-m">All</a></li>
+              <li><a href="#" class="btn-type btn-m">Client</a></li>
+              <li><a href="#" class="btn-type btn-m">AE</a></li>
+              <li><a href="#" class="btn-type btn-m">OP</a></li>
+              <li><a href="#" class="btn-type btn-m">Connecter</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="right-box">
+          <a href="#" class="btn-type btn-m v3">Register new</a>
+        </div>
+      </div>
+      <!-- header-v11 by Justin  -->
+
+      <!-- header-v12 by Justin  -->
+      <p style="color: #f00; margin: 10px 0">header-v12</p>
+      <div class="header-v12">
+        <div class="top-box">
+          <div class="left-box">
+            <div class="title-wrap">
+              <p class="title-type">Performance evaluation</p>
+            </div>
+          </div>
+          <div class="right-box">
+            <div class="btn-wrap">
+              <a href="#" class="btn-type download-type"
+                ><span>Download</span><i class="ico-down gray"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-box">
+          <div class="search-box">
+            <div class="search-form">
+              <input
+                type="text"
+                class="input-type"
+                placeholder="Search epic ticket."
+              />
+              <button class="btn-clear">
+                <i class="ico-clear"
+                  ><span class="hidden">검색어지우기</span></i
+                >
+              </button>
+              <button type="submit" class="btn-search">
+                <i class="ico-srch"><span class="hidden">검색</span></i>
+              </button>
+            </div>
+          </div>
+          <div class="search-box">
+            <div class="search-form">
+              <input
+                type="text"
+                class="input-type"
+                placeholder="Search people"
+              />
+              <button class="btn-clear">
+                <i class="ico-clear"
+                  ><span class="hidden">검색어지우기</span></i
+                >
+              </button>
+              <button type="submit" class="btn-search">
+                <i class="ico-srch"><span class="hidden">검색</span></i>
+              </button>
+            </div>
+          </div>
+          <div class="datepickerRange-wrap multi-type">
+            <input
+              type="text"
+              id="datepickerRangeMulti"
+              class="datepickerRange-input"
+            />
+            <div class="datepickerRange-box">
+              <p class="date start">
+                <i class="ico-calendar"></i><span>Cal 00/00</span>
+              </p>
+              <p class="date end">
+                <i class="ico-calendar"></i><span>Cal 00/00</span>
+              </p>
+            </div>
+          </div>
+          <div class="check-box-wrap">
+            <div class="check-box checked">
+              <input type="checkbox" id="check018" checked />
+              <label class="checkbox" for="check018"></label>
+              <label for="check016">Exclude reflected performances</label>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" id="check019" />
+              <label class="checkbox" for="check019"></label>
+              <label for="check017">Exclude QA performances</label>
+            </div>
+          </div>
+          <a href="#" class="btn-type btn-m v4"
+            >Reset
+            <p class="close-btn">X</p></a
+          >
+        </div>
+      </div>
+      <!-- header-v12 by Justin  -->
+
+      <h3 class="page-guide-title2">content title</h3>
+      <div class="title-wrap2">
+        <h4 class="title-type">재무정보</h4>
+      </div>
+
+      <div class="title-wrap3">
+        <h5 class="title-type">발행 주식수</h5>
+        <div class="side-box">*2021.12.31 기준</div>
+      </div>
+
+      <div class="title-wrap4">
+        <h3 class="title-type">Vision</h3>
+        <p>
+          창립 당시에는 상상할 수 없었던 놀라운 미래가 현실이 된 지금,<br />
+          대한전선은 현실에 안주하지 않고 '더 나은 미래'로 나아가기 위해 최고의
+          기술과 품질의 실현에 다시 한번 도전합니다.
+        </p>
+      </div>
+
+      <h3 class="page-guide-title2">유형별 정리</h3>
+
+      <ul class="list-type">
+        <li>
+          <strong>MI 케이블 : </strong>지권 공정 후 절연유로 함침(일반 OF
+          케이블은 금속쉬스 내부에 절연유 침유)
+        </li>
+        <li><strong>XLPE 케이블 : </strong>DC-XLPE 자재로 절연공정 진행</li>
+      </ul>
+      <ul class="list-type v2">
+        <li>
+          <strong>MI 케이블 : </strong>지권 공정 후 절연유로 함침(일반 OF
+          케이블은 금속쉬스 내부에 절연유 침유)
+        </li>
+        <li><strong>XLPE 케이블 : </strong>DC-XLPE 자재로 절연공정 진행</li>
+      </ul>
+      <ul class="list-type v3">
+        <li>
+          <strong>MI 케이블 : </strong>지권 공정 후 절연유로 함침(일반 OF
+          케이블은 금속쉬스 내부에 절연유 침유)
+        </li>
+        <li><strong>XLPE 케이블 : </strong>DC-XLPE 자재로 절연공정 진행</li>
+      </ul>
+      <ul class="list-type v4">
+        <li>
+          <strong>MI 케이블 : </strong>지권 공정 후 절연유로 함침(일반 OF
+          케이블은 금속쉬스 내부에 절연유 침유)
+        </li>
+        <li><strong>XLPE 케이블 : </strong>DC-XLPE 자재로 절연공정 진행</li>
+      </ul>
+      <br />
+
+      <div class="category-box">
+        <span>초고압</span>
+        <span>미국</span>
+      </div>
+
+      <br />
+
+      <div class="box-wrap">
+        <ul class="list-box">
+          <li>
+            <dl>
+              <dt>발행할 주식의 총수</dt>
+              <dd>2,000,000,000</dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt>발행한 주식의 총수</dt>
+              <dd>1,197,064,180</dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt>감소한 주식의 총수</dt>
+              <dd>340,591,171</dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt>자기 주식의 수</dt>
+              <dd>6,877,479</dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt>유통 주식수</dt>
+              <dd>849,595,530</dd>
+            </dl>
+          </li>
+        </ul>
+      </div>
+
+      <ul class="list-summary">
+        <li>
+          <div class="icon-box"><i class="ico-summary"></i></div>
+          <dl>
+            <dt>설립연도</dt>
+            <dd><strong>2011년</strong></dd>
+          </dl>
+        </li>
+        <li>
+          <div class="icon-box"><i class="ico-summary2"></i></div>
+          <dl>
+            <dt>인원</dt>
+            <dd><strong>430명</strong>*2022년 기준</dd>
+          </dl>
+        </li>
+        <li>
+          <div class="icon-box"><i class="ico-summary3"></i></div>
+          <dl>
+            <dt>면적</dt>
+            <dd>
+              <strong>350,000<span>㎡</span></strong
+              >*축구장 약 50배
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <div class="icon-box"><i class="ico-summary4"></i></div>
+          <dl>
+            <dt>생산능력</dt>
+            <dd><strong>29,220톤/연간</strong>*초고압케이블 기준 세계 최대</dd>
+          </dl>
+        </li>
+        <li class="col2">
+          <div class="icon-box"><i class="ico-summary5"></i></div>
+          <dl>
+            <dt>생산품목</dt>
+            <dd>
+              <strong
+                >초고압케이블, 고압∙중저압케이블, Copper Rod, 통신케이블,
+                부스덕트 등</strong
+              >
+            </dd>
+          </dl>
+        </li>
+      </ul>
+      <br /><br />
+
+      <ul class="list-summary v2">
+        <li>
+          <div class="icon-box"><i class="ico-summary5"></i></div>
+          <dl>
+            <dt>지역</dt>
+            <dd><strong>미국 캘리포니아</strong></dd>
+          </dl>
+        </li>
+        <li>
+          <div class="icon-box"><i class="ico-summary6"></i></div>
+          <dl>
+            <dt>발주처</dt>
+            <dd><strong>SCE</strong></dd>
+          </dl>
+        </li>
+        <li>
+          <div class="icon-box"><i class="ico-summary7"></i></div>
+          <dl>
+            <dt>공급길이</dt>
+            <dd><strong>약 40km</strong></dd>
+          </dl>
+        </li>
+        <li>
+          <div class="icon-box"><i class="ico-summary8"></i></div>
+          <dl>
+            <dt>진행기간</dt>
+            <dd><strong>2014.10~2016.12</strong></dd>
+          </dl>
+        </li>
+      </ul>
+
+      <ul class="list-summary v3">
+        <li>
+          <div class="icon-img">
+            <img src="../html/images/icon/icon_motion01.gif" alt="" />
+          </div>
+          <dl>
+            <dt>설립연도</dt>
+            <dd><strong>2011</strong>년</dd>
+          </dl>
+        </li>
+        <li>
+          <div class="icon-img">
+            <img src="../html/images/icon/icon_motion02.gif" alt="" />
+          </div>
+          <dl>
+            <dt>진출 국가</dt>
+            <dd><strong>100+</strong>개국</dd>
+          </dl>
+        </li>
+        <li>
+          <div class="icon-img">
+            <img src="../html/images/icon/icon_motion03.gif" alt="" />
+          </div>
+          <dl>
+            <dt><span>글로벌</span> <span>영업망</span></dt>
+            <dd>
+              <span><strong>6</strong>개 법인</span>
+              <span><strong>16</strong>개 지사</span>
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <div class="icon-img">
+            <img src="../html/images/icon/icon_motion04.gif" alt="" />
+          </div>
+          <dl>
+            <dt><span>세계 최대</span> <span>단일전선공장</span></dt>
+            <dd><strong>No.1</strong></dd>
+          </dl>
+        </li>
+        <li>
+          <div class="icon-img">
+            <img src="../html/images/icon/icon_motion05.gif" alt="" />
+          </div>
+          <dl>
+            <dt><span>전선업계 유일</span> <span>ESG</span></dt>
+            <dd><strong>A</strong>등급</dd>
+          </dl>
+        </li>
+      </ul>
+
+      <br />
+      <br />
+
+      <ul class="list-info">
+        <li>
+          <dl>
+            <dt>주소</dt>
+            <dd>
+              서울특별시 강남구 역삼동 831-37 건암빌딩 502호<a
+                href="#"
+                class="btn-map"
+                ><i class="ico-outer"
+                  ><span class="hidden">주소보기</span></i
+                ></a
+              >
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt>연락처</dt>
+            <dd><a href="tel:02-557-2763">02-557-2763</a></dd>
+          </dl>
+        </li>
+      </ul>
+
+      <br /><br />
+      <ul class="list-category">
+        <li>
+          <strong class="title">윤리경영</strong>
+          <ul class="list-type v2">
+            <li>금품, 접대, 편의 수수행위</li>
+            <li>이해관계자와의 부당한 금전거래</li>
+            <li>회사 자산의 부당 사용</li>
+            <li>임직원의 부당한 업무처리</li>
+            <li>내부회계관리 제도 위반</li>
+            <li>건전한 기업문화 저해 행위</li>
+            <li>불합리한 관행 개선 제안</li>
+            <li>기타 윤리경영에 위배되는 사항</li>
+          </ul>
+          <div class="btn-wrap t-c">
+            <a href="#" class="btn-type btn-m"
+              >제보하기<i class="ico-arr"></i
+            ></a>
+          </div>
+        </li>
+        <li>
+          <strong class="title">공정거래 자율준수</strong>
+          <ul class="list-type v2">
+            <li>불공정 거래 행위</li>
+            <li>부당한 공동 행위(담합)</li>
+            <li>경영 간섭 행위, 불이익 제공 행위</li>
+            <li>하도급법상 법정기한 미준수</li>
+            <li>협력사 서면 미교부</li>
+            <li>부당한 하도급대금결정</li>
+            <li>물품 강매, 부당한 위탁 취소</li>
+            <li>기타 공정거래 관련법 위반 등</li>
+          </ul>
+          <div class="btn-wrap t-c">
+            <a href="#" class="btn-type btn-m"
+              >제보하기<i class="ico-arr"></i
+            ></a>
+          </div>
+        </li>
+      </ul>
+      <br /><br />
+      <ul class="list-detail">
+        <li>
+          <div class="title-box">
+            <strong class="title">비밀보장</strong>
+          </div>
+          <div class="desc-box">
+            <ul class="list-type v4">
+              <li>제보자의 신분 및 제보 내용을 비밀로 유지합니다.</li>
+              <li>제출한 입증 자료에 대해서는 철저하게 보안을 준수합니다.</li>
+              <li>
+                제보자의 신분을 알기 위한 탐문 행위 등을 실시하지 않습니다.
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="title-box">
+            <strong class="title">제보자 불이익 금지</strong>
+          </div>
+          <div class="desc-box">
+            <ul class="list-type v4">
+              <li>
+                제보자는 정당한 제보와 관련하여 어떠한 차별 및 불이익을 받지
+                않습니다.
+              </li>
+              <li>
+                제보와 관련하여 불이익을 받았을 경우 이에 대한 원상회복 등의
+                조치를 요구할 수 있습니다.
+              </li>
+              <li>
+                사실 확인 과정에서 진술, 자료제공 등의 방법으로 협조한 자에
+                대해서도 동등하게 보호합니다.
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <br /><br />
+      <ul class="list-detail v3">
+        <li>
+          <div class="title-box">
+            <strong class="title">제보접수</strong>
+          </div>
+          <div class="desc-box">
+            <ul class="list-type v4">
+              <li>
+                제보자는 6하 원칙에 의거하여 제보 내용에 대한 사실관계 및 증거를
+                접수합니다.
+              </li>
+              <li>
+                실명 또는 익명 제보가 가능하며, 실명으로 접수하였더라도 연락처가
+                허위일 경우 익명으로 간주합니다.
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="title-box">
+            <strong class="title">접수검토</strong>
+          </div>
+          <div class="desc-box">
+            <ul class="list-type v4">
+              <li>제보 내용의 전담부서를 확인하고 검토를 진행합니다.</li>
+              <li>
+                조사 대상이 아닌 경우, 조사에서 제외하거나 관련 부서로 이관할 수
+                있습니다.
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="title-box">
+            <strong class="title">조사진행</strong>
+          </div>
+          <div class="desc-box">
+            <ul class="list-type v4">
+              <li>제보 내용에 따라 조사를 착수합니다.</li>
+              <li>
+                접수 순서에 따라 순차적으로 진행하며 대상 및 범위에 따라 최소
+                7일~10일 이상 소요될 수 있습니다.
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="title-box">
+            <strong class="title">종료</strong>
+          </div>
+          <div class="desc-box">
+            <ul class="list-type v4">
+              <li>제보 내용의 사실 관계 확인에 따라 조사를 종료합니다.</li>
+              <li>
+                결과는 홈페이지에서 제보 당시 부여된 접수번호로 조회 가능하며,
+                실명 접수 시에는 이메일을 통해서도 별도 회신 드립니다.
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <br /><br />
+
+      <ul class="list-detail v2">
+        <li>
+          <div class="title-box">
+            <strong class="title">윤리경영</strong>
+          </div>
+          <div class="desc-box">
+            <ul class="list-info">
+              <li>
+                <dl>
+                  <dt><i class="ico-mail"></i>이메일</dt>
+                  <dd>
+                    <a href="mailto:ethics@taihan.com">ethics@taihan.com</a>
+                  </dd>
+                </dl>
+              </li>
+              <li>
+                <dl>
+                  <dt><i class="ico-tel"></i>연락처</dt>
+                  <dd><a href="tel:02-316-9469">02-316-9469</a></dd>
+                </dl>
+              </li>
+              <li>
+                <dl>
+                  <dt><i class="ico-location"></i>주소</dt>
+                  <dd>
+                    서울특별시 서초구 양재대로2길 18 호반파크 2관 대한전선
+                    윤리경영실
+                  </dd>
+                </dl>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="title-box">
+            <strong class="title">공정거래 자율준수</strong>
+          </div>
+          <div class="desc-box">
+            <ul class="list-info">
+              <li>
+                <dl>
+                  <dt><i class="ico-mail"></i>이메일</dt>
+                  <dd>
+                    <a href="mailto:compliance@taihan.com"
+                      >compliance@taihan.com</a
+                    >
+                  </dd>
+                </dl>
+              </li>
+              <li>
+                <dl>
+                  <dt><i class="ico-tel"></i>연락처</dt>
+                  <dd><a href="tel:02-316-9196">02-316-9196</a></dd>
+                </dl>
+              </li>
+              <li>
+                <dl>
+                  <dt><i class="ico-location"></i>주소</dt>
+                  <dd>
+                    서울특별시 서초구 양재대로2길 18 호반파크 2관 대한전선
+                    공정거래자율준수팀
+                  </dd>
+                </dl>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <br />
+      <br />
+
+      <ul class="list-detail2">
+        <li>
+          <div class="icon-box"><i class="ico-earth"></i></div>
+          <div class="title-box">
+            <strong class="title">환경 정책 고도화</strong>
+          </div>
+          <div class="desc-box">
+            <ul class="list-type v2">
+              <li>환경 경영 강화 및 투명한 환경 정보 공개</li>
+              <li>생물 다양성 보존을 위한 생태계 보전 활동 추진</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="icon-box"><i class="ico-bulb"></i></div>
+          <div class="title-box">
+            <strong class="title">환경 투자 강화</strong>
+          </div>
+          <div class="desc-box">
+            <ul class="list-type v2">
+              <li>친환경 케이블 개발 확대</li>
+              <li>대기 및 수질 오염 물질 배출 최소화</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="icon-box"><i class="ico-doc"></i></div>
+          <div class="title-box">
+            <strong class="title">환경 및 에너지 관리</strong>
+          </div>
+          <div class="desc-box">
+            <ul class="list-type v2">
+              <li>환경 오염 방지를 위한 최신 시설 및 기술 도입</li>
+              <li>폐기물 재활용, 용수 재이용량 증대, 에너지 사용량 절감</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="icon-box"><i class="ico-renewable"></i></div>
+          <div class="title-box">
+            <strong class="title">신재생에너지 활용</strong>
+          </div>
+          <div class="desc-box">
+            <ul class="list-type v2">
+              <li>신재생에너지 활용을 통한 친환경 사업장 운영</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <script>
+      $(function () {});
+    </script>
+  </body>
+</html>

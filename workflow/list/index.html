@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height, viewport-fit=cover"
+    />
+    <title>Connect Workflow</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/font.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../assets/css/swiper.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../assets/css/nice-select.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../assets/css/daterangepicker.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../html/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../html/css/sub.css" />
+    <link rel="stylesheet" type="text/css" href="../html/css/main.css" />
+    <!-- 메인에만 노출 -->
+
+    <!-- JS -->
+    <script src="../assets/js/jquery-3.1.1.min.js"></script>
+    <script src="../assets/js/delighters.js"></script>
+    <script src="../assets/js/swiper.min.js"></script>
+    <script src="../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../assets/js/numberCounting.js"></script>
+    <script src="../assets/js/TweenMax.min.js"></script>
+    <script src="../assets/js/moment.min.js"></script>
+    <script src="../assets/js/daterangepicker.min.js"></script>
+    <script src="../html/js/ui.js"></script>
+    <script src="../html/js/page.js"></script>
+    <style>
+      .guide-table table td:nth-child(9) {
+        color: #093389;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav data-include="nav.html"></nav>
+    <div class="page-guide-content">
+      <h2 class="page-guide-title" id="app">List</h2>
+      <ul class="list-type v3">
+        <li>Common / Login : 9/27</li>
+        <li>Dashboard : 10/18</li>
+        <li>Epic Ticket : 10/06</li>
+        <li>Story Ticket : 10/13</li>
+        <li>
+          Contract & Revenue share : List(10/6), Search, 견적서(10/13)
+          나머지(10/18)
+        </li>
+        <li>User : 10 / 6</li>
+        <li>Setting : 10 / 6</li>
+        <li>Mypage : 10 / 6</li>
+      </ul>
+      <br />
+      <div class="guide-table">
+        <table>
+          <thead>
+            <tr>
+              <th width="10%">1depth</th>
+              <th width="12%">2depth</th>
+              <th width="12%">3depth</th>
+              <th width="10%">4depth</th>
+              <th width="10%">5depth</th>
+              <th width="12%">html</th>
+              <th width="15%">작업자</th>
+              <th width="5%">진행상황</th>
+              <th>비고</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="depth1 center bold">guide</td>
+              <td class="depth2"></td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+              <td>
+                <a href="../guide/index.html" target="_blank">guide.html</a>
+              </td>
+              <td>All</td>
+              <td>작업중</td>
+              <td></td>
+            </tr>
+            <tr class="none">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold">Dashboard</td>
+              <td class="depth2"></td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/dashboard/" target="_blank"
+                  >dashboard.html</a
+                >
+              </td>
+              <td>Jewdri&Jack</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr class="none">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <!-- Epic Ticket -->
+            <tr>
+              <td class="depth1 center bold">Epic Ticket</td>
+              <td class="depth2">List</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/epicTicket/list.html" target="_blank"
+                  >list.html</a
+                >
+              </td>
+              <td>Boa</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2"></td>
+              <td class="depth3">Create</td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/epicTicket/create.html" target="_blank"
+                  >create.html</a
+                >
+              </td>
+              <td>Boa</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2"></td>
+              <td class="depth3">Detail</td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/epicTicket/detail.html" target="_blank"
+                  >detail.html</a
+                >
+              </td>
+              <td>Boa</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2"></td>
+              <td class="depth3">Copy</td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/epicTicket/copy.html" target="_blank"
+                  >copy.html</a
+                >
+              </td>
+              <td>Boa</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <!-- <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2"></td>
+              <td class="depth3"></td>
+              <td class="depth4">List Opened</td>
+              <td class="depth5"></td>
+
+              <td>
+                <a
+                  href="../html/html/company/company_02.html"
+                  target="_blank"
+                ></a>
+              </td>
+              <td>Boa</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2"></td>
+              <td class="depth3"></td>
+              <td class="depth4">List Closed</td>
+              <td class="depth5"></td>
+
+              <td>
+                <a
+                  href="../html/html/company/company_02.html"
+                  target="_blank"
+                ></a>
+              </td>
+              <td>Boa</td>
+              <td></td>
+              <td></td>
+            </tr> -->
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2">Kanban</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/epicTicket/kanban.html" target="_blank"
+                  >kanban.html</a
+                >
+              </td>
+              <td>Boa</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2">Calender</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/epicTicket/calender.html" target="_blank"
+                  >calender.html</a
+                >
+              </td>
+              <td>Boa</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <!-- //Epic Ticket -->
+            <tr class="none">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            <!-- Story Ticket -->
+            <tr>
+              <td class="depth1 center bold">Story Ticket</td>
+              <td class="depth2">List</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/storyTicket/list.html" target="_blank"
+                  >list.html</a
+                >
+              </td>
+              <td>Boa</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2"></td>
+              <td class="depth3">Create</td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/storyTicket/create.html" target="_blank"
+                  >create.html</a
+                >
+              </td>
+              <td>Boa</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2"></td>
+              <td class="depth3">Detail</td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/storyTicket/detail.html" target="_blank"
+                  >detail.html</a
+                >
+              </td>
+              <td>Boa</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2">Kanban</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/storyTicket/kanban.html" target="_blank"
+                  >kanban.html</a
+                >
+              </td>
+              <td>Boa</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2">Calender</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/storyTicket/calender.html" target="_blank"
+                  >calender.html</a
+                >
+              </td>
+              <td>Boa</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <!-- //Story Ticket -->
+            <tr class="none">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <!-- Contract & Revenue -->
+            <tr>
+              <td class="depth1 center bold">Contract & Revenue</td>
+              <td class="depth2">List</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a
+                  href="../html/html/contractRevenue/contract.html"
+                  target="_blank"
+                  >contract.html</a
+                >
+              </td>
+              <td>Jack</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2">Search Epic</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a
+                  href="../html/html/contractRevenue/contract.html?pop-main"
+                  target="_blank"
+                  >contract.html</a
+                >
+              </td>
+              <td>Jack</td>
+              <td>완료</td>
+              <td>popup시, hover 미완성</td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2">Detail</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a
+                  href="../html/html/contractRevenue/detail_empty.html"
+                  target="_blank"
+                  >detail_empty.html</a
+                >
+                <a
+                  href="../html/html/contractRevenue/detail_full.html"
+                  target="_blank"
+                  >detail_full.html</a
+                >
+              </td>
+              <td>Jack</td>
+              <td>완료</td>
+              <td>
+                empty : Contract 미작성 화면 <br />
+                full : Contract 완성 화면
+              </td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2"></td>
+              <td class="depth3">견적서</td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a
+                  href="../html/html/company/company_01.html"
+                  target="_blank"
+                ></a>
+              </td>
+              <td>Jack</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2"></td>
+              <td class="depth3">계약서</td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a
+                  href="../html/html/company/company_01.html"
+                  target="_blank"
+                ></a>
+              </td>
+              <td>Jack</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2"></td>
+              <td class="depth3">Invoice</td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a
+                  href="../html/html/company/company_01.html"
+                  target="_blank"
+                ></a>
+              </td>
+              <td>Jack</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2">Quotation detail(Popup)</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a
+                  href="../html/html/contractRevenue/detail_full.html?pop-main"
+                  target="_blank"
+                  >quotaition detail</a
+                >
+              </td>
+              <td>Jack</td>
+              <td>완료</td>
+              <td>인건비 직급 dropdwon options 미완성</td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2">Revenue Share</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a
+                  href="../html/html/contractRevenue/revenue_share.html"
+                  target="_blank"
+                  >revenue_share.html</a
+                >
+              </td>
+              <td>Jack</td>
+              <td>완료</td>
+              <td>우측 상단 Revenue share 탭 클릭</td>
+            </tr>
+            <!-- // Contract & Revenue -->
+            <tr class="none">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <!-- User -->
+            <tr>
+              <td class="depth1 center bold">User</td>
+              <td class="depth2">List</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/user/list.html" target="_blank"
+                  >list.html</a
+                >
+              </td>
+              <td>Jasmine</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2"></td>
+              <td class="depth3">detail</td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/user/list.html?pop" target="_blank"
+                  >list.html?pop</a
+                >
+              </td>
+              <td>Jasmine</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2"></td>
+              <td class="depth3">basic information</td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/user/list.html?pop-basic" target="_blank"
+                  >list.html?pop-basic</a
+                >
+              </td>
+              <td>Jasmine</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2">Performance</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/user/performance.html" target="_blank"
+                  >performance.html
+                </a>
+              </td>
+              <td>Jasmine</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <!-- // User -->
+            <tr class="none">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <!-- Setting -->
+            <tr>
+              <td class="depth1 center bold">Setting</td>
+              <td class="depth2"></td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/setting/setting.html" target="_blank"
+                  >setting.html</a
+                >
+              </td>
+              <td>Bella</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <!-- //Setting -->
+            <tr class="none">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <!-- MyPage -->
+            <tr>
+              <td class="depth1 center bold">MyPage</td>
+              <td class="depth2"></td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/mypage/" target="_blank">mypage</a>
+              </td>
+              <td>Jewdri</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <!-- //MyPage -->
+            <tr class="none">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <!-- Login -->
+            <tr>
+              <td class="depth1 center bold">Login</td>
+              <td class="depth2"></td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/login/" target="_blank">login.html</a>
+              </td>
+              <td>Jewdri</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2">invalid</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/login/?invalid" target="_blank"
+                  >login.html?invalid</a
+                >
+              </td>
+              <td>Jewdri</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="depth1 center bold"></td>
+              <td class="depth2">account</td>
+              <td class="depth3"></td>
+              <td class="depth4"></td>
+              <td class="depth5"></td>
+
+              <td>
+                <a href="../html/html/login/?account" target="_blank"
+                  >login.html?account</a
+                >
+              </td>
+              <td>Jewdri</td>
+              <td>완료</td>
+              <td></td>
+            </tr>
+            <!-- //Login -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

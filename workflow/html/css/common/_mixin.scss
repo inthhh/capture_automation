@@ -1,0 +1,134 @@
+@charset "UTF-8";
+@import "../common/variable";
+
+//말줄임
+@mixin text-hidden($line: 1, $lineHeight: 19, $auto: null) {
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: ($lineHeight * $line) / $line + px;
+    white-space: initial;
+
+    @if $auto ==auto {
+        //영역 자동
+        max-height: $lineHeight * $line + px;
+    }
+
+    @else {
+        //처음부터 영역잡히게
+        height: $lineHeight * $line + px;
+    }
+}
+
+@mixin text-hidden-one() {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+//svg icon : 컬러없는 아이콘 색변경 잦을때
+//IE에서 아예안됨 사용불가.
+@mixin svg($color: #fff, $value: null, $url: null) {
+    @if $value ==null {
+        -webkit-mask: url($url) no-repeat 50% 50%;
+        mask: url($url) no-repeat 50% 50%;
+    }
+
+    @else {
+        -webkit-mask: url(../images/icon/#{$value}.svg) no-repeat 50% 50%;
+        mask: url(../images/icon/#{$value}.svg) no-repeat 50% 50%;
+    }
+
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    background-color: $color;
+}
+
+// 노치 대응 기기 안전영역 환경변수 : safe-area
+/*
+ * safe-area-inset 처리
+ * $key - 넣을곳(padding-top, marin-bottom, ...)
+ * $direction - 방향(top, right, bottom, left)
+ * $value - 더해질 값(생략가능)
+ */
+@mixin safe($key, $direction, $value: 0) {
+    #{$key}: $value;
+
+    @if ($value > 0) {
+        #{$key}: calc(#{$value} + env(safe-area-inset-#{$direction}));
+    }
+
+    @else if ($value < 0) {
+        #{$key}: calc((#{-$value} + env(safe-area-inset-#{$direction})) * -1);
+    }
+
+    @else {
+        #{$key}: env(safe-area-inset-#{$direction});
+    }
+}
+
+@mixin hidden {
+    /* position: absolute;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    visibility: hidden; */
+    overflow: hidden;
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    clip-path: polygon(0 0, 0 0, 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+
+//----------------------------------------------------------
+//pc, mo 아예 다르게 css 들어간것때문에 구분해놓음 : 헤더, 푸터, 퀵메뉴, 탭
+//아이패드 가로 1024까지 모바일 버전으로 
+@mixin pc-ver {
+    @media all and (min-width:1025px) {
+        @content;
+    }
+}
+
+@mixin mobile-ver {
+    @media all and (max-width:1024px) {
+        @content;
+    }
+}
+
+//----------------------------------------------------------
+//pc버전 기준으로 수정하는 영역
+//pc only
+@mixin pc {
+    @media all and (min-width:768px) {
+        @content;
+    }
+}
+
+//pc 버전에서 inner-box 영역 밖으로 깨지는거 수정
+@mixin inner-box {
+    @media all and (min-width:768px) and (max-width:1439px) {
+        @content;
+    }
+}
+
+//tablet
+@mixin tablet {
+    @media all and (min-width:768px) and (max-width:1024px) {
+        @content;
+    }
+}
+
+//----------------------------------------------------------
+//mo only
+@mixin mobile {
+    @media all and (max-width: 767px) {
+        @content;
+    }
+}

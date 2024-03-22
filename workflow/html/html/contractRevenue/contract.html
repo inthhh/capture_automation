@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- 2022-10-27 -->
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0, width=device-width, viewport-fit=cover"
+    />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon" />
+
+    <title>Connect Workflow</title>
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/font.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/swiper.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/nice-select.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/daterangepicker.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/sub.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/dashboard.css" />
+
+    <!-- JS -->
+    <script src="../../../assets/js/jquery-3.1.1.min.js"></script>
+    <script src="../../../assets/js/delighters.js"></script>
+    <script src="../../../assets/js/swiper.min.js"></script>
+    <script src="../../../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../../../assets/js/numberCounting.js"></script>
+    <script src="../../../assets/js/TweenMax.min.js"></script>
+    <script src="../../../assets/js/moment.min.js"></script>
+    <script src="../../../assets/js/daterangepicker.min.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/page.js"></script>
+
+    <script src="../../../assets/js/progressbar.js"></script>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Chart.js Datalabels plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- header -->
+      <header
+        class="header-wrap"
+        data-include="../layout/include_header.html"
+      ></header>
+      <!-- //header -->
+
+      <div class="container contract-revenus">
+        <div class="title-wrap">
+          <div class="header-v7">
+            <div class="left-box">
+              <div class="header-box">
+                <div class="title-wrap">
+                  <p class="title-type">All contract status</p>
+                </div>
+              </div>
+              <div class="search-box">
+                <div class="search-form">
+                  <input
+                    type="text"
+                    class="input-type"
+                    placeholder="Search epic ticket"
+                    onclick="javascript:UI.layerPopUp({selId:'#pop-main'})"
+                  />
+                  <button class="btn-clear">
+                    <i class="ico-clear"
+                      ><span class="hidden">검색어지우기</span></i
+                    >
+                  </button>
+                  <button type="submit" class="btn-search">
+                    <i class="ico-srch"><span class="hidden">검색</span></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="right-box">
+              <a href="./detail_empty.html" class="btn-type btn-m v3"
+                >Create new</a
+              >
+            </div>
+          </div>
+        </div>
+        <!--content-->
+        <section id="content" class="contract-box">
+          <div class="table-wrap">
+            <table class="table-type">
+              <thead>
+                <tr>
+                  <th scope="col">EPIC KEY</th>
+                  <th scope="col">Epic Title</th>
+                  <th scope="col">AE</th>
+                  <th scope="col">Client</th>
+                  <th scope="col">CO</th>
+                  <th scope="col">Contract status</th>
+                  <th scope="col">Quoted amount</th>
+                  <th scope="col">End date</th>
+                  <th scope="col">PJT peroid</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="">K1P22048004</td>
+                  <td class="">삼성닷컴 Japan 운영 지원 (TBD)</td>
+                  <td class="">Sarah</td>
+                  <td class="">Jack</td>
+                  <td class="">Justin</td>
+                  <td class="bl">1</td>
+                  <td class="">100,000,000 KRW</td>
+                  <td class="">2023.12.30</td>
+                  <td class="">4 month</td>
+                  <td class="">
+                    <a class="btn-type" href="./detail_full.html">View Detail</a
+                    ><i class="ico-menu black"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="">K1P22048004</td>
+                  <td class="">삼성닷컴 Japan 운영 지원 (TBD)</td>
+                  <td class="">Sarah</td>
+                  <td class="">Jack</td>
+                  <td class="">Justin</td>
+                  <td class="bl">1</td>
+                  <td class="">100,000,000 KRW</td>
+                  <td class="">2023.12.30</td>
+                  <td class="">4 month</td>
+                  <td class="">
+                    <a class="btn-type" href="./detail_full.html">View Detail</a
+                    ><i class="ico-menu black"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="">K1P22048004</td>
+                  <td class="">삼성닷컴 Japan 운영 지원 (TBD)</td>
+                  <td class="">Sarah</td>
+                  <td class="">Jack</td>
+                  <td class="">Justin</td>
+                  <td class="bl">1</td>
+                  <td class="">100,000,000 KRW</td>
+                  <td class="">2023.12.30</td>
+                  <td class="">4 month</td>
+                  <td class="">
+                    <a class="btn-type" href="./detail_full.html">View Detail</a
+                    ><i class="ico-menu black"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="">K1P22048004</td>
+                  <td class="">삼성닷컴 Japan 운영 지원 (TBD)</td>
+                  <td class="">Sarah</td>
+                  <td class="">Jack</td>
+                  <td class="">Justin</td>
+                  <td class="bl">1</td>
+                  <td class="">100,000,000 KRW</td>
+                  <td class="">2023.12.30</td>
+                  <td class="">4 month</td>
+                  <td class="">
+                    <a href="./detail_full.html" class="btn-type">View Detail</a
+                    ><i class="ico-menu black"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 에픽 티켓팝업 -->
+          <div class="pop-layer pop-main" id="pop-main">
+            <div class="dim"></div>
+            <div class="pop-wrap epic">
+              <div class="pop-contentbox">
+                <div class="header-v8">
+                  <div class="left-box">
+                    <div class="header-box">
+                      <div class="title-wrap">
+                        <p class="title-type">Epic ticket</p>
+                      </div>
+                    </div>
+                    <div class="search-box">
+                      <div class="search-form">
+                        <input
+                          type="text"
+                          class="input-type"
+                          placeholder="Search epic ticket"
+                        />
+                        <button class="btn-clear">
+                          <i class="ico-clear"
+                            ><span class="hidden">검색어지우기</span></i
+                          >
+                        </button>
+                        <button type="submit" class="btn-search">
+                          <i class="ico-srch"
+                            ><span class="hidden">검색</span></i
+                          >
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="right-box">
+                    <div class="check-box checked">
+                      <input type="checkbox" id="check014" checked />
+                      <label class="checkbox" for="check014"></label>
+                      <label for="check012">Assigned ticket only</label>
+                    </div>
+                    <div class="check-box">
+                      <input type="checkbox" id="check015" />
+                      <label class="checkbox" for="check015"></label>
+                      <label for="check013">Exclude closed ticket</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="table-wrap">
+                  <table class="table-type">
+                    <thead>
+                      <tr>
+                        <th scope="col"></th>
+                        <th scope="col">KEY</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">Due Date</th>
+                        <th scope="col">End date</th>
+                        <th scope="col">Cost.S<br />Satatus</th>
+                        <th scope="col">Cost.S<br />Date</th>
+                        <th scope="col">Contract Peroid</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr onClick="location.href='./detail_full.html'">
+                        <td class="bg"><i class="ico-userbox"></i></td>
+                        <td class="pu">WSC20230808-2012</td>
+                        <td class="pu">JP / [Global Request]...</td>
+                        <td class="">QA</td>
+                        <td class="">2023.12.10</td>
+                        <td class="">2023.12.10</td>
+                        <td class="">N/A</td>
+                        <td class="">Y</td>
+                        <td class="">2023.12.10</td>
+                        <td class="">Short Term<br />(3M)</td>
+                      </tr>
+                      <tr onClick="location.href='./detail_full.html'">
+                        <td class="bg"><i class="ico-userbox"></i></td>
+                        <td class="pu">WSC20230808-2012</td>
+                        <td class="pu">JP / [Global Request]...</td>
+                        <td class="">QA</td>
+                        <td class="">2023.12.10</td>
+                        <td class="">2023.12.10</td>
+                        <td class="">N/A</td>
+                        <td class="">Y</td>
+                        <td class="">2023.12.10</td>
+                        <td class="">Short Term<br />(3M)</td>
+                      </tr>
+                      <tr onClick="location.href='./detail_full.html'">
+                        <td class="bg"><i class="ico-userbox"></i></td>
+                        <td class="pu">WSC20230808-2012</td>
+                        <td class="pu">JP / [Global Request]...</td>
+                        <td class="">QA</td>
+                        <td class="">2023.12.10</td>
+                        <td class="">2023.12.10</td>
+                        <td class="">N/A</td>
+                        <td class="">Y</td>
+                        <td class="">2023.12.10</td>
+                        <td class="">Short Term<br />(3M)</td>
+                      </tr>
+                      <tr onClick="location.href='./detail_full.html'">
+                        <td class="bg"><i class="ico-userbox"></i></td>
+                        <td class="pu">WSC20230808-2012</td>
+                        <td class="pu">JP / [Global Request]...</td>
+                        <td class="">QA</td>
+                        <td class="">2023.12.10</td>
+                        <td class="">2023.12.10</td>
+                        <td class="">N/A</td>
+                        <td class="">Y</td>
+                        <td class="">2023.12.10</td>
+                        <td class="">Short Term<br />(3M)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <button class="pop-close">
+                <span class="hidden">팝업닫기</span>
+              </button>
+            </div>
+          </div>
+          <!-- <div class="inner-box">
+            여기는 여백있는 컨텐츠영역 <br />
+            여기는 여백있는 컨텐츠영역 여기는 여백있는 컨텐츠영역 여기는
+            여백있는 컨텐츠영역 여기는 여백있는 컨텐츠영역 여기는 여백있는
+            컨텐츠영역 여기는 여백있는 컨텐츠영역 여기는 여백있는 컨텐츠영역
+            여기는 여백있는 컨텐츠영역 여기는 여백있는 컨텐츠영역 여기는
+            여백있는 컨텐츠영역 여기는 여백있는 컨텐츠영역 여기는 여백있는
+            컨텐츠영역 여기는 여백있는 컨텐츠영역
+          </div> -->
+        </section>
+        <!--//content-->
+      </div>
+    </div>
+
+    <script>
+      // JavaScript function to handle row click event
+      function redirectToContractPage() {
+        window.location.href = "contract.html"; // Redirect to contract.html
+      }
+
+      if (page.layerPage("pop-main")) {
+        UI.layerPopUp({ selId: "#pop-main" });
+      }
+    </script>
+  </body>
+</html>

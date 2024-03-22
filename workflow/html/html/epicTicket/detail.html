@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- 2022-10-27 -->
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0, width=device-width, viewport-fit=cover"
+    />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon" />
+
+    <title>Connect Workflow</title>
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/font.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/swiper.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/nice-select.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/css/daterangepicker.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/sub.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/dashboard.css" />
+
+    <!-- JS -->
+    <script src="../../../assets/js/jquery-3.1.1.min.js"></script>
+    <script src="../../../assets/js/delighters.js"></script>
+    <script src="../../../assets/js/swiper.min.js"></script>
+    <script src="../../../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../../../assets/js/numberCounting.js"></script>
+    <script src="../../../assets/js/TweenMax.min.js"></script>
+    <script src="../../../assets/js/moment.min.js"></script>
+    <script src="../../../assets/js/daterangepicker.min.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/page.js"></script>
+
+    <script src="../../../assets/js/progressbar.js"></script>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Chart.js Datalabels plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- header -->
+      <header
+        class="header-wrap"
+        data-include="../layout/include_header.html"
+      ></header>
+      <!-- //header -->
+      <div class="container ticket">
+        <div class="header-v6">
+        <div class="left-box">
+          <!-- Title -->
+          <div class="header-box">
+            <div class="title-wrap">
+              <p class="title-type">Epic ticket detail</p>
+            </div>
+          </div>
+        </div>
+        <div class="right-box">
+          <div class="select-type disabled">
+            <select disabled="">
+              <option data-display="All list">제목</option>
+              <option value="1">글쓴이</option>
+            </select><div class="nice-select disabled"><span class="current">All list</span><ul class="list"><li data-value="제목" data-display="All list" class="option selected">제목</li><li data-value="1" class="option">글쓴이</li></ul></div>
+          </div>
+          <a href="copy.html" class="btn-type btn-m v3">Copy</a>
+        </div>
+      </div>
+        <div class="content-wrap">
+          <aside class="side-list">
+            <div class="side-util">
+                <div class="side-top">
+                    <h4 class="side-title">Epic ticket list</h4>
+                </div>
+                <div class="search-box auto-list"> <!-- auto-list 추가 -->
+                  <div class="search-form">
+                    <input type="text" class="input-type" placeholder="Search epic ticket">
+                    <button class="btn-clear"><i class="ico-clear"><span class="hidden">검색어지우기</span></i></button>
+                    <button type="submit" class="btn-search"><i class="ico-srch"><span class="hidden">검색</span></i></button>
+                  </div>
+                  <div class="search-list">
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <em>K1P22048004</em>
+                          <p>삼성닷컴 Japan 운영 지원 (TBD)</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <em>K1P22048004</em>
+                          <p>삼성닷컴 Japan 운영 지원 (TBD)</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <em>K1P22048004</em>
+                          <p>삼성닷컴 Japan 운영 지원 (TBD)</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <em>K1P22048004</em>
+                          <p>삼성닷컴 Japan 운영 지원 (TBD)</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <em>K1P22048004</em>
+                          <p>삼성닷컴 Japan 운영 지원 (TBD)</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="check-wrap">
+                  <div class="check-box">
+                    <input type="checkbox" id="assignedTicket" checked>
+                    <label class="checkbox" for="assignedTicket"></label>
+                    <label for="assignedTicket">Assigned ticket only</label>
+                  </div>
+                  <div class="check-box">
+                    <input type="checkbox" id="excludeClosed">
+                    <label class="checkbox" for="excludeClosed"></label>
+                    <label for="excludeClosed">Exclude closed ticket</label>
+                  </div>
+                </div>
+            </div>
+            <div class="key-wrap">
+              <div class="key-list active">
+                 <div class="check-box">
+                    <input type="checkbox" id="listChk01" checked>
+                    <label class="checkbox" for="listChk01"></label>
+                  </div>
+                  <div class="key-box">
+                    <label for="listChk01">
+                      <p class="key-title">K1P22048004</p>
+                      <p class="key-text">삼성닷컴 Japan 운영 지원 (TBD)</p>
+                    </label>
+                  </div>
+              </div>
+              <div class="key-list">
+                 <div class="check-box">
+                    <input type="checkbox" id="listChk02">
+                    <label class="checkbox" for="listChk02"></label>
+                  </div>
+                  <div class="key-box">
+                    <label for="listChk02">
+                      <p class="key-title">K1P22048004</p>
+                      <p class="key-text">삼성닷컴 Japan 운영 지원 (TBD)</p>
+                    </label>
+                  </div>
+              </div>
+              <div class="key-list">
+                 <div class="check-box">
+                    <input type="checkbox" id="listChk03">
+                    <label class="checkbox" for="listChk03"></label>
+                  </div>
+                  <div class="key-box">
+                    <label for="listChk03">
+                      <p class="key-title">K1P22048004</p>
+                      <p class="key-text">삼성닷컴 Japan 운영 지원 (TBD) 삼성닷컴 Japan 운영 지원 (TBD)</p>
+                    </label>
+                  </div>
+              </div>
+              <div class="key-list">
+                 <div class="check-box">
+                    <input type="checkbox" id="listChk04">
+                    <label class="checkbox" for="listChk04"></label>
+                  </div>
+                  <div class="key-box">
+                    <label for="listChk04">
+                      <p class="key-title">K1P22048004</p>
+                      <p class="key-text">삼성닷컴 Japan 운영 지원 (TBD)</p>
+                    </label>
+                  </div>
+              </div>
+              <div class="key-list">
+                 <div class="check-box">
+                    <input type="checkbox" id="listChk05">
+                    <label class="checkbox" for="listChk05"></label>
+                  </div>
+                  <div class="key-box">
+                    <label for="listChk05">
+                      <p class="key-title">K1P22048004</p>
+                      <p class="key-text">삼성닷컴 Japan 운영 지원 (TBD)</p>
+                    </label>
+                  </div>
+              </div>
+              
+              <div class="key-list">
+                 <div class="check-box">
+                    <input type="checkbox" id="listChk06">
+                    <label class="checkbox" for="listChk06"></label>
+                  </div>
+                  <div class="key-box">
+                    <label for="listChk06">
+                      <p class="key-title">K1P22048004</p>
+                      <p class="key-text">삼성닷컴 Japan 운영 지원 (TBD) 삼성닷컴 Japan 운영 지원 (TBD)</p>
+                    </label>
+                  </div>
+              </div>
+            </div>
+            
+            <button type="button" class="btn-slide">
+              <i class="ico-back"><span class="hidden">닫기</span></i>
+            </button>
+          </aside>
+          <!--content-->
+          <section id="content">
+            <div class="inner-box">
+              <div class="header-v4">
+                <div class="left-box"> 
+                  <div class="top-box">
+                    <p class="subtitle-wrap">WSC20230808-2012</p>
+                  </div>
+                  <div class="bottom-box">
+                    <p class="title-wrap">
+                      JP / [Global Request] B5Q5 MKT PD Hotfix ver .01 / Accessories
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="issue-wrap">
+                <div class="issue-group col2">
+                  <div class="issue-box">
+                    <div class="issue-heading">
+                      <button type="button" class="btn-arrow-toggle">
+                        <i class="ico-checkbox unfill"></i>
+                      </button>
+                      <h4 class="issue-title">Detail</h4>
+                    </div>
+                    <div class="property-list">
+                      <ul>
+                        <li>  
+                          <p class="title">KEY:</p>
+                          <div class="item">
+                            <p class="point-color">WSC20230808-2012</p>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Title:</p>
+                          <div class="item">
+                            <p class="point-color text-over">JP / [Global Request] B5Q5 MKT PD Hotfix ver .01 / Accessories A</p>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Epic ticket type:</p>
+                          <div class="item">
+                            <div class="select-type v3">
+                              <select>
+                                <option value="1">제작 Production / Developement</option>
+                                <option value="2">운영 Operation</option>
+                                <option value="3">Proposal</option>
+                                <option value="4">QA (Quality Assurance)</option>
+                              </select>
+                            </div>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Billing type:</p>
+                          <div class="item">
+                            <div class="select-type v3">
+                              <select>
+                                <option value="1">Billing type A</option>
+                                <option value="2">Billing type B</option>
+                                <option value="3">Billing type C</option>
+                                <option value="4">Billing type D</option>
+                              </select>
+                            </div>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Start date:</p>
+                          <div class="item">
+                            <div class="datepickerRange-wrap">
+                              <input type="text" id="datepickerRange" class="datepickerRange-input"/>
+                              <div class="datepickerRange-box">
+                                <p class="date"><span>YYYY.MM.DD</span></p>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Due date:</p>
+                          <div class="item">
+                            <div class="datepickerRange-wrap">
+                              <input type="text" id="datepickerRange" class="datepickerRange-input"/>
+                              <div class="datepickerRange-box">
+                                <p class="date"><span>YYYY.MM.DD</span></p>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">End date:</p>
+                          <div class="item">
+                            <div class="datepickerRange-wrap">
+                              <input type="text" id="datepickerRange" class="datepickerRange-input"/>
+                              <div class="datepickerRange-box">
+                                <p class="date"><span>YYYY.MM.DD</span></p>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Total story ticket:</p>
+                          <div class="item">
+                            <p>170</p>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Completed story ticket:</p>
+                          <div class="item">
+                            <p>21/170</p>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Cos t settlement status:</p>
+                          <div class="item">
+                            <div class="select-type v3">
+                              <select>
+                                <option value="1">Settled</option>
+                                <option value="2">Unsettled</option>
+                              </select>
+                            </div>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Contract period:</p>
+                          <div class="item">
+                            <div class="select-type v3">
+                              <select>
+                                <option value="1">Short term (3M)</option>
+                                <option value="2">Mid term (6M)</option>
+                                <option value="3">Log term (12M)</option>
+                              </select>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="issue-box">
+                    <div class="issue-heading">
+                      <button type="button" class="btn-arrow-toggle">
+                        <i class="ico-checkbox unfill"></i>
+                      </button>
+                      <h4 class="issue-title">People</h4>
+                    </div>
+                    <div class="property-list type2">
+                      <ul>
+                        <li>  
+                          <p class="title">Client:</p>
+                          <div class="item">
+                            <p>Hong 홍길동</p>
+                            <p>Hong 홍길동</p>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">AE:</p>
+                          <div class="item">
+                            <p>Hong 홍길동</p>
+                            <p>Hong 홍길동</p>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Connector:</p>
+                          <div class="item">
+                            <p>Hong 홍길동</p>
+                          </div>
+                        </li>
+                        <li>  
+                          <p class="title">Watcher:</p>
+                          <div class="item">
+                            <p>Sarah 김사라</p>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="issue-group">
+                  <div class="issue-box">
+                    <div class="issue-heading">
+                      <div class="flex-box">
+                        <button type="button" class="btn-arrow-toggle">
+                          <i class="ico-checkbox unfill"></i>
+                        </button>
+                        <h4 class="issue-title">Sub story tickets</h4>
+                        <div class="search-box">
+                          <div class="search-form">
+                            <input type="text" class="input-type" placeholder="Search story ticket">
+                            <button class="btn-clear hidden">
+                              <i class="ico-clear"><span class="hidden">검색어지우기</span></i>
+                            </button>
+                            <button type="submit" class="btn-search">
+                              <i class="ico-srch"><span class="hidden">검색</span></i>
+                            </button>
+                          </div>
+                        </div>
+                        <a href="#" class="btn-type v4">Create sub story ticket</a>
+                      </div>
+                    </div>
+                    <div class="table-wrap board">
+                      <table class="table-type">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Story KEY</th>
+                            <th>Story Title</th>
+                            <th>Epic KEY</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Start Date</th>
+                            <th>Due Date</th>
+                            <th>End Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="bg"><i class="ico-userbox"></i></td>
+                            <td class="pu3">WSC20230808-2012</td>
+                            <td class="pu3">WSC P6 2023 QA</td>
+                            <td class="pu3">WSC P6 2023 QA</td>
+                            <td class="rd">High</td>
+                            <td>Pending</td>
+                            <td>2023.12.10</td>
+                            <td>2023.12.10</td>
+                            <td>N/A</td>
+                          </tr>
+                          <tr>
+                            <td class="bg"><i class="ico-userbox"></i></td>
+                            <td class="pu3">WSC20230808-2012</td>
+                            <td class="pu3">WSC P6 2023 QA</td>
+                            <td class="pu3">WSC P6 2023 QA</td>
+                            <td class="rd">High</td>
+                            <td>Pending</td>
+                            <td>2023.12.10</td>
+                            <td>2023.12.10</td>
+                            <td>N/A</td>
+                          </tr>
+                          <tr>
+                            <td class="bg"><i class="ico-userbox"></i></td>
+                            <td class="pu3">WSC20230808-2012</td>
+                            <td class="pu3">WSC P6 2023 QA</td>
+                            <td class="pu3">WSC P6 2023 QA</td>
+                            <td class="rd">High</td>
+                            <td>Pending</td>
+                            <td>2023.12.10</td>
+                            <td>2023.12.10</td>
+                            <td>N/A</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="issue-group">
+                  <div class="issue-box">
+                    <div class="issue-heading">
+                      <button type="button" class="btn-arrow-toggle">
+                        <i class="ico-checkbox unfill"></i>
+                      </button>
+                      <h4 class="issue-title">Discription</h4>
+                    </div>
+                    <div class="textarea-type v2" data-role="form-active-box">
+                      <div class="menu-editor">
+                        <div class="img-box">
+                          <img src="../../images/sub/menu-bar.svg" alt="">
+                        </div>
+                        <div class="btn-box">
+                          <a href="#" class="btn-type btn-s v3" data-role="form-save-btn">Save</a>
+                          <a href="#" class="btn-type btn-s v6">Cancel</a>
+                        </div>
+                      </div>
+                      <textarea cols="30" rows="5" placeholder="Type in description here" data-role="form-active-btn"></textarea>
+                      <!--span class="count">[<em>278</em>/1,000]</!--span-->
+                      <span class="msg">숫자 및 특수문자를 포함할 수 없습니다.</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="issue-group">
+                  <div class="issue-box">
+                    <div class="issue-heading">
+                      <button type="button" class="btn-arrow-toggle">
+                        <i class="ico-checkbox unfill"></i>
+                      </button>
+                      <h4 class="issue-title">Attatchments</h4>
+                    </div>
+                    <div class="file-wrap">
+                      <div class="file-type">
+                        <label for="input-file" class="btn-file"><i class="ico-upload"></i><p>Drop your file here or <em>Browse</em></p></label>
+                        <input type="file" id="input-file">
+                        <button class="btn-clear"><i class="ico-clear"><span class="hidden">첨부파일삭제</span></i></button>
+                      </div>
+                      <div class="content-inbox-wrap">
+                        <div class="table-wrap type2">
+                          <table class="table-type">
+                            <colgroup>
+                              <col width="24px">
+                              <col width="*">
+                              <col width="60px">
+                              <col width="80px">
+                              <col width="80px">
+                              <col width="28px">
+                              <col width="28px">
+                            </colgroup>
+                            <tbody>
+                              <tr>
+                                <td><i class="ico-attach"></i></td>
+                                <td class="text-title">2308 CONNEC+ One Sales Deck V3.pptx 2308 CONNEC+ One Sales Deck V3.pptx 2308 CONNEC+ One Sales Deck V3.pptx</td>
+                                <td class="thin">23MB</td>
+                                <td class="thin gr">Joan 김조원</td>
+                                <td class="thin gr">2023.08.30</td>
+                                <td><a href="#"><i class="ico-down gray"></i></a></td>
+                                <td><a href="#"><i class="ico-menu black"></i></a></td>
+                              </tr>
+                              <tr>
+                                <td><i class="ico-attach"></i></td>
+                                <td>2308 CONNEC+ One Sales Deck V3.pptx </td>
+                                <td class="thin">23MB</td>
+                                <td class="thin gr">Joan 김조원</td>
+                                <td class="thin gr">2023.08.30</td>
+                                <td><a href="#"><i class="ico-down gray"></i></a></td>
+                                <td><a href="#"><i class="ico-menu black"></i></a></td>
+                              </tr>
+                              <tr>
+                                <td><i class="ico-attach"></i></td>
+                                <td>2308 CONNEC+ One Sales Deck V3.pptx </td>
+                                <td class="thin">23MB</td>
+                                <td class="thin gr">Joan 김조원</td>
+                                <td class="thin gr">2023.08.30</td>
+                                <td><a href="#"><i class="ico-down gray"></i></a></td>
+                                <td><a href="#"><i class="ico-menu black"></i></a></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="issue-group">
+                  <div class="issue-box">
+                    <div class="issue-heading">
+                      <button type="button" class="btn-arrow-toggle">
+                        <i class="ico-checkbox unfill"></i>
+                      </button>
+                      <h4 class="issue-title">Activity</h4>
+                    </div>
+                    <div class="list-wrap">
+                      <div class="list-box">
+                        <p class="list-title">Joan 김조원</p>
+                        <div class="list-inner">
+                          <div class="top-area">
+                            <p>added discription</p>
+                            <p>2023/08/21 17:30</p>
+                          </div>
+                          <div class="bot-area">
+                            <p>Kindly refer to SGE Content as example : [Get Expert Screen Repairs for Samsung Galaxy Phones | Samsung Gulf|https://www.samsung.com/ae/support-door-to-door-repair-service/]</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="list-box">
+                        <p class="list-title">Mina 김민아</p>
+                        <div class="list-inner">
+                          <div class="top-area">
+                            <p>added Story ticket</p>
+                            <p>5 days ago</p>
+                          </div>
+                          <div class="bot-area">
+                            <p class="point-color">WSC20230808-2012</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="list-box">
+                        <p class="list-title">Mina 김민아</p>
+                        <div class="list-inner">
+                          <div class="top-area">
+                            <p>added Story ticket</p>
+                            <p>5 days ago</p>
+                          </div>
+                          <div class="bot-area">
+                            <p class="point-color">WSC20230808-2012</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="list-box">
+                        <p class="list-title">Mina 김민아</p>
+                        <div class="list-inner">
+                          <div class="top-area">
+                            <p>added Story ticket</p>
+                            <p>5 days ago</p>
+                          </div>
+                          <div class="bot-area">
+                            <p class="point-color">WSC20230808-2012</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="list-box">
+                        <p class="list-title">Mina 김민아</p>
+                        <div class="list-inner">
+                          <div class="top-area">
+                            <p>added Story ticket</p>
+                            <p>5 days ago</p>
+                          </div>
+                          <div class="bot-area">
+                            <p class="point-color">WSC20230808-2012</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!--//content-->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

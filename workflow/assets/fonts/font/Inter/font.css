@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: "SpoqaHanSansNeo";
+  font-style: normal;
+  font-weight: 400;
+  src: local("SpoqaHanSansNeo-Regular"),
+    url("../../SpoqaHanSansNeo-Regular.otf") format('opentype');	
+}
+@font-face {
+  font-family: "SpoqaHanSansNeo";
+  font-style: normal;
+  font-weight: 500;
+  src: local("SpoqaHanSansNeo-Medium"),
+    url("../../SpoqaHanSansNeo-Medium.otf") format('opentype');	
+}
+@font-face {
+  font-family: "SpoqaHanSansNeo";
+  font-style: normal;
+  font-weight: 700;
+  src: local("SpoqaHanSansNeo-Bold"),
+    url("../../SpoqaHanSansNeo-Bold.otf") format('opentype');	
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Montserrat-Regular"),
+    url("../../Montserrat-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Montserrat-Medium"),
+    url("../../Montserrat-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Montserrat-Bold"),
+    url("../../Montserrat-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Inter-Regular"),
+    url("./static/Inter-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Inter-Medium"),
+    url("./static/Inter-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Inter-Bold"),
+    url("./static/Inter-Bold.ttf") format("truetype");
+}
