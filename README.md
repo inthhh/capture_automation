@@ -17,7 +17,7 @@
 
 1. <b>git add .</b> : 현재 변경 사항들을 모두 스테이지에 올리기
 2. <b>git commit -m"message"</b> : 현재 스테이징된 변경 사항들을 모두 한 커밋에 등록
-3. <b>git pull --rebase origin master</b> : 현재 remote 즉, github에 반영된 최신 사항들을 로컬 즉, 내 컴퓨터와 최신화 시켜주기
-4. <b>git push origin master</b> : 저장소에 내 커밋 내역들을 업데이트
+3. <b>git pull --rebase origin main</b> : 현재 remote 즉, github에 반영된 최신 사항들을 로컬 즉, 내 컴퓨터와 최신화 시켜주기
+4. <b>git push origin main</b> : 저장소에 내 커밋 내역들을 업데이트
 5. <b>git stash / git stash pop</b> : 임시 브랜치에 현재 변경사항들을 저장하기 / 저장한 변경사항 다시 불러오기
-   현재는 브랜치가 master 한개라서 origin master는 생략해도 됩니다.
+   현재는 브랜치가 main 한개라서 origin main는 생략해도 됩니다.
