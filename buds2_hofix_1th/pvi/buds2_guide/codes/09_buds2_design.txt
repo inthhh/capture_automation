@@ -1,0 +1,27 @@
+<!-- Design -->
+<section class="m_ o section sc-buds-design" data-sc-section id="design">
+  <div class="sc-buds-design__wrap">
+    <div class="sc-buds-design__content">
+      <div class="sc-buds-design__content-inner">
+        <div class="js-parallax-headline">
+          <h2 class="sc-buds-design__eyebrow">DESIGN</h2>
+          <strong class="sc-buds-design__headline"
+            >Looks as<br />good as<br />it sounds</strong
+          >
+        </div>
+      </div>
+    </div>
+    <div class="sc-buds-design__img">
+      <div class="js-parallax-img">
+        <div class="js-picture" data-async>
+          <img
+            data-media="(min-width: 0)"
+            src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+            data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-white-design.jpg"
+            alt="The outer exterior of a single white Galaxy Buds2 earbud is prominently shown."
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
