@@ -1,3 +1,22 @@
+<!-- TEST 용-->
+<link rel="stylesheet" type="text/css" href="test/css/common.css">
+<script async="" src="https://www.samsung.com/global/galaxy/common/js/init.js"></script>
+<script async="" src="https://www.samsung.com/global/galaxy/common/js/jquery.min.js"></script>
+<script async="" src="https://www.samsung.com/global/galaxy/common/js/plugins.js"></script>
+<script async="" src="https://www.samsung.com/global/galaxy/common/js/common.js"></script>
+<script>(function() {
+  window.addEventListener('message', function(event) {
+    if (
+      event.data &&
+      event.data.id &&
+      typeof event.data.id.startsWith === 'function' &&
+      event.data.id.startsWith('adobeExperienceCloudDebuggerContentMessagingIdentifier-')
+    ) {
+      event.stopImmediatePropagation();
+    }
+  },
+  {capture: true});
+})();</script>
 <!-- include raw codes -->
 <style>
   .sc-buds .sc-buds-360-audio__card-headline,
