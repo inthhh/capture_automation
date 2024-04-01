@@ -119,4 +119,4 @@ fabric.properties
 
 
 ### qa reulst sheet ###
-result/
+.result/*
