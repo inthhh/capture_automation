@@ -48,9 +48,17 @@ predictor = CustomVisionPredictionClient(ENDPOINT, prediction_credentials)
 computervision_client = ComputerVisionClient(ENDPOINT, CognitiveServicesCredentials(prediction_key))
 
 def check_samsung_logo_and_text(image_url):
-    read_response = computervision_client.read(image_url, raw=True)
-    read_operation_location = read_response.headers["Operation-Location"]
-    operation_id = read_operation_location.split("/")[-1]
+    response = requests.get(image_url)
+    if response.status_code == 200:
+        image_bytes = BytesIO(response.content)
+        with PILImage.open(image_bytes) as img:
+            original_width, original_height = img.size
+            new_width, new_height = int(original_width / 5), int(original_height / 5)
+
+        new_image_url = image_url + "?imwidth=" + str(new_width)
+        read_response = computervision_client.read(new_image_url, raw=True)
+        read_operation_location = read_response.headers["Operation-Location"]
+        operation_id = read_operation_location.split("/")[-1]
 
     # 분석 결과 대기
     while True:
