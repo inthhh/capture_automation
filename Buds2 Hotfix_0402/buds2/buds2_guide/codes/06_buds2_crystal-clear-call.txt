@@ -1,0 +1,123 @@
+<!-- Crystal clear call -->
+<section class="sc-buds-call" data-sc-section id="intelligentClearCall">
+  <div class="sc-buds-call__wrap">
+    <h3 class="sc-buds-call__eyebrow">CRYSTAL-CLEAR CALLS</h3>
+    <strong class="sc-buds-call__headline"
+      >Leave noise out <br />of the conversation</strong
+    >
+    <div class="js-display-pc" data-fix-dom="sc-buds-call__desc">
+      <p class="sc-buds-call__desc" data-move-dom="sc-buds-call__desc">
+        Three microphones and a built-in voice pickup unit help you make
+        clearer calls, while a machine-learning based solution filters
+        unwanted sound so you can better share your world with family and
+        friends. The low protrusion design minimizes wind disruptions to make
+        your outdoors calls come in clear.
+        <sup>
+          <a href="#desc-section" class="click_sup" title="See disclaimer"
+            >2</a
+          >
+        </sup>
+      </p>
+    </div>
+    <div class="sc-buds-call__visual">
+      <div class="sc-buds-call__canvas-box">
+        <div class="display-pc">
+          <canvas
+            class="sc-buds-call__canvas"
+            data-component='{
+                      "root":"https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/",
+                      "pName":"galaxy-buds2-olive-intelligent-clear-call-",
+                      "type":"jpg",
+                      "min":0,
+                      "max":50
+                  }'
+          ></canvas>
+          <div class="js-picture" style="display: none">
+            <img
+              data-media="(min-width: 768)"
+              src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+              data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-olive-intelligent-clear-call-050.jpg"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="display-mo">
+          <div class="sc-buds-call__img">
+            <div class="js-picture" data-async>
+              <img
+                data-media="(max-width: 767)"
+                src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-olive-intelligent-clear-call-outer-shell-mo.jpg"
+                alt=""
+              />
+            </div>
+            <div class="js-picture" data-async>
+              <img
+                data-media="(max-width: 767)"
+                src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-intelligent-clear-call-outer-mic-vpu-mo.png"
+                alt=""
+              />
+            </div>
+            <div class="js-picture" data-async>
+              <img
+                data-media="(max-width: 767)"
+                src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-intelligent-clear-call-inner-mic-mo.png"
+                alt=""
+              />
+            </div>
+            <div class="js-picture" data-async>
+              <img
+                data-media="(max-width: 767)"
+                src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-olive-intelligent-clear-call-inner-shell-mo.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <p class="blind" data-alt>
+          An olive color Galaxy Buds2 earbud is split in half and its inner
+          components are shown in order. The outermost shell is opened and
+          inside is a chipset with 1 inner mic. There is also a component with
+          2 outer mics(Beamforming) and VPU(voice pickup unit).
+        </p>
+      </div>
+      <div class="sc-buds-parts sc-part1 sc-scene1">
+        <div class="sc-buds-parts__info">
+          <em class="sc-buds-parts__name" aria-hidden="true"
+            >1 Inner <br />Mic</em
+          >
+        </div>
+        <div class="sc-buds-parts__pin">
+          <span class="sc-buds-parts__pin-pointer"></span>
+        </div>
+      </div>
+      <div class="sc-buds-parts sc-part2 sc-scene1">
+        <div class="sc-buds-parts__info">
+          <em class="sc-buds-parts__name" aria-hidden="true"
+            >2 Outer Mic <br />(Beamforming)</em
+          >
+        </div>
+        <div class="sc-buds-parts__pin sc-pin1">
+          <span class="sc-buds-parts__pin-pointer"></span>
+        </div>
+        <div class="sc-buds-parts__pin sc-pin2">
+          <span class="sc-buds-parts__pin-pointer"></span>
+        </div>
+      </div>
+      <div class="sc-buds-parts sc-part3 sc-scene1">
+        <div class="sc-buds-parts__info">
+          <em class="sc-buds-parts__name" aria-hidden="true"
+            >VPU <br />(Voice Pickup Unit)</em
+          >
+        </div>
+        <div class="sc-buds-parts__pin">
+          <span class="sc-buds-parts__pin-pointer"></span>
+        </div>
+      </div>
+    </div>
+    <div class="js-display-mo" data-fix-dom="sc-buds-call__desc"></div>
+  </div>
+</section>

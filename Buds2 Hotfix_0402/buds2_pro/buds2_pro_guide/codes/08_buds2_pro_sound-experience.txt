@@ -1,0 +1,1633 @@
+<!--Buds Sound Experience -->
+  <section class="m_content js-visible js-count">
+    <div class="sc-buds-sound-experience">
+      <div class="sc-buds-sound-experience__wrap">
+        <div class="sc-buds-sound-experience__text js-nav-top">
+          <h2
+            class="sc-buds-sound-experience__eyebrow sc-buds-common-eyebrow"
+            id="sound-experience"
+          >
+            SOUND EXPERIENCE
+          </h2>
+          <p
+            class="sc-buds-sound-experience__headline sc-buds-common-headline-l"
+          >
+            The clear choice for quality sound
+          </p>
+        </div>
+        <div class="sc-buds-sound-experience__kv">
+          <div class="sc-buds-sound-experience__kv-inner">
+            <img
+              src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+              class="js-img-src js-res-img"
+              data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-sound-experience-kv.jpg"
+              data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-sound-experience-kv.jpg?imwidth=1080"
+              data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-sound-experience-kv-mo.jpg"
+              alt="A woman enjoying herself while DJing at a party with Buds2 Pro in her left ear."
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Buds HI-FI Audio -->
+
+    <div class="sc-buds-hifi-audio">
+      <div class="sc-buds-hifi-audio__wrap">
+        <div class="sc-buds-hifi-audio__text">
+          <h3
+            class="sc-buds-hifi-audio__eyebrow sc-buds-common-eyebrow"
+            id="24bit-hi-fi-audio"
+          >
+            24-BIT Hi-Fi AUDIO
+          </h3>
+          <p class="sc-buds-hifi-audio__headline sc-buds-common-headline-m">
+            Hear sound <br />as it was intended, <br />wirelessly
+          </p>
+        </div>
+        <div class="sc-buds-hifi-audio__kv">
+          <div class="sc-buds-hifi-audio__parts-wrap">
+            <div class="sc-buds-hifi-audio__parts">
+              <img
+                src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                class="js-img-src js-res-img"
+                data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-hifi-audio-parts.jpg"
+                data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-hifi-audio-parts.jpg?imwidth=1080"
+                data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-hifi-audio-parts-mo.jpg"
+                alt="The inside mechanics of the Galaxy Buds2 Pro."
+              />
+            </div>
+          </div>
+          <div class="sc-buds-hifi-audio__part-info">
+            <span class="sc-buds-hifi-audio__part-info-text">
+              <strong>2-way speakers</strong><br />for wide frequency response
+            </span>
+            <span class="sc-buds-hifi-audio__part-info-text">
+              <strong>Woofer</strong><br />delivers deeper bass
+            </span>
+            <span class="sc-buds-hifi-audio__part-info-text">
+              <strong>Tweeter</strong><br />produces crisp treble
+            </span>
+          </div>
+        </div>
+        <div class="sc-buds-hifi-audio__contents">
+          <div class="sc-buds-hifi-audio__contents-top">
+            <p class="sc-buds-hifi-audio__contents-title">
+              24-bit<br />
+              <span class="sc-buds-hifi-audio__contents-title-inner"
+                >Hi-Fi audio</span
+              >
+            </p>
+            <div class="sc-buds-hifi-audio__contents-image">
+              <img
+                src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                class="js-img-src js-res-img"
+                data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-hifi-audio-visual.jpg"
+                data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-hifi-audio-visual.jpg?imwidth=1080"
+                data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-hifi-audio-visual-mo.jpg"
+                alt="A purple Galaxy Z Flip 4 device on the left and a Galaxy Buds2 Pro earbud in the same color on the right."
+              />
+            </div>
+          </div>
+
+          <div class="sc-buds-hifi-audio__bit">
+            <div class="sc-buds-hifi-audio__bit-wrap">
+              <div class="sc-buds-hifi-audio__bit-image">
+                <div class="sc-buds-hifi-audio__bit-image-inner">
+                  <img
+                    src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                    class="js-img-src js-res-img"
+                    data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-hifi-audio-wave-16bit.jpg"
+                    data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-hifi-audio-wave-16bit.jpg?imwidth=1080"
+                    data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-hifi-audio-wave-16bit-mo.jpg"
+                    alt="A fragmented 3D sound wave in a pointy zigzag waveform to indicate a less-smooth sound."
+                  />
+                  <span class="sc-buds-hifi-audio__bit-text">16-bit</span>
+                </div>
+              </div>
+              <div class="sc-buds-hifi-audio__bit-image">
+                <div class="sc-buds-hifi-audio__bit-image-inner">
+                  <img
+                    src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                    class="js-img-src js-res-img"
+                    data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-hifi-audio-wave-24bit.jpg"
+                    data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-hifi-audio-wave-24bit.jpg?imwidth=1080"
+                    data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-hifi-audio-wave-24bit-mo.jpg"
+                    alt="A smooth 3D sound wave in a flowy squiggly waveform to indicate a smoother sound experience."
+                  />
+                  <span class="sc-buds-hifi-audio__bit-text">24-bit</span>
+                </div>
+              </div>
+            </div>
+            <div class="sc-buds-hifi-audio__bit-info">
+              <p
+                class="sc-buds-hifi-audio__bit-description sc-buds-common-description"
+              >
+                Every note sounds like the real thing because clear audio starts
+                at the source with your favorite Samsung Galaxy device. The
+                updated Samsung Seamless Codec encodes the full 24-bit audio to
+                decode on the Galaxy Buds2 Pro, maintaining that same 24-bit
+                high-quality sound.
+                <sup
+                  ><a
+                    href="#desc-section"
+                    class="click_sup"
+                    title="See disclaimer"
+                    >1</a
+                  >,
+                  <a
+                    href="#desc-section"
+                    class="click_sup"
+                    title="See disclaimer"
+                    >2</a
+                  ></sup
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Buds ANC -->
+
+    <div class="sc-buds-anc">
+      <div class="sc-buds-anc__wrap">
+        <div class="sc-buds-anc__kv-wrap">
+          <div class="sc-buds-anc__text">
+            <h3
+              class="sc-buds-anc__eyebrow sc-buds-common-eyebrow"
+              id="intelligent-anc"
+            >
+              INTELLIGENT ANC
+            </h3>
+            <p class="sc-buds-anc__headline sc-buds-common-headline-m">
+              Puts your<br class="sc-buds-br-mo" />
+              playlist in focus
+            </p>
+          </div>
+          <div class="sc-buds-anc__kv">
+            <div class="sc-buds-anc__kv-image">
+              <img
+                src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                class="js-img-src js-res-img"
+                data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-anc-focus-end.jpg"
+                data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-anc-focus-end.jpg?imwidth=1080"
+                data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-anc-focus-end-mo.jpg"
+                alt="Two white Galaxy Buds2 Pro earbuds paced one in front of the other using a short depth of field. The left ear bud is placed closer and appears blurry. The right ear bud is farther away and appears clear."
+              />
+            </div>
+          </div>
+        </div>
+        <div class="sc-buds-anc__figure">
+          <span
+            class="sc-buds-anc__figure-description sc-buds-anc__figure-description--mo"
+          >
+            <strong> Active Noise Canceling (ANC)</strong
+            ><br class="sc-buds-br-mo" />
+            is better than ever.
+          </span>
+          <div
+            class="sc-buds-anc__figure-image sc-buds-anc__figure-image--external"
+          >
+            <div class="sc-buds-anc__figure-image-inner">
+              <img
+                src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                class="js-img-src js-res-img"
+                data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-anc-external-view.jpg"
+                data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-anc-external-view.jpg?imwidth=1080"
+                data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-anc-external-view-mo.jpg"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+          <p class="sc-buds-anc__figure-description sc-buds-common-description">
+            <span class="sc-buds-anc__figure-description--pc">
+              <strong> Active Noise Canceling (ANC)</strong
+              ><br class="sc-buds-br-mo" />
+              is better than ever.
+            </span>
+            With 3 high SNR (Signal-to-Noise Ratio) microphones, the Galaxy
+            Buds2 Pro tracks and eliminates more outside sound — even soft
+            sounds like wind.
+            <sup
+              ><a href="#desc-section" class="click_sup" title="See disclaimer"
+                >3</a
+              ></sup
+            >
+          </p>
+          <div
+            class="sc-buds-anc__figure-image sc-buds-anc__figure-image--internal"
+          >
+            <div class="sc-buds-anc__figure-image-inner">
+              <img
+                src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                class="js-img-src js-res-img"
+                data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-anc-internal-view.jpg"
+                data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-anc-internal-view.jpg?imwidth=1080"
+                data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-anc-internal-view-mo.jpg"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="sc-buds-anc__picture">
+          <p
+            class="sc-buds-anc__picture-description sc-buds-anc__picture-description--top sc-buds-common-description"
+          >
+            Switching to in-person conversations is easy with Voice Detect.
+          </p>
+          <div class="sc-buds-anc__picture-image">
+            <div class="sc-buds-anc__picture-image-inner">
+              <img
+                src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                class="js-img-src js-res-img"
+                data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-anc-couple-user.jpg"
+                data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-anc-couple-user.jpg?imwidth=1080"
+                data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-anc-couple-user-mo.jpg"
+                alt="Two women laughing and having a conversation while facing each other. The woman on the right has a Buds2 Pro in her left ear."
+              />
+            </div>
+          </div>
+          <p
+            class="sc-buds-anc__picture-description sc-buds-common-description"
+          >
+            Simply start talking and Voice Detect will turn off ANC and activate
+            Ambient sound — allowing you to clearly hear the conversation
+            without removing your Galaxy Buds2 Pro.
+            <sup
+              ><a href="#desc-section" class="click_sup" title="See disclaimer"
+                >3</a
+              ></sup
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!--Buds 360 Audio -->
+
+    <div class="sc-buds-360-audio">
+      <div class="sc-buds-360-audio__wrap">
+        <div class="sc-buds-360-audio__text">
+          <h3
+            class="sc-buds-360-audio__eyebrow sc-buds-common-eyebrow"
+            id="360-audio"
+          >
+            360 AUDIO
+          </h3>
+          <p class="sc-buds-360-audio__headline sc-buds-common-headline-m">
+            Hear it like<br class="sc-buds-br-pc" />
+            you're there
+          </p>
+        </div>
+        <div class="sc-buds-360-audio__kv">
+          <div class="sc-buds-360-audio__kv-image">
+            <img
+              src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+              class="js-img-src js-res-img"
+              data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-kv-end.jpg"
+              data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-kv-end.jpg?imwidth=1080"
+              data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-kv-end-mo.jpg"
+              alt="A man showing a Buds2 Pro in his ear"
+            />
+          </div>
+        </div>
+        <div class="sc-buds-360-audio__inner">
+          <div
+            class="sc-buds-360-audio__description sc-buds-common-description"
+          >
+            With intelligent 360 Audio, the sound feels more realistic. The 360
+            Audio with Direct Multi-channel (5.1ch / 7.1ch), Dolby Atmos<sup
+              >®</sup
+            >
+            and enhanced head tracking make every movement stay in sync
+            — creating an immersive experience. 360 Audio can even pinpoint the
+            direction of the sound as you move your head, giving you the spatial
+            experience.
+            <sup
+              ><a href="#desc-section" class="click_sup" title="See disclaimer"
+                >4</a
+              >,
+              <a href="#desc-section" class="click_sup" title="See disclaimer"
+                >5</a
+              ></sup
+            >
+            <div class="sc-buds-360-audio__popup-cta">
+              <button
+                type="button"
+                aria-hidden="false"
+                class="sc-buds-360-audio__cta"
+                title="360 AUDIO"
+                data-omni-type="microsite_contentinter"
+                data-omni="galaxy-buds2-pro:highlights:360-audio:popup:how-to-use"
+                ga-ca="content click"
+                ga-ac="feature"
+                ga-la="galaxy-buds2-pro:highlights:360-audio:popup:how-to-use"
+              >
+                <span>HOW TO USE</span>
+              </button>
+            </div>
+          </div>
+          <div class="sc-buds-360-audio__card s-ready">
+            <div class="sc-buds-360-audio__card-wrap">
+              <div class="sc-buds-360-audio__card-text">
+                <h4
+                  class="sc-buds-360-audio__card-headline sc-buds-common-headline-l"
+                >
+                  What is 360 Audio?
+                </h4>
+                <p
+                  class="sc-buds-360-audio__card-description sc-buds-common-description"
+                >
+                  360 Audio is a feature that pinpoints the direction of the
+                  sound as you move your head, putting your ears right in the
+                  scene.
+                </p>
+                <a
+                  href="#"
+                  role="button"
+                  class="sc-buds-360-audio__play-area"
+                  data-omni-type="microsite_contentinter"
+                  data-omni="galaxy-buds2-pro:highlights:what-is-360-audio:play:movie"
+                  ga-ca="content click"
+                  ga-ac="feature"
+                  ga-la="galaxy-buds2-pro:highlights:what-is-360-audio:play:movie"
+                  title="What is 360 Audio? video"
+                >
+                  <span class="sc-buds-360-audio__play">
+                    <span
+                      class="sc-buds-360-audio__play-btn sc-buds-360-audio__play-btn--play"
+                    >
+                      <img
+                        src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                        class="js-img-src js-res-img sc-buds-360-audio__play-btn sc-buds-360-audio__play-btn--play"
+                        data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-play-btn.png"
+                        data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-play-btn-mo.png"
+                        alt=""
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <span
+                      class="sc-buds-360-audio__play-btn sc-buds-360-audio__play-btn--pause"
+                    >
+                      <img
+                        src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                        class="js-img-src js-res-img sc-buds-360-audio__play-btn sc-buds-360-audio__play-btn--pause"
+                        data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-pause-btn.png"
+                        data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-pause-btn-mo.png"
+                        alt=""
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <span class="blind">play</span>
+                  </span>
+                </a>
+              </div>
+              <span class="sc-buds-360-audio__card-visual">
+                <span class="sc-buds-360-audio__video">
+                  <video playsinline class="sc-buds-360-audio__video-source">
+                    <source
+                      src="https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-video.webm"
+                      type="video/webm"
+                    />
+                    <source
+                      src="https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-video.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                  <img
+                    src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                    class="js-img-src js-res-img"
+                    data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-video-thumnail.jpg"
+                    data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-video-thumnail-mo.jpg"
+                    alt=""
+                  />
+                </span>
+                <span class="blind"
+                  >Cone-shaped sound funnels are directed at a mannequin head
+                  from the left and right. Then, five funnels of sound face the
+                  head from all around. Next, the funnels transform into an orb
+                  that surrounds the entire head.</span
+                >
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buds audio Popup -->
+
+    <div class="sc-buds-audio-popup__wrapper">
+      <div class="sc-buds-audio-popup">
+        <div class="sc-buds-audio-popup__dimmed"></div>
+        <div class="sc-buds-audio-popup__inner">
+          <div class="sc-buds-audio-popup__close">
+            <button
+              class="sc-buds-audio-popup__close-cta"
+              type="button"
+              data-omni-type="microsite_contentinter"
+              data-omni="galaxy-buds2-pro:highlights:360-audio^popup:close:icon-x"
+              ga-ca="content click"
+              ga-ac="feature"
+              ga-la="galaxy-buds2-pro:highlights:360-audio^popup:close:icon-x"
+            >
+              <span class="sc-buds-audio-popup__close-bg"></span>
+              <span class="blind">Close Popup</span>
+            </button>
+          </div>
+          <div class="sc-buds-step">
+            <div class="sc-buds-step__content">
+              <div class="sc-buds-step__inner">
+                <div class="sc-buds-step__text">
+                  <div class="sc-buds-step__mo-close-wrap">
+                    <button
+                      type="button"
+                      class="sc-buds-step__mo-close sc-buds-step__mo-close--icon"
+                      data-omni-type="microsite_contentinter"
+                      data-omni="galaxy-buds2-pro:highlights:360-audio^popup:close:icon-x"
+                      ga-ca="content click"
+                      ga-ac="feature"
+                      ga-la="galaxy-buds2-pro:highlights:360-audio^popup:close:icon-x"
+                    >
+                      <span class="blind">Close</span>
+                    </button>
+                  </div>
+                  <div class="sc-buds-step__box">
+                    <h3 class="sc-buds-step__eyebrow sc-buds-common-eyebrow">
+                      360 AUDIO
+                    </h3>
+                    <p class="sc-buds-step__headline sc-buds-common-headline-m">
+                      Activating is easy with Samsung Galaxy
+                    </p>
+                    <p
+                      class="sc-buds-step__description sc-buds-common-description"
+                    >
+                      To watch videos with spatially aware surround sound, open
+                      the Galaxy Wearable app, go to 360 audio and tap the
+                      toggle to activate.
+                    </p>
+                    <div
+                      class="sc-buds-step__disclaimer sc-buds-common-disclaimer"
+                    >
+                      <ul role="list">
+                        <li role="listitem">
+                          *Availability may vary depending on country, region,
+                          carrier or device.
+                        </li>
+                        <li role="listitem">
+                          *Image simulated for illustrative purposes.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="sc-buds-step__mo-close-wrap">
+                    <button
+                      type="button"
+                      class="sc-buds-step__mo-close sc-buds-step__mo-close--text"
+                      data-omni-type="microsite_contentinter"
+                      data-omni="galaxy-buds2-pro:highlights:360-audio^popup:close:see-how"
+                      ga-ca="content click"
+                      ga-ac="feature"
+                      ga-la="galaxy-buds2-pro:highlights:360-audio^popup:close:see-how"
+                    >
+                      <span class="sc-buds-step__mo-close-copy">See how</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="sc-buds-step__visual-wrap">
+                  <div class="swiper-container sc-buds-step__visual-swiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide sc-buds-step__item">
+                        <div class="sc-buds-step__item-content">
+                          <div class="sc-buds-step__item-headline">Step 1</div>
+                          <p class="sc-buds-step__item-description">
+                            Open the Galaxy Wearables app and activate "360
+                            audio"
+                          </p>
+                        </div>
+                        <div class="sc-buds-step__item-visual">
+                          <img
+                            src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                            class="js-img-src js-res-img"
+                            data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-step01.png"
+                            data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-step01.png?imwidth=1080"
+                            data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-step01-mo.png"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                      <div class="swiper-slide sc-buds-step__item">
+                        <div class="sc-buds-step__item-content">
+                          <div class="sc-buds-step__item-headline">Step 2</div>
+                          <p class="sc-buds-step__item-description">
+                            Turn on "Head tracking" for an immersive experience
+                          </p>
+                        </div>
+                        <div class="sc-buds-step__item-visual">
+                          <img
+                            src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                            class="js-img-src js-res-img"
+                            data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-step02.png"
+                            data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-step02.png?imwidth=1080"
+                            data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-step02-mo.png"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="sc-buds-step__arrow">
+                      <button
+                        type="button"
+                        class="swiper-button-prev sc-buds-step__arrow-prev swiper-button-dsabled"
+                        data-omni-type="microsite_pcontentinter"
+                        data-omni="galaxy-buds2-pro:highlights:360-audio^popup-step2:arrow:step1"
+                        ga-ca="indication"
+                        ga-ac="carousel"
+                        ga-la="galaxy-buds2-pro:highlights:360-audio^popup-step2:arrow:step1"
+                      >
+                        <span class="blind">Previous</span>
+                        <img
+                          src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                          class="js-img-src js-res-img"
+                          data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-arrow-icon.png"
+                          data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-arrow-icon.png"
+                          alt=""
+                          aria-hidden="true"
+                        />
+                      </button>
+                      <button
+                        type="button"
+                        class="swiper-button-next sc-buds-step__arrow-next"
+                        data-omni-type="microsite_pcontentinter"
+                        data-omni="galaxy-buds2-pro:highlights:360-audio^popup-step1:arrow:step2"
+                        ga-ca="indication"
+                        ga-ac="carousel"
+                        ga-la="galaxy-buds2-pro:highlights:360-audio^popup-step1:arrow:step2"
+                      >
+                        <span class="blind">Next</span>
+                        <img
+                          src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                          class="js-img-src js-res-img"
+                          data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-arrow-icon.png"
+                          data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-arrow-icon.png"
+                          alt=""
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </div>
+                    <div class="sc-buds-step__indicator">
+                      <ul
+                        class="sc-buds-step__indicator-list swiper-pagination swiper-pagination-bullets"
+                        role="list"
+                      ></ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="sc-buds-step__mo-popup">
+                  <button
+                    type="button"
+                    class="sc-buds-step__mo-popup-cta"
+                    data-omni-type="microsite_contentinter"
+                    data-omni="galaxy-buds2-pro:highlights:360-audio^popup:select:360-audio"
+                    ga-ca="content click"
+                    ga-ac="feature"
+                    ga-la="galaxy-buds2-pro:highlights:360-audio^popup:select:360-audio"
+                  >
+                    <span class="sc-buds-step__mo-popup-title">360 Audio</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Buds immersive -->
+
+    <div class="sc-buds-immersive">
+      <div class="sc-buds-immersive__wrap">
+        <div class="sc-buds-immersive__text">
+          <h3 class="sc-buds-immersive__eyebrow sc-buds-common-eyebrow">
+            IMMERSIVE SOUND EXPERIENCE
+          </h3>
+          <p class="sc-buds-immersive__headline sc-buds-common-headline-l">
+            Sound on for deeper dimension
+          </p>
+          <div
+            class="sc-buds-immersive__description sc-buds-common-description"
+          >
+            With Dolby Atmos, movies and music move around you in a way they
+            can't with standard sound. An immersive soundscape free from simple
+            left or right channels surrounds you in details with direction. Grab
+            your earbuds to try out 360 Audio and hear what you've been missing.
+          </div>
+          <ul
+            role="list"
+            class="sc-buds-immersive__disclaimer sc-buds-common-disclaimer"
+          >
+            <li role="listitem">
+              *For optimal experience, listen with earbuds or headphones on a
+              device with Dolby Atmos support.
+            </li>
+            <li role="listitem">
+              *Tracks are intended for playback in Atmos-supported environments
+              for Dolby Atmos technology demonstration purposes only.
+            </li>
+          </ul>
+        </div>
+        <div class="sc-buds-immersive__tab">
+          <div class="sc-buds-immersive__tab-list" role="tablist">
+            <div class="sc-buds-immersive__tab-highlight"></div>
+            <button
+              type="button"
+              class="sc-buds-immersive__tab-button is-active"
+              role="tab"
+              aria-controls="immersive-tab1"
+              aria-selected="true"
+              data-omni-type="microsite_contentinter"
+              data-omni="galaxy-buds2-pro:highlights:immersive-sound-experience:select:music"
+              ga-ca="content click"
+              ga-ac="feature"
+              ga-la="galaxy-buds2-pro:highlights:immersive-sound-experience:select:music"
+            >
+              <span>Music</span>
+            </button>
+            <button
+              type="button"
+              class="sc-buds-immersive__tab-button"
+              role="tab"
+              aria-controls="immersive-tab2"
+              aria-selected="false"
+              data-omni-type="microsite_contentinter"
+              data-omni="galaxy-buds2-pro:highlights:immersive-sound-experience:select:nature"
+              ga-ca="content click"
+              ga-ac="feature"
+              ga-la="galaxy-buds2-pro:highlights:immersive-sound-experience:select:nature"
+            >
+              <span>Nature</span>
+            </button>
+            <button
+              type="button"
+              class="sc-buds-immersive__tab-button"
+              role="tab"
+              aria-controls="immersive-tab3"
+              aria-selected="false"
+              data-omni-type="microsite_contentinter"
+              data-omni="galaxy-buds2-pro:highlights:immersive-sound-experience:select:cinema"
+              ga-ca="content click"
+              ga-ac="feature"
+              ga-la="galaxy-buds2-pro:highlights:immersive-sound-experience:select:cinema"
+            >
+              <span>Cinema</span>
+            </button>
+          </div>
+          <div class="sc-buds-immersive__tab-contents">
+            <div
+              class="sc-buds-immersive__tab-content sc-buds-immersive__tab-content--1 is-active s-ready"
+              id="immersive-tab1"
+              role="tabpanel"
+              aria-hidden="false"
+            >
+              <div class="sc-buds-immersive__content-wrap">
+                <h4 class="blind">Music</h4>
+                <div class="sc-buds-immersive__wave">
+                  <img
+                    src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                    class="js-img-src js-res-img"
+                    data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-wave1-1.png"
+                    data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-wave1-1-mo.png"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <img
+                    src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                    class="js-img-src js-res-img"
+                    data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-wave1-2.png"
+                    data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-wave1-2-mo.png"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </div>
+                <div class="sc-buds-immersive__video">
+                  <video playsinline class="sc-buds-immersive__video-source">
+                    <source
+                      src="https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-music.webm"
+                      type="video/webm"
+                    />
+                    <source
+                      src="https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-music.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                  <img
+                    src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                    class="js-img-src js-res-img"
+                    data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-music-thumbnail.png"
+                    data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-music-thumbnail-mo.png"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </div>
+                <a
+                  href="javascript:void(0)"
+                  class="sc-buds-immersive__play"
+                  role="button"
+                  title="music sound"
+                  data-omni-type="microsite_contentinter"
+                  data-omni="galaxy-buds2-pro:highlights:immersive-sound-experience:play:music"
+                  ga-ca="content click"
+                  ga-ac="feature"
+                  ga-la="galaxy-buds2-pro:highlights:immersive-sound-experience:play:music"
+                >
+                  <div
+                    class="sc-buds-immersive__play-btn sc-buds-immersive__play-btn--play"
+                  >
+                    <img
+                      src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                      class="js-img-src js-res-img sc-buds-immersive__play-btn sc-buds-immersive__play-btn--play"
+                      data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-play-btn.png"
+                      data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-play-btn-mo.png"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div
+                    class="sc-buds-immersive__play-btn sc-buds-immersive__play-btn--pause"
+                  >
+                    <img
+                      src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                      class="js-img-src js-res-img sc-buds-immersive__play-btn sc-buds-immersive__play-btn--pause"
+                      data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-pause-btn.png"
+                      data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-pause-btn-mo.png"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <span class="blind">play</span>
+                </a>
+                <p class="blind">
+                  A vocalist, guitarist and percussionist perform together as
+                  they record music in a studio.
+                </p>
+              </div>
+            </div>
+            <div
+              class="sc-buds-immersive__tab-content sc-buds-immersive__tab-content--2 s-ready"
+              id="immersive-tab2"
+              role="tabpanel"
+              aria-hidden="true"
+            >
+              <div class="sc-buds-immersive__content-wrap">
+                <h4 class="blind">Nature</h4>
+                <div class="sc-buds-immersive__wave">
+                  <img
+                    src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                    class="js-img-src js-res-img"
+                    data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-wave2-1.png"
+                    data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-wave2-1-mo.png"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <img
+                    src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                    class="js-img-src js-res-img"
+                    data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-wave2-2.png"
+                    data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-wave2-2-mo.png"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </div>
+                <div class="sc-buds-immersive__video">
+                  <video playsinline class="sc-buds-immersive__video-source">
+                    <source
+                      src="https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-nature.webm"
+                      type="video/webm"
+                    />
+                    <source
+                      src="https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-nature.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                  <img
+                    src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                    class="js-img-src js-res-img"
+                    data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-nature-thumbnail.png"
+                    data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-nature-thumbnail-mo.png"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </div>
+                <a
+                  href="javascript:void(0)"
+                  class="sc-buds-immersive__play"
+                  role="button"
+                  title="nature sound"
+                  data-omni-type="microsite_contentinter"
+                  data-omni="galaxy-buds2-pro:highlights:immersive-sound-experience:play:nature"
+                  ga-ca="content click"
+                  ga-ac="feature"
+                  ga-la="galaxy-buds2-pro:highlights:immersive-sound-experience:play:nature"
+                >
+                  <div
+                    class="sc-buds-immersive__play-btn sc-buds-immersive__play-btn--play"
+                  >
+                    <img
+                      src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                      class="js-img-src js-res-img sc-buds-immersive__play-btn sc-buds-immersive__play-btn--play"
+                      data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-play-btn.png"
+                      data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-play-btn-mo.png"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div
+                    class="sc-buds-immersive__play-btn sc-buds-immersive__play-btn--pause"
+                  >
+                    <img
+                      src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                      class="js-img-src js-res-img sc-buds-immersive__play-btn sc-buds-immersive__play-btn--pause"
+                      data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-pause-btn.png"
+                      data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-pause-btn-mo.png"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <span class="blind">play</span>
+                </a>
+                <p class="blind">
+                  Close up shots of rain falling gently on various forest
+                  plants.
+                </p>
+              </div>
+            </div>
+            <div
+              class="sc-buds-immersive__tab-content sc-buds-immersive__tab-content--3 s-ready"
+              id="immersive-tab3"
+              role="tabpanel"
+              aria-hidden="true"
+            >
+              <div class="sc-buds-immersive__content-wrap">
+                <h4 class="blind">Cinema</h4>
+                <div class="sc-buds-immersive__wave">
+                  <img
+                    src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                    class="js-img-src js-res-img"
+                    data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-wave3-1.png"
+                    data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-wave3-1-mo.png"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <img
+                    src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                    class="js-img-src js-res-img"
+                    data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-wave3-2.png"
+                    data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-wave3-2-mo.png"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </div>
+                <div class="sc-buds-immersive__video">
+                  <video playsinline class="sc-buds-immersive__video-source">
+                    <source
+                      src="https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-cinema.webm"
+                      type="video/webm"
+                    />
+                    <source
+                      src="https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-cinema.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                  <img
+                    src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                    class="js-img-src js-res-img"
+                    data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-cinema-thumbnail.png"
+                    data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-immersive-cinema-thumbnail-mo.png"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </div>
+                <a
+                  href="javascript:void(0)"
+                  class="sc-buds-immersive__play"
+                  role="button"
+                  title="cinema sound"
+                  data-omni-type="microsite_contentinter"
+                  data-omni="galaxy-buds2-pro:highlights:immersive-sound-experience:play:cinema"
+                  ga-ca="content click"
+                  ga-ac="feature"
+                  ga-la="galaxy-buds2-pro:highlights:immersive-sound-experience:play:cinema"
+                >
+                  <div
+                    class="sc-buds-immersive__play-btn sc-buds-immersive__play-btn--play"
+                  >
+                    <img
+                      src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                      class="js-img-src js-res-img sc-buds-immersive__play-btn sc-buds-immersive__play-btn--play"
+                      data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-play-btn.png"
+                      data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-play-btn-mo.png"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div
+                    class="sc-buds-immersive__play-btn sc-buds-immersive__play-btn--pause"
+                  >
+                    <img
+                      src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                      class="js-img-src js-res-img sc-buds-immersive__play-btn sc-buds-immersive__play-btn--pause"
+                      data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-pause-btn.png"
+                      data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-pause-btn-mo.png"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <span class="blind">play</span>
+                </a>
+                <p class="blind">
+                  Lights dance around a shiny orb in an abstract representation
+                  of the sounds passing by.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-buds-immersive__tip">
+          <span class="sc-buds-immersive__tip-text"
+            >Grab your earbuds to try out 360 Audio sound</span
+          >
+        </div>
+        <div class="sc-buds-immersive__dolby">
+          <img
+            src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+            class="sc-buds-immersive__dolby-image js-img-src js-res-img"
+            data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-dolby-atmos-icon.png"
+            data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-dolby-atmos-icon-mo.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <!--Buds recording -->
+
+    <div class="sc-buds-recording">
+      <div class="sc-buds-recording__wrap">
+        <h3 class="sc-buds-recording__eyebrow sc-buds-common-eyebrow">
+          360 AUDIO RECORDING
+        </h3>
+        <p class="sc-buds-recording__headline sc-buds-common-headline-l">
+          Capture the world as you hear it
+        </p>
+        <div class="sc-buds-recording__figure-wrap">
+          <div class="sc-buds-recording__figure">
+            <div class="sc-buds-recording__figure-inner">
+              <img
+                src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                class="js-img-src js-res-img"
+                data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording.jpg"
+                data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording.jpg?imwidth=1080"
+                data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-mo.jpg"
+                alt="A young man holding his Galaxy Z Flip4 with the Galaxy Buds2 Pro in his ears is recording a moment using 360 Audio Recording."
+              />
+            </div>
+            <div class="sc-buds-recording__figure-inner">
+              <img
+                src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                class="js-img-src js-res-img"
+                data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-shooting.png"
+                data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-shooting.png?imwidth=1080"
+                data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-shooting-mo.png"
+                alt="The Camera app is open and in video recording mode. A woman is playing tennis in the view finder."
+              />
+            </div>
+          </div>
+        </div>
+        <div class="sc-buds-recording__description sc-buds-common-description">
+          Now with just your smartphone and Galaxy Buds2 Pro, you can capture
+          more precise sound. Turn on 360 Audio Recording so when your friends
+          play your videos back, the hyper-realistic 360 sound will immerse them
+          right into the action.
+        </div>
+        <div class="sc-buds-recording__disclaimer sc-buds-common-disclaimer">
+          <ul role="list">
+            <li role="listitem">*Image simulated for illustrative purpose.</li>
+            <li role="listitem">
+              *360 Audio recording is available for Samsung Galaxy Z Fold4, Z
+              Flip4 with Android One UI version 5.0 or later and must be paired
+              with Galaxy Buds2 Pro.
+            </li>
+            <li role="listitem">
+              *Enhanced head tracking and Direct Multi-channel is supported with
+              Android One UI version 4.1.1 or later.
+            </li>
+          </ul>
+        </div>
+        <div class="sc-buds-recording__popup-cta">
+          <button
+            type="button"
+            aria-hidden="false"
+            class="sc-buds-recording__cta"
+            title="360 AUDIO RECORDING"
+            data-omni-type="microsite_contentinter"
+            data-omni="galaxy-buds2-pro:highlights:360-audio-recording:popup:how-to-use"
+            ga-ca="content click"
+            ga-ac="feature"
+            ga-la="galaxy-buds2-pro:highlights:360-audio-recording:popup:how-to-use"
+          >
+            <span>HOW TO USE</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--Buds recording popup -->
+
+    <div class="sc-buds-recording-popup__wrapper">
+      <div class="sc-buds-audio-popup">
+        <div class="sc-buds-audio-popup__dimmed"></div>
+        <div class="sc-buds-audio-popup__inner">
+          <div class="sc-buds-audio-popup__close">
+            <button
+              class="sc-buds-audio-popup__close-cta"
+              type="button"
+              data-omni-type="microsite_contentinter"
+              data-omni="galaxy-buds2-pro:highlights:360-audio-recording^popup:close:icon-x"
+              ga-ca="content click"
+              ga-ac="feature"
+              ga-la="galaxy-buds2-pro:highlights:360-audio-recording^popup:close:icon-x"
+            >
+              <span class="sc-buds-audio-popup__close-bg"></span>
+              <span class="blind">Close Popup</span>
+            </button>
+          </div>
+          <div class="sc-buds-step">
+            <div class="sc-buds-step__content">
+              <div class="sc-buds-step__inner">
+                <div class="sc-buds-step__text">
+                  <div class="sc-buds-step__mo-close-wrap">
+                    <button
+                      type="button"
+                      class="sc-buds-step__mo-close sc-buds-step__mo-close--icon"
+                      data-omni-type="microsite_contentinter"
+                      data-omni="galaxy-buds2-pro:highlights:360-audio-recording^popup:close:icon-x"
+                      ga-ca="content click"
+                      ga-ac="feature"
+                      ga-la="galaxy-buds2-pro:highlights:360-audio-recording^popup:close:icon-x"
+                    >
+                      <span class="blind">Close</span>
+                    </button>
+                  </div>
+                  <div class="sc-buds-step__box">
+                    <h3 class="sc-buds-step__eyebrow sc-buds-common-eyebrow">
+                      360 AUDIO RECORDING
+                    </h3>
+                    <p class="sc-buds-step__headline sc-buds-common-headline-m">
+                      Create videos with 360 Audio
+                    </p>
+                    <p
+                      class="sc-buds-step__description sc-buds-common-description"
+                    >
+                      Before you hit record, go into your Samsung Camera app's
+                      advanced video options. Wear your Galaxy Buds2 Pro and tap
+                      the 360 audio recording toggle. Now you're ready to record
+                      3D sound.
+                    </p>
+                    <div
+                      class="sc-buds-step__disclaimer sc-buds-common-disclaimer"
+                    >
+                      <ul role="list">
+                        <li role="listitem">
+                          *360 Audio recording is available for Samsung Galaxy Z
+                          Fold4, Z Flip4 with Android One UI version 5.0 or
+                          later and must be paired with Galaxy Buds2 Pro.
+                        </li>
+                        <li role="listitem">
+                          *360 Audio and head tracking support may vary
+                          depending on the application and content.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="sc-buds-step__mo-close-wrap">
+                    <button
+                      type="button"
+                      class="sc-buds-step__mo-close sc-buds-step__mo-close--text"
+                      data-omni-type="microsite_contentinter"
+                      data-omni="galaxy-buds2-pro:highlights:360-audio-recording^popup:select:see-how"
+                      ga-ca="content click"
+                      ga-ac="feature"
+                      ga-la="galaxy-buds2-pro:highlights:360-audio-recording^popup:select:see-how"
+                    >
+                      <span class="sc-buds-step__mo-close-copy">See how</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="sc-buds-step__visual-wrap">
+                  <div class="swiper-container sc-buds-step__visual-swiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide sc-buds-step__item">
+                        <div class="sc-buds-step__item-visual">
+                          <img
+                            src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                            class="js-img-src js-res-img"
+                            data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step01.jpg"
+                            data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step01.jpg?imwidth=1080"
+                            data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step01-mo.jpg"
+                            alt="The Camera app is open. In the view finder, a woman is playing tennis. A circle indicates to tap video mode on the horizontal scrolling menu above the shutter button."
+                          />
+                        </div>
+                      </div>
+                      <div class="swiper-slide sc-buds-step__item">
+                        <div class="sc-buds-step__item-visual">
+                          <img
+                            src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                            class="js-img-src js-res-img"
+                            data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step02.jpg"
+                            data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step02.jpg?imwidth=1080"
+                            data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step02-mo.jpg"
+                            alt="The Camera app is open and in video recording mode. A circle indicates to tap the settings gear at the top of the screen."
+                          />
+                        </div>
+                      </div>
+                      <div class="swiper-slide sc-buds-step__item">
+                        <div class="sc-buds-step__item-visual">
+                          <img
+                            src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                            class="js-img-src js-res-img"
+                            data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step03.jpg"
+                            data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step03.jpg?imwidth=1080"
+                            data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step03-mo.jpg"
+                            alt="In Camera settings, a circle indicates to tap Advanced videos options."
+                          />
+                        </div>
+                      </div>
+                      <div class="swiper-slide sc-buds-step__item">
+                        <div class="sc-buds-step__item-visual">
+                          <img
+                            src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                            class="js-img-src js-res-img"
+                            data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step04.jpg"
+                            data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step04.jpg?imwidth=1080"
+                            data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step04-mo.jpg"
+                            alt="In Advanced video options, a circle indicates to tap the 360 audio recording toggle to 'on.'"
+                          />
+                        </div>
+                      </div>
+                      <div class="swiper-slide sc-buds-step__item">
+                        <div class="sc-buds-step__item-visual">
+                          <img
+                            src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                            class="js-img-src js-res-img"
+                            data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step05.jpg"
+                            data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step05.jpg?imwidth=1080"
+                            data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recording-step05-mo.jpg"
+                            alt="Returning to the Camera app's view finder, a small translucent box with text has appeared in the upper right hand corner that reads '360 mic' to indicate that 360 audio recording is currently activated."
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="sc-buds-step__arrow">
+                      <button
+                        type="button"
+                        class="swiper-button-prev sc-buds-step__arrow-prev swiper-button-dsabled"
+                        data-omni-type="microsite_pcontentinter"
+                        data-omni="galaxy-buds2-pro:highlights:360-audio-recording^popup:arrow:2"
+                        ga-ca="indication"
+                        ga-ac="carousel"
+                        ga-la="galaxy-buds2-pro:highlights:360-audio-recording^popup:arrow:2"
+                      >
+                        <span class="blind">Previous</span>
+                        <img
+                          src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                          class="js-img-src js-res-img"
+                          data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-arrow-icon.png"
+                          data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-arrow-icon.png"
+                          alt=""
+                          aria-hidden="true"
+                        />
+                      </button>
+                      <button
+                        type="button"
+                        class="swiper-button-next sc-buds-step__arrow-next"
+                        data-omni-type="microsite_pcontentinter"
+                        data-omni="galaxy-buds2-pro:highlights:360-audio-recording^popup:arrow:1"
+                        ga-ca="indication"
+                        ga-ac="carousel"
+                        ga-la="galaxy-buds2-pro:highlights:360-audio-recording^popup:arrow:1"
+                      >
+                        <span class="blind">Next</span>
+                        <img
+                          src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                          class="js-img-src js-res-img"
+                          data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-arrow-icon.png"
+                          data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-arrow-icon.png"
+                          alt=""
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </div>
+                    <div class="sc-buds-step__indicator">
+                      <ul
+                        class="sc-buds-step__indicator-list swiper-pagination swiper-pagination-bullets"
+                        role="list"
+                      ></ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="sc-buds-step__mo-popup">
+                  <button
+                    type="button"
+                    class="sc-buds-step__mo-popup-cta"
+                    data-omni-type="microsite_contentinter"
+                    data-omni="galaxy-buds2-pro:highlights:360-audio-recording^popup:select:360-audio-recording"
+                    ga-ca="content click"
+                    ga-ac="feature"
+                    ga-la="galaxy-buds2-pro:highlights:360-audio-recording^popup:select:360-audio-recording"
+                  >
+                    <span class="sc-buds-step__mo-popup-title"
+                      >360 Audio Recording</span
+                    >
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Buds recording video -->
+
+    <div class="sc-buds-recording-video">
+      <div class="sc-buds-recording-video__wrap">
+        <h4 class="sc-buds-recording-video__headline sc-buds-common-headline-m">
+          Hear from the creators
+        </h4>
+        <div
+          class="sc-buds-recording-video__description sc-buds-common-description"
+        >
+          See how social media influencers use 360 Audio Recording to pull their
+          followers into the scene.
+        </div>
+        <div
+          class="sc-buds-recording-video__disclaimer sc-buds-common-disclaimer"
+        >
+          <ul role="list">
+            <li role="listitem">
+              *For optimal experience, listen with earbuds or headphones on a
+              device with Dolby Atmos support.
+            </li>
+            <li role="listitem">
+              *360 Audio recording is available for Samsung Galaxy Z Fold4, Z
+              Flip4 with Android One UI version 5.0 or later and must be paired
+              with Galaxy Buds2 Pro.
+            </li>
+            <li role="listitem">
+              *360 Audio and head tracking support may vary depending on the
+              application and content.
+            </li>
+          </ul>
+        </div>
+        <div class="sc-buds-recording-video__contents">
+          <div class="sc-buds-recording-video__contents-inner swiper-container">
+            <ul
+              class="sc-buds-recording-video__list swiper-wrapper"
+              role="list"
+            >
+              <li
+                class="sc-buds-recording-video__item is-ready swiper-slide"
+                role="listitem"
+              >
+                <div class="sc-buds-recording-video__item-wrap">
+                  <div class="sc-buds-recording-video__item-title">
+                    Vlog & Social
+                  </div>
+                  <div class="sc-buds-recording-video__item-video">
+                    <a
+                      href="javascript:void(0)"
+                      class="sc-buds-recording-video__control"
+                      role="button"
+                      title="Video at Vlog and Social"
+                      data-omni-type="microsite_contentinter"
+                      data-omni="galaxy-buds2-pro:highlights:360-audio-recording:play:vlog-n-social"
+                      ga-ca="content click"
+                      ga-ac="feature"
+                      ga-la="galaxy-buds2-pro:highlights:360-audio-recording:play:vlog-n-social"
+                    >
+                      <span class="blind">Play</span>
+                      <div
+                        class="sc-buds-recording-video__btn sc-buds-recording-video__btn-play"
+                      >
+                        <img
+                          src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                          class="js-img-src js-res-img"
+                          data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-play-btn-dark.png"
+                          data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-play-btn-dark-mo.png"
+                          alt=""
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <div
+                        class="sc-buds-recording-video__btn sc-buds-recording-video__btn-pause"
+                      >
+                        <img
+                          src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                          class="js-img-src js-res-img"
+                          data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-pause-btn-dark.png"
+                          data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-pause-btn-dark-mo.png"
+                          alt=""
+                          aria-hidden="true"
+                        />
+                      </div>
+                    </a>
+                    <div
+                      class="sc-buds-recording-video__figure"
+                      role="figure"
+                      aria-labelledby="buds2-pro-recorded-scene01-caption"
+                    >
+                      <video
+                        playsinline
+                        class="sc-buds-recording-video__source"
+                      >
+                        <source
+                          src="https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recorded-scene01.webm"
+                          type="video/webm"
+                        />
+                        <source
+                          src="https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recorded-scene01.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                      <img
+                        src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                        class="js-img-src js-res-img sc-buds-recording-video__cover-image"
+                        data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recorded-scene01.jpg"
+                        data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recorded-scene01-mo.jpg"
+                        aria-hidden="true"
+                        alt=""
+                      />
+                      <p id="buds2-pro-recorded-scene01-caption" class="blind">
+                        A young woman waits at a train platform. She takes out a
+                        Galaxy Buds2 Pro case and places the earbuds in her
+                        ears. In the camera app, 360 Audio Recording is
+                        activated. She checks her makeup in the selfie camera of
+                        her Galaxy Z Flip4. As the train pulls into the station,
+                        the 360 Audio Recording toggle is activated. She boards
+                        the train. Next, the 360 Audio Recording toggle is
+                        activated again as she waits at a crosswalk during the
+                        day. She is holding up her Galaxy Buds2 Pro cradle on
+                        her right hand. Suddenly, it changes from day to
+                        nighttime. She closes the cradle and crosses the
+                        crosswalk with her earbuds in her ears. Next, she is
+                        seen walking down a pedestrian tunnel, recording with
+                        her Galaxy Z Flip4. Next, she poses for the camera from
+                        a seated position. Next, she arrives home, puts her
+                        earbuds in the cradle, and jumps into bed to sleep.
+                        Samsung logo.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li
+                class="sc-buds-recording-video__item is-ready swiper-slide"
+                role="listitem"
+              >
+                <div class="sc-buds-recording-video__item-wrap">
+                  <div class="sc-buds-recording-video__item-title">
+                    Music & Dance
+                  </div>
+                  <div class="sc-buds-recording-video__item-video">
+                    <a
+                      href="javascript:void(0)"
+                      class="sc-buds-recording-video__control"
+                      role="button"
+                      title="Video at Music and Dance"
+                      data-omni-type="microsite_contentinter"
+                      data-omni="galaxy-buds2-pro:highlights:360-audio-recording:play:music-n-dance"
+                      ga-ca="content click"
+                      ga-ac="feature"
+                      ga-la="galaxy-buds2-pro:highlights:360-audio-recording:play:music-n-dance"
+                    >
+                      <span class="blind">Play</span>
+                      <div
+                        class="sc-buds-recording-video__btn sc-buds-recording-video__btn-play"
+                      >
+                        <img
+                          src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                          class="js-img-src js-res-img"
+                          data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-play-btn-dark.png"
+                          data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-play-btn-dark-mo.png"
+                          alt=""
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <div
+                        class="sc-buds-recording-video__btn sc-buds-recording-video__btn-pause"
+                      >
+                        <img
+                          src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                          class="js-img-src js-res-img"
+                          data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-pause-btn-dark.png"
+                          data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-pause-btn-dark-mo.png"
+                          alt=""
+                          aria-hidden="true"
+                        />
+                      </div>
+                    </a>
+                    <div
+                      class="sc-buds-recording-video__figure"
+                      role="figure"
+                      aria-labelledby="buds2-pro-recorded-scene02-caption"
+                    >
+                      <video
+                        playsinline
+                        class="sc-buds-recording-video__source"
+                      >
+                        <source
+                          src="https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recorded-scene02.webm"
+                          type="video/webm"
+                        />
+                        <source
+                          src="https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recorded-scene02.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                      <img
+                        src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                        class="js-img-src js-res-img sc-buds-recording-video__cover-image"
+                        data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recorded-scene02.jpg"
+                        data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recorded-scene02-mo.jpg"
+                        aria-hidden="true"
+                        alt=""
+                      />
+                      <p id="buds2-pro-recorded-scene02-caption" class="blind">
+                        A young man touches his earbud in his right ear. Next, a
+                        group of young men including him are all seen together
+                        in a dance studio doing hip hop dance. Various angles
+                        and shots of them show them interacting with the camera
+                        in a dynamic way. Then the 360 Audio Recording toggle is
+                        activated. They film themselves dancing with the selfie
+                        mode on, using 360 Audio Recording. At the same time the
+                        view finder screen they're seeing is shown above the
+                        phone the man is holding up. The view finder disappears
+                        and they dance for the camera. Then they make circle and
+                        keep dancing. The 360 Audio Recording toggle is
+                        activated. Suddenly, they jump together and are
+                        transported back outside to a sidewalk. The 360 Audio
+                        Recording toggle is activated. They continue dancing
+                        down the street. Samsung logo.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li
+                class="sc-buds-recording-video__item is-active swiper-slide"
+                role="listitem"
+              >
+                <div class="sc-buds-recording-video__item-wrap">
+                  <div class="sc-buds-recording-video__item-title">
+                    Sports & Activities
+                  </div>
+                  <div class="sc-buds-recording-video__item-video">
+                    <a
+                      href="javascript:void(0)"
+                      class="sc-buds-recording-video__control"
+                      role="button"
+                      title="Video at Sports and Activities"
+                      data-omni-type="microsite_contentinter"
+                      data-omni="galaxy-buds2-pro:highlights:360-audio-recording:play:sports-n-activities"
+                      ga-ca="content click"
+                      ga-ac="feature"
+                      ga-la="galaxy-buds2-pro:highlights:360-audio-recording:play:sports-n-activities"
+                    >
+                      <span class="blind">Play</span>
+                      <div
+                        class="sc-buds-recording-video__btn sc-buds-recording-video__btn-play"
+                      >
+                        <img
+                          src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                          class="js-img-src js-res-img"
+                          data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-play-btn-dark.png"
+                          data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-play-btn-dark-mo.png"
+                          alt=""
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <div
+                        class="sc-buds-recording-video__btn sc-buds-recording-video__btn-pause"
+                      >
+                        <img
+                          src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                          class="js-img-src js-res-img"
+                          data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-pause-btn-dark.png"
+                          data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-mp4-pause-btn-dark-mo.png"
+                          alt=""
+                          aria-hidden="true"
+                        />
+                      </div>
+                    </a>
+                    <div
+                      class="sc-buds-recording-video__figure"
+                      role="figure"
+                      aria-labelledby="buds2-pro-recorded-scene03-caption"
+                    >
+                      <video
+                        playsinline
+                        class="sc-buds-recording-video__source"
+                      >
+                        <source
+                          src="https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recorded-scene03.webm"
+                          type="video/webm"
+                        />
+                        <source
+                          src="https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recorded-scene03.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                      <img
+                        src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                        class="js-img-src js-res-img sc-buds-recording-video__cover-image"
+                        data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recorded-scene03.jpg"
+                        data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-recorded-scene03-mo.jpg"
+                        aria-hidden="true"
+                        alt=""
+                      />
+                      <p id="buds2-pro-recorded-scene03-caption" class="blind">
+                        A young woman is sitting outdoors. She takes her Galaxy
+                        Buds2 Pro earbuds from the cradle and places them in her
+                        ears. Next, she is walking while carrying a skateboard
+                        in one arm and using her Galaxy Z Flip4 in the other.
+                        Using the camera app in selfie mode, she turns on 360
+                        audio recording. At the same time, the 360 audio
+                        recording toggle is activated. She records herself
+                        posing for the camera, and then skateboarding in the
+                        park. There are various shots of her spinning on the
+                        skateboard and touring the park with the earbuds in her
+                        ears. The toggle is activated twice. She slowly stops
+                        and her back is seen to the camera. Samsung logo.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="sc-buds-recording-video__pagination">
+            <ul class="swiper-pagination" role="list"></ul>
+          </div>
+          <div class="sc-buds-recording-video__arrow">
+            <button
+              role="button"
+              class="sc-buds-recording-video__arrow-btn sc-buds-recording-video__arrow-prev"
+              data-omni-type="microsite_pcontentinter"
+              data-omni="galaxy-buds2-pro:highlights:360-audio-recording:arrow:sports-n-activities"
+              ga-ca="indication"
+              ga-ac="carousel"
+              ga-la="galaxy-buds2-pro:highlights:360-audio-recording:arrow:sports-n-activities"
+            >
+              <span class="blind">Previous Slide</span>
+              <img
+                src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                class="js-img-src js-res-img"
+                data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-arrow-left-mo.png"
+                data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-arrow-left-mo.png"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
+            <button
+              role="button"
+              class="sc-buds-recording-video__arrow-btn sc-buds-recording-video__arrow-next"
+              data-omni-type="microsite_pcontentinter"
+              data-omni="galaxy-buds2-pro:highlights:360-audio-recording:arrow:music-n-dance"
+              ga-ca="indication"
+              ga-ac="carousel"
+              ga-la="galaxy-buds2-pro:highlights:360-audio-recording:arrow:music-n-dance"
+            >
+              <span class="blind">Next Slide</span>
+              <img
+                src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                class="js-img-src js-res-img"
+                data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-arrow-right-mo.png"
+                data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-360-audio-arrow-right-mo.png"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
+          </div>
+        </div>
+        <div class="sc-buds-recording-video__tip">
+          <span class="sc-buds-recording-video__tip-text"
+            >Grab your earbuds to try out 360 Audio sound</span
+          >
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,183 @@
+<!-- Sound customization -->
+<section class="sc-buds-custom" data-sc-section id="soundCustomization">
+  <div class="sc-buds-custom__wrap">
+    <h3 class="sc-buds-custom__eyebrow">SOUND CUSTOMIZATION</h3>
+    <strong class="sc-buds-custom__headline"
+      >Sounds tailored to<br />your taste</strong
+    >
+    <p class="sc-buds-custom__desc">
+      Your every audio experience is tailored to your taste with Galaxy Buds2.
+      With six different equalizer settings to choose from, you&apos;ll find your
+      own pitch perfect, vibrant sound that keeps you immersed.
+    </p>
+    <div class="sc-buds-custom__visual">
+      <div class="sc-buds-custom__setting">
+        <div class="sc-buds-custom__setting-descbox">
+          <p class="sc-buds-custom__setting-desc">
+            How to change equalizer setting
+          </p>
+        </div>
+        <div class="sc-buds-custom__setting-list">
+          <div
+            id="panelCustomizationStep1"
+            class="sc-buds-custom__setting-scene1 is-active"
+            role="tabpanel"
+            aria-labelledby="tabCustomizationStep1"
+            aria-hidden="false"
+          >
+            <em class="sc-buds-custom__setting-step" aria-hidden="true"
+              >Step 1</em
+            >
+            <div class="js-picture">
+              <img
+                data-media="(min-width: 768)"
+                src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-earbuds-setting-equalizer-step1.png"
+                alt=""
+              />
+              <img
+                data-media="(max-width: 767)"
+                src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-earbuds-setting-equalizer-step1-mo.png"
+                alt=""
+              />
+              <p class="blind" data-alt>
+                The Galaxy Buds2 settings menu is shown on a smartphone screen
+                and the Earbuds setting button is highlighted. A set of
+                lavender Galaxy Buds2 earbuds is seen in the background.
+              </p>
+            </div>
+          </div>
+          <div
+            id="panelCustomizationStep2"
+            class="sc-buds-custom__setting-scene2"
+            role="tabpanel"
+            aria-labelledby="tabCustomizationStep2"
+            aria-hidden="true"
+          >
+            <em class="sc-buds-custom__setting-step" aria-hidden="true"
+              >Step 2</em
+            >
+            <div class="js-picture">
+              <img
+                data-media="(min-width: 768)"
+                src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-earbuds-setting-equalizer-step2.png"
+                alt=""
+              />
+              <img
+                data-media="(max-width: 767)"
+                src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-earbuds-setting-equalizer-step2-mo.png"
+                alt=""
+              />
+              <p class="blind" data-alt>
+                The equalizer button is highlighted in the settings screen.
+              </p>
+            </div>
+          </div>
+          <div
+            id="panelCustomizationStep3"
+            class="sc-buds-custom__setting-scene3"
+            role="tabpanel"
+            aria-labelledby="tabCustomizationStep3"
+            aria-hidden="true"
+          >
+            <em class="sc-buds-custom__setting-step" aria-hidden="true"
+              >Step 3</em
+            >
+            <div class="js-picture">
+              <img
+                data-media="(min-width: 768)"
+                src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-earbuds-setting-equalizer-step3.png"
+                alt=""
+              />
+              <img
+                data-media="(max-width: 767)"
+                src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-earbuds-setting-equalizer-step3-mo.png"
+                alt=""
+              />
+              <p class="blind" data-alt>
+                Different options for the equalizer setting is shown.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="sc-buds-custom__setting-pd1">
+          <div class="js-picture" data-async>
+            <img
+              data-media="(min-width: 768)"
+              src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+              data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-lavender-right-customization.png"
+              alt=""
+            />
+            <img
+              data-media="(max-width: 767)"
+              src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+              data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-lavender-right-customization-mo.png"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="sc-buds-custom__setting-pd2">
+          <div class="js-picture" data-async>
+            <img
+              data-media="(min-width: 768)"
+              src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+              data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-lavender-left-customization.png"
+              alt=""
+            />
+            <img
+              data-media="(max-width: 767)"
+              src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+              data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-lavender-left-customization-mo.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <div class="sc-buds-custom__pager-area">
+        <ul class="sc-buds-custom__pager" role="tablist">
+          <li role="presentation" class="sc-buds-custom__pager-item">
+            <a
+              href="#none"
+              id="tabCustomizationStep1"
+              role="tab"
+              aria-controls="panelCustomizationStep1"
+              aria-selected="true"
+              class="sc-buds-custom__pager-btn is-selected"
+            >
+              <span class="blind">Step 1</span>
+            </a>
+          </li>
+          <li role="presentation" class="sc-buds-custom__pager-item">
+            <a
+              href="#none"
+              id="tabCustomizationStep2"
+              role="tab"
+              aria-controls="panelCustomizationStep2"
+              aria-selected="false"
+              class="sc-buds-custom__pager-btn"
+            >
+              <span class="blind">Step 2</span>
+            </a>
+          </li>
+          <li role="presentation" class="sc-buds-custom__pager-item">
+            <a
+              href="#none"
+              id="tabCustomizationStep3"
+              role="tab"
+              aria-controls="panelCustomizationStep3"
+              aria-selected="false"
+              class="sc-buds-custom__pager-btn"
+            >
+              <span class="blind">Step 3</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
