@@ -1,6 +1,5 @@
 [galaxy-buds2]
 1. html 수정
-2. 이미지 추가
 
 [Modified Resource]
 https://org-glx.samsung.com/global/galaxy/galaxy-buds2/index.html
@@ -9,7 +8,7 @@ https://org-glx.samsung.com/global/galaxy/galaxy-buds2/index.html
 https://www.samsung.com/global/galaxy/galaxy-buds2/
 
 [추가]
-/global/galaxy/galaxy-buds2/images/galaxy-buds2-ai-logo_v2.png
+추가없음
 
 
 
