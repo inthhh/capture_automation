@@ -73,8 +73,7 @@ def qa (url_code):
                 cell_value = process_class_attributes(exl_ws, content_comp_div,
                                                       "", "", "", "",
                                                       "N", "section",
-                                                      {
-                                                          "home-kv-carousel--height-large": "Desktop:810px / Mobile:640px",
+                                                      {"home-kv-carousel--height-large": "Desktop:810px / Mobile:640px",
                                                           "home-kv-carousel--height-medium": "Desktop:640px / Mobile:540px",
                                                           "home-kv-carousel--height-smedium": "Desktop:344px / Mobile:400px",
                                                           "home-kv-carousel--height-small": "Desktop:320px / Mobile:320px"},
@@ -135,7 +134,7 @@ def qa (url_code):
                 if content_comp_div.select('div > div.ho-g-showcase-card-tab'):
                     col_location = process_label_text(exl_ws, content_comp_div, "", "", "", "",
                                                       "section > div > div", "H", "text-block-container__headline",
-                                                      "N", "N", raw_data_meta)
+                                                      "Y", "N", raw_data_meta)
                     for content_comp_co02 in content_comp_div.select('div.showcase-card-tab'):
 
                         tab_no = 0

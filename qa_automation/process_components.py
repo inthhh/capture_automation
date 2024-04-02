@@ -5,6 +5,9 @@ import html
 from datetime import datetime
 
 
+def remove_special_characters(text):
+    return re.sub(r'[^\w\s]', ' ', text, flags=re.UNICODE)
+
 def process_class_attributes(exl_ws, content_comp_div, col_location, col_area, col_title, col_description, data_selector, data_tag, data_option, data_option_none, data_print, raw_data_meta):
     selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[0]
     cell_none_txt = format_none_value(data_option_none)
@@ -21,7 +24,7 @@ def process_class_attributes(exl_ws, content_comp_div, col_location, col_area, c
 
 
 def process_attributes_value(exl_ws, content_comp_div, col_location, col_area, col_title, col_description, data_selector, data_tag, data_class, data_attr_value, check_guide, data_print, raw_data_meta):
-    exception_words = ["SAMSUNG", "QLED", "OLED", "BESPOKE"]
+    exception_words = ["SAMSUNG", "QLED", "OLED", "BESPOKE", "PSSD", "SDXC"]
     try:
         selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[0]
     except Exception as e:
@@ -71,7 +74,8 @@ def process_attributes_value(exl_ws, content_comp_div, col_location, col_area, c
                 else:
                     cell_remark5 = 'Pass'
 
-                words_to_uppercase = cell_value.split()
+                special_removed_cell_value = remove_special_characters(cell_value)
+                words_to_uppercase = special_removed_cell_value.split()
 
                 # Iran 의 CTA TEXT 시작과 끝에 추가된 LRM html entity code 제거를 위한 조건문
                 words_to_uppercase[0] = words_to_uppercase[0][3:] if "LRM" in words_to_uppercase[0] else words_to_uppercase[0]
@@ -107,7 +111,7 @@ def process_attributes_value(exl_ws, content_comp_div, col_location, col_area, c
         return cell_value
 
 def process_label_text(exl_ws, content_comp_div, col_location, col_area, col_title, col_description, data_selector, data_tag, data_class, check_guide, data_print, raw_data_meta):
-    exception_words = ["SAMSUNG","QLED", "OLED", "BESPOKE"]
+    exception_words = ["SAMSUNG","QLED", "OLED", "BESPOKE", "PSSD", "SDXC"]
     try:
         selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[0]
     except Exception as e:
@@ -165,7 +169,8 @@ def process_label_text(exl_ws, content_comp_div, col_location, col_area, col_tit
                 else:
                     cell_remark5 = 'Pass'
 
-                words_to_uppercase = cell_value.split()
+                special_removed_cell_value = remove_special_characters(cell_value)
+                words_to_uppercase = special_removed_cell_value.split()
 
                 # Iran 의 CTA TEXT 시작과 끝에 추가된 html entity code 제거를 위한 조건문
                 words_to_uppercase[0] = words_to_uppercase[0][1:] if "\u200e" in words_to_uppercase[0] else words_to_uppercase[0]
@@ -205,6 +210,7 @@ def process_label_text(exl_ws, content_comp_div, col_location, col_area, col_tit
 
 
 def process_cta_buttons(exl_ws, content_comp_div, col_location, col_area, col_title, data_selector, raw_data_meta):
+
     selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[0]
     a_tags = selected_component.find_all('a')
     btn_theme = {'cta--underline': 'Underline', 'cta--outlined': 'Outline', 'cta--contained': 'Contained'}
@@ -389,7 +395,7 @@ def process_background_image(exl_ws, content_comp_div, col_location, col_area, c
                         img_check = "Size: \n" + img_remark + "\nLogo: \n" + logo_check
 
                 add_dataimage_to_list(exl_ws, col_location, col_area, col_title, 'Mobile', base_url.split('?')[0], cell_check, img_check, image_bytes_resized, new_height,raw_data_meta)
-    return
+        return
 
 
 

@@ -1,0 +1,1 @@
+exception_words = ["SAMSUNG","QLED", "OLED", "BESPOKE", "PSSD", "SDXC"]

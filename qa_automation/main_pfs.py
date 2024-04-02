@@ -17,9 +17,9 @@ region = region
 
 
 def qa (url_code):
-    # pfs_codes = ['mobile', 'home-appliances']
-    pfs_codes = ['home-appliances']
-
+    pfs_codes = ['mobile', 'home-appliances']
+    # pfs_codes = ['home-appliances']
+    # pfs_codes = ['mobile']
     for pfs_code in pfs_codes:
         raw_data_meta = {
             "date": datetime.today().strftime('%Y-%m-%d'),
@@ -597,7 +597,7 @@ def qa (url_code):
                         process_background_image(exl_ws, comp_ft12_tab, "", "Card " + str(comp_tab_no), "BG Image ",
                                                  'div.feature-column-carousel__figure', bg_image_desktop_width,
                                                  bg_image_desktop_height, bg_image_mobile_width, bg_image_mobile_height,
-                                                 "N", "Y", raw_data_meta)
+                                                 "Y", "Y", raw_data_meta)
 
                 if 'cm-g-bleed-card' in content_comp_name:
                     comp_tab_no = 0
@@ -1151,7 +1151,7 @@ def qa (url_code):
             path = "./result/" + today + "/error"
             os.makedirs(path, exist_ok=True)
             current_time = datetime.now().strftime("%Y%m%d%H%M%S")
-            final_file_name = f"{path}/{file_name_base}_eroror_{current_time}.txt"
+            final_file_name = f"{path}/{file_name_base}_error_{current_time}.txt"
 
             end_time = datetime.now()
             time_elapsed = end_time - start_time
