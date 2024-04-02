@@ -4,7 +4,7 @@
       <div class="sc-buds-ai__logo">
         <img
           class="sc-buds-ai__logo__image"
-          src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-ai-logo.png"
+          src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-ai-logo_v2.png"
           alt=""
         />
       </div>
