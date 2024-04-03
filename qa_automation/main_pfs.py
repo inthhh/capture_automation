@@ -11,16 +11,18 @@ from process_components import *
 from data_management import *
 from datetime import datetime
 from region import region
+from db import Database
 
 region = region
 
 
 
 def qa (url_code):
-    pfs_codes = ['mobile', 'home-appliances']
+    # pfs_codes = ['mobile', 'home-appliances']
     # pfs_codes = ['home-appliances']
-    # pfs_codes = ['mobile']
+    pfs_codes = ['mobile']
     for pfs_code in pfs_codes:
+        db_conn = Database()
         raw_data_meta = {
             "date": datetime.today().strftime('%Y-%m-%d'),
             "rhq": region[url_code]["rhq"],
@@ -597,7 +599,7 @@ def qa (url_code):
                         process_background_image(exl_ws, comp_ft12_tab, "", "Card " + str(comp_tab_no), "BG Image ",
                                                  'div.feature-column-carousel__figure', bg_image_desktop_width,
                                                  bg_image_desktop_height, bg_image_mobile_width, bg_image_mobile_height,
-                                                 "Y", "Y", raw_data_meta)
+                                                 "N", "Y", raw_data_meta)
 
                 if 'cm-g-bleed-card' in content_comp_name:
                     comp_tab_no = 0

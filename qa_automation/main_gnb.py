@@ -96,7 +96,7 @@ def add_item (exl_ws, col_depth1, col_depth2, col_depth3, col_depth4, extracted_
     saved_item = [col_depth1, col_depth2, col_depth3, col_depth4, extracted_link, link_result]
     exl_ws.append(saved_item)
 
-
+url_codes = ["us"]
 for url_code in url_codes:
     url = 'https://www.samsung.com/' + url_code + '/'
     sitecode = url.split('/')[3]

@@ -23,7 +23,7 @@ cursor = db.cursor()
 def execute(query, args={}):
     try:
         cursor.execute(query, args)
-        db.commit()
+        cursor.commit()
         row = cursor.fetchall()
         return row
     except Exception as e:
