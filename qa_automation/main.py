@@ -15,15 +15,15 @@ region = region
 if __name__ == '__main__':
     start_time = datetime.now()
 
-    worker_pool = Pool(8)
+    worker_pool = Pool(1)
 
-    site_codes = region.keys()
+    # site_codes = region.keys()
     # site_codes = ["ge"]
     # site_codes = ["jp"]
-    # site_codes = []
+    site_codes = ["ua"]
     print("START QA Automation (",len(site_codes),"regions ): ", start_time.strftime("%Y/%m/%d %H:%M:%S"))
 
-    worker_pool.map(qa_home, site_codes)
+    # worker_pool.map(qa_home, site_codes)
     worker_pool.map(qa_pfs, site_codes)
 
     finish_time = datetime.now()

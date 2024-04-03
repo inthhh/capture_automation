@@ -15,8 +15,13 @@ import time
 
 
 def fetch_image_dimensions(image_url):
+
     response = requests.get(image_url)
     if response.status_code == 200:
+        print("http header = ", response.headers['Content-type'])
+        if response.headers['Content-type'] == "image/svg+xml":
+            raise ValueError('Invalid image type (only PNG, JPEG can be supported)')
+            # return None, None, None, None
         image_bytes = BytesIO(response.content)
         with PILImage.open(image_bytes) as img:
 
@@ -48,8 +53,15 @@ predictor = CustomVisionPredictionClient(ENDPOINT, prediction_credentials)
 computervision_client = ComputerVisionClient(ENDPOINT, CognitiveServicesCredentials(prediction_key))
 
 def check_samsung_logo_and_text(image_url):
+
     response = requests.get(image_url)
+
+
     if response.status_code == 200:
+        print("http header = ",response.headers['Content-type'])
+        if response.headers['Content-type'] == "image/svg+xml" :
+            return "Guide: Only can detect logo in image format with png, jpg and jpeg."
+
         image_bytes = BytesIO(response.content)
         with PILImage.open(image_bytes) as img:
             original_width, original_height = img.size
@@ -115,7 +127,7 @@ def check_image_size(original_width, original_height, img_width, img_height):
 
 def fetch_image_dimensions_bgcolor(image_url):
     # Helper functions
-    print(image_url)
+
     def calculate_average_color(image, x_start, y_start):
         r_sum, g_sum, b_sum = 0, 0, 0
         for x in range(x_start, x_start + 10):
@@ -215,7 +227,9 @@ def fetch_image_dimensions_bgcolor_usingcv(image_url):
     response = requests.get(image_url)
     if response.status_code != 200:
         return None
-
+    print("http header = ", response.headers['Content-type'])
+    if response.headers['Content-type'] == "image/svg+xml":
+        return "Guide: Only can detect logo in image format with png, jpg and jpeg."
 
     image_bytes = BytesIO(response.content)
     img = PILImage.open(image_bytes)

@@ -269,134 +269,137 @@ def process_label_text_cta(exl_ws, content_comp_div, col_location, col_area, col
 
 
 def process_background_image(exl_ws, content_comp_div, col_location, col_area, col_title, data_selector, img_desktop_width, img_desktop_height, img_mobile_width, img_mobile_height, check_bg, check_logo, raw_data_meta):
-    selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[0]
+    try:
+        selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[0]
 
-    img_tag = selected_component.select_one('img.image-v2__preview, img.image__preview')
+        img_tag = selected_component.select_one('img.image-v2__preview, img.image__preview')
 
-    if img_tag:
-        data_mobile_src = img_tag.get('data-mobile-src', 'None')
-        data_desktop_src = img_tag.get('data-desktop-src', 'None')
-        desktop_image_meta = []
-        # image_url = 'https:' + data_desktop_src.split('?')[0]
-        if check_bg == 'Y':
-            original_width, original_height, image_bytes_resized, new_height, color_results = fetch_image_dimensions_bgcolor_usingcv(
-                'https:' + data_desktop_src.split('?')[0])
+        if img_tag:
+            data_mobile_src = img_tag.get('data-mobile-src', 'None')
+            data_desktop_src = img_tag.get('data-desktop-src', 'None')
+            desktop_image_meta = []
+            # image_url = 'https:' + data_desktop_src.split('?')[0]
+            if check_bg == 'Y':
+                original_width, original_height, image_bytes_resized, new_height, color_results = fetch_image_dimensions_bgcolor_usingcv(
+                    'https:' + data_desktop_src.split('?')[0])
 
-            img_remark = check_image_size(original_width, original_height, img_desktop_width, img_desktop_height)
-            logo_check = check_samsung_logo_and_text('https:' + data_desktop_src.split('?')[0])  # New version logo detection (24.03.26)
-            if color_results == 'Pass' and img_remark == 'Pass' and logo_check == 'Pass':
-                cell_check = 'Y'
-                img_check = 'Pass'
-            else:
-                cell_check = 'N'
-                img_check = "Size: \n" + img_remark + "\nBgcolor: \n" + color_results + "\nLogo: \n" + logo_check
-        else:
-
-            original_width, original_height, image_bytes_resized, new_height = fetch_image_dimensions('https:' + data_desktop_src.split('?')[0])
-
-            img_remark = check_image_size(original_width, original_height, img_desktop_width, img_desktop_height)
-            logo_check = check_samsung_logo_and_text('https:' + data_desktop_src.split('?')[0])  # New version logo detection (24.03.26)
-            if img_remark == 'Pass' and logo_check == "Pass":
-                cell_check = 'Y'
-                img_check = 'Pass'
-            else:
-                cell_check = 'N'
-                img_check = "Size: \n" + img_remark + "\nLogo: \n" + logo_check
-        add_dataimage_to_list(exl_ws, col_location, col_area, col_title, 'Desktop', data_desktop_src.split('?')[0], cell_check, img_check, image_bytes_resized, new_height,raw_data_meta)
-
-        if check_bg == 'Y':
-            original_width, original_height, image_bytes_resized, new_height, color_results = fetch_image_dimensions_bgcolor_usingcv(
-                'https:' + data_mobile_src.split('?')[0])
-            img_remark = check_image_size(original_width, original_height, img_mobile_width, img_mobile_height)
-            logo_check = check_samsung_logo_and_text('https:' + data_mobile_src.split('?')[0])  # New version logo detection (24.03.26)
-            if color_results == 'Pass' and img_remark == 'Pass' and logo_check == 'Pass':
-                cell_check = 'Y'
-                img_check = 'Pass'
-            else:
-                cell_check = 'N'
-                img_check = "Size: \n" + img_remark + "\nBgcolor: \n" + color_results + "\nLogo: \n" + logo_check
-        else:
-            original_width, original_height, image_bytes_resized, new_height = fetch_image_dimensions('https:' + data_mobile_src.split('?')[0])
-
-            img_remark = check_image_size(original_width, original_height, img_mobile_width, img_mobile_height)
-            logo_check = check_samsung_logo_and_text('https:' + data_mobile_src.split('?')[0])  # New version logo detection (24.03.26)
-            if img_remark == 'Pass' and logo_check == "Pass":
-                cell_check = 'Y'
-                img_check = 'Pass'
-            else:
-                cell_check = 'N'
-                img_check = "Size: \n" + img_remark + "\nLogo: \n" + logo_check
-        add_dataimage_to_list(exl_ws, col_location, col_area, col_title, 'Mobile', data_mobile_src.split('?')[0], cell_check, img_check, image_bytes_resized, new_height,raw_data_meta)
-
-
-    figure = selected_component.find('figure', class_='first-image')
-    if figure:
-        sources = figure.find_all('source')
-        for source in sources:
-            media_query = source.get('media')
-            srcsets = source.get('srcset', '').split(', ')
-            first_srcset_url = srcsets[0].split(' ')[0] if srcsets else 'None'
-            base_url = first_srcset_url.split('?')[0] if first_srcset_url != 'None' else 'None'
-            if "(min-width:1366px)" in media_query:
-                color_results = ''
-                if check_bg == 'Y':
-                    # original_width, original_height, image_bytes_resized, new_height, color_results = fetch_image_dimensions_bgcolor('https:' + base_url.split('?')[0])
-                    original_width, original_height, image_bytes_resized, new_height, color_results = fetch_image_dimensions_bgcolor_usingcv(
-                        'https:' + base_url.split('?')[0])
-                    img_remark = check_image_size(original_width, original_height, img_desktop_width,img_desktop_height)
-                    logo_check = check_samsung_logo_and_text('https:' + base_url.split('?')[0])  # New version logo detection (24.03.26)
-                    if color_results == 'Pass' and img_remark == 'Pass' and logo_check == 'Pass':
-                        cell_check = 'Y'
-                        img_check = 'Pass'
-                    else:
-                        cell_check = 'N'
-                        img_check = "Size: \n" + img_remark + "\nBgcolor: \n" + color_results + "\nLogo: \n" + logo_check
+                img_remark = check_image_size(original_width, original_height, img_desktop_width, img_desktop_height)
+                logo_check = check_samsung_logo_and_text('https:' + data_desktop_src.split('?')[0])  # New version logo detection (24.03.26)
+                if color_results == 'Pass' and img_remark == 'Pass' and logo_check == 'Pass':
+                    cell_check = 'Y'
+                    img_check = 'Pass'
                 else:
-                    original_width, original_height, image_bytes_resized, new_height = fetch_image_dimensions('https:' + base_url.split('?')[0])
-                    img_remark = check_image_size(original_width, original_height, img_desktop_width, img_desktop_height)
-                    logo_check = check_samsung_logo_and_text('https:' + base_url.split('?')[0])  # New version logo detection (24.03.26)
-                    if img_remark == 'Pass' and logo_check == "Pass":
-                        cell_check = 'Y'
-                        img_check = 'Pass'
-                    else:
-                        cell_check = 'N'
-                        img_check = "Size: \n" + img_remark + "\nLogo: \n" + logo_check
+                    cell_check = 'N'
+                    img_check = "Size: \n" + img_remark + "\nBgcolor: \n" + color_results + "\nLogo: \n" + logo_check
+            else:
 
-                add_dataimage_to_list(exl_ws, col_location, col_area, col_title, 'Desktop', base_url.split('?')[0], cell_check, img_check, image_bytes_resized, new_height,raw_data_meta)
-        for source in sources:
-            media_query = source.get('media')
-            srcsets = source.get('srcset', '').split(', ')
-            first_srcset_url = srcsets[0].split(' ')[0] if srcsets else 'None'
-            base_url = first_srcset_url.split('?')[0] if first_srcset_url != 'None' else 'None'
-            if "(max-width:767px)" in media_query:
-                color_results = ''
-                if check_bg == 'Y':
-                    # original_width, original_height, image_bytes_resized, new_height, color_results = fetch_image_dimensions_bgcolor('https:' + base_url.split('?')[0])
-                    original_width, original_height, image_bytes_resized, new_height, color_results = fetch_image_dimensions_bgcolor_usingcv(
-                        'https:' + base_url.split('?')[0])
-                    img_remark = check_image_size(original_width, original_height, img_mobile_width, img_mobile_height)
-                    logo_check = check_samsung_logo_and_text('https:' + base_url.split('?')[0])  # New version logo detection (24.03.26)
-                    if color_results == 'Pass' and img_remark == 'Pass' and logo_check == 'Pass':
-                        cell_check = 'Y'
-                        img_check = 'Pass'
-                    else:
-                        cell_check = 'N'
-                        img_check = "Size: \n" + img_remark + "\nBgcolor: \n" + color_results + "\nLogo: \n" + logo_check
+                original_width, original_height, image_bytes_resized, new_height = fetch_image_dimensions('https:' + data_desktop_src.split('?')[0])
+
+                img_remark = check_image_size(original_width, original_height, img_desktop_width, img_desktop_height)
+                logo_check = check_samsung_logo_and_text('https:' + data_desktop_src.split('?')[0])  # New version logo detection (24.03.26)
+                if img_remark == 'Pass' and logo_check == "Pass":
+                    cell_check = 'Y'
+                    img_check = 'Pass'
                 else:
-                    original_width, original_height, image_bytes_resized, new_height = fetch_image_dimensions('https:' + base_url.split('?')[0])
+                    cell_check = 'N'
+                    img_check = "Size: \n" + img_remark + "\nLogo: \n" + logo_check
+            add_dataimage_to_list(exl_ws, col_location, col_area, col_title, 'Desktop', data_desktop_src.split('?')[0], cell_check, img_check, image_bytes_resized, new_height,raw_data_meta)
 
-                    img_remark = check_image_size(original_width, original_height, img_mobile_width, img_mobile_height)
-                    logo_check = check_samsung_logo_and_text('https:' + base_url.split('?')[0])  # New version logo detection (24.03.26)
-                    if img_remark == 'Pass' and logo_check == "Pass":
-                        cell_check = 'Y'
-                        img_check = 'Pass'
+            if check_bg == 'Y':
+                original_width, original_height, image_bytes_resized, new_height, color_results = fetch_image_dimensions_bgcolor_usingcv(
+                    'https:' + data_mobile_src.split('?')[0])
+                img_remark = check_image_size(original_width, original_height, img_mobile_width, img_mobile_height)
+                logo_check = check_samsung_logo_and_text('https:' + data_mobile_src.split('?')[0])  # New version logo detection (24.03.26)
+                if color_results == 'Pass' and img_remark == 'Pass' and logo_check == 'Pass':
+                    cell_check = 'Y'
+                    img_check = 'Pass'
+                else:
+                    cell_check = 'N'
+                    img_check = "Size: \n" + img_remark + "\nBgcolor: \n" + color_results + "\nLogo: \n" + logo_check
+            else:
+                original_width, original_height, image_bytes_resized, new_height = fetch_image_dimensions('https:' + data_mobile_src.split('?')[0])
+
+                img_remark = check_image_size(original_width, original_height, img_mobile_width, img_mobile_height)
+                logo_check = check_samsung_logo_and_text('https:' + data_mobile_src.split('?')[0])  # New version logo detection (24.03.26)
+                if img_remark == 'Pass' and logo_check == "Pass":
+                    cell_check = 'Y'
+                    img_check = 'Pass'
+                else:
+                    cell_check = 'N'
+                    img_check = "Size: \n" + img_remark + "\nLogo: \n" + logo_check
+            add_dataimage_to_list(exl_ws, col_location, col_area, col_title, 'Mobile', data_mobile_src.split('?')[0], cell_check, img_check, image_bytes_resized, new_height,raw_data_meta)
+
+
+        figure = selected_component.find('figure', class_='first-image')
+        if figure:
+            sources = figure.find_all('source')
+            for source in sources:
+                media_query = source.get('media')
+                srcsets = source.get('srcset', '').split(', ')
+                first_srcset_url = srcsets[0].split(' ')[0] if srcsets else 'None'
+                base_url = first_srcset_url.split('?')[0] if first_srcset_url != 'None' else 'None'
+                if "(min-width:1366px)" in media_query:
+                    color_results = ''
+                    if check_bg == 'Y':
+                        # original_width, original_height, image_bytes_resized, new_height, color_results = fetch_image_dimensions_bgcolor('https:' + base_url.split('?')[0])
+                        original_width, original_height, image_bytes_resized, new_height, color_results = fetch_image_dimensions_bgcolor_usingcv(
+                            'https:' + base_url.split('?')[0])
+                        img_remark = check_image_size(original_width, original_height, img_desktop_width,img_desktop_height)
+                        logo_check = check_samsung_logo_and_text('https:' + base_url.split('?')[0])  # New version logo detection (24.03.26)
+                        if color_results == 'Pass' and img_remark == 'Pass' and logo_check == 'Pass':
+                            cell_check = 'Y'
+                            img_check = 'Pass'
+                        else:
+                            cell_check = 'N'
+                            img_check = "Size: \n" + img_remark + "\nBgcolor: \n" + color_results + "\nLogo: \n" + logo_check
                     else:
-                        cell_check = 'N'
-                        img_check = "Size: \n" + img_remark + "\nLogo: \n" + logo_check
+                        original_width, original_height, image_bytes_resized, new_height = fetch_image_dimensions('https:' + base_url.split('?')[0])
+                        img_remark = check_image_size(original_width, original_height, img_desktop_width, img_desktop_height)
+                        logo_check = check_samsung_logo_and_text('https:' + base_url.split('?')[0])  # New version logo detection (24.03.26)
+                        if img_remark == 'Pass' and logo_check == "Pass":
+                            cell_check = 'Y'
+                            img_check = 'Pass'
+                        else:
+                            cell_check = 'N'
+                            img_check = "Size: \n" + img_remark + "\nLogo: \n" + logo_check
 
-                add_dataimage_to_list(exl_ws, col_location, col_area, col_title, 'Mobile', base_url.split('?')[0], cell_check, img_check, image_bytes_resized, new_height,raw_data_meta)
+                    add_dataimage_to_list(exl_ws, col_location, col_area, col_title, 'Desktop', base_url.split('?')[0], cell_check, img_check, image_bytes_resized, new_height,raw_data_meta)
+            for source in sources:
+                media_query = source.get('media')
+                srcsets = source.get('srcset', '').split(', ')
+                first_srcset_url = srcsets[0].split(' ')[0] if srcsets else 'None'
+                base_url = first_srcset_url.split('?')[0] if first_srcset_url != 'None' else 'None'
+                if "(max-width:767px)" in media_query:
+                    color_results = ''
+                    if check_bg == 'Y':
+                        # original_width, original_height, image_bytes_resized, new_height, color_results = fetch_image_dimensions_bgcolor('https:' + base_url.split('?')[0])
+                        original_width, original_height, image_bytes_resized, new_height, color_results = fetch_image_dimensions_bgcolor_usingcv(
+                            'https:' + base_url.split('?')[0])
+                        img_remark = check_image_size(original_width, original_height, img_mobile_width, img_mobile_height)
+                        logo_check = check_samsung_logo_and_text('https:' + base_url.split('?')[0])  # New version logo detection (24.03.26)
+                        if color_results == 'Pass' and img_remark == 'Pass' and logo_check == 'Pass':
+                            cell_check = 'Y'
+                            img_check = 'Pass'
+                        else:
+                            cell_check = 'N'
+                            img_check = "Size: \n" + img_remark + "\nBgcolor: \n" + color_results + "\nLogo: \n" + logo_check
+                    else:
+                        original_width, original_height, image_bytes_resized, new_height = fetch_image_dimensions('https:' + base_url.split('?')[0])
+
+                        img_remark = check_image_size(original_width, original_height, img_mobile_width, img_mobile_height)
+                        logo_check = check_samsung_logo_and_text('https:' + base_url.split('?')[0])  # New version logo detection (24.03.26)
+                        if img_remark == 'Pass' and logo_check == "Pass":
+                            cell_check = 'Y'
+                            img_check = 'Pass'
+                        else:
+                            cell_check = 'N'
+                            img_check = "Size: \n" + img_remark + "\nLogo: \n" + logo_check
+
+                    add_dataimage_to_list(exl_ws, col_location, col_area, col_title, 'Mobile', base_url.split('?')[0], cell_check, img_check, image_bytes_resized, new_height,raw_data_meta)
+            return
+    except Exception as e:
+
         return
-
 
 
 
