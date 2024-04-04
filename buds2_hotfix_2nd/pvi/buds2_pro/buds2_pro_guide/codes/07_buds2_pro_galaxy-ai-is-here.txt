@@ -1,4 +1,4 @@
-<!-- Galaxy AI is here -->                  
+ <!-- Galaxy AI is here -->                  
   <section class="sc-buds-ai bg-black">
     <div class="sc-buds-ai__headline">
       <h2
@@ -167,21 +167,33 @@
             />
           </div>
         </figure>
-        <span class="sc-buds-ai__disclaimer"
-          >*Samsung does not make any promises, assurances or guarantees as to
-          the accuracy, completeness or reliability of the output provided by AI
-          features. *Galaxy AI features will be provided for free until the end
-          of 2025 on supported Samsung Galaxy devices. Different terms may apply
-          for AI features provided by third parties. *Galaxy AI features are
-          supported on Galaxy S24 Ultra, S24 Plus and S24 as of Feb. 2024.
-          *Galaxy devices may require the latest software update to properly
-          support Galaxy AI features. *Interpreter app and Live Translate
-          require a network connection and Samsung Account login. Live Translate
-          is only available on the pre-installed Samsung Phone app. Certain
-          languages may require language pack download. Service availability may
-          vary by language, country, region or carrier. *Images simulated for
-          illustrative purposes. Actual UX/UI may be different.
-        </span>
+        <ul role="list" class="sc-buds-ai__disclaimer sc-buds-common-disclaimer">
+            <li role="listitem">
+              *Interpreter feature requires Samsung Account login. Certain languages
+              may require language pack download. Service availability may vary by
+              language. Accuracy of results is not guaranteed. 
+            </li>
+            <li role="listitem">
+              *Live Translate
+              feature requires a network connection and Samsung Account login. Live
+              Translate feature is only available on the pre-installed Samsung Phone
+              app. Certain languages may require language pack download. Service
+              availability may vary by language, country, region or carrier.
+              Accuracy of results is not guaranteed.
+            </li>
+            <li role="listitem">
+              *Galaxy AI features are
+              supported on Galaxy S24 Ultra, S24 Plus and S24 as of Feb. 2024.
+            </li>
+            <li role="listitem">
+              *Samsung Galaxy devices may require the latest software update to
+              properly support Galaxy AI features. 
+            </li>
+            <li role="listitem">
+               *Images simulated for
+              illustrative purposes. Actual UX/UI may be different.
+            </li>
+        </ul>
       </div>
     </div>
   </section>

@@ -21,3 +21,9 @@
 - codes/index_pim.html : https://images.samsung.com/is/image/samsung/assets/[site-code]/mobile/2022-2h/galaxy-buds2/galaxy-buds2-ai-facetoface-0305.png
 - buds2_pro-html-pvi\index_pim.html : https://images.samsung.com/is/image/samsung/assets/[site-code]/mobile/2022-2h/galaxy-buds2/galaxy-buds2-ai-facetoface-0305.png
 - buds2_pro-html-pvi\index.html : ./images/galaxy-buds2-ai-facetoface-0305.png
+
+##Brand Site QA URL 
+- 브랜드사이트(ORG) : https://org-glx.samsung.com/global/galaxy/galaxy-buds2/
+- 브랜드사이트(STG) : https://stg-glx.samsung.com/global/galaxy/galaxy-buds2/
+- 브랜드사이트 : https://www.samsung.com/global/galaxy/galaxy-buds2/#galaxyBuds2
+- https://www.samsung.com/global/galaxy/galaxy-buds2-pro/
