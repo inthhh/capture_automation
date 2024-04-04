@@ -11,3 +11,13 @@
 - 03.25 | 모바일 상단 여백 반영 사항 아직 PVI등록 전, 추후 꼭 등록할 것.
 - 03.25 | 웹 접근성 수정 사항 반영.
 - 03.20 | pvi 버전 신규 피처 작업, 웹 접근성 테스트 링크 전달 완료.
+
+##PVI URL
+- edit : https://p6-ap-author.samsung.com/editor.html/content/samsung/test/mobile/2022-2h/galaxy-buds2-pro.html
+- qa : https://p6-qa.samsung.com/test/mobile/2022-2h/galaxy-buds2-pro/
+
+##PVI Image URL 
+- index_pim-test.html : https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-ai-facetoface-0305.png
+- codes/index_pim.html : https://images.samsung.com/is/image/samsung/assets/[site-code]/mobile/2022-2h/galaxy-buds2/galaxy-buds2-ai-facetoface-0305.png
+- buds2_pro-html-pvi\index_pim.html : https://images.samsung.com/is/image/samsung/assets/[site-code]/mobile/2022-2h/galaxy-buds2/galaxy-buds2-ai-facetoface-0305.png
+- buds2_pro-html-pvi\index.html : ./images/galaxy-buds2-ai-facetoface-0305.png

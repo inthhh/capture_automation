@@ -1,0 +1,393 @@
+ <!--Buds Excellence -->
+  <section class="m_content js-visible">
+    <div class="sc-buds-excellence">
+      <div class="sc-buds-excellence__wrap" id="galaxy-excellence">
+        <div class="sc-buds-excellence__text sc-buds-excellence__text--mo">
+          <h2 class="sc-buds-excellence__eyebrow sc-buds-common-eyebrow">
+            GALAXY EXCELLENCE
+          </h2>
+          <p class="sc-buds-excellence__headline sc-buds-common-headline-m">
+            Plays all<br class="sc-buds-br-mo" />
+            the hits
+          </p>
+        </div>
+        <div class="sc-buds-excellence__nav">
+          <div class="sc-buds-excellence__nav-bg swiper-container">
+            <div
+              role="tablist"
+              class="sc-buds-excellence__nav-wrap swiper-wrapper"
+            >
+              <div
+                class="sc-buds-excellence__nav-highlight"
+                role="presentation"
+              ></div>
+              <div
+                class="sc-buds-excellence__nav-list swiper-slide"
+                role="presentation"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  aria-controls="budsExcellenceBattery"
+                  aria-selected="true"
+                  class="sc-buds-excellence__nav-button"
+                  data-omni-type="microsite_contentinter"
+                  data-omni="galaxy-buds2-pro:highlights:plays-all-the-hits:select:battery"
+                  ga-ca="content click"
+                  ga-ac="feature"
+                  ga-la="galaxy-buds2-pro:highlights:plays-all-the-hits:select:battery"
+                >
+                  <span class="sc-buds-excellence__nav-name">Battery</span>
+                </button>
+              </div>
+              <div
+                class="sc-buds-excellence__nav-list swiper-slide"
+                role="presentation"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  aria-controls="budsExcellenceBluetooth"
+                  class="sc-buds-excellence__nav-button is-active"
+                  data-omni-type="microsite_contentinter"
+                  data-omni="galaxy-buds2-pro:highlights:plays-all-the-hits:select:bluetooth-5.3"
+                  ga-ca="content click"
+                  ga-ac="feature"
+                  ga-la="galaxy-buds2-pro:highlights:plays-all-the-hits:select:bluetooth-5.3"
+                >
+                  <span class="sc-buds-excellence__nav-name"
+                    >Bluetooth 5.3</span
+                  >
+                </button>
+              </div>
+              <div
+                class="sc-buds-excellence__nav-list swiper-slide"
+                role="presentation"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  aria-controls="budsExcellenceIPX7"
+                  class="sc-buds-excellence__nav-button"
+                  data-omni-type="microsite_contentinter"
+                  data-omni="galaxy-buds2-pro:highlights:plays-all-the-hits:select:ipx7-water-resistance"
+                  ga-ca="content click"
+                  ga-ac="feature"
+                  ga-la="galaxy-buds2-pro:highlights:plays-all-the-hits:select:ipx7-water-resistance"
+                >
+                  <span class="sc-buds-excellence__nav-name"
+                    >IPX7 Water Resistance</span
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-buds-excellence__contents">
+          <div class="sc-buds-excellence__contents-inner">
+            <div class="sc-buds-excellence__text sc-buds-excellence__text--pc">
+              <h2 class="sc-buds-excellence__eyebrow sc-buds-common-eyebrow">
+                GALAXY EXCELLENCE
+              </h2>
+              <p class="sc-buds-excellence__headline sc-buds-common-headline-m">
+                Plays all the hits
+              </p>
+            </div>
+            <div class="sc-buds-excellence__kv-wrap">
+              <p class="blind">
+                Two Bora Purple Galaxy Buds2 Pro earbuds are floating in the
+                middle of the screen.
+              </p>
+              <div class="sc-buds-excellence__kv">
+                <img
+                  src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                  class="js-img-src js-res-img"
+                  data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-battery.jpg"
+                  data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-battery.jpg?imwidth=1080"
+                  data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-battery-mo.jpg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="sc-buds-excellence__kv is-active">
+                <img
+                  src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                  class="js-img-src js-res-img"
+                  data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-bluetooth.jpg"
+                  data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-bluetooth.jpg?imwidth=1080"
+                  data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-bluetooth-mo.jpg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="sc-buds-excellence__kv">
+                <img
+                  src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                  class="js-img-src js-res-img"
+                  data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-water-resistance.jpg"
+                  data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-water-resistance.jpg?imwidth=1080"
+                  data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-water-resistance-mo.jpg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="sc-buds-excellence__info-wrap sc-buds-excellence__info-wrap--pc"
+          >
+            <ul role="list">
+              <li role="listitem" class="sc-buds-excellence__info">
+                <h3>
+                  <a
+                    role="button"
+                    href="javascript:;"
+                    class="sc-buds-excellence__btn"
+                    title="selected"
+                    data-omni-type="microsite_contentinter"
+                    data-omni="galaxy-buds2-pro:highlights:plays-all-the-hits:select:battery"
+                    ga-ca="content click"
+                    ga-ac="feature"
+                    ga-la="galaxy-buds2-pro:highlights:plays-all-the-hits:select:battery"
+                  >
+                    <span class="sc-buds-excellence__info-icon">
+                      <img
+                        src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                        class="js-img-src js-res-img"
+                        data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-battery-icon.png"
+                        data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-battery-icon.png?imwidth=1080"
+                        data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-battery-icon.png"
+                        alt=""
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <span class="sc-buds-excellence__info-title">Battery</span>
+                  </a>
+                </h3>
+                <span
+                  class="sc-buds-excellence__description sc-buds-common-description"
+                  >Get up to 5 hrs of continuous playtime with ANC on and up to
+                  18 hrs in the cradle.
+                  <sup
+                    ><a
+                      href="#desc-section"
+                      class="click_sup"
+                      title="See disclaimer"
+                      >16</a
+                    >,
+                    <a
+                      href="#desc-section"
+                      class="click_sup"
+                      title="See disclaimer"
+                      >17</a
+                    >,
+                    <a
+                      href="#desc-section"
+                      class="click_sup"
+                      title="See disclaimer"
+                      >18</a
+                    ></sup
+                  ></span
+                >
+              </li>
+              <li role="listitem" class="sc-buds-excellence__info">
+                <h3>
+                  <a
+                    role="button"
+                    href="javascript:;"
+                    class="sc-buds-excellence__btn"
+                    data-omni-type="microsite_contentinter"
+                    data-omni="galaxy-buds2-pro:highlights:plays-all-the-hits:select:bluetooth-5.3"
+                    ga-ca="content click"
+                    ga-ac="feature"
+                    ga-la="galaxy-buds2-pro:highlights:plays-all-the-hits:select:bluetooth-5.3"
+                  >
+                    <span class="sc-buds-excellence__info-icon">
+                      <img
+                        src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                        class="js-img-src js-res-img"
+                        data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-bluetooth-icon.png"
+                        data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-bluetooth-icon.png?imwidth=1080"
+                        data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-bluetooth-icon.png"
+                        alt=""
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <span class="sc-buds-excellence__info-title"
+                      >Bluetooth 5.3</span
+                    >
+                  </a>
+                </h3>
+                <span
+                  class="sc-buds-excellence__description sc-buds-common-description"
+                  >Bluetooth 5.3 is available and LE Audio will be eventually
+                  supported.
+                  <sup
+                    ><a
+                      href="#desc-section"
+                      class="click_sup"
+                      title="See disclaimer"
+                      >19</a
+                    ></sup
+                  ></span
+                >
+              </li>
+              <li role="listitem" class="sc-buds-excellence__info">
+                <h3>
+                  <a
+                    role="button"
+                    href="javascript:;"
+                    class="sc-buds-excellence__btn"
+                    data-omni-type="microsite_contentinter"
+                    data-omni="galaxy-buds2-pro:highlights:plays-all-the-hits:select:ipx7-water-resistance"
+                    ga-ca="content click"
+                    ga-ac="feature"
+                    ga-la="galaxy-buds2-pro:highlights:plays-all-the-hits:select:ipx7-water-resistance"
+                  >
+                    <span class="sc-buds-excellence__info-icon">
+                      <img
+                        src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                        class="js-img-src js-res-img"
+                        data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-water-resistance-icon.png"
+                        data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-water-resistance-icon.png?imwidth=1080"
+                        data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-water-resistance-icon.png"
+                        alt=""
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <span class="sc-buds-excellence__info-title"
+                      >IPX7 Water Resistance</span
+                    >
+                  </a>
+                </h3>
+                <span
+                  class="sc-buds-excellence__description sc-buds-common-description"
+                  >Play on. Rain or shine. Galaxy Buds2 Pro is water resistant.
+                  <sup
+                    ><a
+                      href="#desc-section"
+                      class="click_sup"
+                      title="See disclaimer"
+                      >20</a
+                    >,
+                    <a
+                      href="#desc-section"
+                      class="click_sup"
+                      title="See disclaimer"
+                      >21</a
+                    ></sup
+                  ></span
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="sc-buds-excellence__info-wrap sc-buds-excellence__info-wrap--mo"
+          >
+            <div class="sc-buds-excellence__info" id="budsExcellenceBattery">
+              <span class="sc-buds-excellence__info-icon">
+                <img
+                  src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                  class="js-img-src js-res-img"
+                  data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-battery-icon.png"
+                  data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-battery-icon.png?imwidth=1080"
+                  data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-battery-icon.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </span>
+              <h3 class="sc-buds-excellence__info-title">Battery</h3>
+              <span
+                class="sc-buds-excellence__description sc-buds-common-description"
+                >Get up to 5 hrs of continuous playtime with ANC on and up to 18
+                hrs in the cradle.
+                <sup
+                  ><a
+                    href="#desc-section"
+                    class="click_sup"
+                    title="See disclaimer"
+                    >16</a
+                  >,
+                  <a
+                    href="#desc-section"
+                    class="click_sup"
+                    title="See disclaimer"
+                    >17</a
+                  >,
+                  <a
+                    href="#desc-section"
+                    class="click_sup"
+                    title="See disclaimer"
+                    >18</a
+                  ></sup
+                ></span
+              >
+            </div>
+            <div
+              class="sc-buds-excellence__info is-active"
+              id="budsExcellenceBluetooth"
+            >
+              <span class="sc-buds-excellence__info-icon">
+                <img
+                  src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                  class="js-img-src js-res-img"
+                  data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-bluetooth-icon.png"
+                  data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-bluetooth-icon.png?imwidth=1080"
+                  data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-bluetooth-icon.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </span>
+              <h3 class="sc-buds-excellence__info-title">Bluetooth 5.3</h3>
+              <span
+                class="sc-buds-excellence__description sc-buds-common-description"
+                >BT 5.3 is available and LE Audio will be eventually supported.
+                <sup
+                  ><a
+                    href="#desc-section"
+                    class="click_sup"
+                    title="See disclaimer"
+                    >19</a
+                  ></sup
+                ></span
+              >
+            </div>
+            <div class="sc-buds-excellence__info" id="budsExcellenceIPX7">
+              <span class="sc-buds-excellence__info-icon">
+                <img
+                  src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                  class="js-img-src js-res-img"
+                  data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-water-resistance-icon.png"
+                  data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-water-resistance-icon.png?imwidth=1080"
+                  data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-excellence-water-resistance-icon.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </span>
+              <h3 class="sc-buds-excellence__info-title">
+                IPX7 Water Resistance
+              </h3>
+              <span
+                class="sc-buds-excellence__description sc-buds-common-description"
+                >Play on. Rain or shine. Galaxy Buds2 Pro is water resistant.
+                <sup
+                  ><a
+                    href="#desc-section"
+                    class="click_sup"
+                    title="See disclaimer"
+                    >20</a
+                  >,
+                  <a
+                    href="#desc-section"
+                    class="click_sup"
+                    title="See disclaimer"
+                    >21</a
+                  ></sup
+                ></span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
