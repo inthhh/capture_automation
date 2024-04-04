@@ -1,70 +1,70 @@
 @charset "utf-8";
 @font-face {
   font-family: sssB;
-  src: url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-bold_v2.eot);
-  src: url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-bold_v2.eot?#iefix)
+  src: url(font/samsungsharpsans-bold_v2.eot);
+  src: url(font/samsungfont/sharpsans-bold_v2.eot?#iefix)
       format("embedded-opentype"),
-    url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-bold_v2.woff2)
+    url(font/samsungsharpsans-bold_v2.woff2)
       format("woff2"),
-    url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-bold_v2.woff)
+    url(font/samsungsharpsans-bold_v2.woff)
       format("woff"),
-    url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-bold_v2.svg#SamsungSharpSans-Bold)
+    url(font/samsungsharpsans-bold_v2.svg#SamsungSharpSans-Bold)
       format("svg");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: sssM;
-  src: url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-medium_v2.eot);
-  src: url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-medium_v2.eot?#iefix)
+  src: url(font/samsungsharpsans-medium_v2.eot);
+  src: url(font/samsungsharpsans-medium_v2.eot?#iefix)
       format("embedded-opentype"),
-    url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-medium_v2.woff2)
+    url(font/samsungsharpsans-medium_v2.woff2)
       format("woff2"),
-    url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-medium_v2.woff)
+    url(font/samsungsharpsans-medium_v2.woff)
       format("woff"),
-    url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-medium_v2.svg#SamsungSharpSans-Medium)
+    url(font/samsungsharpsans-medium_v2.svg#SamsungSharpSans-Medium)
       format("svg");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: sssR;
-  src: url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-regular_v2.eot);
-  src: url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-regular_v2.eot?#iefix)
+  src: url(font/samsungsharpsans-regular_v2.eot);
+  src: url(font/samsungsharpsans-regular_v2.eot?#iefix)
       format("embedded-opentype"),
-    url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-regular_v2.woff2)
+    url(font/samsungsharpsans-regular_v2.woff2)
       format("woff2"),
-    url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-regular_v2.woff)
+    url(font/samsungsharpsans-regular_v2.woff)
       format("woff"),
-    url(https://www.samsung.com/global/galaxy/common/font/samsungsharpsans-regular_v2.svg#SamsungSharpSans-Regular)
+    url(font/samsungsharpsans-regular_v2.svg#SamsungSharpSans-Regular)
       format("svg");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: FontAwesome;
-  src: url(https://www.samsung.com/global/galaxy/common/font/fontawesome-webfont.eot?v=4.6.3);
-  src: url(https://www.samsung.com/global/galaxy/common/font/fontawesome-webfont.eot?#iefix&v=4.6.3)
+  src: url(font/fontawesome-webfont.eot?v=4.6.3);
+  src: url(font/fontawesome-webfont.eot?#iefix&v=4.6.3)
       format("embedded-opentype"),
-    url(https://www.samsung.com/global/galaxy/common/font/fontawesome-webfont.woff2?v=4.6.3)
+    url(font/fontawesome-webfont.woff2?v=4.6.3)
       format("woff2"),
-    url(https://www.samsung.com/global/galaxy/common/font/fontawesome-webfont.woff?v=4.6.3)
+    url(font/fontawesome-webfont.woff?v=4.6.3)
       format("woff"),
-    url(https://www.samsung.com/global/galaxy/common/font/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular)
+    url(font/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular)
       format("svg");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: SamsungOne400;
-  src: url(https://www.samsung.com/global/galaxy/common/font/samsungone-400.eot);
-  src: url(https://www.samsung.com/global/galaxy/common/font/samsungone-400.eot?#iefix)
+  src: url(font/samsungone-400.eot);
+  src: url(font/samsungone-400.eot?#iefix)
       format("embedded-opentype"),
-    url(https://www.samsung.com/global/galaxy/common/font/samsungone-400.woff2)
+    url(font/samsungone-400.woff2)
       format("woff2"),
-    url(https://www.samsung.com/global/galaxy/common/font/samsungone-400.woff)
+    url(font/samsungone-400.woff)
       format("woff"),
-    url(https://www.samsung.com/global/galaxy/common/font/samsungone-400.ttf)
+    url(font/samsungone-400.ttf)
       format("truetype");
   font-style: normal;
   font-weight: 400;
@@ -72,9 +72,9 @@
 }
 @font-face {
   font-family: SamsungOne700;
-  src: url(https://www.samsung.com/global/galaxy/common/font/samsungone-700.woff2)
+  src: url(font/samsungone-700.woff2)
       format("woff2"),
-    url(https://www.samsung.com/global/galaxy/common/font/samsungone-700.woff)
+    url(font/samsungone-700.woff)
       format("woff");
   font-style: normal;
   font-weight: 400;
