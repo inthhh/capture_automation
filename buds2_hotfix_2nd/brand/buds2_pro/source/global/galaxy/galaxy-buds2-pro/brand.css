@@ -1,4 +1,10 @@
-<style>
+
+    .sc-buds * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        vertical-align: top;
+    }
     .sc-buds .sc-buds-360-audio__card-headline,
     .sc-buds .sc-buds-compare__list-title,
     .sc-buds .sc-buds-compare__specs-name,
@@ -20,21 +26,270 @@
     .sc-buds-common-headline-m,
     .sc-buds-common-headline-s,
     .sc-buds-common-headline-xl {
-        font-family: SamsungSharpSans, SamsungOne, "sans serif";
-        font-weight: 700;
+        font-family: sssB, "sans serif";
     }
     .sc-buds .sc-buds-360-audio__cta,
     .sc-buds .sc-buds-recording__cta,
     .sc-buds-common-cta,
     .sc-buds-common-eyebrow {
-        font-family: SamsungOne;
-        font-weight: 700;
+        font-family: SamsungOne700;
     }
-    .sc-buds * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        vertical-align: top;
+    @media screen and (min-width: 1441px) {
+        .sc-buds.sc-global {
+            padding-top: 96px;
+        }
+    }
+    @media screen and (max-width: 1440px) and (min-width: 1024px) {
+        .sc-buds.sc-global {
+            padding-top: 96px;
+        }
+    }
+    @media screen and (max-width: 1023px) and (min-width: 768px) {
+        .sc-buds.sc-global {
+            padding-top: 108px;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        .sc-buds.sc-global {
+            padding-top: 79px;
+        }
+    }
+    #wrap {
+        overflow: inherit !important;
+    }
+    .f_backtotop {
+        z-index: 50;
+    }
+    #contents.sc-buds {
+        font-family: SamsungOne400;
+    }
+    #contents.sc-buds #subnav * {
+        box-sizing: content-box !important;
+    }
+    #contents.sc-buds article[class*="m_feature-"] {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        width: auto;
+        height: auto;
+        z-index: auto;
+        overflow: visible;
+    }
+    .l_body {
+        background-color: #fff;
+        color: #000;
+    }
+    .subnav-type1.bright-header #contents:before {
+        height: 96px;
+    }
+    .s2 .subnav-type1.bright-header #contents:before {
+        height: 108px;
+    }
+    .s1 .subnav-type1.bright-header #contents:before {
+        height: 79px;
+    }
+    .f_inner {
+        position: relative;
+    }
+    [class*="m_feature-"] {
+        padding-top: 120px;
+        padding-bottom: 120px;
+    }
+    .s3 [class*="m_feature-"] {
+        padding-top: 140px;
+        padding-bottom: 140px;
+    }
+    .s2 [class*="m_feature-"] {
+        padding-top: 140px;
+        padding-bottom: 140px;
+    }
+    .s1 [class*="m_feature-"] {
+        padding-top: 33.333vw;
+        padding-bottom: 33.333vw;
+    }
+    [class*="f_header-"] {
+        position: relative;
+        z-index: auto;
+    }
+    .l_body [class*="f_header-"] {
+        left: auto;
+        right: auto;
+        top: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+        z-index: 1;
+    }
+    .l_body [class*="l_row"] {
+        display: flex;
+        display: -ms-flexbox;
+        flex-wrap: wrap;
+    }
+    .l_body .l_row-reverse {
+        flex-direction: row-reverse;
+        -ms-flex-direction: row-reverse;
+    }
+    .l_body [class*="l_col"] {
+        flex: 1 1 0px;
+        max-width: 100%;
+    }
+    .l_body .l_col-1 {
+        flex: 0 0 4.16667%;
+        -ms-flex: 0 0 4.16667%;
+        max-width: 4.16667%;
+    }
+    .l_body .l_col-2 {
+        flex: 0 0 8.33333%;
+        -ms-flex: 0 0 8.33333%;
+        max-width: 8.33333%;
+    }
+    .l_body .l_col-3 {
+        flex: 0 0 12.5%;
+        -ms-flex: 0 0 12.5%;
+        max-width: 12.5%;
+    }
+    .l_body .l_col-4 {
+        flex: 0 0 16.66667%;
+        -ms-flex: 0 0 16.66667%;
+        max-width: 16.66667%;
+    }
+    .l_body .l_col-5 {
+        flex: 0 0 20.83333%;
+        -ms-flex: 0 0 20.83333%;
+        max-width: 20.83333%;
+    }
+    .l_body .l_col-6 {
+        flex: 0 0 25%;
+        -ms-flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .l_body .l_col-7 {
+        flex: 0 0 29.16667%;
+        -ms-flex: 0 0 29.16667%;
+        max-width: 29.16667%;
+    }
+    .l_body .l_col-8 {
+        flex: 0 0 33.33333%;
+        -ms-flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+    .l_body .l_col-9 {
+        flex: 0 0 37.5%;
+        -ms-flex: 0 0 37.5%;
+        max-width: 37.5%;
+    }
+    .l_body .l_col-10 {
+        flex: 0 0 41.66667%;
+        -ms-flex: 0 0 41.66667%;
+        max-width: 41.66667%;
+    }
+    .l_body .l_col-11 {
+        flex: 0 0 45.83333%;
+        -ms-flex: 0 0 45.83333%;
+        max-width: 45.83333%;
+    }
+    .l_body .l_col-12 {
+        flex: 0 0 50%;
+        -ms-flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .l_body .l_col-13 {
+        flex: 0 0 54.16667%;
+        -ms-flex: 0 0 54.16667%;
+        max-width: 54.16667%;
+    }
+    .l_body .l_col-14 {
+        flex: 0 0 58.33333%;
+        -ms-flex: 0 0 58.33333%;
+        max-width: 58.33333%;
+    }
+    .l_body .l_col-15 {
+        flex: 0 0 62.5%;
+        -ms-flex: 0 0 62.5%;
+        max-width: 62.5%;
+    }
+    .l_body .l_col-16 {
+        flex: 0 0 66.66667%;
+        -ms-flex: 0 0 66.66667%;
+        max-width: 66.66667%;
+    }
+    .l_body .l_col-17 {
+        flex: 0 0 70.83333%;
+        -ms-flex: 0 0 70.83333%;
+        max-width: 70.83333%;
+    }
+    .l_body .l_col-18 {
+        flex: 0 0 75%;
+        -ms-flex: 0 0 75%;
+        max-width: 75%;
+    }
+    .l_body .l_col-19 {
+        flex: 0 0 79.16667%;
+        -ms-flex: 0 0 79.16667%;
+        max-width: 79.16667%;
+    }
+    .l_body .l_col-20 {
+        flex: 0 0 83.33333%;
+        -ms-flex: 0 0 83.33333%;
+        max-width: 83.33333%;
+    }
+    .l_body .l_col-21 {
+        flex: 0 0 87.5%;
+        -ms-flex: 0 0 87.5%;
+        max-width: 87.5%;
+    }
+    .l_body .l_col-22 {
+        flex: 0 0 91.66667%;
+        -ms-flex: 0 0 91.66667%;
+        max-width: 91.66667%;
+    }
+    .l_body .l_col-23 {
+        flex: 0 0 95.83333%;
+        -ms-flex: 0 0 95.83333%;
+        max-width: 95.83333%;
+    }
+    .l_body .l_col-fit {
+        flex: 0 0 auto;
+    }
+    .l_body [class*="l_sec"] {
+        margin-left: auto;
+        margin-right: auto;
+        padding-right: 20px;
+        padding-left: 20px;
+        box-sizing: content-box;
+    }
+    .l_body .l_sec-876 {
+        max-width: 876px;
+    }
+    .l_body .l_sec-900 {
+        max-width: 900px;
+    }
+    .l_body .l_sec-1100 {
+        max-width: 1100px;
+    }
+    .l_body .l_sec-1180 {
+        max-width: 1180px;
+    }
+    .l_body .l_sec-1200 {
+        max-width: 1200px;
+    }
+    .l_body .l_sec-1440 {
+        max-width: 1440px;
+    }
+    .s3 .l_sec-876 {
+        max-width: 841px;
+    }
+    .f_container {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        width: auto;
+        height: auto;
+        z-index: auto;
+        overflow: visible;
     }
     html.is-no-scroll {
         overflow: hidden;
@@ -102,7 +357,7 @@
         outline-offset: 0;
         color: inherit;
         font-weight: 400;
-        font-family: SamsungOne;
+        font-family: SamsungOne400;
     }
     html.js-focus-visible .sc-buds a:focus,
     html.js-focus-visible .sc-buds button:focus,
@@ -3050,7 +3305,7 @@
         padding-top: 8.19444vw;
         padding-bottom: 80px;
         padding-bottom: 5.55556vw;
-        font-family: SamsungSharpSans, SamsungOne, "sans serif";
+        font-family: sssB, "sans serif";
         letter-spacing: -0.005em;
     }
     @media (min-width: 1440px) {
@@ -3203,7 +3458,7 @@
         padding-top: 25px;
         padding-top: 1.73611vw;
         text-align: center;
-        font-family: SamsungSharpSans, SamsungOne, "sans serif";
+        font-family: sssB, "sans serif";
         font-size: 18px;
         font-size: 1.25vw;
         line-height: 1.4444;
@@ -6886,7 +7141,7 @@
         padding-right: 4.86111vw;
         font-size: 16px;
         font-size: 1.11111vw;
-        font-family: SamsungOne;
+        font-family: SamsungOne400;
     }
     @media (min-width: 1440px) {
         .sc-buds .sc-buds-step__description {
@@ -6918,7 +7173,7 @@
         margin-top: 0.69444vw;
         padding-right: 110px;
         padding-right: 7.63889vw;
-        font-family: SamsungOne;
+        font-family: SamsungOne400;
         line-height: 1.5;
     }
     @media (min-width: 1440px) {
@@ -6988,7 +7243,7 @@
     .sc-buds .sc-buds-step__item-headline {
         font-size: 18px;
         font-size: 1.25vw;
-        font-family: SamsungOne;
+        font-family: SamsungOne400;
         font-weight: 700;
     }
     @media (min-width: 1440px) {
@@ -7004,7 +7259,7 @@
         font-size: 16px;
         font-size: 1.11111vw;
         line-height: 1.5;
-        font-family: SamsungOne;
+        font-family: SamsungOne400;
     }
     @media (min-width: 1440px) {
         .sc-buds .sc-buds-step__item-description {
@@ -7614,7 +7869,7 @@
         .sc-buds .sc-buds-step__mo-close--text {
             margin-top: 21.33333px;
             margin-top: 2.77778vw;
-            font-family: SamsungOne;
+            font-family: SamsungOne400;
             font-weight: 700;
             font-size: 42.66667px;
             font-size: 5.55556vw;
@@ -8139,7 +8394,7 @@
             vertical-align: middle;
             font-size: 25.6px;
             font-size: 3.33333vw;
-            font-family: SamsungOne;
+            font-family: SamsungOne400;
             font-weight: 700;
         }
         html[lang^="th"] .sc-buds .sc-buds-step__mo-popup-title {
@@ -8512,7 +8767,7 @@
         width: 10.41667vw;
         padding: 16px 13px 15px;
         padding: 1.11111vw 0.90278vw 1.04167vw;
-        font-family: SamsungSharpSans, SamsungOne, "sans serif";
+        font-family: sssB, "sans serif";
         font-size: 16px;
         font-size: 1.11111vw;
         color: #000;
@@ -8765,7 +9020,7 @@
         }
     }
     .sc-buds .sc-buds-immersive__tip-text {
-        font-family: SamsungSharpSans, SamsungOne, "sans serif";
+        font-family: sssB, "sans serif";
         font-size: 14px;
         font-size: 0.97222vw;
         vertical-align: middle;
@@ -9949,7 +10204,7 @@
     .sc-buds .sc-buds-recording-video__item-title {
         margin-top: 28px;
         margin-top: 1.94444vw;
-        font-family: SamsungSharpSans, SamsungOne, "sans serif";
+        font-family: sssB, "sans serif";
         font-size: 18px;
         font-size: 1.25vw;
     }
@@ -10059,7 +10314,7 @@
         }
     }
     .sc-buds .sc-buds-recording-video__tip-text {
-        font-family: SamsungSharpSans, SamsungOne, "sans serif";
+        font-family: sssB, "sans serif";
         font-size: 14px;
         font-size: 0.97222vw;
         vertical-align: middle;
@@ -12106,7 +12361,7 @@
         font-size: 24px;
         font-size: 1.66667vw;
         line-height: 1.5;
-        font-family: SamsungOne;
+        font-family: SamsungOne400;
         font-weight: 400;
     }
     html[lang^="th"] .sc-buds .sc-buds-fit__spec-feature-text {
@@ -13072,7 +13327,7 @@
         font-size: 1.25vw;
         line-height: 1.5;
         white-space: nowrap;
-        font-family: SamsungOne;
+        font-family: SamsungOne400;
     }
     @media (min-width: 1440px) {
         .sc-buds .sc-buds-colors__color-name {
@@ -14147,7 +14402,7 @@
         }
     }
     .sc-buds .sc-buds-compare__headline sup a {
-        font-family: SamsungOne;
+        font-family: SamsungOne400;
     }
     .sc-buds .sc-buds-compare__tab {
         display: none;
@@ -14635,7 +14890,7 @@
         font-size: 17px;
         font-size: 1.18056vw;
         line-height: 1.1;
-        font-family: SamsungOne;
+        font-family: SamsungOne400;
     }
     html[lang^="th"] .sc-buds .sc-buds-compare__color-name {
         font-size: 22.95px;
@@ -15031,7 +15286,7 @@
     @media screen and (max-width: 767px) {
         .sc-buds .sc-buds-compare__tab-button button {
             display: inline-block;
-            font-family: SamsungSharpSans, SamsungOne, "sans serif";
+            font-family: sssB, "sans serif";
             padding: 29.86667px 0;
             padding: 3.88889vw 0;
             font-size: 27.73333px;
@@ -17511,7 +17766,7 @@
         height: 108px;
     }
     .sc-buds-ai__title {
-        font-family: "SamsungSharpSans", arial, sans-serif;
+        font-family: "sssB", "SamsungSharpSans", arial, sans-serif;
         padding: 5vw 0 3vw 0;
     }
     .sc-buds-ai__description {
@@ -17673,12 +17928,13 @@
             padding: 50px 0;
         }
         .sc-buds-ai__title {
-            font-family: "SamsungSharpSans", arial, sans-serif;
+            font-family: "sssB", "SamsungSharpSans", arial, sans-serif;
         }
         .sc-buds-ai__headline {
             padding: 0 5.55556vw;
         }
         .sc-buds-ai__description {
+            font-size: 15px;
             margin-bottom: 50px;
         }
         .sc-buds-ai__content {
@@ -17706,109 +17962,109 @@
         .sc-buds-ai-panel__figure {
             margin: 0;
         }
-    }
-    .sc-buds .sc-buds-auracast__wrap {
-        position: relative;
-        width: 1440px;
-        width: 100vw;
-        padding: 120px 0;
-        padding: 8.33333vw 0;
-        margin: 0 auto;
-    }
-    .sc-buds .sc-buds-auracast__text {
-        width: 1200px;
-        width: 83.33333vw;
-        padding-left: 148px;
-        padding-left: 10.27778vw;
-        margin: 0 auto;
-    }
-    .rtl .sc-buds .sc-buds-auracast__text {
-        direction: rtl;
-        padding-left: 0;
-        padding-right: 148px;
-        padding-right: 10.27778vw;
-    }
-    .sc-buds-auracast__kv-wrap {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        padding-right: 0.1vw;
-    }
-    .sc-buds .sc-buds-auracast__kv-inner canvas,
-    .sc-buds .sc-buds-auracast__kv-inner img {
-        width: 100%;
-    }
-    .sc-buds .sc-buds-auracast__kv {
-        width: 77.36111vw;
-        padding-top: 5%;
-    }
-    .sc-buds-auracast__desc {
-        width: 34.438vw;
-        font-size: 1.25vw;
-        margin-top: 6vw;
-        margin-left: 26.042vw;
-    }
-    .sc-buds .sc-buds-auracast__headline {
-        padding-top: 37px;
-        padding-top: 2.56944vw;
-    }
-    @media (min-width: 1440px) {
-        .sc-buds .sc-buds-auracast__wrap {
-            width: 1440px;
-        }
-        .sc-buds .sc-buds-auracast__wrap {
-            padding: 120px 0;
-        }
-        .sc-buds .sc-buds-auracast__text {
-            width: 1200px;
-        }
-        .sc-buds .sc-buds-auracast__text {
-            padding-left: 148px;
-        }
-        .sc-buds .sc-buds-auracast__kv {
-            width: 1440px;
-        }
-        .rtl .sc-buds .sc-buds-auracast__text {
-            padding-right: 148px;
-        }
-        .sc-buds .sc-buds-auracast__desc {
-            width: 500px;
-            font-size: 18px;
-            margin-left: 270px;
-        }
-        .sc-buds .sc-buds-auracast__headline {
-            padding-top: 37px;
-        }
-    }
-    @media screen and (max-width: 767px) {
-        .sc-buds .sc-buds-auracast__kv {
-            width: 100%;
-        }
-        .sc-buds .sc-buds-auracast__headline {
-            padding-top: 2.77778vw;
-        }
-        .sc-buds .sc-buds-auracast__text {
-            padding-left: 0;
-        }
-        .sc-buds-auracast__kv-wrap {
-            display: flex;
-            align-items: start;
-        }
-        .sc-buds-auracast__desc {
-            width: 66.438vw;
-            font-size: 4.16667vw;
-            margin-top: 3.3vh;
-            margin-left: 10vw;
-        }
-        .sc-buds .sc-buds-auracast__headline {
-            padding-top: 19.2px;
-            padding-top: 2.5vw;
-        }
-        @media screen and (max-width: 767px) and (max-width: 360px) {
-            .sc-buds .sc-buds-auracast__headline {
-                padding-top: 9px;
-                padding-top: 2.5vw;
-            }
-        }
-    }
-</style>
+	}
+		
+	.sc-buds .sc-buds-auracast__wrap {
+		position: relative;
+		width: 1440px;
+		width: 100vw;
+		padding: 120px 0;
+		padding: 8.33333vw 0;
+		margin: 0 auto;
+	}
+	.sc-buds .sc-buds-auracast__text {
+		width: 1200px;
+		width: 83.33333vw;
+		padding-left: 148px;
+		padding-left: 10.27778vw;
+		margin: 0 auto;
+	}
+	.rtl .sc-buds .sc-buds-auracast__text {
+		direction: rtl;
+		padding-left: 0;
+		padding-right: 148px;
+		padding-right: 10.27778vw;
+	}
+	.sc-buds-auracast__kv-wrap {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		padding-right: 0.1vw;
+	}
+	.sc-buds .sc-buds-auracast__kv-inner canvas,
+	.sc-buds .sc-buds-auracast__kv-inner img {
+		width: 100%;
+	}
+	.sc-buds .sc-buds-auracast__kv {
+		width: 77.36111vw;
+		padding-top: 5%;
+	}
+	.sc-buds-auracast__desc {
+		width: 34.438vw;
+		font-size: 1.25vw;
+		margin-top: 6vw;
+		margin-left: 26.042vw;
+	}
+	.sc-buds .sc-buds-auracast__headline {
+		padding-top: 37px;
+		padding-top: 2.56944vw;
+	}
+	@media (min-width: 1440px) {
+		.sc-buds .sc-buds-auracast__wrap {
+			width: 1440px;
+		}
+		.sc-buds .sc-buds-auracast__wrap {
+			padding: 120px 0;
+		}
+		.sc-buds .sc-buds-auracast__text {
+			width: 1200px;
+		}
+		.sc-buds .sc-buds-auracast__text {
+			padding-left: 148px;
+		}
+		.sc-buds .sc-buds-auracast__kv {
+			width: 1440px;
+		}
+		.rtl .sc-buds .sc-buds-auracast__text {
+			padding-right: 148px;
+		}
+		.sc-buds .sc-buds-auracast__desc {
+			width: 500px;
+			font-size: 18px;
+			margin-left: 270px;
+		}
+		.sc-buds .sc-buds-auracast__headline {
+			padding-top: 37px;
+		}
+	}
+	@media screen and (max-width: 767px) {
+		.sc-buds .sc-buds-auracast__kv {
+			width: 100%;
+		}
+		.sc-buds .sc-buds-auracast__headline {
+			padding-top: 2.77778vw;
+		}
+		.sc-buds .sc-buds-auracast__text {
+			padding-left: 0;
+		}
+		.sc-buds-auracast__kv-wrap {
+			display: flex;
+			align-items: start;
+		}
+		.sc-buds-auracast__desc {
+			width: 66.438vw;
+			font-size: 4.16667vw;
+			margin-top: 3.3vh;
+			margin-left: 10vw;
+		}
+		.sc-buds .sc-buds-auracast__headline {
+			padding-top: 19.2px;
+			padding-top: 2.5vw;
+		}
+		@media screen and (max-width: 767px) and (max-width: 360px) {
+			.sc-buds .sc-buds-auracast__headline {
+				padding-top: 9px;
+				padding-top: 2.5vw;
+			}
+		}
+	}

@@ -27,3 +27,39 @@
 - 브랜드사이트(STG) : https://stg-glx.samsung.com/global/galaxy/galaxy-buds2/
 - 브랜드사이트 : https://www.samsung.com/global/galaxy/galaxy-buds2/#galaxyBuds2
 - https://www.samsung.com/global/galaxy/galaxy-buds2-pro/
+
+
+
+ ##브랜드사이트 Replace
+
+ https://images.samsung.com/is/image/samsung/assets/[site-code]/mobile/2022-2h/galaxy-buds2/
+ =>
+/global/galaxy/galaxy-buds2-pro/images/
+
+
+https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/
+=>
+/global/galaxy/galaxy-buds2-pro/images/
+
+https://images.samsung.com/is/content/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/
+=>
+
+type="video/webm
+
+/global/galaxy/galaxy-buds2-pro/videos/
+
+##브랜드사이트 TEST
+- <!--
+TEST SAMPLE
+  
+-->  주석 사이 넣기 
+
+- asset URL Replace
+/global/galaxy/galaxy-buds2-pro/images/
+=>
+https://www.samsung.com/global/galaxy/galaxy-buds2-pro/images/
+
+
+global/galaxy/galaxy-buds2-pro/videos/
+
+https://www.samsung.com/global/galaxy/galaxy-buds2-pro/videos/
