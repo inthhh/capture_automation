@@ -3,7 +3,7 @@ import ast
 from openpyxl import Workbook
 from openpyxl.drawing.image import Image
 from openpyxl.styles import PatternFill, Alignment, Border, Side
-from db import execute
+# from db import execute
 from datetime import datetime
 import os
 
@@ -13,7 +13,7 @@ before_area = ''
 before_title = ''
 
 
-def add_data_to_list(exl_ws, col_location, col_area, col_title, cell_description, cell_contents, cell_check, cell_inspection, raw_data_meta):
+def add_data_to_list(exl_ws, col_location, col_area, col_title, cell_description, cell_contents, cell_check, cell_inspection, raw_data_meta, db_conn):
 
 
     global data_list, before_location, before_area, before_title
@@ -63,7 +63,7 @@ def add_data_to_list(exl_ws, col_location, col_area, col_title, cell_description
     before_area = col_area
     before_title = col_title
     insert_query = "INSERT INTO qa_result (date,rhq, subsidiary, site_code, page_type, category, location, area, title, description, contents, check_result, check_reason) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"
-    execute(insert_query, (
+    db_conn.execute(insert_query, (
         raw_data_meta["date"], raw_data_meta["rhq"], raw_data_meta["subsidiary"], raw_data_meta["site_code"],
         raw_data_meta["page_type"],raw_data_meta["category"], col_location, col_area, col_title, cell_description, cell_contents, cell_check,
         cell_inspection))
@@ -71,7 +71,7 @@ def add_data_to_list(exl_ws, col_location, col_area, col_title, cell_description
     print(date_now,": ", col_location, col_area, col_title, cell_contents, cell_check, cell_inspection)
 
 
-def add_dataimage_to_list(exl_ws, col_location, col_area, col_title, cell_description, cell_contents, cell_check, cell_inspection, image_bytes_resized, new_height, raw_data_meta):
+def add_dataimage_to_list(exl_ws, col_location, col_area, col_title, cell_description, cell_contents, cell_check, cell_inspection, image_bytes_resized, new_height, raw_data_meta, db_conn):
     # print(col_location, col_area, col_title, cell_description, cell_contents, cell_check, cell_inspection)
 
     global data_list, before_location, before_area, before_title
@@ -138,7 +138,7 @@ def add_dataimage_to_list(exl_ws, col_location, col_area, col_title, cell_descri
 
 
     insert_query = "INSERT INTO qa_result (date,rhq, subsidiary, site_code, page_type, category, location, area,title, description, contents, check_result, check_reason) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"
-    execute(insert_query, (
+    db_conn.execute(insert_query, (
         raw_data_meta["date"], raw_data_meta["rhq"], raw_data_meta["subsidiary"], raw_data_meta["site_code"],
         raw_data_meta["page_type"], raw_data_meta["category"], col_location, col_area, col_title, cell_description, cell_contents,
         cell_check,
@@ -148,7 +148,7 @@ def add_dataimage_to_list(exl_ws, col_location, col_area, col_title, cell_descri
 
 
 # Error 발생시 로그 생성 메소드
-def error_logger (error_message, url,start_time):
+def error_logger (error_message, url, start_time):
     file_name_base = url.replace('https://www.samsung.com/', '').replace('/', '-')
     file_name_base = file_name_base.strip('-')
     today = datetime.now().strftime("%Y%m%d")

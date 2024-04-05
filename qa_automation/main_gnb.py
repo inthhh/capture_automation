@@ -12,7 +12,7 @@ from process_components import *
 from data_management import *
 
 # url_codes = ['uk', 'fr', 'de', 'it', 'es', 'sg', 'id', 'ph', 'au', 'my', 'th', 'vn', 'ar', 'mx', 'br', 'in', 'sa', 'sa_en', 'ca', 'ca_fr', 'ae', 'ae_ar']
-url_codes = ['fr', 'de', 'es', 'id', 'vn']
+url_codes = ['uk', 'us']
 
 warnings.filterwarnings("ignore", category=MarkupResemblesLocatorWarning)
 
@@ -125,14 +125,15 @@ for url_code in url_codes:
     exl_ws.freeze_panes = 'A2'
 
     content_all = html_all.select('#component-id > div.nv00-gnb__inner-wrap > div.nv00-gnb__l0-menu-wrap > ul')
-
+    print(type(content_all))
+    # print(content_all)
     col_depth1 = 'GNB'
     for content_menu in content_all:
         col_depth2 = ''
         for content_depth01 in content_menu.select('li.nv00-gnb__l0-menu'):
             if content_depth01.select_one('button.nv00-gnb__l0-menu-btn') is not None:
                 content_depth01_title = content_depth01.select_one('button.nv00-gnb__l0-menu-btn')
-                print(content_depth01_title.text.strip())
+                # print(content_depth01_title.text.strip())
                 col_depth2 = content_depth01_title.text.strip()
             elif content_depth01.select_one('a.nv00-gnb__l0-menu-link') is not None:
                 content_depth01_title = content_depth01.select_one('a.nv00-gnb__l0-menu-link')
