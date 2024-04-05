@@ -15,13 +15,12 @@ import time
 
 
 def fetch_image_dimensions(image_url):
-
     response = requests.get(image_url)
     if response.status_code == 200:
-        print("http header = ", response.headers['Content-type'])
+
         if response.headers['Content-type'] == "image/svg+xml":
             raise ValueError('Invalid image type (only PNG, JPEG can be supported)')
-            # return None, None, None, None
+
         image_bytes = BytesIO(response.content)
         with PILImage.open(image_bytes) as img:
 
@@ -52,13 +51,14 @@ prediction_credentials = ApiKeyCredentials(in_headers={"Prediction-key": predict
 predictor = CustomVisionPredictionClient(ENDPOINT, prediction_credentials)
 computervision_client = ComputerVisionClient(ENDPOINT, CognitiveServicesCredentials(prediction_key))
 
+# old version
 def check_samsung_logo_and_text(image_url):
 
     response = requests.get(image_url)
 
 
     if response.status_code == 200:
-        print("http header = ",response.headers['Content-type'])
+
         if response.headers['Content-type'] == "image/svg+xml" :
             return "Guide: Only can detect logo in image format with png, jpg and jpeg."
 
@@ -83,7 +83,7 @@ def check_samsung_logo_and_text(image_url):
     if read_result.status == OperationStatusCodes.succeeded:
         for text_result in read_result.analyze_result.read_results:
             for line in text_result.lines:
-                # print(line.text)
+
                 if "samsung" in line.text.lower():
                     found = True
                     break
@@ -98,15 +98,15 @@ def check_samsung_logo_and_text(image_url):
             return "Guide: The Samsung logo cannot be used in duplicate within the dotcom image except for the GNB logo."
     return "Pass"
 
+# new version
+def check_samsung_logo_and_text_using_bytes(image_bytes):
+    detect_logo_result = computervision_client.analyze_image_in_stream(image_bytes,
+                                                                       visual_features=[VisualFeatureTypes.brands])
 
-# def check_samsung_logo_and_text(image):
-#     results = predictor.detect_image(project_id, publish_iteration_name, image.getvalue())
-#
-#     for prediction in results.predictions:
-#         if prediction.probability * 100 > 95:
-#             return "Guide: The Samsung logo cannot be used in duplicate within the dotcom image except for the GNB logo."
-#         else:
-#             return "Pass"
+    for brand in detect_logo_result.brands:
+        if brand.name.lower() == "samsung":
+            return "Guide: The Samsung logo cannot be used in duplicate within the dotcom image except for the GNB logo."
+    return "Pass"
 
 def select_component_slide(content_comp_div, data_selector):
     return content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[0]
@@ -124,7 +124,7 @@ def check_image_size(original_width, original_height, img_width, img_height):
         img_remark = 'Pass'
     return img_remark
 
-
+# old version
 def fetch_image_dimensions_bgcolor(image_url):
     # Helper functions
 
@@ -205,7 +205,9 @@ def fetch_image_dimensions_bgcolor(image_url):
 
     return original_width, original_height, image_bytes_resized, new_height, result_msg
 
+# new version
 def fetch_image_dimensions_bgcolor_usingcv(image_url):
+    # SINCE V1.0.3, parameter is changed into image bytes from url
 
     def rgb_to_hex(rgb):
         return '#{:02x}{:02x}{:02x}'.format(*rgb)
@@ -227,7 +229,7 @@ def fetch_image_dimensions_bgcolor_usingcv(image_url):
     response = requests.get(image_url)
     if response.status_code != 200:
         return None
-    print("http header = ", response.headers['Content-type'])
+
     if response.headers['Content-type'] == "image/svg+xml":
         return "Guide: Only can detect logo in image format with png, jpg and jpeg."
 

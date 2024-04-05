@@ -1,6 +1,6 @@
 import requests
 import csv
-import traceback
+
 from bs4 import BeautifulSoup
 from datetime import datetime
 # from pandas import ExcelWriter
@@ -11,14 +11,12 @@ from process_components import *
 from data_management import *
 from datetime import datetime
 from region import region
-from db import Database
 
 region = region
 # url_codes = ['uk', 'fr', 'de', 'it', 'es', 'sg', 'id', 'ph', 'au', 'my', 'th', 'vn', 'ar', 'mx', 'br', 'in', 'sa', 'sa_en', 'ca', 'ca_fr', 'ae', 'ae_ar']
 
 
 def qa (url_code):
-    db_conn = Database()
     raw_data_meta = {
         "date": datetime.today().strftime('%Y-%m-%d'),
         "rhq": region[url_code]["rhq"],
@@ -64,7 +62,7 @@ def qa (url_code):
                 cell_value = process_class_attributes(exl_ws, content_comp_div,
                                                       "", "", "", "",
                                                       "N", "section",
-                                                      {"home-kv-carousel--width-large": "1920px"}, "1440px", "N", raw_data_meta, db_conn)
+                                                      {"home-kv-carousel--width-large": "1920px"}, "1440px", "N", raw_data_meta)
                 if cell_value == '1920px':
                     bg_image_desktop_width = 1920
                     bg_image_mobile_width = 720
@@ -79,7 +77,7 @@ def qa (url_code):
                                                           "home-kv-carousel--height-medium": "Desktop:640px / Mobile:540px",
                                                           "home-kv-carousel--height-smedium": "Desktop:344px / Mobile:400px",
                                                           "home-kv-carousel--height-small": "Desktop:320px / Mobile:320px"},
-                                                      "N", "N", raw_data_meta, db_conn)
+                                                      "N", "N", raw_data_meta)
                 if cell_value == 'Desktop:810px / Mobile:640px':
                     bg_image_desktop_height = 810
                     bg_image_mobile_height = 1280
@@ -103,48 +101,48 @@ def qa (url_code):
                                                           'Desktop',
                                                           "div > div > div.home-kv-carousel__text-wrap", "H",
                                                           "home-kv-carousel__headline",
-                                                          "data-desktop-headline-text", "Y", "Y", raw_data_meta, db_conn)
+                                                          "data-desktop-headline-text", "Y", "Y", raw_data_meta)
                     cell_value = process_attributes_value(exl_ws, content_carousel_div,
                                                           "KeyVisual", "KV" + str(carousel_no), "Headline Text",
                                                           'Mobile',
                                                           "div > div > div.home-kv-carousel__text-wrap", "H",
                                                           "home-kv-carousel__headline",
-                                                          "data-mobile-headline-text", "Y", "Y", raw_data_meta, db_conn)
+                                                          "data-mobile-headline-text", "Y", "Y", raw_data_meta)
                     cell_value = process_attributes_value(exl_ws, content_carousel_div,
                                                           "KeyVisual", "KV" + str(carousel_no), "Description Text",
                                                           'Desktop',
                                                           "div > div > div.home-kv-carousel__text-wrap", "p",
                                                           "home-kv-carousel__desc",
-                                                          "data-desktop-description", "N", "Y", raw_data_meta, db_conn)
+                                                          "data-desktop-description", "N", "Y", raw_data_meta)
                     cell_value = process_attributes_value(exl_ws, content_carousel_div,
                                                           "KeyVisual", "KV" + str(carousel_no), "Description Text",
                                                           'Mobile',
                                                           "div > div > div.home-kv-carousel__text-wrap", "p",
                                                           "home-kv-carousel__desc",
-                                                          "data-mobile-description", "N", "Y", raw_data_meta, db_conn)
+                                                          "data-mobile-description", "N", "Y", raw_data_meta)
 
                     process_cta_buttons(exl_ws, content_carousel_div, "KeyVisual", "KV" + str(carousel_no), "CTA",
-                                        "div > div > div.home-kv-carousel__text-wrap > div.home-kv-carousel__cta-wrap", raw_data_meta, db_conn)
+                                        "div > div > div.home-kv-carousel__text-wrap > div.home-kv-carousel__cta-wrap", raw_data_meta)
 
                     process_background_image(exl_ws, content_carousel_div, "KeyVisual", "KV" + str(carousel_no),
                                              "BG Image",
                                              "div > div > div.home-kv-carousel__background-media-wrap",
                                              bg_image_desktop_width, bg_image_desktop_height, bg_image_mobile_width,
-                                             bg_image_mobile_height, "N", "Y", raw_data_meta, db_conn)
+                                             bg_image_mobile_height, "N", "Y", raw_data_meta)
 
             if 'cm-g-text-block-container' in content_comp_name:
 
                 if content_comp_div.select('div > div.ho-g-showcase-card-tab'):
                     col_location = process_label_text(exl_ws, content_comp_div, "", "", "", "",
                                                       "section > div > div", "H", "text-block-container__headline",
-                                                      "Y", "N", raw_data_meta, db_conn)
+                                                      "Y", "N", raw_data_meta)
                     for content_comp_co02 in content_comp_div.select('div.showcase-card-tab'):
 
                         tab_no = 0
                         for comp_co02_tab in content_comp_co02.select('div > ul.tab__list > li'):
                             tab_no += 1
                             cell_area = process_label_text(exl_ws, comp_co02_tab, "", "", "", "",
-                                                           "N", "button", "tab__item-title", "N", "N", raw_data_meta, db_conn)
+                                                           "N", "button", "tab__item-title", "N", "N", raw_data_meta)
 
                             comp_co02_layout = content_comp_co02.select(
                                 'div.showcase-card-tab__card-wrap > div > div.showcase-card-tab__card-items')[
@@ -206,6 +204,7 @@ def qa (url_code):
                             card_list_no = 0
                             for card_list in card_layout:
                                 card_list_no += 1
+                                print(card_list, card_list_no)
                                 card_compo_detail = \
                                     comp_co02_layout.find_all("div", class_='showcase-card-tab-card')[card_list_no - 1]
                                 card_type = process_class_attributes(exl_ws, card_compo_detail, "", "", "", "",
@@ -217,7 +216,7 @@ def qa (url_code):
                                                                       "showcase-card-tab-card--product-small": "Product",
                                                                       "showcase-card-tab-card--product-vertical": "Product"},
                                                                      'N',
-                                                                     "N", raw_data_meta, db_conn)
+                                                                     "N", raw_data_meta)
 
                                 if card_type == 'Full Breed':
                                     if card_number == '3 Card':
@@ -319,13 +318,13 @@ def qa (url_code):
                                                                 "Text", "Desktop",
                                                                 "N", "span",
                                                                 "showcase-card-tab-card__product-name--desktop",
-                                                                "Y", "Y", raw_data_meta, db_conn)
+                                                                "Y", "Y", raw_data_meta)
                                 cell_value = process_label_text(exl_ws, card_compo_detail, col_location,
                                                                 cell_area + " | " + card_list + "(" + card_size + ")",
                                                                 "Text", "Mobile",
                                                                 "N", "span",
                                                                 "showcase-card-tab-card__product-name--mobile", "Y",
-                                                                "Y", raw_data_meta, db_conn)
+                                                                "Y", raw_data_meta)
 
                                 cell_value = process_label_text(exl_ws, card_compo_detail, col_location,
                                                                 cell_area + " | " + card_list + "(" + card_size + ")",
@@ -333,24 +332,24 @@ def qa (url_code):
                                                                 "Desktop",
                                                                 "N", "span",
                                                                 "showcase-card-tab-card__product-description--desktop",
-                                                                "N", "Y", raw_data_meta, db_conn)
+                                                                "N", "Y", raw_data_meta)
                                 cell_value = process_label_text(exl_ws, card_compo_detail, col_location,
                                                                 cell_area + " | " + card_list + "(" + card_size + ")",
                                                                 "Text",
                                                                 "Mobile",
                                                                 "N", "span",
                                                                 "showcase-card-tab-card__product-description--mobile",
-                                                                "N", "Y", raw_data_meta, db_conn)
+                                                                "N", "Y", raw_data_meta)
                                 process_label_text_cta(exl_ws, card_compo_detail, col_location,
                                                        cell_area + " | " + card_list + "(" + card_size + ")", "CTA",
-                                                       "N", "span.cta", raw_data_meta, db_conn)
+                                                       "N", "span.cta", raw_data_meta)
 
                                 process_background_image(exl_ws, card_compo_detail, col_location,
                                                          cell_area + " | " + card_list + "(" + card_size + ")",
                                                          "BG Image",
                                                          "div.showcase-card-tab-card__img-wrap",
                                                          bg_image_desktop_width, bg_image_desktop_height,
-                                                         bg_image_mobile_width, bg_image_mobile_height, "Y", "Y", raw_data_meta, db_conn)
+                                                         bg_image_mobile_width, bg_image_mobile_height, "Y", "Y", raw_data_meta)
 
             if 'ho-g-showcase-card-tab' in content_comp_name:
 
@@ -361,7 +360,7 @@ def qa (url_code):
                     for comp_co02_tab in content_comp_co02.select('div > ul.tab__list > li'):
                         tab_no += 1
                         cell_area = process_label_text(exl_ws, comp_co02_tab, "", "", "", "",
-                                                       "N", "button", "tab__item-title", "N", "N", raw_data_meta, db_conn)
+                                                       "N", "button", "tab__item-title", "N", "N", raw_data_meta)
 
                         comp_co02_layout = content_comp_co02.select(
                             'div.showcase-card-tab__card-wrap > div > div.showcase-card-tab__card-items')[
@@ -428,7 +427,7 @@ def qa (url_code):
                                                                   "showcase-card-tab-card--product-small": "Product",
                                                                   "showcase-card-tab-card--product-vertical": "Product"},
                                                                  'N',
-                                                                 "N", raw_data_meta, db_conn)
+                                                                 "N", raw_data_meta)
 
                             if card_type == 'Full Breed':
                                 if card_number == '3 Card':
@@ -530,13 +529,13 @@ def qa (url_code):
                                                             "Text", "Desktop",
                                                             "N", "span",
                                                             "showcase-card-tab-card__product-name--desktop", "Y",
-                                                            "Y", raw_data_meta, db_conn)
+                                                            "Y", raw_data_meta)
                             cell_value = process_label_text(exl_ws, card_compo_detail, col_location,
                                                             cell_area + " | " + card_list + "(" + card_size + ")",
                                                             "Text", "Mobile",
                                                             "N", "span",
                                                             "showcase-card-tab-card__product-name--mobile", "Y",
-                                                            "Y", raw_data_meta, db_conn)
+                                                            "Y", raw_data_meta)
 
                             cell_value = process_label_text(exl_ws, card_compo_detail, col_location,
                                                             cell_area + " | " + card_list + "(" + card_size + ")",
@@ -545,7 +544,7 @@ def qa (url_code):
                                                             "N", "span",
                                                             "showcase-card-tab-card__product-description--desktop",
                                                             "N",
-                                                            "Y", raw_data_meta, db_conn)
+                                                            "Y", raw_data_meta)
                             cell_value = process_label_text(exl_ws, card_compo_detail, col_location,
                                                             cell_area + " | " + card_list + "(" + card_size + ")",
                                                             "Text",
@@ -553,17 +552,17 @@ def qa (url_code):
                                                             "N", "span",
                                                             "showcase-card-tab-card__product-description--mobile",
                                                             "N",
-                                                            "Y", raw_data_meta, db_conn)
+                                                            "Y", raw_data_meta)
                             process_label_text_cta(exl_ws, card_compo_detail, col_location,
                                                    cell_area + " | " + card_list + "(" + card_size + ")", "CTA",
-                                                   "N", "span.cta", raw_data_meta, db_conn)
+                                                   "N", "span.cta", raw_data_meta)
 
                             process_background_image(exl_ws, card_compo_detail, col_location,
                                                      cell_area + " | " + card_list + "(" + card_size + ")",
                                                      "BG Image",
                                                      "div.showcase-card-tab-card__img-wrap",
                                                      bg_image_desktop_width, bg_image_desktop_height,
-                                                     bg_image_mobile_width, bg_image_mobile_height, "Y", "Y", raw_data_meta, db_conn)
+                                                     bg_image_mobile_width, bg_image_mobile_height, "Y", "Y", raw_data_meta)
 
             if 'pd-g-feature-benefit-column-carousel' in content_comp_name:
                 comp_tab_no = 0
@@ -573,18 +572,18 @@ def qa (url_code):
                     cell_value = process_label_text(exl_ws, comp_ft12_tab, "", "Card " + str(comp_tab_no),
                                                     "Headline Text", "All",
                                                     "div > div > div > div.feature-column-carousel__title", "H",
-                                                    "N", "Y", "Y", raw_data_meta, db_conn)
+                                                    "N", "Y", "Y", raw_data_meta)
                     cell_value = process_label_text(exl_ws, comp_ft12_tab, "", "Card " + str(comp_tab_no),
                                                     "Sub Headline Text", "All",
                                                     "div > div > div > div.feature-column-carousel__sub-title",
-                                                    "H", "N", "Y", "Y", raw_data_meta, db_conn)
+                                                    "H", "N", "Y", "Y", raw_data_meta)
                     cell_value = process_label_text(exl_ws, comp_ft12_tab, "", "Card " + str(comp_tab_no),
                                                     "Description",
                                                     "All",
                                                     "div > div > div > div.feature-column-carousel__text", "p",
-                                                    "N", "N", "Y", raw_data_meta, db_conn)
+                                                    "N", "N", "Y", raw_data_meta)
                     process_cta_buttons(exl_ws, comp_ft12_tab, "", "Card " + str(comp_tab_no), "CTA",
-                                        "div > div > div.feature-column-carousel__button", raw_data_meta, db_conn)
+                                        "div > div > div.feature-column-carousel__button", raw_data_meta)
                     bg_image_desktop_width = 570
                     bg_image_desktop_height = 304
                     bg_image_mobile_width = 720
@@ -592,7 +591,7 @@ def qa (url_code):
                     process_background_image(exl_ws, comp_ft12_tab, "", "Card " + str(comp_tab_no), "BG Image ",
                                              'div.feature-column-carousel__figure', bg_image_desktop_width,
                                              bg_image_desktop_height, bg_image_mobile_width, bg_image_mobile_height,
-                                             "Y", "Y", raw_data_meta, db_conn)
+                                             "Y", "Y", raw_data_meta)
 
             if 'cm-g-bleed-card' in content_comp_name:
                 comp_tab_no = 0
@@ -619,18 +618,18 @@ def qa (url_code):
                     cell_value = process_label_text(exl_ws, comp_co11_tab, "Bleed Card", "Card " + str(comp_tab_no),
                                                     "Headline Text", "All",
                                                     "div > div > div.bleed-card__text-wrap > div", "H",
-                                                    "bleed-card__title", "Y", "Y", raw_data_meta, db_conn)
+                                                    "bleed-card__title", "Y", "Y", raw_data_meta)
                     cell_value = process_label_text(exl_ws, comp_co11_tab, "Bleed Card", "Card " + str(comp_tab_no),
                                                     "Sub Headline Text", "All",
                                                     "div > div > div.bleed-card__text-wrap > div", "H",
-                                                    "bleed-card__sub-title", "N", "Y", raw_data_meta, db_conn)
+                                                    "bleed-card__sub-title", "N", "Y", raw_data_meta)
                     process_cta_buttons(exl_ws, comp_co11_tab, "Bleed Card", "Card " + str(comp_tab_no), "CTA",
-                                        "div > div > div.bleed-card__text-wrap > div > div > div.cta-wrap", raw_data_meta, db_conn)
+                                        "div > div > div.bleed-card__text-wrap > div > div > div.cta-wrap", raw_data_meta)
                     process_background_image(exl_ws, comp_co11_tab, "Bleed Card", "Card " + str(comp_tab_no),
                                              "BG Image ",
                                              'div > div > div.bleed-card__image > div', bg_image_desktop_width,
                                              bg_image_desktop_height, bg_image_mobile_width, bg_image_mobile_height,
-                                             "Y", "Y", raw_data_meta, db_conn)
+                                             "Y", "Y", raw_data_meta)
 
             if 'of-g-feature-benefit-card' in content_comp_name:
                 comp_tab_no = 0
@@ -667,24 +666,24 @@ def qa (url_code):
                                                     "Card " + str(comp_tab_no),
                                                     "Eyeblow Text", "All",
                                                     "div > div.feature-benefit-card__text-wrap > div > div", "div",
-                                                    "feature-benefit-card__eyebrow-text", "Y", "Y", raw_data_meta, db_conn)
+                                                    "feature-benefit-card__eyebrow-text", "Y", "Y", raw_data_meta)
                     cell_value = process_label_text(exl_ws, comp_co11_tab, "Feature Card",
                                                     "Card " + str(comp_tab_no),
                                                     "Sub Headline Text", "All",
                                                     "div > div.feature-benefit-card__text-wrap > div > div", "H",
-                                                    "feature-benefit-card__title", "Y", "Y", raw_data_meta, db_conn)
+                                                    "feature-benefit-card__title", "Y", "Y", raw_data_meta)
                     cell_value = process_label_text(exl_ws, comp_co11_tab, "Feature Card",
                                                     "Card " + str(comp_tab_no),
                                                     "Description", "All",
                                                     "div > div.feature-benefit-card__text-wrap > div > div", "div",
-                                                    "feature-benefit-card__description", "N", "Y", raw_data_meta, db_conn)
+                                                    "feature-benefit-card__description", "N", "Y", raw_data_meta)
                     process_cta_buttons(exl_ws, comp_co11_tab, "Feature Card", "Card " + str(comp_tab_no), "CTA",
-                                        "div > div.feature-benefit-card__text-wrap > div > div > div.feature-benefit-card__cta", raw_data_meta, db_conn)
+                                        "div > div.feature-benefit-card__text-wrap > div > div > div.feature-benefit-card__cta", raw_data_meta)
                     process_background_image(exl_ws, comp_co11_tab, "Feature Card", "Card " + str(comp_tab_no),
                                              "BG Image ",
                                              'div > div.feature-benefit-card__figure > div', bg_image_desktop_width,
                                              bg_image_desktop_height, bg_image_mobile_width, bg_image_mobile_height,
-                                             "Y", "Y", raw_data_meta, db_conn)
+                                             "Y", "Y", raw_data_meta)
 
             if 'pd-g-header-carousel' in content_comp_name:
                 comp_tab_no = 0
@@ -701,21 +700,21 @@ def qa (url_code):
                                                     "Header Text", "All",
                                                     "section > div > div > div.header-carousel__slide > div > div > div.header-carousel__text-inner",
                                                     "H",
-                                                    "header-carousel__headline", "Y", "Y", raw_data_meta, db_conn)
+                                                    "header-carousel__headline", "Y", "Y", raw_data_meta)
                     cell_value = process_label_text(exl_ws, comp_co11_tab, "KeyVisual",
                                                     "Carousel " + str(comp_tab_no),
                                                     "Description", "All",
                                                     "section > div > div > div.header-carousel__slide > div > div > div.header-carousel__text-inner",
                                                     "p",
-                                                    "header-carousel__description", "N", "Y", raw_data_meta, db_conn)
+                                                    "header-carousel__description", "N", "Y", raw_data_meta)
                     process_cta_buttons(exl_ws, comp_co11_tab, "KeyVisual", "Carousel " + str(comp_tab_no), "CTA",
-                                        "section > div > div > div.header-carousel__slide > div > div > div.header-carousel__text-inner > div.header-carousel__cta-wrap", raw_data_meta, db_conn)
+                                        "section > div > div > div.header-carousel__slide > div > div > div.header-carousel__text-inner > div.header-carousel__cta-wrap", raw_data_meta)
                     process_background_image(exl_ws, comp_co11_tab, "KeyVisual", "Carousel " + str(comp_tab_no),
                                              "BG Image ",
                                              'section > div > div > div.header-carousel__slide > div > div.header-carousel__background-media > div',
                                              bg_image_desktop_width,
                                              bg_image_desktop_height, bg_image_mobile_width, bg_image_mobile_height,
-                                             "Y", "Y", raw_data_meta, db_conn)
+                                             "Y", "Y", raw_data_meta)
 
             if 'ho-g-showcase-card' in content_comp_name:
 
@@ -780,7 +779,7 @@ def qa (url_code):
                                                           "co35-showcase-card-tab-card--product-small": "Product",
                                                           "co35-showcase-card-tab-card--product-vertical": "Product"},
                                                          'N',
-                                                         "N", raw_data_meta, db_conn)
+                                                         "N", raw_data_meta)
 
                     if card_type == 'Full Breed':
                         if card_number == '3 Card':
@@ -881,12 +880,12 @@ def qa (url_code):
                                                     card_list + "(" + card_size + ")",
                                                     "Text", "Desktop",
                                                     "N", "span",
-                                                    "co35-showcase-card-tab-card__product-name--desktop", "Y", "Y", raw_data_meta, db_conn)
+                                                    "co35-showcase-card-tab-card__product-name--desktop", "Y", "Y", raw_data_meta)
                     cell_value = process_label_text(exl_ws, card_compo_detail, col_location,
                                                     card_list + "(" + card_size + ")",
                                                     "Text", "Mobile",
                                                     "N", "span",
-                                                    "co35-showcase-card-tab-card__product-name--mobile", "Y", "Y", raw_data_meta, db_conn)
+                                                    "co35-showcase-card-tab-card__product-name--mobile", "Y", "Y", raw_data_meta)
 
                     cell_value = process_label_text(exl_ws, card_compo_detail, col_location,
                                                     card_list + "(" + card_size + ")",
@@ -895,25 +894,24 @@ def qa (url_code):
                                                     "N", "span",
                                                     "co35-showcase-card-tab-card__product-description--desktop",
                                                     "N",
-                                                    "Y", raw_data_meta, db_conn)
+                                                    "Y", raw_data_meta)
                     cell_value = process_label_text(exl_ws, card_compo_detail, col_location,
                                                     card_list + "(" + card_size + ")",
                                                     "Text",
                                                     "Mobile",
                                                     "N", "span",
                                                     "co35-showcase-card-tab-card__product-description--mobile", "N",
-                                                    "Y", raw_data_meta, db_conn)
+                                                    "Y", raw_data_meta)
                     process_label_text_cta(exl_ws, card_compo_detail, col_location,
                                            card_list + "(" + card_size + ")", "CTA",
-                                           "N", "span.cta", raw_data_meta, db_conn)
+                                           "N", "span.cta", raw_data_meta)
 
                     process_background_image(exl_ws, card_compo_detail, col_location,
                                              card_list + "(" + card_size + ")",
                                              "BG Image",
                                              "div.co35-showcase-card-tab-card__img-wrap",
                                              bg_image_desktop_width, bg_image_desktop_height,
-                                             bg_image_mobile_width, bg_image_mobile_height, "Y", "Y", raw_data_meta, db_conn)
-
+                                             bg_image_mobile_width, bg_image_mobile_height, "Y", "Y", raw_data_meta)
             if 'pd-g-feature-benefit-banner' in content_comp_name:
                 if 'st-feature-benefit-banner--full' in content_comp_div.select_one('section').get('class', []):
                     bg_image_desktop_width = 1440
@@ -932,30 +930,30 @@ def qa (url_code):
                 cell_value = process_label_text(exl_ws, content_comp_div, "Banner", col_area, "Headline Text",
                                                 "Desktop",
                                                 "section > div > div > div.st-feature-benefit-banner__content-wrap",
-                                                "H", "desktop-only", "Y", "Y", raw_data_meta, db_conn)
+                                                "H", "desktop-only", "Y", "Y", raw_data_meta)
                 cell_value = process_label_text(exl_ws, content_comp_div, "Banner", col_area, "Headline Text",
                                                 "Mobile",
                                                 "section > div > div > div.st-feature-benefit-banner__content-wrap",
-                                                "H", "mobile-only", "Y", "Y", raw_data_meta, db_conn)
+                                                "H", "mobile-only", "Y", "Y", raw_data_meta)
                 cell_value = process_label_text(exl_ws, content_comp_div, "Banner", col_area, "Description Text",
                                                 "All",
                                                 "section > div > div > div.st-feature-benefit-banner__desc",
-                                                "p", "desktop-only", "N", "Y", raw_data_meta, db_conn)
+                                                "p", "desktop-only", "N", "Y", raw_data_meta)
                 process_label_text_cta(exl_ws, content_comp_div, "Banner", col_area, "CTA",
                                        "section > div > div > div.st-feature-benefit-banner__content-wrap > div.st-feature-benefit-banner__cta-wrap",
-                                       "a.cta", raw_data_meta, db_conn)
+                                       "a.cta", raw_data_meta)
                 process_background_image(exl_ws, content_comp_div, "Banner", col_area, "BG Image ",
                                          'section > div > figure.st-feature-benefit-banner__figure > div',
                                          bg_image_desktop_width,
                                          bg_image_desktop_height, bg_image_mobile_width, bg_image_mobile_height,
-                                         "Y", "Y", raw_data_meta, db_conn)
+                                         "Y", "Y", raw_data_meta)
 
             if 'co-g-showcase-card-tab' in content_comp_name:
                 col_location = process_label_text(exl_ws, content_comp_div, "", " ",
                                                   "", "",
                                                   "div.co-showcase-card-tab",
                                                   "H",
-                                                  "co-showcase-card-tab__headline", "N", "N", raw_data_meta, db_conn)
+                                                  "co-showcase-card-tab__headline", "N", "N", raw_data_meta)
                 co19_area_name = content_comp_div.select('div > div.co-showcase-card-tab__tabs > div > button')
                 co19_content_div = content_comp_div.select(
                     'div > div.co-showcase-card-tab__wrap > div > section.co-showcase-card-tab__container > div')
@@ -989,14 +987,14 @@ def qa (url_code):
                                                                  card_no - 1], col_location,
                                                              col_area + " | " + card_list, "Headline Text", "All",
                                                              "div.co-showcase-card-tab__text", "p",
-                                                             "co-showcase-card-tab__card-headline", "Y", "Y", raw_data_meta, db_conn)
+                                                             "co-showcase-card-tab__card-headline", "Y", "Y", raw_data_meta)
                             cell_value2 = process_label_text(exl_ws,
                                                              co19_col_div.select('div.co-showcase-card-tab__card')[
                                                                  card_no - 1], col_location,
                                                              col_area + " | " + card_list, "Sub Headline Text",
                                                              "All",
                                                              "div.co-showcase-card-tab__text", "p",
-                                                             "co-showcase-card-tab__card-sub-headline", "N", "Y", raw_data_meta, db_conn)
+                                                             "co-showcase-card-tab__card-sub-headline", "N", "Y", raw_data_meta)
                             bg_image_desktop_width = 802
                             bg_image_desktop_height = 520
                             bg_image_mobile_width = 624
@@ -1007,14 +1005,14 @@ def qa (url_code):
                                                                  card_no - 1], col_location,
                                                              col_area + " | " + card_list, "Headline Text", "All",
                                                              "N", "p",
-                                                             "co-showcase-card-tab__card-headline", "Y", "Y", raw_data_meta, db_conn)
+                                                             "co-showcase-card-tab__card-headline", "Y", "Y", raw_data_meta)
                             cell_value2 = process_label_text(exl_ws,
                                                              co19_col_div.select('div.co-showcase-card-tab__card')[
                                                                  card_no - 1], col_location,
                                                              col_area + " | " + card_list, "Sub Headline Text",
                                                              "All",
                                                              "N", "p",
-                                                             "co-showcase-card-tab__card-sub-headline", "N", "Y", raw_data_meta, db_conn)
+                                                             "co-showcase-card-tab__card-sub-headline", "N", "Y", raw_data_meta)
                             bg_image_desktop_width = 128
                             bg_image_desktop_height = 128
                             bg_image_mobile_width = 144
@@ -1025,7 +1023,7 @@ def qa (url_code):
                                                  col_location,
                                                  col_area + " | " + card_list, "BG Image", 'div.figure',
                                                  bg_image_desktop_width, bg_image_desktop_height,
-                                                 bg_image_mobile_width, bg_image_mobile_height, "Y", "Y", raw_data_meta, db_conn)
+                                                 bg_image_mobile_width, bg_image_mobile_height, "Y", "Y", raw_data_meta)
 
             if 'pd-g-feature-benefit-two-column' in content_comp_name:
                 ft09_components = content_comp_div.select('section > div > div.st-two-column__column')
@@ -1035,15 +1033,15 @@ def qa (url_code):
                     cell_value = process_label_text(exl_ws, ft09_component, "2 Column",
                                                     'Column ' + str(ft09_com_no), "Headline Text", "All",
                                                     "div.st-two-column__title", "H",
-                                                    "st-two-column__headline", "Y", "Y", raw_data_meta, db_conn)
+                                                    "st-two-column__headline", "Y", "Y", raw_data_meta)
                     cell_value = process_label_text(exl_ws, ft09_component, "2 Column",
                                                     'Column ' + str(ft09_com_no), "Sub Title Text", "All",
                                                     "N", "div",
-                                                    "st-two-column__sub-title", "N", "Y", raw_data_meta, db_conn)
+                                                    "st-two-column__sub-title", "N", "Y", raw_data_meta)
                     cell_value = process_label_text(exl_ws, ft09_component, "2 Column",
                                                     'Column ' + str(ft09_com_no), "Description", "All",
                                                     "div.st-two-column__text", "p",
-                                                    "N", "N", "Y", raw_data_meta, db_conn)
+                                                    "N", "N", "Y", raw_data_meta)
 
                     bg_image_desktop_width = 590
                     bg_image_desktop_height = 0
@@ -1051,12 +1049,12 @@ def qa (url_code):
                     bg_image_mobile_height = 0
 
                     process_label_text_cta(exl_ws, ft09_component, "2 Column", 'Column ' + str(ft09_com_no), "CTA",
-                                           "div.st-two-column__cta-wrap", "a.cta", raw_data_meta, db_conn)
+                                           "div.st-two-column__cta-wrap", "a.cta", raw_data_meta)
                     process_background_image(exl_ws, ft09_component, "2 Column", 'Column ' + str(ft09_com_no),
                                              "BG Image ",
                                              'figure.st-two-column__figure', bg_image_desktop_width,
                                              bg_image_desktop_height, bg_image_mobile_width, bg_image_mobile_height,
-                                             "Y", "Y", raw_data_meta, db_conn)
+                                             "Y", "Y", raw_data_meta)
 
             if 'pd-g-feature-benefit-full-bleed' in content_comp_name:
                 ft03_components = content_comp_div.select('section > div.st-feature-benefit-full-bleed__wrap')
@@ -1079,26 +1077,26 @@ def qa (url_code):
                                                      "Column 1", "Headline Text", "All",
                                                      "div > div > div.st-feature-benefit-full-bleed__content-area",
                                                      "H",
-                                                     "st-feature-benefit-full-bleed__title", "Y", "Y", raw_data_meta, db_conn)
+                                                     "st-feature-benefit-full-bleed__title", "Y", "Y", raw_data_meta)
                     cell_value2 = process_label_text(exl_ws, ft03_component, "Banner",
                                                      "Column 1", "Sub Headline Text", "All",
                                                      "div > div > div.st-feature-benefit-full-bleed__content-area",
                                                      "H",
-                                                     "st-feature-benefit-full-bleed__sub-title", "N", "Y", raw_data_meta, db_conn)
+                                                     "st-feature-benefit-full-bleed__sub-title", "N", "Y", raw_data_meta)
                     cell_value3 = process_label_text(exl_ws, ft03_component, "Banner",
                                                      "Column 1", "Description", "All",
                                                      "div > div > div.st-feature-benefit-full-bleed__content-area",
                                                      "p",
-                                                     "st-feature-benefit-full-bleed__text", "N", "Y", raw_data_meta, db_conn)
+                                                     "st-feature-benefit-full-bleed__text", "N", "Y", raw_data_meta)
                     process_label_text_cta(exl_ws, ft03_component, "Banner", "Column 1", "CTA",
-                                           "div > div > div > div.st-feature-benefit-full-bleed__cta", "a.cta", raw_data_meta, db_conn)
+                                           "div > div > div > div.st-feature-benefit-full-bleed__cta", "a.cta", raw_data_meta)
 
                     process_background_image(exl_ws, ft03_component, "Banner", "Column 1", "BG Image ",
                                              'figure.st-feature-benefit-full-bleed__figure ',
                                              bg_image_desktop_width,
                                              bg_image_desktop_height, bg_image_mobile_width, bg_image_mobile_height,
                                              "Y",
-                                             "Y", raw_data_meta, db_conn)
+                                             "Y", raw_data_meta)
 
             if 'nv-g-local-floating-nav' in content_comp_name:
                 bg_image_desktop_width = 140
@@ -1112,13 +1110,13 @@ def qa (url_code):
                     cell_value = process_label_text(exl_ws, nv06_component, "Category Browser",
                                                     "Category " + str(nv06_no), "Headline Text", "All",
                                                     "a", "div",
-                                                    "nv-local-floating-nav__headline", "Y", "Y", raw_data_meta, db_conn)
+                                                    "nv-local-floating-nav__headline", "Y", "Y", raw_data_meta)
                     process_background_image(exl_ws, nv06_component, "Category Browser", "Category " + str(nv06_no),
                                              "BG Image ",
                                              'a.nv-local-floating-nav__content', bg_image_desktop_width,
                                              bg_image_desktop_height, bg_image_mobile_width, bg_image_mobile_height,
                                              "Y",
-                                             "Y", raw_data_meta, db_conn)
+                                             "Y", raw_data_meta)
 
         row_num = exl_ws.max_row + 1
         for i in range(1, 9):
@@ -1129,7 +1127,7 @@ def qa (url_code):
         file_name_base = file_name_base.strip('-')
         current_time = datetime.now().strftime("%Y%m%d%H%M%S")
         end_time = datetime.now()
-        db_conn.commit_connection()
+
         path = "./result/" + end_time.strftime("%Y%m%d")
         os.makedirs(path, exist_ok=True)
         final_file_name = f"{path}/{file_name_base}_{current_time}.xlsx"
@@ -1141,5 +1139,23 @@ def qa (url_code):
 
 
     except Exception as e:
-        db_conn.rollback_connection()
-        error_logger(traceback.format_exc(),url,start_time)
+        error_logger(e,url,start_time)
+        # file_name_base = url.replace('https://www.samsung.com/', '').replace('/', '-')
+        # file_name_base = file_name_base.strip('-')
+        # today = datetime.now().strftime("%Y%m%d")
+        # path = "./result/" + today + "/error"
+        # os.makedirs(path, exist_ok=True)
+        # current_time = datetime.now().strftime("%Y%m%d%H%M%S")
+        # final_file_name = f"{path}/{file_name_base}_eroror_{current_time}.txt"
+        #
+        # end_time = datetime.now()
+        # time_elapsed = end_time - start_time
+        #
+        # f = open(final_file_name, "w")
+        #
+        # error_log = f"{e}, \n ERROR :, {url}, at : {end_time} ({time_elapsed})"
+        # f.write(error_log)
+        # f.close()
+        #
+        # print("ERROR :", url, 'at : ', end_time.strftime("%Y/%m/%d %H:%M:%S"), "(", time_elapsed, ")")
+        # print(error_log)
