@@ -49,7 +49,7 @@ type="video/webm
 /global/galaxy/galaxy-buds2-pro/videos/
 
 ##브랜드사이트 TEST
-- <!--
+- index_sample.html <!--
 TEST SAMPLE
   
 -->  주석 사이 넣기 
