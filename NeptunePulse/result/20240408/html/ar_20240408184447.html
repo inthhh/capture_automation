@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Check</title>
+<link href="../../css/bootstrap.min.css" rel="stylesheet">
+<script src="../../js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+<div class="row align-items-center">
+<div class="col-1">No</div>
+<div class="col-9">Image</div>
+<div class="col-1">Check</div>
+</div>
+<div class="row">
+<div class="col-1">1</div>
+<div class="col-9">
+<figure class="figure">
+<figcaption class="figure-caption text-start">PC ImageGalaxy S24 Series</figcaption>
+<img src = "image_ar/BANNER_S24_1366x607final.png" class="img-fluid"/>
+</figure>
+</div>
+<div class="col-1 d-flex align-items-center">
+<input type="checkbox" class="btn-check" id="btn-check-outlined1" checked autocomplete="off">
+<label class="btn btn-outline-primary" for="btn-check-outlined1">Pass</label><br>
+</div>
+</div>
+<div class="row">
+<div class="col-1">1</div>
+<div class="col-9">
+<figure class="figure">
+<figcaption class="figure-caption text-start">Mobile ImageGalaxy S24 Series</figcaption>
+<img src = "image_ar/Banner_vertical_02.jpg" class="img-fluid"/>
+</figure>
+</div>
+<div class="col-1 d-flex align-items-center">
+<input type="checkbox" class="btn-check" id="btn-check-outlined2" checked autocomplete="off">
+<label class="btn btn-outline-primary" for="btn-check-outlined2">Pass</label><br>
+</div>
+</div>
+<div class="row">
+<div class="col-1">1</div>
+<div class="col-9">
+<figure class="figure">
+<figcaption class="figure-caption text-start">PC ImageNuevo TV 98"<br>la experiencia del cine en tu casa</figcaption>
+<img src = "image_ar/20231218-Dotcom-MSQLED98-02mockup3.png" class="img-fluid"/>
+</figure>
+</div>
+<div class="col-1 d-flex align-items-center">
+<input type="checkbox" class="btn-check" id="btn-check-outlined3" checked autocomplete="off">
+<label class="btn btn-outline-primary" for="btn-check-outlined3">Pass</label><br>
+</div>
+</div>
+<div class="row">
+<div class="col-1">1</div>
+<div class="col-9">
+<figure class="figure">
+<figcaption class="figure-caption text-start">Mobile ImageNuevo TV 98"<br>la experiencia del cine en tu casa</figcaption>
+<img src = "image_ar/20231218-Dotcom-MSQLED98_V2mockup1.png" class="img-fluid"/>
+</figure>
+</div>
+<div class="col-1 d-flex align-items-center">
+<input type="checkbox" class="btn-check" id="btn-check-outlined4" checked autocomplete="off">
+<label class="btn btn-outline-primary" for="btn-check-outlined4">Pass</label><br>
+</div>
+</div>
+<div class="row">
+<div class="col-1">1</div>
+<div class="col-9">
+<figure class="figure">
+<figcaption class="figure-caption text-start">PC ImageNuevos Lavarropas<br>Carga Superior Digital Inverter</figcaption>
+<img src = "image_ar/MS_TopLoadWeek12_2.png" class="img-fluid"/>
+</figure>
+</div>
+<div class="col-1 d-flex align-items-center">
+<input type="checkbox" class="btn-check" id="btn-check-outlined5" checked autocomplete="off">
+<label class="btn btn-outline-primary" for="btn-check-outlined5">Pass</label><br>
+</div>
+</div>
+<div class="row">
+<div class="col-1">1</div>
+<div class="col-9">
+<figure class="figure">
+<figcaption class="figure-caption text-start">Mobile ImageNuevos Lavarropas<br>Carga Superior Digital Inverter</figcaption>
+<img src = "image_ar/BANNER_TOPLOAD_720x1080NOTEXTNew.png" class="img-fluid"/>
+</figure>
+</div>
+<div class="col-1 d-flex align-items-center">
+<input type="checkbox" class="btn-check" id="btn-check-outlined6" checked autocomplete="off">
+<label class="btn btn-outline-primary" for="btn-check-outlined6">Pass</label><br>
+</div>
+</div>
+<div class="row">
+<div class="col-1">1</div>
+<div class="col-9">
+<figure class="figure">
+<figcaption class="figure-caption text-start">PC ImageEl próximo gran<br>avance está aquí</figcaption>
+<img src = "image_ar/Galaxy_AI_alas12.12.42_018f75bf.jpg" class="img-fluid"/>
+</figure>
+</div>
+<div class="col-1 d-flex align-items-center">
+<input type="checkbox" class="btn-check" id="btn-check-outlined7" checked autocomplete="off">
+<label class="btn btn-outline-primary" for="btn-check-outlined7">Pass</label><br>
+</div>
+</div>
+<div class="row">
+<div class="col-1">1</div>
+<div class="col-9">
+<figure class="figure">
+<figcaption class="figure-caption text-start">Mobile ImageEl próximo gran<br>avance está aquí</figcaption>
+<img src = "image_ar/Galaxy_AI_mobile.jpg" class="img-fluid"/>
+</figure>
+</div>
+<div class="col-1 d-flex align-items-center">
+<input type="checkbox" class="btn-check" id="btn-check-outlined8" checked autocomplete="off">
+<label class="btn btn-outline-primary" for="btn-check-outlined8">Pass</label><br>
+</div>
+</div>
+<div class="row">
+<div class="col12">
+<button type="button" class="btn btn-primary btn-lg" id="sendButton">Send</button>
+</div>
+</div>
+</div>
+<script>
+document.getElementById('sendButton').addEventListener('click', function() {
+let message = '';
+const checkboxes = document.querySelectorAll('.btn-check');
+checkboxes.forEach((checkbox, index) => {
+message += (index + 1) + '번 ' + (checkbox.checked ? 'Yes' : 'No') + '\n';});alert(message);});</script>
+</body>
+</html>
