@@ -14,7 +14,7 @@ from region import region
 from db import Database
 
 region = region
-# url_codes = ['uk', 'fr', 'de', 'it', 'es', 'sg', 'id', 'ph', 'au', 'my', 'th', 'vn', 'ar', 'mx', 'br', 'in', 'sa', 'sa_en', 'ca', 'ca_fr', 'ae', 'ae_ar']
+
 
 
 def qa (url_code):
@@ -57,8 +57,11 @@ def qa (url_code):
 
         no_content_comp_div = 0
         for content_comp_div in content_all:
+
             no_content_comp_div += 1
+
             content_comp_name = content_comp_div.get('class', [])
+
             if 'ho-g-home-kv-carousel' in content_comp_name:
 
                 cell_value = process_class_attributes(exl_ws, content_comp_div,
@@ -1143,3 +1146,4 @@ def qa (url_code):
     except Exception as e:
         db_conn.rollback_connection()
         error_logger(traceback.format_exc(),url,start_time)
+        qa()

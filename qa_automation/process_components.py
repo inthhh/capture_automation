@@ -25,7 +25,7 @@ def process_class_attributes(exl_ws, content_comp_div, col_location, col_area, c
 
 
 def process_attributes_value(exl_ws, content_comp_div, col_location, col_area, col_title, col_description, data_selector, data_tag, data_class, data_attr_value, check_guide, data_print, raw_data_meta, db_conn):
-    exception_words = ["SAMSUNG", "QLED", "OLED", "BESPOKE", "PSSD", "SDXC"]
+    exception_words = [ "QLED", "OLED", "BESPOKE", "PSSD", "SDXC"]
     try:
         selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[0]
     except Exception as e:
@@ -112,7 +112,7 @@ def process_attributes_value(exl_ws, content_comp_div, col_location, col_area, c
         return cell_value
 
 def process_label_text(exl_ws, content_comp_div, col_location, col_area, col_title, col_description, data_selector, data_tag, data_class, check_guide, data_print, raw_data_meta, db_conn):
-    exception_words = ["SAMSUNG","QLED", "OLED", "BESPOKE", "PSSD", "SDXC"]
+    exception_words = ["QLED", "OLED", "BESPOKE", "PSSD", "SDXC"]
     try:
         selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[0]
     except Exception as e:
