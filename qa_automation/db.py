@@ -23,8 +23,6 @@ port = os.getenv("DB_PORT")
 
 
 class Database :
-
-    print()
     def __init__(self):
         self.conn = psycopg2.connect(host=host, dbname=db_name,user=user,password=password,port=port)
         self.cursor = self.conn.cursor()

@@ -1,5 +1,4 @@
 import requests
-# from openpyxl.drawing.image import Image
 from PIL import Image as PILImage
 from io import BytesIO
 import cv2
@@ -10,8 +9,8 @@ from msrest.authentication import ApiKeyCredentials
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes, VisualFeatureTypes
 from msrest.authentication import CognitiveServicesCredentials
-import time
-
+from dotenv import load_dotenv
+load_dotenv(verbose=False)
 
 
 def fetch_image_dimensions(image_url):
@@ -19,6 +18,7 @@ def fetch_image_dimensions(image_url):
     if response.status_code == 200:
 
         if response.headers['Content-type'] == "image/svg+xml":
+            print('Invalid image type (only PNG, JPEG can be supported)')
             raise ValueError('Invalid image type (only PNG, JPEG can be supported)')
 
         image_bytes = BytesIO(response.content)
@@ -142,8 +142,9 @@ def fetch_image_dimensions_bgcolor(image_url):
     def rgb_to_hex(rgb):
         return '#{:02x}{:02x}{:02x}'.format(*rgb)
 
-    def is_color_in_range(color_hex):
-        return '#f3f3f3' <= color_hex <= '#f5f5f5'
+    def is_color_in_range(rgb):
+        gray_min_rgb, gray_max_rgb = int(os.getenv("GRAY_MIN_RGB")), int(os.getenv("GRAY_MAX_RGB"))
+        return all(gray_min_rgb <= value <= gray_max_rgb for value in rgb)
 
     def check_transparency(img, corners):
         transparent_corners = 0
@@ -207,6 +208,60 @@ def fetch_image_dimensions_bgcolor(image_url):
 
 # new version
 def fetch_image_dimensions_bgcolor_usingcv(image_url):
+    def transparancy_convert_to_grey(url):
+        def pil_to_cv2_byte_array(image_pil):
+            # Convert PIL image to NumPy array
+            image_np = np.array(image_pil)
+
+            # Convert RGBA to BGRA (OpenCV uses BGRA color format)
+            image_np_bgr = cv2.cvtColor(image_np, cv2.COLOR_RGBA2BGRA)
+
+            # Encode the image as a PNG byte array
+            _, buffer = cv2.imencode('.png', image_np_bgr)
+
+            # Convert the buffer to a byte array
+            byte_array = bytearray(buffer)
+
+            return byte_array
+
+        # URL of the PNG image with transparency
+        image_url = url
+
+        # Fetch the image from the URL
+        response = requests.get(image_url)
+
+
+        # Check if the request was successful
+        if response.status_code == 200:
+            if response.headers['Content-type'] == "image/svg+xml":
+                return "Guide: Only can detect logo in image format with png, jpg and jpeg."
+            # Load the original image from the response content using PIL
+            original_image_pil = PILImage.open(BytesIO(response.content))
+
+            # Convert the image to RGBA mode if not already in RGBA
+            if original_image_pil.mode != 'RGBA':
+                original_image_pil = original_image_pil.convert('RGBA')
+
+            # Create a new blank image with the same size and filled with transparent background
+            modified_image_pil = PILImage.new('RGBA', original_image_pil.size, (0, 0, 0, 0))
+
+            # Iterate through each pixel of the original image
+            width, height = original_image_pil.size
+            for x in range(width):
+                for y in range(height):
+                    # Get the RGBA values of the pixel
+                    r, g, b, a = original_image_pil.getpixel((x, y))
+
+                    # Check if the pixel is transparent
+                    if a < 255:
+                        # If it's transparent, replace it with the desired color (244, 244, 244)
+                        modified_image_pil.putpixel((x, y), (244, 244, 244, 255))
+                    else:
+                        # If not transparent, keep the original pixel
+                        modified_image_pil.putpixel((x, y), (r, g, b, a))
+            return pil_to_cv2_byte_array(modified_image_pil)
+        else:
+            print("Failed to fetch the image from the URL.")
     # SINCE V1.0.3, parameter is changed into image bytes from url
 
     def rgb_to_hex(rgb):
@@ -216,27 +271,17 @@ def fetch_image_dimensions_bgcolor_usingcv(image_url):
         return '#f3f3f3' <= color_hex <= '#f5f5f5'
 
     # New version check process for transparency
-    def has_transparency(img):
-        try:
-            if img.mode == 'RGBA':
-                alpha = img.split()[3]
-                return alpha.getdata() is not None
-            return False
-        except Exception as e:
-            print("Error:", e)
-
 
     response = requests.get(image_url)
     if response.status_code != 200:
         return None
 
-    if response.headers['Content-type'] == "image/svg+xml":
-        return "Guide: Only can detect logo in image format with png, jpg and jpeg."
+
 
     image_bytes = BytesIO(response.content)
     img = PILImage.open(image_bytes)
 
-    transparency_result = has_transparency(img)
+    # transparency_result = has_transparency(img)
 
     original_width, original_height = img.size
     scale_factor = 200 / original_width  # Assuming you want to resize width to 200px
@@ -248,9 +293,11 @@ def fetch_image_dimensions_bgcolor_usingcv(image_url):
     image_bytes_resized.seek(0)
 
 
-    # New BG color extraction Code Start Point
-    image_nparray = np.asarray(bytearray(requests.get(image_url).content), dtype=np.uint8)
+    # Image's transparency pixel converted to grey
+    modified = transparancy_convert_to_grey(image_url)
+    image_nparray = np.asarray(bytearray(modified), dtype=np.uint8)
 
+    # New BG color extraction Code Start Point
     img = cv2.imdecode(image_nparray, cv2.IMREAD_COLOR)
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -287,5 +334,5 @@ def fetch_image_dimensions_bgcolor_usingcv(image_url):
         bg_hex_code = "can not detect color"
 
     fail_msg = "Guide : Background color must be transparent or #f4f4f4 but " + str(bg_hex_code)
-    result_msg = "Pass" if transparency_result or is_color_in_range(bg_hex_code) else fail_msg
+    result_msg = "Pass" if  is_color_in_range(dominant_color) else fail_msg
     return original_width, original_height, image_bytes_resized, new_height, result_msg

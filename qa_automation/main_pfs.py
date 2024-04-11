@@ -2,11 +2,6 @@ import requests
 import csv
 import traceback
 from bs4 import BeautifulSoup
-from datetime import datetime
-# from pandas import ExcelWriter
-from openpyxl import Workbook
-from openpyxl.styles import PatternFill, Alignment
-import pandas as pd
 from process_components import *
 from data_management import *
 from datetime import datetime

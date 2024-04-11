@@ -1,1 +1,1 @@
-exception_words = ["SAMSUNG","QLED", "OLED", "BESPOKE", "PSSD", "SDXC"]
+exception_words = ["QLED", "OLED", "BESPOKE", "PSSD", "SDXC"]
