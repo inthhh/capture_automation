@@ -120,6 +120,7 @@ fabric.properties
 
 ### qa reulst sheet ###
 result/*
+html/
 
 
 # node
@@ -127,4 +128,4 @@ node_modules/
 
 __pycache__/
 
-.idea/vcs.xml
+.idea/
