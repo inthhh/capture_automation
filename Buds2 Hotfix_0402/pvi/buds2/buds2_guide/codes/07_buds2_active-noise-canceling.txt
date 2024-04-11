@@ -1,0 +1,148 @@
+<!-- Active noise canceling -->
+<section
+  class="m_ o section sc-buds-anc"
+  data-sc-section
+  id="activeNoiseCanceling"
+>
+  <div class="sc-buds-anc__wrap">
+    <div class="sc-buds-anc__head">
+      <h3 class="sc-buds-anc__eyebrow">ACTIVE NOISE CANCELING</h3>
+      <strong class="sc-buds-anc__headline"
+        >Choose the sound<br />you want to hear</strong
+      >
+      <div class="sc-buds-anc__desc">
+        <p>
+          Two microphones detect ambient noise while Active Noise Canceling
+          blocks unwanted sound. Background noise can be reduced up to 98% to
+          keep you fully immersed in your music, games, audio books, and your
+          favorite podcasts.
+          <sup>
+            <a href="#desc-section" class="click_sup" title="See disclaimer"
+              >3</a
+            >,
+            <a href="#desc-section" class="click_sup" title="See disclaimer"
+              >4</a
+            >
+          </sup>
+        </p>
+      </div>
+    </div>
+    <div class="sc-buds-anc__contents">
+      <div class="sc-buds-anc__fullimg">
+        <div class="js-picture" data-async>
+          <img
+            data-media="(min-width: 768)"
+            src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+            data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-noise-canceling.jpg"
+            alt=""
+          />
+          <img
+            data-media="(max-width: 767)"
+            src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+            data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-noise-canceling-mo.jpg"
+            alt=""
+          />
+          <p class="blind" data-alt>
+            A woman is enjoying music while wearing a lavender color Galaxy
+            Buds2. A Galaxy Buds2 case is displayed next to her, which is
+            lavender color on the inside and white on the outside.
+          </p>
+        </div>
+      </div>
+      <div class="sc-buds-anc__disc">
+        <div class="sc-buds-anc__disc-inner">
+          <div class="sc-buds-anc__disc-logo">
+            <div class="js-picture" data-async>
+              <img
+                data-media="(min-width: 0)"
+                src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-ul-logo.png"
+                alt="A UL verification mark with a unique verification code."
+              />
+            </div>
+          </div>
+          <div class="sc-buds-anc__disc-text">
+            <p>
+              Active Noise Canceling (ANC) On Galaxy Buds2 cuts external
+              background
+              <br class="display-pc" />noise by up to 98%, backed by UL
+              Verification
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="sc-buds-anc__explain">
+        <div class="sc-buds-anc__explain-text">
+          <div class="sc-buds-anc__explain-text-inner">
+            <p>
+              Tune into or out of the world around you with an easily
+              adjustable three-level ambient sound option.
+            </p>
+          </div>
+        </div>
+        <div class="sc-buds-anc__explain-img">
+          <div class="sc-buds-anc__explain-img-inner">
+            <div class="sc-buds-anc__explain-bitmap">
+              <div class="js-picture" data-async>
+                <img
+                  data-media="(min-width: 768)"
+                  src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                  data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-bitmap.png"
+                  alt=""
+                />
+                <img
+                  data-media="(max-width: 767)"
+                  src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                  data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-bitmap-mo.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="sc-buds-anc__explain-product">
+              <div class="js-picture" data-async>
+                <img
+                  data-media="(min-width: 0)"
+                  src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                  data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-lavender-mic.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="sc-buds-anc__explain-title" aria-hidden="true">
+              <p class="s-title-ambient">
+                <strong>Ambient Sound</strong>
+              </p>
+              <p class="s-title-anc"><strong>ANC</strong></p>
+            </div>
+            <div
+              class="sc-buds-anc__explain-level s-level-h"
+              aria-hidden="true"
+            >
+              <p class="s-level-text"><span>High</span></p>
+              <span class="s-level-dot"></span>
+            </div>
+            <div
+              class="sc-buds-anc__explain-level s-level-m"
+              aria-hidden="true"
+            >
+              <p class="s-level-text"><span>Medium</span></p>
+              <span class="s-level-dot"></span>
+            </div>
+            <div
+              class="sc-buds-anc__explain-level s-level-l"
+              aria-hidden="true"
+            >
+              <p class="s-level-text"><span>Low</span></p>
+              <span class="s-level-dot"></span>
+            </div>
+            <p class="blind" data-alt>
+              A lavender Galaxy Buds2 earbud is shown over an illustration
+              that depicts the three levels of ambient sounds that can be
+              adjusted for ANC, from low, medium, to high.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

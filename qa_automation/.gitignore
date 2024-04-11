@@ -120,3 +120,7 @@ fabric.properties
 
 ### qa reulst sheet ###
 .result/*
+
+
+# node
+node_modules/

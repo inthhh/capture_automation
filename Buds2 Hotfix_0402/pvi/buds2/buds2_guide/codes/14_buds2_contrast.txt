@@ -1,0 +1,19 @@
+<!-- Contrast -->
+<div class="cp-high-contrast" data-sc-section>
+  <div class="cp-high-contrast__inner">
+    <a
+      href="#"
+      role="button"
+      title="High contrast"
+      class="btn-contrast type-contrast"
+      ><span>C</span></a
+    >
+    <a
+      href="#"
+      role="button"
+      title="Default contrast"
+      class="btn-contrast type-default"
+      ><span>C</span></a
+    >
+  </div>
+</div>

@@ -1,0 +1,193 @@
+<!--Buds Seamless Connectivity -->
+  <section class="m_content js-visible js-count">
+    <div class="sc-buds-seamless-connectivity">
+      <div class="sc-buds-seamless-connectivity__wrap">
+        <div class="sc-buds-seamless-connectivity__text js-nav-top">
+          <h2
+            class="sc-buds-seamless-connectivity__eyebrow sc-buds-common-eyebrow"
+            id="seamless-connectivity"
+          >
+            SEAMLESS CONNECTIVITY
+          </h2>
+          <p
+            class="sc-buds-seamless-connectivity__headline sc-buds-common-headline-l"
+          >
+            Your life <br class="sc-buds-br-mo" />in sync
+          </p>
+        </div>
+        <div class="sc-buds-seamless-connectivity__kv">
+          <div class="sc-buds-seamless-connectivity__kv-inner">
+            <img
+              src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+              class="js-img-src js-res-img"
+              data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-seamless-connectivity-kv.jpg"
+              data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-seamless-connectivity-kv.jpg?imwidth=1080"
+              data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-seamless-connectivity-kv-mo.jpg"
+              alt="Two people lying next to each other on the ground. The guy on the left positioned upside down is facing the girl on the right, while the girl on the right is left side up with both their heads next to each other. Both are joyfully having a conversation with a Buds2 Pro in their ear. Both people also have a Watch5 on their wrists."
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Buds Easy Pairing -->
+
+    <div class="sc-buds-easy-pairing">
+      <div class="sc-buds-easy-pairing__wrap">
+        <div class="sc-buds-easy-pairing__text">
+          <h3
+            class="sc-buds-easy-pairing__eyebrow sc-buds-common-eyebrow"
+            id="easy-pairing"
+          >
+            EASY PAIRING
+          </h3>
+          <p class="sc-buds-easy-pairing__headline sc-buds-common-headline-m">
+            Pop open<br class="sc-buds-br-mo" />
+            and tap in
+          </p>
+        </div>
+        <div class="sc-buds-easy-pairing__kv-wrap">
+          <div class="sc-buds-easy-pairing__kv">
+            <div class="sc-buds-easy-pairing__kv-inner">
+              <img
+                src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                class="js-img-src js-res-img"
+                data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-easy-pairing-kv-end.jpg"
+                data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-easy-pairing-kv-end.jpg?imwidth=1080"
+                data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-easy-pairing-kv-end-mo.jpg"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+          <div
+            class="sc-buds-easy-pairing__kv-description sc-buds-common-description"
+          >
+            <p>
+              Galaxy Buds2 Pro will automatically pop up on your Samsung Galaxy
+              devices and are ready to connect with a tap. As simple as that.
+            </p>
+            <p
+              class="sc-buds-easy-pairing__kv-disclaimer sc-buds-common-disclaimer"
+            >
+              *Requires Samsung Galaxy devices with Android 10 and above or
+              SmartThings application over 1.7.85 version
+            </p>
+          </div>
+        </div>
+        <div class="sc-buds-easy-pairing__figure-wrap">
+          <div
+            class="sc-buds-easy-pairing__figure-description sc-buds-common-description"
+          >
+            <p>
+              Auto Switch on Samsung Galaxy Buds2 Pro intelligently detects
+              mobile activity and seamlessly shifts its connection to your
+              Samsung Galaxy phone, tablet and watch.<br /><br />Switching to
+              answer the phone works even when you're connected to a Samsung TV.
+              Once the Galaxy Buds2 Pro are connected to the Samsung TV via
+              Bluetooth, there is no need to take the earbuds out to answer the
+              phone. Incoming calls can be answered simply by tapping the Galaxy
+              Buds2 Pro twice.
+              <sup
+                ><a
+                  href="#desc-section"
+                  class="click_sup"
+                  title="See disclaimer"
+                  >6</a
+                ></sup
+              >
+            </p>
+          </div>
+          <div class="sc-buds-easy-pairing__figure">
+            <div class="sc-buds-easy-pairing__figure-inner">
+              <img
+                src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                class="js-img-src js-res-img"
+                data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-easy-pairing-front.jpg"
+                data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-easy-pairing-front.jpg?imwidth=1080"
+                data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-easy-pairing-front-mo.jpg"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Buds Smart finding -->
+
+    <div class="sc-buds-finding">
+      <div class="sc-buds-finding__wrap">
+        <div class="sc-buds-finding__text">
+          <h3
+            class="sc-buds-finding__eyebrow sc-buds-common-eyebrow"
+            id="smartthings-find"
+          >
+            SMARTTHINGS FIND
+          </h3>
+          <p class="sc-buds-finding__headline sc-buds-common-headline-m">
+            Keep track <br />of your buds
+          </p>
+        </div>
+        <div class="sc-buds-finding__kv">
+          <div class="sc-buds-finding__kv-image">
+            <div class="sc-buds-finding__kv-image-inner">
+              <img
+                src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                class="js-img-src js-res-img"
+                data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-smart-finding-kv.jpg"
+                data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-smart-finding-kv.jpg?imwidth=1080"
+                data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-smart-finding-kv-mo.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div
+            class="sc-buds-finding__kv-description sc-buds-common-description"
+          >
+            Worried about losing your Galaxy Buds2 Pro? Don't. With SmartThings
+            Find, you can trace your coveted Galaxy Buds2 Pro with the location
+            detection feature. You can even do it with or without the case.
+            <sup
+              ><a href="#desc-section" class="click_sup" title="See disclaimer"
+                >7</a
+              >,
+              <a href="#desc-section" class="click_sup" title="See disclaimer"
+                >8</a
+              >,
+              <a href="#desc-section" class="click_sup" title="See disclaimer"
+                >9</a
+              ></sup
+            >
+          </div>
+        </div>
+        <div class="sc-buds-finding__figure">
+          <div class="sc-buds-finding__figure-image">
+            <div class="sc-buds-finding__figure-image-inner">
+              <img
+                src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+                class="js-img-src js-res-img"
+                data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-smart-finding-buds-side.jpg"
+                data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-smart-finding-buds-side.jpg?imwidth=1080"
+                data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-smart-finding-buds-side-mo.jpg"
+                alt="An open white Galaxy Buds2 Pro case with one bud inside and the other bud floating outside the case."
+              />
+            </div>
+          </div>
+          <div
+            class="sc-buds-finding__figure-description sc-buds-common-description"
+          >
+            Walk away from your Galaxy Buds2 Pro and the integrated alarm is
+            ready to let you know — your phone will send you a notification so
+            that you don't accidentally leave them behind.
+            <sup
+              ><a href="#desc-section" class="click_sup" title="See disclaimer"
+                >10</a
+              ></sup
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -56,6 +56,7 @@ def qa_check_text(cell_value):
 
         if any(word.isupper() and len(word) >= 4 for word in words_to_uppercase if word not in exception_words and not any(char.isdigit() for char in word)):
             cell_remark6 = "Guide: All words in titles cannot be written in uppercase, except 'Samsung'."
+
             # TEXT에 한자어가 포함된다면 PASS
             if any(any(unicodedata.category(char) == 'Lo' for char in text) for text in words_to_uppercase):
                 cell_remark6 = "Pass"

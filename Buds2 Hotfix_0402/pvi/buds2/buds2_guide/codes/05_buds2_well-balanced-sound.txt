@@ -1,0 +1,45 @@
+<!-- Well-balanced sound -->
+<section class="sc-buds-sound" data-sc-section id="wellBalancedSound">
+  <div class="sc-buds-sound__wrap">
+    <div class="sc-buds-sound__inner">
+      <h2 class="sc-buds-sound__eyebrow">WELL-BALANCED SOUND</h2>
+      <div class="js-parallax__contents">
+        <strong class="sc-buds-sound__headline"
+          >Your world the way <br />it&apos;s meant to be heard</strong
+        >
+        <div class="sc-buds-sound__img-area">
+          <div class="sc-buds-sound__img-setter">
+            <div class="sc-buds-sound__img-frame js-parallax-wrap">
+              <div class="js-picture" data-async>
+                <img
+                  data-media="(min-width: 768)"
+                  src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                  data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-well-balanced-sound.jpg"
+                  alt=""
+                />
+                <img
+                  data-media="(max-width: 767)"
+                  src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+                  data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-well-balanced-sound-mo.jpg"
+                  alt=""
+                />
+                <p class="blind" data-alt>
+                  A woman is wearing olive color Galaxy Buds2 in her ear while
+                  riding a skateboard down an asphalt street. She is spreading
+                  her arms out and enjoying the ride. A man is in the
+                  background, also riding a skateboard by sitting on it.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="sc-buds-sound__caption">
+        Enjoy powerful, deep bass to clear treble through
+        <br class="display-pc" />two-way dynamic speakers. The Galaxy Buds2
+        gives you well-balanced sound quality that enriches every moment of
+        your audio journey. Hear like you&apos;re there.
+      </p>
+    </div>
+  </div>
+</section>
