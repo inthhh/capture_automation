@@ -1,7 +1,7 @@
 import requests
-import csv
 
 
+import traceback
 from bs4 import BeautifulSoup
 from datetime import datetime
 from pandas import ExcelWriter
@@ -24,8 +24,9 @@ region = region
 
 
 
-def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setting_img_check_bgcolor, setting_img_check_logo):
+def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setting_img_check_bgcolor, setting_img_check_logo):
     for page_code in page_codes:
+        db_conn = Database(mod_status)
         raw_data_meta = {
             "date" : datetime.today().strftime('%Y-%m-%d'),
             "rhq" : region[url_code]["rhq"],
@@ -105,7 +106,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                         cell_check, cell_remarks = qa_check_text(cell_value)
                         excel_save_data(exl_ws,
                             "KeyVisual", "KV" + str(carousel_no), "Headline Text",'Desktop',
-                            cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta,mod_status , db_conn
                         )
 
                         img_title = cell_value
@@ -118,7 +119,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                         cell_check, cell_remarks = qa_check_text(cell_value)
                         excel_save_data(exl_ws,
                             "KeyVisual", "KV" + str(carousel_no), "Headline Text", 'Mobile',
-                            cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta,mod_status , db_conn
                         )
 
                         # Description Text PC
@@ -129,7 +130,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                         cell_check, cell_remarks = '', ''
                         excel_save_data(exl_ws,
                             "KeyVisual", "KV" + str(carousel_no), "Description Text", 'Desktop',
-                            cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta,mod_status , db_conn
                         )
 
                         # Description Text Mobile
@@ -140,7 +141,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                         cell_check, cell_remarks = '', ''
                         excel_save_data(exl_ws,
                             "KeyVisual", "KV" + str(carousel_no), "Description Text", 'Mobile',
-                            cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta,mod_status , db_conn
                         )
 
                         # CTA
@@ -150,7 +151,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                             cta_no += 1
                             excel_save_data(exl_ws,
                                 "KeyVisual", "KV" + str(carousel_no), "CTA", 'Label ' + str(cta_no),
-                                cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status
+                                cell_value, cell_check, cell_remarks, '', raw_data_meta,mod_status , db_conn
                             )
 
                         # BG Image
@@ -162,7 +163,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                         cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
                         excel_save_data(exl_ws,
                             "KeyVisual", "KV" + str(carousel_no), "BG Image", 'Desktop',
-                            img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, dev_status)
+                            img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, mod_status, db_conn)
                         img_html, id_no = img_save(img_desktop_url, img_desktop, url_code, 'PC Image' + img_title, cell_check, img_html, id_no)
                         # BG Image > Mobile
                         cell_remarks_size = qa_check_img_size(img_mobile, bg_image_mobile_width, bg_image_mobile_height, setting_img_check_size)
@@ -171,7 +172,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                         cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
                         excel_save_data(exl_ws,
                             "KeyVisual", "KV" + str(carousel_no), "BG Image", 'Mobile',
-                            img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, dev_status)
+                            img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, mod_status, db_conn)
                         img_html, id_no = img_save(img_mobile_url, img_mobile, url_code, 'Mobile Image' + img_title, cell_check, img_html, id_no)
 
                 #Component: CO02_Text Block Container + CO05_Showcase Card Tab
@@ -286,28 +287,28 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                                 cell_check, cell_remarks = qa_check_text(cell_value)
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Title', 'Desktop',
-                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                                 # Headline Text Mobile
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-name--mobile")
                                 cell_check, cell_remarks = qa_check_text(cell_value)
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Title', 'Mobile',
-                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                                 # Description PC
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-description--desktop")
                                 cell_check, cell_remarks = qa_check_text(cell_value)
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Description', 'Desktop',
-                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                                 # Description Mobile
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-description--mobile")
                                 cell_check, cell_remarks = qa_check_text(cell_value)
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Description', 'Mobile',
-                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                                 # CTA
                                 cell_ctas = process_label_cta(content_comp_div, "N", "span.cta")
@@ -316,7 +317,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                                     cta_no += 1
                                     excel_save_data(exl_ws,
                                         col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Description', 'Label ' + str(cta_no),
-                                        cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                                        cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                                 # BG Image
                                 img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(card_compo_detail, "div.showcase-card-tab-card__img-wrap")
@@ -327,7 +328,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                                 cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", "BG Image", 'Desktop',
-                                    img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, dev_status)
+                                    img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, mod_status, db_conn)
 
                                 # BG Image > Mobile
                                 cell_remarks_size = qa_check_img_size(img_mobile, bg_image_mobile_width, bg_image_mobile_height, setting_img_check_size)
@@ -336,7 +337,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                                 cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", "BG Image", 'Mobile',
-                                    img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, dev_status)
+                                    img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, mod_status, db_conn)
 
                 #Component: CO05_Showcase Card Tab
                 if 'ho-g-showcase-card-tab' in content_comp_name:
@@ -387,7 +388,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                             card_list_no = 0
                             for card_list in card_layout :
                                 card_list_no += 1
-                                print(card_list, card_list_no)
+
                                 card_compo_detail = comp_co05_layout.find_all("div", class_='showcase-card-tab-card')[card_list_no - 1]
                                 card_type = process_class_attributes(card_compo_detail, 'N', 'N', {"showcase-card-tab-card--large" : "Full Breed", "showcase-card-tab-card--small" : "Full Breed", "showcase-card-tab-card--vertical" : "Full Breed", "showcase-card-tab-card--product-large" : "Product", "showcase-card-tab-card--product-small" : "Product", "showcase-card-tab-card--product-vertical" : "Product"}, 'N')
 
@@ -457,28 +458,28 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                                 cell_check, cell_remarks = qa_check_text(cell_value)
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Title', 'Desktop',
-                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                                 # Headline Text Mobile
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-name--mobile")
                                 cell_check, cell_remarks = qa_check_text(cell_value)
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Title', 'Mobile',
-                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                                 # Description PC
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-description--desktop")
                                 cell_check, cell_remarks = qa_check_text(cell_value)
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Description', 'Desktop',
-                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                                 # Description Mobile
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-description--mobile")
                                 cell_check, cell_remarks = qa_check_text(cell_value)
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Description', 'Mobile',
-                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                                 # CTA
                                 cell_ctas = process_label_cta(content_comp_div, "N", "span.cta")
@@ -487,7 +488,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                                     cta_no += 1
                                     excel_save_data(exl_ws,
                                         col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Description', 'Label ' + str(cta_no),
-                                        cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                                        cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                                 # BG Image
                                 img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(card_compo_detail, "div.showcase-card-tab-card__img-wrap")
@@ -498,7 +499,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                                 cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", "BG Image", 'Desktop',
-                                    img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, dev_status)
+                                    img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, mod_status, db_conn)
 
                                 # BG Image > Mobile
                                 cell_remarks_size = qa_check_img_size(img_mobile, bg_image_mobile_width, bg_image_mobile_height, setting_img_check_size)
@@ -507,7 +508,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                                 cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", "BG Image", 'Mobile',
-                                    img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, dev_status)
+                                    img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, mod_status, db_conn)
 
                 #Component: FT03_Feature Full Bleed
                 if 'pd-g-feature-benefit-full-bleed' in content_comp_name:
@@ -536,21 +537,21 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                         cell_check, cell_remarks = qa_check_text(cell_value)
                         excel_save_data(exl_ws,
                             'Banner', 'Column ' + str(ft03_no), 'Headline Text', 'All',
-                            cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                         # Sub Headline Text All
                         cell_value = process_label_text(ft03_component, "div > div > div.st-feature-benefit-full-bleed__content-area", "H", "st-feature-benefit-full-bleed__sub-title")
                         cell_check, cell_remarks = qa_check_text(cell_value)
                         excel_save_data(exl_ws,
                             'Banner', 'Column ' + str(ft03_no), 'Sub Headline Text', 'All',
-                            cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                         # Description Text All
                         cell_value = process_label_text(ft03_component, "div > div > div.st-feature-benefit-full-bleed__content-area", "p", "st-feature-benefit-full-bleed__text")
                         cell_check, cell_remarks = '', ''
                         excel_save_data(exl_ws,
                             'Banner', 'Column ' + str(ft03_no), 'Description', 'All',
-                            cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                         # CTA
                         cell_ctas = process_cta_buttons(ft03_component, "div > div > div > div.st-feature-benefit-full-bleed__cta")
@@ -559,7 +560,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                             cta_no += 1
                             excel_save_data(exl_ws,
                                 "Banner", "Column", "CTA", 'Label ' + str(cta_no),
-                                cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                                cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                         # BG Image
                         img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(ft03_component, "figure.st-feature-benefit-full-bleed__figure")
@@ -570,7 +571,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                         cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
                         excel_save_data(exl_ws,
                             "Banner", "Column" , "BG Image", 'Desktop',
-                            img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, dev_status)
+                            img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, mod_status, db_conn)
 
                         # BG Image > Mobile
                         cell_remarks_size = qa_check_img_size(img_mobile, bg_image_mobile_width, bg_image_mobile_height, setting_img_check_size)
@@ -579,7 +580,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                         cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
                         excel_save_data(exl_ws,
                             "Banner",  "Column", "BG Image", 'Mobile',
-                            img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, dev_status)
+                            img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, mod_status, db_conn)
 
                 #Component: CO07_Key Feature Tab
                 if 'ho-g-key-feature-tab' in content_comp_name:
@@ -601,14 +602,14 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                         cell_check, cell_remarks = qa_check_text(cell_value)
                         excel_save_data(exl_ws,
                             col_location, col_area, 'Headline Text', 'All',
-                            cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                         # Description All
                         cell_value = process_label_text(comp_co07_contents, "div > div.key-feature-tab__inner-wrap > div.key-feature-tab__text-wrap", "p", "key-feature-tab__desc")
                         cell_check, cell_remarks = qa_check_text(cell_value)
                         excel_save_data(exl_ws,
                             col_location, col_area, 'Description', 'All',
-                            cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                         # CTA
                         cell_ctas = process_cta_buttons(comp_co07_contents, "div > div.key-feature-tab__inner-wrap > div.key-feature-tab__cta-wrap")
@@ -617,7 +618,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                             cta_no += 1
                             excel_save_data(exl_ws,
                                 col_location, col_area, "CTA", 'Label ' + str(cta_no),
-                                cell_value, cell_check, cell_remarks, '', raw_data_meta, dev_status)
+                                cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                         # BG Image
                         img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(comp_co07_contents, "div > div.key-feature-tab__background-wrap > div")
@@ -628,7 +629,7 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                         cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
                         excel_save_data(exl_ws,
                             col_location, col_area, "BG Image", 'Desktop',
-                            img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, dev_status)
+                            img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, mod_status, db_conn)
 
                         # BG Image > Mobile
                         cell_remarks_size = qa_check_img_size(img_mobile, bg_image_mobile_width, bg_image_mobile_height, setting_img_check_size)
@@ -637,11 +638,13 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
                         cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
                         excel_save_data(exl_ws,
                             col_location, col_area, "BG Image", 'Mobile',
-                            img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, dev_status)
+                            img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, mod_status, db_conn)
 
 
 
             excel_end(exl_ws, exl_wb, start_time, url, img_html)
+            db_conn.commit_connection()
+            db_conn.close_connection()
 
         except Exception as e:
 
@@ -658,10 +661,14 @@ def component_qa(url_code, page_codes, dev_status, setting_img_check_size, setti
 
             f = open(final_file_name, "w")
 
-            error_log = f"{e}, \n ERROR :, {url}, at : {end_time} ({time_elapsed})"
+            error_log = f"{traceback.format_exc()}, \n ERROR :, {url}, at : {end_time} ({time_elapsed})"
             f.write(error_log)
             f.close()
+            
+            # insert한 db 롤백
+            db_conn.rollback_connection()
+            db_conn.close_connection()
 
             print("ERROR :", url, 'at : ', end_time.strftime("%Y/%m/%d %H:%M:%S"), "(", time_elapsed, ")")
-            print(error_log)
+            print(traceback.format_exc())
     pass
