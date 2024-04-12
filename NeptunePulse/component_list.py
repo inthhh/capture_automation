@@ -1,6 +1,4 @@
 import requests
-
-
 import traceback
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -146,16 +144,18 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
                         # CTA
                         cell_ctas = process_cta_buttons(content_comp_div, "div > div.home-kv-carousel__text-wrap > div.home-kv-carousel__cta-wrap")
-                        cta_no = 0
-                        for cell_value, cell_check, cell_remarks in cell_ctas:
-                            cta_no += 1
-                            excel_save_data(exl_ws,
-                                "KeyVisual", "KV" + str(carousel_no), "CTA", 'Label ' + str(cta_no),
-                                cell_value, cell_check, cell_remarks, '', raw_data_meta,mod_status , db_conn
-                            )
+                        if cell_ctas :
+                            cta_no = 0
+                            for cell_value, cell_check, cell_remarks in cell_ctas:
+                                cta_no += 1
+                                excel_save_data(exl_ws,
+                                    "KeyVisual", "KV" + str(carousel_no), "CTA", 'Label ' + str(cta_no),
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta,mod_status , db_conn
+                                )
 
                         # BG Image
                         img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(content_carousel_div, "div > div.home-kv-carousel__background-media-wrap")
+
                         # BG Image > Desktop
                         cell_remarks_size = qa_check_img_size(img_desktop, bg_image_desktop_width, bg_image_desktop_height, setting_img_check_size)
                         cell_remarks_logo = qa_check_img_logo(img_desktop_url, img_desktop, setting_img_check_logo)
@@ -217,7 +217,7 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                             card_list_no = 0
                             for card_list in card_layout :
                                 card_list_no += 1
-                                print(card_list, card_list_no)
+
                                 card_compo_detail = comp_co05_layout.find_all("div", class_='showcase-card-tab-card')[card_list_no - 1]
                                 card_type = process_class_attributes(card_compo_detail, 'N', 'N', {"showcase-card-tab-card--large" : "Full Breed", "showcase-card-tab-card--small" : "Full Breed", "showcase-card-tab-card--vertical" : "Full Breed", "showcase-card-tab-card--product-large" : "Product", "showcase-card-tab-card--product-small" : "Product", "showcase-card-tab-card--product-vertical" : "Product"}, 'N')
 
@@ -555,12 +555,13 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
                         # CTA
                         cell_ctas = process_cta_buttons(ft03_component, "div > div > div > div.st-feature-benefit-full-bleed__cta")
-                        cta_no = 0
-                        for cell_value, cell_check, cell_remarks in cell_ctas :
-                            cta_no += 1
-                            excel_save_data(exl_ws,
-                                "Banner", "Column", "CTA", 'Label ' + str(cta_no),
-                                cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
+                        if cell_ctas:
+                            cta_no = 0
+                            for cell_value, cell_check, cell_remarks in cell_ctas :
+                                cta_no += 1
+                                excel_save_data(exl_ws,
+                                    "Banner", "Column", "CTA", 'Label ' + str(cta_no),
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                         # BG Image
                         img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(ft03_component, "figure.st-feature-benefit-full-bleed__figure")
@@ -613,12 +614,13 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
                         # CTA
                         cell_ctas = process_cta_buttons(comp_co07_contents, "div > div.key-feature-tab__inner-wrap > div.key-feature-tab__cta-wrap")
-                        cta_no = 0
-                        for cell_value, cell_check, cell_remarks in cell_ctas :
-                            cta_no += 1
-                            excel_save_data(exl_ws,
-                                col_location, col_area, "CTA", 'Label ' + str(cta_no),
-                                cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
+                        if cell_ctas:
+                            cta_no = 0
+                            for cell_value, cell_check, cell_remarks in cell_ctas :
+                                cta_no += 1
+                                excel_save_data(exl_ws,
+                                    col_location, col_area, "CTA", 'Label ' + str(cta_no),
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                         # BG Image
                         img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(comp_co07_contents, "div > div.key-feature-tab__background-wrap > div")
