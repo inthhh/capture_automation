@@ -117,7 +117,7 @@ def excel_save_data(exl_ws, col_location, col_area, col_title, cell_description,
     exl_ws.cell(row=row_num, column=7).alignment = Alignment(vertical='center', wrap_text=True)
     exl_ws.cell(row=row_num, column=8).border = Border(top=Side(style='thin', color='555555'), right=Side(style='thin', color='555555'))
 
-    if img_file != '':
+    if img_file != '' and img_file is not None:
         original_width, original_height = img_file.size
 
         scale_factor = 200 / original_width

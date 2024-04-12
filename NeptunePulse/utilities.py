@@ -88,6 +88,9 @@ def qa_check_text(cell_value):
     return cell_check, cell_remarks
 
 def qa_check_img_size(img_file, bg_image_width, bg_image_height, setting_img_check_size):
+    if img_file is None:
+        return ""
+
     if setting_img_check_size == 'Yes':
         original_width, original_height = img_file.size
         if original_width == bg_image_width and original_height == bg_image_height:
@@ -108,6 +111,9 @@ endpoint = "https://poc-image.cognitiveservices.azure.com/"
 computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
 
 def qa_check_img_logo(img_url, img_file, setting_img_check_logo):
+    if img_url is None:
+        return "Guide: Image is not detected."
+
     if setting_img_check_logo == 'Yes':
         original_width, original_height = img_file.size
         new_width, new_height = int(original_width / 5), int(original_height / 5)
@@ -142,6 +148,9 @@ def qa_check_img_logo(img_url, img_file, setting_img_check_logo):
     return "Pass"
 
 def qa_check_img_bgcolor(img_url, img_file, setting_img_check_bgcolor):
+    if img_url is None:
+        return ""
+
     if setting_img_check_bgcolor == 'Yes':
         def rgb_to_hex(rgb):
             return '#{:02x}{:02x}{:02x}'.format(*rgb)
