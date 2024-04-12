@@ -151,7 +151,10 @@ def process_background_image(content_comp_div, data_selector):
                     return None
                 image_bytes = BytesIO(response_mobile.content)
                 img_mobile = PILImage.open(image_bytes)
-
+    
+    # 이미지가 아예 없으면
+    if img_tag is None and figure is None:
+        return None, None, None, None
 
     return img_desktop_url, img_desktop, img_mobile_url, img_mobile
 

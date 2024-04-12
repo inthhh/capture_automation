@@ -95,6 +95,9 @@ def qa_check_text(cell_value):
     return cell_check, cell_remarks
 
 def qa_check_img_size(img_file, bg_image_width, bg_image_height, setting_img_check_size):
+    if img_file is None:
+        return ""
+
     if setting_img_check_size == 'Yes':
         original_width, original_height = img_file.size
         if original_width == bg_image_width and original_height == bg_image_height:
@@ -110,6 +113,9 @@ def qa_check_img_size(img_file, bg_image_width, bg_image_height, setting_img_che
 
 
 def qa_check_img_logo(img_url, img_file, setting_img_check_logo):
+    if img_url is None:
+        return "Guide: Image is not detected."
+
     if setting_img_check_logo == 'Yes':
         retry_cnt = 0
         while retry_cnt < 10:
@@ -157,6 +163,9 @@ def qa_check_img_logo(img_url, img_file, setting_img_check_logo):
     return "Pass"
 
 def qa_check_img_bgcolor(img_url, img_file, setting_img_check_bgcolor):
+    if img_url is None:
+        return ""
+
     if setting_img_check_bgcolor == 'Yes':
         def pil_to_cv2_byte_array(image_pil):
             # Convert PIL image to NumPy array
