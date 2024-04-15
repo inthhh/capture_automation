@@ -628,6 +628,10 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
                         # BG Image
                         img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(comp_co07_contents, "div > div.key-feature-tab__background-wrap > div")
+                        # AEM에서 Background Contents Type = None 으로 설정 시, class명이 기존과 다름에 따른 분기 처리
+                        if img_desktop_url == "Component doesn't exist." and img_desktop is None and img_mobile_url is None and img_mobile is None:
+                            img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(comp_co07_contents, "div > div.key-feature-tab__media-wrap > div")
+
                         # BG Image > Desktop
                         cell_remarks_size = qa_check_img_size(img_desktop, bg_image_desktop_width, bg_image_desktop_height, setting_img_check_size)
                         cell_remarks_logo = qa_check_img_logo(img_desktop_url, img_desktop, setting_img_check_logo)

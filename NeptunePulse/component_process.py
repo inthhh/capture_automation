@@ -101,8 +101,13 @@ def process_label_cta(content_comp_div, data_selector, data_tag):
     return cell_ctas
 
 def process_background_image(content_comp_div, data_selector):
-
-    selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[0]
+    # 컴포넌트가 존재하지 않으면
+    if data_selector == 'N':
+        selected_component = content_comp_div
+    elif len(content_comp_div.select(data_selector)) <= 0:
+        return "Component doesn't exist.", None, None, None
+    else:
+        selected_component = content_comp_div.select(data_selector)[0]
 
     img_tag = selected_component.select_one('img.image-v2__preview, img.image__preview')
     if img_tag:
