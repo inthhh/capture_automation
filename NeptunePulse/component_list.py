@@ -25,7 +25,7 @@ region = region
 
 def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setting_img_check_bgcolor, setting_img_check_logo):
     for page_code in page_codes:
-        db_conn = Database(mod_status)
+        db_conn = Database(mod_status) if mod_status != "dev" else "none"
         raw_data_meta = {
             "date" : datetime.today().strftime('%Y-%m-%d'),
             "rhq" : region[url_code]["rhq"],
@@ -145,16 +145,18 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
                         # CTA
                         cell_ctas = process_cta_buttons(content_comp_div, "div > div.home-kv-carousel__text-wrap > div.home-kv-carousel__cta-wrap")
-                        cta_no = 0
-                        for cell_value, cell_check, cell_remarks in cell_ctas:
-                            cta_no += 1
-                            excel_save_data(exl_ws,
-                                "KeyVisual", "KV" + str(carousel_no), "CTA", 'Label ' + str(cta_no),
-                                cell_value, cell_check, cell_remarks, '', raw_data_meta,mod_status , db_conn
-                            )
+                        if cell_ctas :
+                            cta_no = 0
+                            for cell_value, cell_check, cell_remarks in cell_ctas:
+                                cta_no += 1
+                                excel_save_data(exl_ws,
+                                    "KeyVisual", "KV" + str(carousel_no), "CTA", 'Label ' + str(cta_no),
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta,mod_status , db_conn
+                                )
 
                         # BG Image
                         img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(content_carousel_div, "div > div.home-kv-carousel__background-media-wrap")
+
                         # BG Image > Desktop
                         cell_remarks_size = qa_check_img_size(img_desktop, bg_image_desktop_width, bg_image_desktop_height, setting_img_check_size)
                         cell_remarks_logo = qa_check_img_logo(img_desktop_url, img_desktop, setting_img_check_logo)
@@ -163,7 +165,8 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                         excel_save_data(exl_ws,
                             "KeyVisual", "KV" + str(carousel_no), "BG Image", 'Desktop',
                             img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, mod_status, db_conn)
-                        img_html, id_no = img_save(img_desktop_url, img_desktop, url_code, 'PC Image' + img_title, cell_check, img_html, id_no)
+                        if img_desktop_url :
+                            img_html, id_no = img_save(img_desktop_url, img_desktop, url_code, 'PC Image' + img_title, cell_check, img_html, id_no)
                         # BG Image > Mobile
                         cell_remarks_size = qa_check_img_size(img_mobile, bg_image_mobile_width, bg_image_mobile_height, setting_img_check_size)
                         cell_remarks_logo = qa_check_img_logo(img_mobile_url, img_mobile, setting_img_check_logo)
@@ -172,7 +175,8 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                         excel_save_data(exl_ws,
                             "KeyVisual", "KV" + str(carousel_no), "BG Image", 'Mobile',
                             img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, mod_status, db_conn)
-                        img_html, id_no = img_save(img_mobile_url, img_mobile, url_code, 'Mobile Image' + img_title, cell_check, img_html, id_no)
+                        if img_mobile_url:
+                            img_html, id_no = img_save(img_mobile_url, img_mobile, url_code, 'Mobile Image' + img_title, cell_check, img_html, id_no)
 
                 #Component: CO02_Text Block Container + CO05_Showcase Card Tab
                 if 'cm-g-text-block-container' in content_comp_name and content_comp_div.select('div > div.ho-g-showcase-card-tab'):
@@ -216,7 +220,7 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                             card_list_no = 0
                             for card_list in card_layout :
                                 card_list_no += 1
-                                print(card_list, card_list_no)
+
                                 card_compo_detail = comp_co05_layout.find_all("div", class_='showcase-card-tab-card')[card_list_no - 1]
                                 card_type = process_class_attributes(card_compo_detail, 'N', 'N', {"showcase-card-tab-card--large" : "Full Breed", "showcase-card-tab-card--small" : "Full Breed", "showcase-card-tab-card--vertical" : "Full Breed", "showcase-card-tab-card--product-large" : "Product", "showcase-card-tab-card--product-small" : "Product", "showcase-card-tab-card--product-vertical" : "Product"}, 'N')
 
@@ -554,12 +558,13 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
                         # CTA
                         cell_ctas = process_cta_buttons(ft03_component, "div > div > div > div.st-feature-benefit-full-bleed__cta")
-                        cta_no = 0
-                        for cell_value, cell_check, cell_remarks in cell_ctas :
-                            cta_no += 1
-                            excel_save_data(exl_ws,
-                                "Banner", "Column", "CTA", 'Label ' + str(cta_no),
-                                cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
+                        if cell_ctas:
+                            cta_no = 0
+                            for cell_value, cell_check, cell_remarks in cell_ctas :
+                                cta_no += 1
+                                excel_save_data(exl_ws,
+                                    "Banner", "Column", "CTA", 'Label ' + str(cta_no),
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                         # BG Image
                         img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(ft03_component, "figure.st-feature-benefit-full-bleed__figure")
@@ -613,12 +618,13 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
                         # CTA
                         cell_ctas = process_cta_buttons(comp_co07_contents, "div > div.key-feature-tab__inner-wrap > div.key-feature-tab__cta-wrap")
-                        cta_no = 0
-                        for cell_value, cell_check, cell_remarks in cell_ctas :
-                            cta_no += 1
-                            excel_save_data(exl_ws,
-                                col_location, col_area, "CTA", 'Label ' + str(cta_no),
-                                cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
+                        if cell_ctas:
+                            cta_no = 0
+                            for cell_value, cell_check, cell_remarks in cell_ctas :
+                                cta_no += 1
+                                excel_save_data(exl_ws,
+                                    col_location, col_area, "CTA", 'Label ' + str(cta_no),
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
 
                         # BG Image
                         img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(comp_co07_contents, "div > div.key-feature-tab__background-wrap > div")
@@ -643,8 +649,9 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
 
             excel_end(exl_ws, exl_wb, start_time, url, img_html)
-            db_conn.commit_connection()
-            db_conn.close_connection()
+            if mod_status != "dev":
+                db_conn.commit_connection()
+                db_conn.close_connection()
 
         except Exception as e:
 
@@ -666,8 +673,9 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
             f.close()
             
             # insert한 db 롤백
-            db_conn.rollback_connection()
-            db_conn.close_connection()
+            if mod_status != "dev" :
+                db_conn.rollback_connection()
+                db_conn.close_connection()
 
             print("ERROR :", url, 'at : ', end_time.strftime("%Y/%m/%d %H:%M:%S"), "(", time_elapsed, ")")
             print(traceback.format_exc())

@@ -18,9 +18,14 @@ from urllib.parse import urlparse
 def remove_special_characters(text):
     return re.sub(r'[^\w\s]', ' ', text, flags=re.UNICODE)
 
-with open('exception_words.txt', 'r') as file :
-    exception_words = [line.strip() for line in file]
+# with open("C:\Users\PTK\Desktop\cell2\cell2\NeptunePulse\exception_words.txt") as file :
+#     exception_words = [line.strip() for line in file]
 
+exception_words=["QLED",
+"OLED",
+"BESPOKE",
+"PSSD",
+"SDXC"]
 def qa_check_text(cell_value):
     cell_remarks = ''
     cell_check = ''

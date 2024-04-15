@@ -6,6 +6,7 @@ from utilities import *
 import re
 import html
 from datetime import datetime
+import json
 
 def process_class_attributes(content_comp_div, data_selector, data_tag, data_option, data_option_none):
 
@@ -44,7 +45,9 @@ def process_attributes_value(content_comp_div, data_selector, data_tag, data_cla
     return cell_value
 
 def process_cta_buttons(content_comp_div, data_selector):
-
+    # 20240412 cta가 없는경우
+    if not len(content_comp_div.select(data_selector)) :
+        return False
     selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[0]
     a_tags = selected_component.find_all('a')
     btn_theme = {'cta--underline' : 'Underline', 'cta--outlined' : 'Outline', 'cta--contained' : 'Contained'}
@@ -152,7 +155,6 @@ def process_background_image(content_comp_div, data_selector):
     # 이미지가 아예 없으면
     if img_tag is None and figure is None:
         return None, None, None, None
-
 
     return img_desktop_url, img_desktop, img_mobile_url, img_mobile
 
