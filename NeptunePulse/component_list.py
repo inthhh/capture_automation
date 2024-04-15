@@ -25,7 +25,7 @@ region = region
 
 def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setting_img_check_bgcolor, setting_img_check_logo):
     for page_code in page_codes:
-        db_conn = Database(mod_status)
+        db_conn = Database(mod_status) if mod_status != "dev" else "none"
         raw_data_meta = {
             "date" : datetime.today().strftime('%Y-%m-%d'),
             "rhq" : region[url_code]["rhq"],
@@ -165,7 +165,8 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                         excel_save_data(exl_ws,
                             "KeyVisual", "KV" + str(carousel_no), "BG Image", 'Desktop',
                             img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, mod_status, db_conn)
-                        img_html, id_no = img_save(img_desktop_url, img_desktop, url_code, 'PC Image' + img_title, cell_check, img_html, id_no)
+                        if img_desktop_url :
+                            img_html, id_no = img_save(img_desktop_url, img_desktop, url_code, 'PC Image' + img_title, cell_check, img_html, id_no)
                         # BG Image > Mobile
                         cell_remarks_size = qa_check_img_size(img_mobile, bg_image_mobile_width, bg_image_mobile_height, setting_img_check_size)
                         cell_remarks_logo = qa_check_img_logo(img_mobile_url, img_mobile, setting_img_check_logo)
@@ -174,7 +175,8 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                         excel_save_data(exl_ws,
                             "KeyVisual", "KV" + str(carousel_no), "BG Image", 'Mobile',
                             img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, mod_status, db_conn)
-                        img_html, id_no = img_save(img_mobile_url, img_mobile, url_code, 'Mobile Image' + img_title, cell_check, img_html, id_no)
+                        if img_mobile_url:
+                            img_html, id_no = img_save(img_mobile_url, img_mobile, url_code, 'Mobile Image' + img_title, cell_check, img_html, id_no)
 
                 #Component: CO02_Text Block Container + CO05_Showcase Card Tab
                 if 'cm-g-text-block-container' in content_comp_name and content_comp_div.select('div > div.ho-g-showcase-card-tab'):
@@ -647,8 +649,9 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
 
             excel_end(exl_ws, exl_wb, start_time, url, img_html)
-            db_conn.commit_connection()
-            db_conn.close_connection()
+            if mod_status != "dev":
+                db_conn.commit_connection()
+                db_conn.close_connection()
 
         except Exception as e:
 
@@ -670,8 +673,9 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
             f.close()
             
             # insert한 db 롤백
-            db_conn.rollback_connection()
-            db_conn.close_connection()
+            if mod_status != "dev" :
+                db_conn.rollback_connection()
+                db_conn.close_connection()
 
             print("ERROR :", url, 'at : ', end_time.strftime("%Y/%m/%d %H:%M:%S"), "(", time_elapsed, ")")
             print(traceback.format_exc())

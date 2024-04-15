@@ -11,7 +11,7 @@ from region import region
 from db import Database
 
 region = region
-mod_status = 'live' # dev: db에 저장 안됨 , test : TEST DB에 저장됨, live : Live DB에 저장됨
+mod_status = 'test' # dev: db에 저장 안됨 , test : TEST DB에 저장됨, live : Live DB에 저장됨
 setting_img_check_size = 'No' # Yes/No
 setting_img_check_bgcolor = 'Yes' # Yes/No
 setting_img_check_logo = 'Yes' # Yes/No
@@ -21,9 +21,9 @@ if __name__ == '__main__':
     start_time = datetime.now()
 
 
-    # site_codes = list(region.keys())
+    site_codes = list(region.keys())
 
-    site_codes = ['latin_en']
+    # site_codes = ['uk']
     # page_codes = [
     #     {'url': '', 'type': 'Home', 'category': 'Home'},
     #     {'url': 'mobile/', 'type': 'PFS', 'category': 'Mobile'},
@@ -33,7 +33,7 @@ if __name__ == '__main__':
 
     print("START QA Automation (",len(site_codes),"regions ): ", start_time.strftime("%Y/%m/%d %H:%M:%S"))
     args_for_component_qa = [(site_code, page_codes, mod_status, setting_img_check_size, setting_img_check_bgcolor, setting_img_check_logo) for site_code in site_codes]
-    with Pool(1) as worker_pool :
+    with Pool(4) as worker_pool :
         worker_pool.starmap(component_qa, args_for_component_qa)
 
     finish_time = datetime.now()
