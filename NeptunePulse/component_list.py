@@ -650,6 +650,105 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                             col_location, col_area, "BG Image", 'Mobile',
                             img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, mod_status, db_conn)
 
+                # Component: CO16_Discover Column
+                if 'cm-g-discover-column-new' in content_comp_name:
+                    if component_num >= 2:
+                        content_comp_name_previous = content_all[component_num - 2].get('class', [])
+                        if 'cm-g-text-block' in content_comp_name_previous:
+                            col_location = process_label_text(content_all[component_num - 2],
+                                                              "div > div.textblock__body", "H",
+                                                              "textblock__title")
+                        elif component_num >= 3 and 'cm-g-text-block' in content_all[component_num - 3].get(
+                                'class',
+                                []):
+                            col_location = process_label_text(content_all[component_num - 3],
+                                                              "div > div.textblock__body", "H",
+                                                              "textblock__title")
+                        elif 'cm-g-discover-column-new' not in content_comp_name_previous:
+                            col_location = 'Category'
+                    else:
+                        col_location = 'Category'
+                        co16_components = content_comp_div.select(
+                            'section > div > div > div.co16-discover-column-new__columns-item')
+
+                    bg_image_desktop_width = 568
+                    bg_image_desktop_height = 320
+                    bg_image_mobile_width = 512
+                    bg_image_mobile_height = 288
+
+                    co16_no = 0
+                    for co16_component in co16_components:
+                        co16_no += 1
+
+                    # Headline Text All
+                    cell_value = process_label_text(co16_component,
+                                                    "div.co16-discover-column-new__content > div.co16-discover-column-new__headline-wrapper",
+                                                    "H", "co16-discover-column-new__headline")
+                    cell_check, cell_remarks = qa_check_text(cell_value)
+                    excel_save_data(exl_ws,
+                                    col_location, 'Column ' + str(co16_no), 'Headline Text', 'All',
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status,
+                                    db_conn)
+                    img_title = cell_value
+
+                    # Description Text All
+                    cell_value = process_label_text(co16_component,
+                                                    "div.co16-discover-column-new__content > div.co16-discover-column-new__description-wrapper",
+                                                    "p", "co16-discover-column-new__description")
+                    cell_check, cell_remarks = '', ''
+                    excel_save_data(exl_ws,
+                                    col_location, 'Column ' + str(co16_no), 'Headline Text', 'All',
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status,
+                                    db_conn)
+
+                    # CTA
+                    cell_ctas = process_cta_buttons(co16_component,
+                                                    "div.co16-discover-column-new__content > div.co16-discover-column-new__cta-wrapper")
+                    cta_no = 0
+                    for cell_value, cell_check, cell_remarks in cell_ctas:
+                        cta_no += 1
+                    excel_save_data(exl_ws,
+                                    col_location, 'Column ' + str(co16_no), "CTA", 'Label ' + str(cta_no),
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status,
+                                    db_conn)
+
+                    # BG Image
+                    img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(
+                        co16_component,
+                        "div.co16-discover-column-new__image > div")
+                    # BG Image > Desktop
+                    cell_remarks_size = qa_check_img_size(img_desktop, bg_image_desktop_width,
+                                                          bg_image_desktop_height,
+                                                          setting_img_check_size)
+                    cell_remarks_logo = qa_check_img_logo(img_desktop_url, img_desktop, setting_img_check_logo)
+                    cell_remarks_bgcolor = 'Pass'
+                    cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo,
+                                                         cell_remarks_bgcolor)
+                    excel_save_data(exl_ws,
+                                    col_location, 'Column ' + str(co16_no), "BG Image", 'Desktop',
+                                    img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta,
+                                    mod_status, db_conn)
+                    img_html, id_no = img_save(img_desktop_url, img_desktop, url_code,
+                                               'PC Image : ' + img_title,
+                                               cell_check, img_html,
+                                               id_no)
+                    # BG Image > Mobile
+                    cell_remarks_size = qa_check_img_size(img_mobile, bg_image_mobile_width,
+                                                          bg_image_mobile_height,
+                                                          setting_img_check_size)
+                    cell_remarks_logo = qa_check_img_logo(img_mobile_url, img_mobile, setting_img_check_logo)
+                    cell_remarks_bgcolor = 'Pass'
+                    cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo,
+                                                         cell_remarks_bgcolor)
+                    excel_save_data(exl_ws,
+                                    col_location, 'Column ' + str(co16_no), "BG Image", 'Mobile',
+                                    img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta,
+                                    mod_status,
+                                    db_conn)
+                    img_html, id_no = img_save(img_mobile_url, img_mobile, url_code,
+                                               'Mobile Image : ' + img_title,
+                                               cell_check, img_html,
+                                               id_no)
 
 
             excel_end(exl_ws, exl_wb, start_time, url, img_html)
