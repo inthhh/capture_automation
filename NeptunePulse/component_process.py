@@ -44,12 +44,14 @@ def process_attributes_value(content_comp_div, data_selector, data_tag, data_cla
         cell_value = data_attr.get(data_attr_value, 'None') if data_attr else 'None'
     return cell_value
 
-def process_cta_buttons(content_comp_div, data_selector):
+# "num" parameter use only KV Comp
+def process_cta_buttons(content_comp_div, data_selector, num=0):
     # 20240412 cta가 없는경우
     if not len(content_comp_div.select(data_selector)) :
         return False
-    selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[0]
-    a_tags = selected_component.find_all('a')
+    selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[num]
+    # KV의 cta에 a태그가 아닌 button을 사용하는 예외 포함
+    a_tags = selected_component.find_all(['a', 'button'])
     btn_theme = {'cta--underline' : 'Underline', 'cta--outlined' : 'Outline', 'cta--contained' : 'Contained'}
     btn_color = {'cta--white' : 'White', 'cta--black' : 'Black', 'cta--emphasis' : 'Emphasis'}
     cell_ctas = []
