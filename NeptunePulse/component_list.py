@@ -144,7 +144,7 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                         )
 
                         # CTA
-                        cell_ctas = process_cta_buttons(content_comp_div, "div > div.home-kv-carousel__text-wrap > div.home-kv-carousel__cta-wrap")
+                        cell_ctas = process_cta_buttons(content_comp_div, "div > div.home-kv-carousel__text-wrap > div.home-kv-carousel__cta-wrap", carousel_no - 1)
                         if cell_ctas :
                             cta_no = 0
                             for cell_value, cell_check, cell_remarks in cell_ctas:
@@ -675,7 +675,7 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
             error_log = f"{traceback.format_exc()}, \n ERROR :, {url}, at : {end_time} ({time_elapsed})"
             f.write(error_log)
             f.close()
-            
+
             # insert한 db 롤백
             if mod_status != "dev" :
                 db_conn.rollback_connection()
