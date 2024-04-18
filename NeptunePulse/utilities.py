@@ -94,6 +94,30 @@ def qa_check_text(cell_value):
 
     return cell_check, cell_remarks
 
+def process_badge_text(cell_value, badge_color):
+    cell_check = 'N'
+    cell_remarks = 'Guide: Badges can only contain the text NEW, Best Seller, XX% off and Up to XX% off'
+
+    # NEW, Best Seller, 10% off, Up to 10% off
+    allowed_patterns = [
+        ("New", "blue"),
+        ("NEW", "blue"),
+        ("Best Seller", "yellow"),
+        (r"\d+% off", "red"),
+        (r"Up to \d+% off", "red")
+    ]
+
+    # 주어진 텍스트와 각 패턴을 비교하여 매칭되는지 확인
+    for pattern in allowed_patterns:
+        if re.match(pattern[0], cell_value) and pattern[1] == badge_color:
+            cell_check = 'Y'
+            cell_remarks = 'Pass'
+            break
+        if re.match(pattern[0], cell_value) and pattern[1] != badge_color:
+            cell_remarks = "Guide: The badge's color guide was not followed."
+            break
+    return cell_check, cell_remarks
+
 def qa_check_img_size(img_file, bg_image_width, bg_image_height, setting_img_check_size):
     if img_file is None:
         return ""
