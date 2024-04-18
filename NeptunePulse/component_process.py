@@ -194,3 +194,13 @@ def process_label_text(content_comp_div, data_selector, data_tag, data_class):
         else:
             cell_value = ''
     return cell_value
+
+def process_badge_color(cotent_comp_div):
+    tags_under_div = cotent_comp_div.find_all(class_="badge-icon")
+    print("tags_under_div\n", tags_under_div)
+    class_name = tags_under_div[0].get("class")[-1]
+    if class_name.startswith("badge-icon--bg-color-"):
+        # 색상 부분 추출
+        color = class_name.split("badge-icon--bg-color-")[1]
+        print("Color extracted:", color)
+        return color

@@ -285,6 +285,16 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 else:
                                     card_size = "Large"
 
+                                # # Badge
+                                # cell_value = process_label_text(card_compo_detail, "N", "span", "badge-icon")
+                                # # When a Badge Exists
+                                # if cell_value:
+                                #     badge_color = process_badge_color(card_compo_detail)
+                                #     cell_check, cell_remarks = process_badge_text(cell_value, badge_color)
+                                #     excel_save_data(exl_ws,col_location,cell_area + " | " + card_list + "(" + card_size + ")",'Badge', 'Badge',
+                                #                     cell_value, cell_check, cell_remarks, '', raw_data_meta,mod_status, db_conn)
+
+
                                 # Headline Text PC
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-name--desktop")
                                 cell_check, cell_remarks = qa_check_text(cell_value)
@@ -455,6 +465,8 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                     card_size = "Small"
                                 else:
                                     card_size = "Large"
+
+
 
                                 # Headline Text PC
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-name--desktop")
