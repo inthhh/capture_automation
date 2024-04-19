@@ -27,84 +27,94 @@ exception_words=["QLED",
 "PSSD",
 "SDXC"]
 def qa_check_text(cell_value):
-    cell_remarks = ''
-    cell_check = ''
-    if cell_value != '':
-        cell_value_lower = cell_value.lower()
+	cell_remarks = ''
+	cell_check = ''
+	if cell_value != '':
+		cell_value_lower = cell_value.lower()
 
-        cell_remark1 = "Pass"
-        cell_remark2 = "Pass"
-        cell_remark3 = "Pass"
+		cell_remark1 = "Pass"
+		cell_remark2 = "Pass"
+		cell_remark3 = "Pass"
 
-        if "font-size" in cell_value_lower :
-            cell_remark1 = "Guide: Unable to change font size"
-        if "font-color" in cell_value_lower :
-            cell_remark2 = "Guide: Unable to change font color"
-        if "Font-family" in cell_value_lower :
-            cell_remark3 = "Guide: Unable to change fonts"
+		if "font-size" in cell_value_lower:
+			cell_remark1 = "Guide: Unable to change font size"
+		if "font-color" in cell_value_lower:
+			cell_remark2 = "Guide: Unable to change font color"
+		if "Font-family" in cell_value_lower:
+			cell_remark3 = "Guide: Unable to change fonts"
 
-        cell_remark4 = "Pass"
-        if "samsung" in cell_value_lower :
-            correct_format = all(word == "Samsung" for word in cell_value.split() if word.lower() == "samsung")
-            if not correct_format :
-                cell_remark4 = "Guide: 'Samsung' must be consistently written"
+		cell_remark4 = "Pass"
+		if "samsung" in cell_value_lower:
+			correct_format = all(word == "Samsung" for word in cell_value.split() if word.lower() == "samsung")
+			if not correct_format:
+				cell_remark4 = "Guide: 'Samsung' must be consistently written"
 
-        if '. ' in cell_value_lower or cell_value_lower.endswith('.'):
-            cell_remark5 = 'Guide: Check for the insertion of periods'
-        else:
-            cell_remark5 = 'Pass'
+		if '. ' in cell_value_lower or cell_value_lower.endswith('.'):
+			cell_remark5 = 'Guide: Check for the insertion of periods'
+		else:
+			cell_remark5 = 'Pass'
 
-        special_removed_cell_value = remove_special_characters(cell_value)
-        words_to_uppercase = special_removed_cell_value.split()
+		special_removed_cell_value = remove_special_characters(cell_value)
+		words_to_uppercase = special_removed_cell_value.split()
 
-        # Iran 의 CTA TEXT 시작과 끝에 추가된 LRM html entity code 제거를 위한 조건문
-        words_to_uppercase[0] = words_to_uppercase[0][3 :] if "LRM" in words_to_uppercase[0] else words_to_uppercase[0]
-        words_to_uppercase[-1] = words_to_uppercase[-1][:-3] if "LRM" in words_to_uppercase[-1] else words_to_uppercase[-1]
+		# Iran 의 CTA TEXT 시작과 끝에 추가된 LRM html entity code 제거를 위한 조건문
+		words_to_uppercase[0] = words_to_uppercase[0][3:] if "LRM" in words_to_uppercase[0] else words_to_uppercase[
+			0]
+		words_to_uppercase[-1] = words_to_uppercase[-1][:-3] if "LRM" in words_to_uppercase[-1] else \
+			words_to_uppercase[-1]
 
-        if any(word.isupper() and len(word) >= 4 for word in words_to_uppercase if word not in exception_words and not any(char.isdigit() for char in word)):
-            cell_remark6 = "Guide: All words in titles cannot be written in uppercase, except 'Samsung'."
+		if any(word.isupper() and len(word) >= 4 for word in words_to_uppercase if
+			   word not in exception_words and not any(char.isdigit() for char in word)):
+			cell_remark6 = "Guide: All words in titles cannot be written in uppercase, except 'Samsung'."
 
-            # TEXT에 한자어가 포함된다면 PASS
-            if any(any(unicodedata.category(char) == 'Lo' for char in text) for text in words_to_uppercase):
-                cell_remark6 = "Pass"
-        else :
-            cell_remark6 = "Pass"
+			# TEXT에 한자어가 포함된다면 PASS
+			if any(any(unicodedata.category(char) == 'Lo' for char in text) for text in words_to_uppercase):
+				cell_remark6 = "Pass"
 
-        if cell_remark1 == "Pass" and cell_remark2 == "Pass" and cell_remark3 == "Pass" and cell_remark4 == "Pass" and cell_remark5 == "Pass" and cell_remark6 == "Pass":
-            cell_remarks = "Pass"
-            cell_check = "Y"
-        else :
-            cell_check = "N"
 
-        if cell_remark1 != "Pass" :
-            cell_remarks = cell_remark1 + "\n"
-        if cell_remark2 != "Pass" :
-            cell_remarks += cell_remark2 + "\n"
-        if cell_remark3 != "Pass" :
-            cell_remarks += cell_remark3 + "\n"
-        if cell_remark4 != "Pass" :
-            cell_remarks += cell_remark4 + "\n"
-        if cell_remark5 != "Pass" :
-            cell_remarks += cell_remark5 + "\n"
-        if cell_remark6 != "Pass" :
-            cell_remarks += cell_remark6
-    else:
-        cell_check = ''
-        cell_remarks = ''
+		else:
+			cell_remark6 = "Pass"
 
-    return cell_check, cell_remarks
+		if any(find_sku_text(word) and len(word) >= 4 and word.isupper() and word not in exception_words for word in words_to_uppercase) :
+			cell_remark7 = "Guide: SKU cannot be included in text"
+		else:
+			cell_remark7 = "Pass"
+
+		if cell_remark1 == "Pass" and cell_remark2 == "Pass" and cell_remark3 == "Pass" and cell_remark4 == "Pass" and cell_remark5 == "Pass" and cell_remark6 == "Pass" and cell_remark7 == "Pass":
+			cell_remarks = "Pass"
+			cell_check = "Y"
+		else:
+			cell_check = "N"
+
+		if cell_remark1 != "Pass":
+			cell_remarks = cell_remark1 + "\n"
+		if cell_remark2 != "Pass":
+			cell_remarks += cell_remark2 + "\n"
+		if cell_remark3 != "Pass":
+			cell_remarks += cell_remark3 + "\n"
+		if cell_remark4 != "Pass":
+			cell_remarks += cell_remark4 + "\n"
+		if cell_remark5 != "Pass":
+			cell_remarks += cell_remark5 + "\n"
+		if cell_remark6 != "Pass":
+			cell_remarks += cell_remark6 + "\n"
+		if cell_remark7 != "Pass":
+			cell_remarks += cell_remark7
+	else:
+		cell_check = ''
+		cell_remarks = ''
+
+	return cell_check, cell_remarks
 
 def process_badge_text(cell_value, badge_color):
     cell_check = 'N'
     cell_remarks = 'Guide: Badges can only contain the text NEW, Best Seller, XX% off and Up to XX% off'
 
-    # NEW, Best Seller, 10% off, Up to 10% off
+    # New, Sale
     allowed_patterns = [
         ("New", "blue"),
         ("NEW", "blue"),
-        ("Best Seller", "yellow"),
-        (r"\d+% off", "red"),
-        (r"Up to \d+% off", "red")
+        ("Sale", "red"),
     ]
 
     # 주어진 텍스트와 각 패턴을 비교하여 매칭되는지 확인
@@ -117,6 +127,13 @@ def process_badge_text(cell_value, badge_color):
             cell_remarks = "Guide: The badge's color guide was not followed."
             break
     return cell_check, cell_remarks
+
+def find_sku_text(word):
+    print("@@@@@@@@@@@\n", word)
+    pattern = re.compile(r'^[A-Z][-A-Z0-9]{0,2}[A-Z0-9/-]*$')
+    if pattern.match(word):
+        return True
+    return False
 
 def qa_check_img_size(img_file, bg_image_width, bg_image_height, setting_img_check_size):
     if img_file is None:
