@@ -158,7 +158,7 @@ def process_background_image(content_comp_div, data_selector):
                     return None
                 image_bytes = BytesIO(response_mobile.content)
                 img_mobile = PILImage.open(image_bytes)
-    
+
     # 이미지가 아예 없으면
     if img_tag is None and figure is None:
         return None, None, None, None
@@ -203,3 +203,16 @@ def process_badge_color(cotent_comp_div):
         color = class_name.split("badge-icon--bg-color-")[1]
         print("Color extracted:", color)
         return color
+
+def process_count_badge(content_comp_div):
+    badge_cnt: int = 0
+    for tile in content_comp_div.select('div > div.showcase-card-tab-card'):
+        # L 사이즈 타일
+        if len(tile.select('a > div.showcase-card-tab-card__contents-wrap > div.showcase-card-tab-card__badge-wrap > span.badge-icon')):
+            badge_cnt += 1
+        # S 사이즈 타일
+        if len(tile.select('a > div.showcase-card-tab-card__badge-wrap > span.badge-icon')):
+            badge_cnt += 1
+
+    return badge_cnt
+

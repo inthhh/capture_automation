@@ -218,6 +218,18 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 excel_save_data(exl_ws,col_location, cell_area,'Tile', 'Tile Layout','',
                                                 'N', grid_remarks, '', raw_data_meta, mod_status,db_conn)
 
+                            # 사용가능한 Grid 타일을 사용했을 때,
+                            else:
+                                badge_cnt = process_count_badge(comp_co05_layout)
+                                if card_layout_option == 'LSSSS' and badge_cnt > 2:
+                                    grid_remarks = "Guide: 5 tiles(1-2-2) grid system can use badge up to 2"
+                                    excel_save_data(exl_ws, col_location, cell_area, 'Tile', 'Badge Count', badge_cnt,
+                                                    'N', grid_remarks, '', raw_data_meta, mod_status, db_conn)
+                                elif card_layout_option == 'LLL' and badge_cnt > 1:
+                                    grid_remarks = "Guide: 3 tiles(1-1-1) grid system can use badge up to 1"
+                                    excel_save_data(exl_ws, col_location, cell_area, 'Tile', 'Badge Count', badge_cnt,
+                                                    'N', grid_remarks, '', raw_data_meta, mod_status, db_conn)
+
                             for x in options.keys():
                                 if x == card_layout_option:
                                     card_number = options[x][0]
