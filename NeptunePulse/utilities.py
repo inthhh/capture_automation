@@ -108,8 +108,7 @@ def qa_check_text(cell_value):
 
 def process_badge_text(cell_value, badge_color):
     cell_check = 'N'
-    cell_remarks = 'Guide: Badges can only contain the text NEW, Best Seller, XX% off and Up to XX% off'
-
+    cell_remarks = 'Guide: Badges can only contain the text New, Sale'
     # New, Sale
     allowed_patterns = [
         ("New", "blue"),
@@ -129,7 +128,6 @@ def process_badge_text(cell_value, badge_color):
     return cell_check, cell_remarks
 
 def find_sku_text(word):
-    print("@@@@@@@@@@@\n", word)
     pattern = re.compile(r'^[A-Z][-A-Z0-9]{0,2}[A-Z0-9/-]*$')
     if pattern.match(word):
         return True
