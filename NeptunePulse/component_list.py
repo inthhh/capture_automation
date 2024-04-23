@@ -212,6 +212,12 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 'LSSSS' : ['5 Card (1-2-2)', ['Left', 'Top Center', 'Bottom Center', 'Top Right', 'Bottom Right']],
                                 'LLL' : ['3 Card', ['Left', 'Center', 'Right']]}
 
+                            # Grid 타일 모양 가이드 적용
+                            if card_layout_option != 'LSSSS' and card_layout_option != 'LLL':
+                                grid_remarks = "Guide: CO05 can allow only '5 tiles(1-2-2)' or 3 tiles(1-1-1) Grid style"
+                                excel_save_data(exl_ws,col_location, cell_area,'Tile', 'Tile Layout','',
+                                                'N', grid_remarks, '', raw_data_meta, mod_status,db_conn)
+
                             for x in options.keys():
                                 if x == card_layout_option:
                                     card_number = options[x][0]
@@ -285,14 +291,14 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 else:
                                     card_size = "Large"
 
-                                # # Badge
-                                # cell_value = process_label_text(card_compo_detail, "N", "span", "badge-icon")
-                                # # When a Badge Exists
-                                # if cell_value:
-                                #     badge_color = process_badge_color(card_compo_detail)
-                                #     cell_check, cell_remarks = process_badge_text(cell_value, badge_color)
-                                #     excel_save_data(exl_ws,col_location,cell_area + " | " + card_list + "(" + card_size + ")",'Badge', 'Badge',
-                                #                     cell_value, cell_check, cell_remarks, '', raw_data_meta,mod_status, db_conn)
+                                # Badge
+                                cell_value = process_label_text(card_compo_detail, "N", "span", "badge-icon")
+                                # When a Badge Exists
+                                if cell_value:
+                                    badge_color = process_badge_color(card_compo_detail)
+                                    cell_check, cell_remarks = process_badge_text(cell_value, badge_color)
+                                    excel_save_data(exl_ws,col_location,cell_area + " | " + card_list + "(" + card_size + ")",'Badge', 'Badge',
+                                                    cell_value, cell_check, cell_remarks, '', raw_data_meta,mod_status, db_conn)
 
 
                                 # Headline Text PC
@@ -395,6 +401,12 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 'LSSSS' : ['5 Card (1-2-2)', ['Left', 'Top Center', 'Bottom Center', 'Top Right', 'Bottom Right']],
                                 'LLL' : ['3 Card', ['Left', 'Center', 'Right']]}
 
+                            # Grid 타일 모양 가이드 적용
+                            if card_layout_option != 'LSSSS' and card_layout_option != 'LLL':
+                                grid_remarks = "Guide: CO05 can allow only '5 tiles(1-2-2)' or 3 tiles(1-1-1) Grid style"
+                                excel_save_data(exl_ws, col_location, cell_area, 'Tile', 'Tile Layout', '',
+                                                'N', grid_remarks, '', raw_data_meta, mod_status, db_conn)
+
                             for x in options.keys():
                                 if x == card_layout_option:
                                     card_number = options[x][0]
@@ -468,7 +480,17 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 else:
                                     card_size = "Large"
 
-
+                                # Badge
+                                cell_value = process_label_text(card_compo_detail, "N", "span", "badge-icon")
+                                # When a Badge Exists
+                                if cell_value:
+                                    badge_color = process_badge_color(card_compo_detail)
+                                    cell_check, cell_remarks = process_badge_text(cell_value, badge_color)
+                                    excel_save_data(exl_ws, col_location,
+                                                    cell_area + " | " + card_list + "(" + card_size + ")", 'Badge',
+                                                    'Badge',
+                                                    cell_value, cell_check, cell_remarks, '', raw_data_meta,
+                                                    mod_status, db_conn)
 
                                 # Headline Text PC
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-name--desktop")
