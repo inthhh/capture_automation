@@ -212,6 +212,24 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 'LSSSS' : ['5 Card (1-2-2)', ['Left', 'Top Center', 'Bottom Center', 'Top Right', 'Bottom Right']],
                                 'LLL' : ['3 Card', ['Left', 'Center', 'Right']]}
 
+                            # Grid 타일 모양 가이드 적용
+                            if card_layout_option != 'LSSSS' and card_layout_option != 'LLL':
+                                grid_remarks = "Guide: CO05 can allow only '5 tiles(1-2-2)' or 3 tiles(1-1-1) Grid style"
+                                excel_save_data(exl_ws,col_location, cell_area,'Tile', 'Tile Layout','',
+                                                'N', grid_remarks, '', raw_data_meta, mod_status,db_conn)
+
+                            # 사용가능한 Grid 타일을 사용했을 때,
+                            else:
+                                badge_cnt = process_count_badge(comp_co05_layout)
+                                if card_layout_option == 'LSSSS' and badge_cnt > 2:
+                                    grid_remarks = "Guide: 5 tiles(1-2-2) grid system can use badge up to 2"
+                                    excel_save_data(exl_ws, col_location, cell_area, 'Tile', 'Badge Count', badge_cnt,
+                                                    'N', grid_remarks, '', raw_data_meta, mod_status, db_conn)
+                                elif card_layout_option == 'LLL' and badge_cnt > 1:
+                                    grid_remarks = "Guide: 3 tiles(1-1-1) grid system can use badge up to 1"
+                                    excel_save_data(exl_ws, col_location, cell_area, 'Tile', 'Badge Count', badge_cnt,
+                                                    'N', grid_remarks, '', raw_data_meta, mod_status, db_conn)
+
                             for x in options.keys():
                                 if x == card_layout_option:
                                     card_number = options[x][0]
@@ -285,14 +303,14 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 else:
                                     card_size = "Large"
 
-                                # # Badge
-                                # cell_value = process_label_text(card_compo_detail, "N", "span", "badge-icon")
-                                # # When a Badge Exists
-                                # if cell_value:
-                                #     badge_color = process_badge_color(card_compo_detail)
-                                #     cell_check, cell_remarks = process_badge_text(cell_value, badge_color)
-                                #     excel_save_data(exl_ws,col_location,cell_area + " | " + card_list + "(" + card_size + ")",'Badge', 'Badge',
-                                #                     cell_value, cell_check, cell_remarks, '', raw_data_meta,mod_status, db_conn)
+                                # Badge
+                                cell_value = process_label_text(card_compo_detail, "N", "span", "badge-icon")
+                                # When a Badge Exists
+                                if cell_value:
+                                    badge_color = process_badge_color(card_compo_detail)
+                                    cell_check, cell_remarks = process_badge_text(cell_value, badge_color)
+                                    excel_save_data(exl_ws,col_location,cell_area + " | " + card_list + "(" + card_size + ")",'Badge', 'Badge',
+                                                    cell_value, cell_check, cell_remarks, '', raw_data_meta,mod_status, db_conn)
 
 
                                 # Headline Text PC
@@ -313,6 +331,9 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-description--desktop")
                                 # cell_check, cell_remarks = qa_check_text(cell_value)
                                 cell_check, cell_remarks = '', ''
+                                if card_size == 'Small' and cell_value:
+                                    cell_check = 'N'
+                                    cell_remarks = "Guide: Small Tile's Description must be empty"
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Description', 'Desktop',
                                     cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
@@ -321,6 +342,9 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-description--mobile")
                                 # cell_check, cell_remarks = qa_check_text(cell_value)
                                 cell_check, cell_remarks = '', ''
+                                if card_size == 'Small' and cell_value:
+                                    cell_check = 'N'
+                                    cell_remarks = "Guide: Small Tile's Description must be empty"
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Description', 'Mobile',
                                     cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
@@ -395,6 +419,12 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 'LSSSS' : ['5 Card (1-2-2)', ['Left', 'Top Center', 'Bottom Center', 'Top Right', 'Bottom Right']],
                                 'LLL' : ['3 Card', ['Left', 'Center', 'Right']]}
 
+                            # Grid 타일 모양 가이드 적용
+                            if card_layout_option != 'LSSSS' and card_layout_option != 'LLL':
+                                grid_remarks = "Guide: CO05 can allow only '5 tiles(1-2-2)' or 3 tiles(1-1-1) Grid style"
+                                excel_save_data(exl_ws, col_location, cell_area, 'Tile', 'Tile Layout', '',
+                                                'N', grid_remarks, '', raw_data_meta, mod_status, db_conn)
+
                             for x in options.keys():
                                 if x == card_layout_option:
                                     card_number = options[x][0]
@@ -468,7 +498,17 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 else:
                                     card_size = "Large"
 
-
+                                # Badge
+                                cell_value = process_label_text(card_compo_detail, "N", "span", "badge-icon")
+                                # When a Badge Exists
+                                if cell_value:
+                                    badge_color = process_badge_color(card_compo_detail)
+                                    cell_check, cell_remarks = process_badge_text(cell_value, badge_color)
+                                    excel_save_data(exl_ws, col_location,
+                                                    cell_area + " | " + card_list + "(" + card_size + ")", 'Badge',
+                                                    'Badge',
+                                                    cell_value, cell_check, cell_remarks, '', raw_data_meta,
+                                                    mod_status, db_conn)
 
                                 # Headline Text PC
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-name--desktop")
@@ -488,6 +528,9 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-description--desktop")
                                 # cell_check, cell_remarks = qa_check_text(cell_value)
                                 cell_check, cell_remarks = '', ''
+                                if card_size == 'Small' and cell_value:
+                                    cell_check = 'N'
+                                    cell_remarks = "Guide: Small Tile's Description must be empty"
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Description', 'Desktop',
                                     cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
@@ -496,6 +539,9 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-description--mobile")
                                 # cell_check, cell_remarks = qa_check_text(cell_value)
                                 cell_check, cell_remarks = '', ''
+                                if card_size == 'Small' and cell_value:
+                                    cell_check = 'N'
+                                    cell_remarks = "Guide: Small Tile's Description must be empty"
                                 excel_save_data(exl_ws,
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Description', 'Mobile',
                                     cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
