@@ -73,7 +73,7 @@ def excel_end(exl_ws, exl_wb, start_time, url, img_html):
 
 
 
-def excel_save_data(exl_ws, col_location, col_area, col_title, cell_description, cell_contents, cell_check, cell_inspection, img_file, raw_data_meta, mod_status, db_conn):
+def excel_save_data(exl_ws, col_location, col_area, col_title, cell_description, cell_contents, cell_check, cell_inspection, img_file, raw_data_meta, mod_status, db_conn, key = ""):
 
     global data_list, before_location, before_area, before_title
 
@@ -138,13 +138,13 @@ def excel_save_data(exl_ws, col_location, col_area, col_title, cell_description,
     before_title = col_title
 
     if mod_status != 'dev':
-        insert_query = "INSERT INTO qa_result (date,rhq, subsidiary, site_code, page_type, category, location, area, title, description, contents, check_result, check_reason) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"
+        insert_query = "INSERT INTO qa_result (date,rhq, subsidiary, site_code, page_type, category, location, area, title, description, contents, check_result, check_reason, key) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"
         db_conn.execute(insert_query, (
             raw_data_meta["date"], raw_data_meta["rhq"], raw_data_meta["subsidiary"], raw_data_meta["site_code"],
             raw_data_meta["page_type"],raw_data_meta["category"], col_location, col_area, col_title, cell_description, cell_contents, cell_check,
-            cell_inspection))
+            cell_inspection, key))
     date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(date_now, ": ", col_location, col_area, col_title, cell_contents, cell_check, cell_inspection)
+    print(date_now, ": ", col_location, col_area, col_title, cell_contents, cell_check, cell_inspection, key)
 
 
 
