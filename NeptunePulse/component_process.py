@@ -198,7 +198,7 @@ def process_label_text(content_comp_div, data_selector, data_tag, data_class):
 def process_tab_name_attribute_to_key(content_comp_div):
     button_comp = content_comp_div.select("li > button")[0]
     an_la_value = button_comp.get("an-la")
-    return an_la_value.split(":")[2]
+    return an_la_value.split(":")[-2]
 
 def process_badge_color(cotent_comp_div):
     tags_under_div = cotent_comp_div.find_all(class_="badge-icon")

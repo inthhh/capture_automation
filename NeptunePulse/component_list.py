@@ -65,19 +65,19 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                         '</div>\n')
             id_no = 0
 
+            # key 값의 comp order number를 위한 dictionary
+            component_counter = {
+                "HD01": 0,
+                "CO02": 0,
+                "CO05": 0,
+                "FT03": 0,
+                "CO07": 0,
+                "CO16": 0
+            }
+
             for content_comp_div in content_all:
                 component_num += 1
                 content_comp_name = content_comp_div.get('class', [])
-
-                # key 값의 comp order number를 위한 dictionary
-                component_counter = {
-                    "HD01": 0,
-                    "CO02": 0,
-                    "CO05": 0,
-                    "FT03": 0,
-                    "CO07": 0,
-                    "CO16": 0
-                }
 
                 #Component: HD01_Home KV Carousel
                 if 'ho-g-home-kv-carousel' in content_comp_name:
@@ -780,21 +780,28 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                         col_area = process_label_text(comp_co07_tab, "N", "button", "tab__item-title")
                         col_area = re.sub(r'<span class="tab__item-line"></span>', '', col_area)
                         col_area = html.unescape(col_area)
+                        tab_name_key_value = process_tab_name_attribute_to_key(comp_co07_tab)
 
                         # Headline Text All
                         cell_value = process_label_text(comp_co07_contents, "div > div.key-feature-tab__inner-wrap > div.key-feature-tab__text-wrap", "H", "key-feature-tab__headline")
                         cell_check, cell_remarks = qa_check_text(cell_value)
+                        key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
+                                                    "CO07", component_counter["CO07"],
+                                                    "", "Headline Text", "All", tab_name_key_value)
                         excel_save_data(exl_ws,
                             col_location, col_area, 'Headline Text', 'All',
-                            cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn, key_id_value)
 
                         # Description All
                         cell_value = process_label_text(comp_co07_contents, "div > div.key-feature-tab__inner-wrap > div.key-feature-tab__text-wrap", "p", "key-feature-tab__desc")
                         # cell_check, cell_remarks = qa_check_text(cell_value)
                         cell_check, cell_remarks = '', ''
+                        key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
+                                                    "CO07", component_counter["CO07"],
+                                                    "", "Description", "All", tab_name_key_value)
                         excel_save_data(exl_ws,
                             col_location, col_area, 'Description', 'All',
-                            cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn, key_id_value)
 
                         # CTA
                         cell_ctas = process_cta_buttons(comp_co07_contents, "div > div.key-feature-tab__inner-wrap > div.key-feature-tab__cta-wrap")
@@ -802,9 +809,12 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                             cta_no = 0
                             for cell_value, cell_check, cell_remarks in cell_ctas :
                                 cta_no += 1
+                                key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
+                                                            "CO07", component_counter["CO07"],
+                                                            "", "CTA", "Label " + str(cta_no), tab_name_key_value)
                                 excel_save_data(exl_ws,
                                     col_location, col_area, "CTA", 'Label ' + str(cta_no),
-                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn, key_id_value)
 
                         # BG Image
                         img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(comp_co07_contents, "div > div.key-feature-tab__background-wrap > div")
@@ -817,20 +827,26 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                         cell_remarks_logo = qa_check_img_logo(img_desktop_url, img_desktop, setting_img_check_logo)
                         cell_remarks_bgcolor = 'Pass'
                         cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
+                        key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
+                                                    "CO07", component_counter["CO07"],
+                                                    "", "BG Image", "Desktop", tab_name_key_value)
                         excel_save_data(exl_ws,
                             col_location, col_area, "BG Image", 'Desktop',
-                            img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, mod_status, db_conn)
+                            img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, mod_status, db_conn, key_id_value)
 
                         # BG Image > Mobile
                         cell_remarks_size = qa_check_img_size(img_mobile, bg_image_mobile_width, bg_image_mobile_height, setting_img_check_size)
                         cell_remarks_logo = qa_check_img_logo(img_mobile_url, img_mobile, setting_img_check_logo)
                         cell_remarks_bgcolor = 'Pass'
                         cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
+                        key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
+                                                    "CO07", component_counter["CO07"],
+                                                    "", "BG Image", "Mobile", tab_name_key_value)
                         excel_save_data(exl_ws,
                             col_location, col_area, "BG Image", 'Mobile',
-                            img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, mod_status, db_conn)
+                            img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, mod_status, db_conn, key_id_value)
 
-                # Component: CO16_Discover Column
+                # Component: FT16_Discover Column
                 if 'cm-g-discover-column-new' in content_comp_name:
                     component_counter["CO16"] += 1
 
