@@ -1,13 +1,20 @@
+
 const checkFailImage = async (page, src) =>{
-    const imageHandle = await page.$(`img[data-desktop-src^="${src}?"], img[data-desktop-src^="${src}?"], img[src^="${src}"], img[src^="${src}?"]`);
+
+    const imageHandle = await page.$(`img[src*="${src}"]`).parentElement;
+    // const imgsrc = await page.evaluate(image => image.src, imageHandle);
     if (imageHandle) {
-        // Apply border to the image
+        const imgsrc = await page.evaluate(image => image.src, imageHandle);
+        console.log(src);
+        console.log(imageHandle);
+        console.log(imgsrc)
         await page.evaluate((element) => {
-            element.style.border = '10px solid red';
+            element.style.border = '20px solid red';
         }, imageHandle);
     } else {
-        console.error('Image not found!');
+        console.log("이미지를 찾을 수 없습니다.");
     }
+    
 }
 
 
