@@ -258,15 +258,18 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                             else:
                                 badge_cnt = process_count_badge(comp_co05_layout)
                                 grid_remarks = ""
+                                grid_check = "Y"
                                 if card_layout_option == 'LSSSS' and badge_cnt > 2:
                                     grid_remarks = "Guide: 5 tiles(1-2-2) grid system can use badge up to 2"
+                                    grid_check = "N"
                                 elif card_layout_option == 'LLL' and badge_cnt > 1:
                                     grid_remarks = "Guide: 3 tiles(1-1-1) grid system can use badge up to 1"
+                                    grid_check = "N"
                                 key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
                                                             "CO05", component_counter["CO05"],
                                                             "", "Tile", "Badge Count", tab_name_key_value)
                                 excel_save_data(exl_ws, col_location, cell_area, 'Tile', 'Badge Count', badge_cnt,
-                                                'N', grid_remarks, '', raw_data_meta, mod_status, db_conn, key_id_value)
+                                                grid_check, grid_remarks, '', raw_data_meta, mod_status, db_conn, key_id_value)
 
                             for x in options.keys():
                                 if x == card_layout_option:
