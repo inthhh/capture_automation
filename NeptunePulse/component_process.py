@@ -6,6 +6,7 @@ from utilities import *
 import re
 import html
 from datetime import datetime
+import json
 
 def process_class_attributes(content_comp_div, data_selector, data_tag, data_option, data_option_none):
 
@@ -43,10 +44,14 @@ def process_attributes_value(content_comp_div, data_selector, data_tag, data_cla
         cell_value = data_attr.get(data_attr_value, 'None') if data_attr else 'None'
     return cell_value
 
-def process_cta_buttons(content_comp_div, data_selector):
-
-    selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[0]
-    a_tags = selected_component.find_all('a')
+# "num" parameter use only KV Comp
+def process_cta_buttons(content_comp_div, data_selector, num=0):
+    # 20240412 cta가 없는경우
+    if not len(content_comp_div.select(data_selector)) :
+        return False
+    selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[num]
+    # KV의 cta에 a태그가 아닌 button을 사용하는 예외 포함
+    a_tags = selected_component.find_all(['a', 'button'])
     btn_theme = {'cta--underline' : 'Underline', 'cta--outlined' : 'Outline', 'cta--contained' : 'Contained'}
     btn_color = {'cta--white' : 'White', 'cta--black' : 'Black', 'cta--emphasis' : 'Emphasis'}
     cell_ctas = []
@@ -98,8 +103,13 @@ def process_label_cta(content_comp_div, data_selector, data_tag):
     return cell_ctas
 
 def process_background_image(content_comp_div, data_selector):
-
-    selected_component = content_comp_div if data_selector == 'N' else content_comp_div.select(data_selector)[0]
+    # 컴포넌트가 존재하지 않으면
+    if data_selector == 'N':
+        selected_component = content_comp_div
+    elif len(content_comp_div.select(data_selector)) <= 0:
+        return "Component doesn't exist.", None, None, None
+    else:
+        selected_component = content_comp_div.select(data_selector)[0]
 
     img_tag = selected_component.select_one('img.image-v2__preview, img.image__preview')
     if img_tag:
@@ -149,7 +159,9 @@ def process_background_image(content_comp_div, data_selector):
                 image_bytes = BytesIO(response_mobile.content)
                 img_mobile = PILImage.open(image_bytes)
 
-
+    # 이미지가 아예 없으면
+    if img_tag is None and figure is None:
+        return None, None, None, None
 
     return img_desktop_url, img_desktop, img_mobile_url, img_mobile
 
@@ -182,3 +194,30 @@ def process_label_text(content_comp_div, data_selector, data_tag, data_class):
         else:
             cell_value = ''
     return cell_value
+
+def process_tab_name_attribute_to_key(content_comp_div):
+    button_comp = content_comp_div.select("li > button")[0]
+    an_la_value = button_comp.get("an-la")
+    return an_la_value.split(":")[-2]
+
+def process_badge_color(cotent_comp_div):
+    tags_under_div = cotent_comp_div.find_all(class_="badge-icon")
+    class_name = tags_under_div[0].get("class")[-1]
+    if class_name.startswith("badge-icon--bg-color-"):
+        # 색상 부분 추출
+        color = class_name.split("badge-icon--bg-color-")[1]
+        print("Color extracted:", color)
+        return color
+
+def process_count_badge(content_comp_div):
+    badge_cnt: int = 0
+    for tile in content_comp_div.select('div > div.showcase-card-tab-card'):
+        # L 사이즈 타일
+        if len(tile.select('a > div.showcase-card-tab-card__contents-wrap > div.showcase-card-tab-card__badge-wrap > span.badge-icon')):
+            badge_cnt += 1
+        # S 사이즈 타일
+        if len(tile.select('a > div.showcase-card-tab-card__badge-wrap > span.badge-icon')):
+            badge_cnt += 1
+
+    return badge_cnt
+

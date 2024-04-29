@@ -4,7 +4,7 @@ from openpyxl.drawing.image import Image
 from datetime import datetime
 import os
 import pandas as pd
-from db import execute
+from db import Database
 from PIL import Image as PILImage
 from io import BytesIO
 
@@ -73,7 +73,7 @@ def excel_end(exl_ws, exl_wb, start_time, url, img_html):
 
 
 
-def excel_save_data(exl_ws, col_location, col_area, col_title, cell_description, cell_contents, cell_check, cell_inspection, img_file, raw_data_meta, dev_status):
+def excel_save_data(exl_ws, col_location, col_area, col_title, cell_description, cell_contents, cell_check, cell_inspection, img_file, raw_data_meta, mod_status, db_conn, key = ""):
 
     global data_list, before_location, before_area, before_title
 
@@ -117,7 +117,7 @@ def excel_save_data(exl_ws, col_location, col_area, col_title, cell_description,
     exl_ws.cell(row=row_num, column=7).alignment = Alignment(vertical='center', wrap_text=True)
     exl_ws.cell(row=row_num, column=8).border = Border(top=Side(style='thin', color='555555'), right=Side(style='thin', color='555555'))
 
-    if img_file != '':
+    if img_file != '' and img_file is not None:
         original_width, original_height = img_file.size
 
         scale_factor = 200 / original_width
@@ -137,14 +137,14 @@ def excel_save_data(exl_ws, col_location, col_area, col_title, cell_description,
     before_area = col_area
     before_title = col_title
 
-    if dev_status == 'dev':
-        insert_query = "INSERT INTO qa_result (date,rhq, subsidiary, site_code, page_type, category, location, area, title, description, contents, check_result, check_reason) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"
-        execute(insert_query, (
+    if mod_status != 'dev':
+        insert_query = "INSERT INTO qa_result (date,rhq, subsidiary, site_code, page_type, category, location, area, title, description, contents, check_result, check_reason, key) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"
+        db_conn.execute(insert_query, (
             raw_data_meta["date"], raw_data_meta["rhq"], raw_data_meta["subsidiary"], raw_data_meta["site_code"],
             raw_data_meta["page_type"],raw_data_meta["category"], col_location, col_area, col_title, cell_description, cell_contents, cell_check,
-            cell_inspection))
+            cell_inspection, key))
     date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(date_now, ": ", col_location, col_area, col_title, cell_contents, cell_check, cell_inspection)
+    print(date_now, ": ", col_location, col_area, col_title, cell_contents, cell_check, cell_inspection, key)
 
 
 
