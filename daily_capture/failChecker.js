@@ -1,7 +1,7 @@
 
 const checkFailImage = async (page, src) =>{
 
-    const imageHandle = await page.$(`img[src*="${src}"]`).parentElement;
+    const imageHandle = await page.$(`img[src*="${src}"]`);
     // const imgsrc = await page.evaluate(image => image.src, imageHandle);
     if (imageHandle) {
         const imgsrc = await page.evaluate(image => image.src, imageHandle);
