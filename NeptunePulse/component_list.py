@@ -245,6 +245,9 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 'LSSSS' : ['5 Card (1-2-2)', ['Left', 'Top Center', 'Bottom Center', 'Top Right', 'Bottom Right']],
                                 'LLL' : ['3 Card', ['Left', 'Center', 'Right']]}
 
+                            # Tile 검사
+                            grid_check = "Y"
+                            grid_remarks = "Pass"
 
                             # Grid 타일 모양 가이드 적용
                             if card_layout_option != 'LSSSS' and card_layout_option != 'LLL':
@@ -258,9 +261,6 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
                             # 사용가능한 Grid 타일을 사용했을 때,
                             else:
-                                badge_cnt = process_count_badge(comp_co05_layout)
-                                grid_check = "Y"
-                                grid_remarks = ""
                                 key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
                                                             "CO05", component_counter["CO05"],
                                                             "", "Tile", "Tile Layout", tab_name_key_value)
@@ -268,17 +268,23 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                                 grid_check, grid_remarks, '', raw_data_meta, mod_status, db_conn,
                                                 key_id_value)
 
-                                if card_layout_option == 'LSSSS' and badge_cnt > 2:
-                                    grid_remarks = "Guide: 5 tiles(1-2-2) grid system can use badge up to 2"
-                                    grid_check = "N"
-                                elif card_layout_option == 'LLL' and badge_cnt > 1:
-                                    grid_remarks = "Guide: 3 tiles(1-1-1) grid system can use badge up to 1"
-                                    grid_check = "N"
-                                key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
-                                                            "CO05", component_counter["CO05"],
-                                                            "", "Tile", "Badge Count", tab_name_key_value)
-                                excel_save_data(exl_ws, col_location, cell_area, 'Tile', 'Badge Count', badge_cnt,
-                                                grid_check, grid_remarks, '', raw_data_meta, mod_status, db_conn, key_id_value)
+                            # 뱃지 카운트
+                            badge_cnt = process_count_badge(comp_co05_layout)
+                            badge_check = "Y"
+                            badge_remarks = "Pass"
+
+                            if card_layout_option == 'LSSSS' and badge_cnt > 2:
+                                badge_remarks = "Guide: 5 tiles(1-2-2) grid system can use badge up to 2"
+                                badge_check = "N"
+                            elif card_layout_option == 'LLL' and badge_cnt > 1:
+                                badge_remarks = "Guide: 3 tiles(1-1-1) grid system can use badge up to 1"
+                                badge_check = "N"
+
+                            key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
+                                                        "CO05", component_counter["CO05"],
+                                                        "", "Tile", "Badge Count", tab_name_key_value)
+                            excel_save_data(exl_ws, col_location, cell_area, 'Tile', 'Badge Count', badge_cnt,
+                                            badge_check, badge_remarks, '', raw_data_meta, mod_status, db_conn, key_id_value)
 
                             for x in options.keys():
                                 if x == card_layout_option:
@@ -500,28 +506,50 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                 'LSSSS' : ['5 Card (1-2-2)', ['Left', 'Top Center', 'Bottom Center', 'Top Right', 'Bottom Right']],
                                 'LLL' : ['3 Card', ['Left', 'Center', 'Right']]}
 
+                            # Tile 검사
+                            grid_check = "Y"
+                            grid_remarks = "Pass"
+
                             # Grid 타일 모양 가이드 적용
                             if card_layout_option != 'LSSSS' and card_layout_option != 'LLL':
+                                grid_check = "N"
                                 grid_remarks = "Guide: CO05 can allow only '5 tiles(1-2-2)' or 3 tiles(1-1-1) Grid style"
                                 key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
                                                             "CO05", component_counter["CO05"],
                                                             "", "Tile", "Tile Layout", tab_name_key_value)
-                                excel_save_data(exl_ws, col_location, cell_area, 'Tile', 'Tile Layout', '',
-                                                'N', grid_remarks, '', raw_data_meta, mod_status, db_conn, key_id_value)
+                                excel_save_data(exl_ws, col_location, cell_area, 'Tile', 'Tile Layout',
+                                                card_layout_option,
+                                                grid_check, grid_remarks, '', raw_data_meta, mod_status, db_conn,
+                                                key_id_value)
 
                             # 사용가능한 Grid 타일을 사용했을 때,
                             else:
-                                badge_cnt = process_count_badge(comp_co05_layout)
-                                grid_remarks = ""
-                                if card_layout_option == 'LSSSS' and badge_cnt > 2:
-                                    grid_remarks = "Guide: 5 tiles(1-2-2) grid system can use badge up to 2"
-                                elif card_layout_option == 'LLL' and badge_cnt > 1:
-                                    grid_remarks = "Guide: 3 tiles(1-1-1) grid system can use badge up to 1"
                                 key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
                                                             "CO05", component_counter["CO05"],
-                                                            "", "Tile", "Badge Count", tab_name_key_value)
-                                excel_save_data(exl_ws, col_location, cell_area, 'Tile', 'Badge Count', badge_cnt,
-                                                'N', grid_remarks, '', raw_data_meta, mod_status, db_conn, key_id_value)
+                                                            "", "Tile", "Tile Layout", tab_name_key_value)
+                                excel_save_data(exl_ws, col_location, cell_area, 'Tile', 'Tile Layout',
+                                                card_layout_option,
+                                                grid_check, grid_remarks, '', raw_data_meta, mod_status, db_conn,
+                                                key_id_value)
+
+                            # 뱃지 카운트
+                            badge_cnt = process_count_badge(comp_co05_layout)
+                            badge_check = "Y"
+                            badge_remarks = "Pass"
+
+                            if card_layout_option == 'LSSSS' and badge_cnt > 2:
+                                badge_remarks = "Guide: 5 tiles(1-2-2) grid system can use badge up to 2"
+                                badge_check = "N"
+                            elif card_layout_option == 'LLL' and badge_cnt > 1:
+                                badge_remarks = "Guide: 3 tiles(1-1-1) grid system can use badge up to 1"
+                                badge_check = "N"
+
+                            key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
+                                                        "CO05", component_counter["CO05"],
+                                                        "", "Tile", "Badge Count", tab_name_key_value)
+                            excel_save_data(exl_ws, col_location, cell_area, 'Tile', 'Badge Count', badge_cnt,
+                                            badge_check, badge_remarks, '', raw_data_meta, mod_status, db_conn,
+                                            key_id_value)
 
                             for x in options.keys():
                                 if x == card_layout_option:
