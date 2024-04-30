@@ -1,31 +1,21 @@
 const http = require("http");
 require("dotenv").config();
+const axios = require("axios")
 
 const getRawData = async (date="", siteCode="", checkResult="") =>{
-    let targetURI = `${process.env["RAW_DATA_API_END_POINT"]}:${process.env["RAW_DATA_API_PORT"]}${process.env["RAW_DATA_API_ROUTER"]}?date=${date}&site-code=${siteCode}&check-result=${checkResult}`
-    console.log(targetURI)
-    await http.get(targetURI, (res)=>{
-        const { statusCode } = res;
-        let error;
+    let targetURI = `${process.env["RAW_DATA_API_END_POINT"]}${process.env["RAW_DATA_API_ROUTER"]}?date=${date}&site-code=${siteCode}&check-result=${checkResult}`
 
-        if (statusCode != 200) return new Error(`Request Failed. Status Code: ${statusCode}`)
-
-        res.setEncoding('utf8')
-        let result;
-        res.on('data', (chunk)=>{
-            result += chunk;
+    try {
+        const { data } = await axios.get(targetURI);
+        const failImgArr = data.data.map((obj, idx) => {
+            return obj.contents.includes("https://") ? (obj.contents.replace("https://", "")) : undefined;
         })
-        console.log(result)
-    })
 
+        // console.log(failImgArr.filter(Boolean));
+        return failImgArr.filter(Boolean);
+    } catch (e) {
+        console.error(e)
+    }
 }
 
-getRawData("2024-04-18", "us", "N")
-
-
-//
-//
-//
-// module.exports = {
-//     "getRawData":getRawData
-// }
+module.exports = getRawData

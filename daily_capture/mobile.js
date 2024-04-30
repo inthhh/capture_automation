@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer');
 const moment = require('moment');
 const carouselBreak = require ('./carouselBreak');
 const failChecker = require("./failChecker");
+const getRawData = require("./api")
 
 const delay = (time) => {
     return new Promise(function(resolve) {
@@ -10,7 +11,7 @@ const delay = (time) => {
 }
 const takeScreenshot = async (siteCode) => {
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         timeout: 100000
     });
 
@@ -29,23 +30,30 @@ const takeScreenshot = async (siteCode) => {
 
     await carouselBreak.carouselBreakMobile(page)
 
-    await delay(30000)
+    await delay(120000)
 
     await carouselBreak.eventListenerBreak(page)
 
-    const failedImage= ["images.samsung.com/is/image/samsung/assets/uk/homepage/LT_DT_684x684_TV-PreOrder-S242.jpg"]
+    const failedImage = await getRawData("2024-04-29", siteCode, "N")
+
+    // const failedImage= ["images.samsung.com/is/image/samsung/assets/uk/homepage/LT_DT_684x684_TV-PreOrder-S242.jpg"]
+    // console.log(failedImage)
     for (let i = 0; i < failedImage.length; i++){
+        // console.log(failedImage[i])
         await failChecker.checkFailImage(page,failedImage[i])
     }
 
-
     const dateNow = moment().format("YYYY-MM-DD_HH-mm-ss")
 
-    const fileName = `C:\\Users\\PTK\\Desktop\\CODE\\weekly_capture_v0.0.2\\result\\${siteCode}-${dateNow}-screenshot.png`
+    const fileName = `C:\\Users\\비스톤스\\Desktop\\projects\\cell2\\daily_capture\\result\\test\\${siteCode}-${dateNow}-screenshot.png`
 
     await page.screenshot({ path: fileName, fullPage: true});
-    // browser.close();
+    browser.close();
 
 }
 
-takeScreenshot('uk');
+// takeScreenshot('lb');
+
+module.exports = {
+    takeScreenshot
+}
