@@ -392,13 +392,15 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                     col_location, cell_area + " | " + card_list + "(" + card_size + ")", 'Title', 'Mobile',
                                     cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn, key_id_value)
 
+                                cell_check = ''
+                                cell_remarks = ''
                                 # Description PC
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-description--desktop")
-                                # cell_check, cell_remarks = qa_check_text(cell_value)
-                                cell_check, cell_remarks = '', ''
                                 if card_size == 'Small' and cell_value:
                                     cell_check = 'N'
                                     cell_remarks = "Guide: Small Tile's Description must be empty"
+                                elif card_size == 'Large':
+                                    cell_check, cell_remarks = qa_check_text(cell_value)
                                 key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
                                                             "CO05", component_counter["CO05"],
                                                             "", "Description", "Desktop", tab_name_key_value, card_list_no)
@@ -408,11 +410,11 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
                                 # Description Mobile
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-description--mobile")
-                                # cell_check, cell_remarks = qa_check_text(cell_value)
-                                cell_check, cell_remarks = '', ''
                                 if card_size == 'Small' and cell_value:
                                     cell_check = 'N'
                                     cell_remarks = "Guide: Small Tile's Description must be empty"
+                                elif card_size == 'Large':
+                                    cell_check, cell_remarks = qa_check_text(cell_value)
                                 key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
                                                             "CO05", component_counter["CO05"],
                                                             "", "Description", "Mobile", tab_name_key_value,
@@ -660,12 +662,14 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                     cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn, key_id_value)
 
                                 # Description PC
+                                cell_check = ''
+                                cell_remarks = ''
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-description--desktop")
-                                # cell_check, cell_remarks = qa_check_text(cell_value)
-                                cell_check, cell_remarks = '', ''
                                 if card_size == 'Small' and cell_value:
                                     cell_check = 'N'
                                     cell_remarks = "Guide: Small Tile's Description must be empty"
+                                elif card_size == 'Large':
+                                    cell_check, cell_remarks = qa_check_text(cell_value)
                                 key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
                                                             "CO05", component_counter["CO05"],
                                                             "", "Description", "Desktop", tab_name_key_value,
@@ -676,11 +680,11 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
                                 # Description Mobile
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-description--mobile")
-                                # cell_check, cell_remarks = qa_check_text(cell_value)
-                                cell_check, cell_remarks = '', ''
                                 if card_size == 'Small' and cell_value:
                                     cell_check = 'N'
                                     cell_remarks = "Guide: Small Tile's Description must be empty"
+                                elif card_size == 'Large':
+                                    cell_check, cell_remarks = qa_check_text(cell_value)
                                 key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
                                                             "CO05", component_counter["CO05"],
                                                             "", "Description", "Mobile", tab_name_key_value,
