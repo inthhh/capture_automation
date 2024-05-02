@@ -4,7 +4,7 @@ const desktop = require("./desktop")
 
 const goScreenshot = async () => {
   const site_code = region.site_code;
-  const batchSize = 5;
+  const batchSize = 2;
   const totalBatches = Math.ceil(site_code.length / batchSize);
 
   const results = [];
@@ -13,6 +13,7 @@ const goScreenshot = async () => {
       const end = Math.min(start + batchSize, site_code.length);
       const batch = site_code.slice(start, end);
       const promises = batch.map(site => mobile.takeScreenshot(site));
+
       const batchResult = await Promise.all(promises);
       results.push(...batchResult);
   }

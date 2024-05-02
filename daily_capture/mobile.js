@@ -29,9 +29,7 @@ const takeScreenshot = async (siteCode) => {
     // await page.click('.cookie-bar__close')
 
     await carouselBreak.carouselBreakMobile(page)
-
-    await delay(120000)
-
+    await delay(40000)
     await carouselBreak.eventListenerBreak(page)
 
     const failedImage = await getRawData("2024-04-29", siteCode, "N")
@@ -45,9 +43,9 @@ const takeScreenshot = async (siteCode) => {
 
     const dateNow = moment().format("YYYY-MM-DD_HH-mm-ss")
 
-    const fileName = `C:\\Users\\비스톤스\\Desktop\\projects\\cell2\\daily_capture\\result\\test\\${siteCode}-${dateNow}-screenshot.png`
+    const fileName = `C:\\Users\\PTK\\Desktop\\CODE\\cell2\\daily_capture\\result\\test\\mobile\\${siteCode}-${dateNow}-screenshot.jpeg`
 
-    await page.screenshot({ path: fileName, fullPage: true});
+    await page.screenshot({ path: fileName, fullPage: true,type:'jpeg', quality:10});
     browser.close();
 
 }
