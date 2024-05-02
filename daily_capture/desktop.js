@@ -17,7 +17,7 @@ const takeScreenshot = async (siteCode) => {
 
     const page = await browser.newPage();
     const url = `https://www.samsung.com/${siteCode}`;
-    await page.setViewport({ width: 360, height: 10000 });
+    await page.setViewport({ width: 1440, height: 10000 });
     await page.goto(url, {waitUntil: 'load'});
 
     // Get the height of the rendered page
@@ -30,7 +30,7 @@ const takeScreenshot = async (siteCode) => {
 
     await carouselBreak.carouselBreakMobile(page)
 
-    await delay(120000)
+    await delay(30000)
 
     await carouselBreak.eventListenerBreak(page)
 
@@ -45,7 +45,7 @@ const takeScreenshot = async (siteCode) => {
 
     const dateNow = moment().format("YYYY-MM-DD_HH-mm-ss")
 
-    const fileName = `C:\\Users\\비스톤스\\Desktop\\projects\\cell2\\daily_capture\\result\\test\\${siteCode}-${dateNow}-screenshot.png`
+    const fileName = `C:\\Users\\PTK\\Desktop\\CODE\\cell2\\daily_capture\\result\\test\\desktop\\${siteCode}-${dateNow}-desktop-screenshot.jpeg`
 
     await page.screenshot({ path: fileName, fullPage: true});
     browser.close();

@@ -1,5 +1,6 @@
 const region = require("./region")
 const mobile = require("./mobile")
+const desktop = require("./desktop")
 
 const goScreenshot = async () => {
   const site_code = region.site_code;
