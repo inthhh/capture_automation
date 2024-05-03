@@ -9,6 +9,8 @@ const getRawData = async (date="", siteCode="", checkResult="") =>{
         const failImgArr = data.data.map((obj, idx) => {
             if (obj.contents) return obj.contents.includes("https://") ? (obj.contents.replace("https://", "")) : undefined;
         })
+
+        console.log(failImgArr.filter(Boolean));
         return failImgArr.filter(Boolean);
     } catch (e) {
         console.error(e)

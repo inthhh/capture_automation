@@ -30,7 +30,7 @@ const takeScreenshot = async (siteCode) => {
 
     await carouselBreak.carouselBreakMobile(page)
 
-    await delay(30000)
+    await delay(40000)
 
     await carouselBreak.eventListenerBreak(page)
 
@@ -45,7 +45,7 @@ const takeScreenshot = async (siteCode) => {
 
     const dateNow = moment().format("YYYY-MM-DD_HH-mm-ss")
 
-    const fileName = `C:\\Users\\PTK\\Desktop\\CODE\\cell2\\daily_capture\\result\\test\\desktop\\${siteCode}-${dateNow}-desktop-screenshot.jpeg`
+    const fileName = `.\\result\\test\\${siteCode}-${dateNow}-desktop-screenshot.jpeg`
 
     await page.screenshot({ path: fileName, fullPage: true});
     browser.close();
