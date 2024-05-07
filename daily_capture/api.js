@@ -23,6 +23,4 @@ const getRawData = async (date="", siteCode="", checkResult="") =>{
     }
 }
 
-getRawData("2024-05-06", "au", "N")
-
 module.exports = getRawData
