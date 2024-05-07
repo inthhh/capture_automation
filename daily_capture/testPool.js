@@ -4,7 +4,7 @@ const desktop = require("./desktop")
 
 const goScreenshot = async () => {
   // const site_code = region.site_code;
-  const site_code = ["pe"];
+  const site_code = ["au"];
 
   const batchSize = 5;
   const totalBatches = Math.ceil(site_code.length / batchSize);

@@ -29,20 +29,20 @@ const takeScreenshot = async (siteCode) => {
     // await page.click('.cookie-bar__close')
     // console.log("bodyHandel", bodyHandle)
     // console.log("body", body)
-
+    const failedData = await getRawData("2024-04-29", siteCode = "cz", "N")
     await carouselBreak.carouselBreakMobile(page)
 
     await delay(40000)
 
     await carouselBreak.eventListenerBreak(page)
 
-    const failedImage = await getRawData("2024-04-29", siteCode, "N")
+    // const failedData = await getRawData("2024-04-29", siteCode = "cz", "N")
 
     // const failedImage= ["images.samsung.com/is/image/samsung/assets/uk/homepage/LT_DT_684x684_TV-PreOrder-S242.jpg"]
-    // console.log(failedImage)
-    for (let i = 0; i < failedImage.length; i++){
-        // console.log(failedImage[i])
-        await failChecker.checkFailImage(page,failedImage[i])
+    // failedImage -> failedData
+    for (let i = 0; i < failedData.length; i++){
+        console.log("failChecker")
+        await failChecker.checkFailData(page, failedData[i])
     }
 
     const dateNow = moment().format("YYYY-MM-DD_HH-mm-ss")

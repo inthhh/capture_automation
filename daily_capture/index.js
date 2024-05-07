@@ -67,9 +67,9 @@ const takeScreenshot = async (siteCode) => {
         return elementsWithEllipsis;
     });
     console.table(elementsWithEllipsis);
-    const failedImage= [""]
-    for (let i = 0; i < failedImage.length; i++){
-        await failChecker.checkFailImage(page,failedImage[i])
+    const failedData= [""]
+    for (let i = 0; i < failedData.length; i++){
+        await failChecker.checkFailData(page,failedData[i])
     }
 
     const dateNow = moment().format("YYYY-MM-DD_HH-mm-ss")

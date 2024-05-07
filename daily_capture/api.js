@@ -3,22 +3,26 @@ require("dotenv").config();
 const axios = require("axios")
 
 const getRawData = async (date="", siteCode="", checkResult="") =>{
-    let targetURI = `${process.env["RAW_DATA_API_END_POINT"]}${process.env["RAW_DATA_API_ROUTER"]}?date=${date}&site-code=${siteCode}&check-result=${checkResult}&title=BG Image`
-    console.log(targetURI)
+    let targetURI = `${process.env["RAW_DATA_API_END_POINT"]}${process.env["RAW_DATA_API_ROUTER"]}?date=${date}&site-code=${siteCode}&check-result=${checkResult}`
+    // console.log(targetURI)
     try {
         const { data } = await axios.get(targetURI);
-        console.log(data)
+        // console.log(data)
         const failImgArr = data.data.map((obj, idx) => {
-            if (obj.contents) return obj.contents.includes("https://") ? (obj.contents.replace("https://", "")) : undefined;
+            return {
+                key: obj.key,
+                area: obj.area,
+                contents: obj.contents.includes("https://") ? (obj.contents.replace("https://", "")) : (obj.contents)
+            };
         })
 
-        console.log(failImgArr.filter(Boolean));
+        // console.log(failImgArr.filter(Boolean));
         return failImgArr.filter(Boolean);
     } catch (e) {
         console.error(e)
     }
 }
 
-getRawData("2024-04-29", "pe", "N")
+getRawData("2024-05-06", "au", "N")
 
 module.exports = getRawData
