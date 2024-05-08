@@ -3,7 +3,7 @@ const { Page } = require("puppeteer");
 
 const checkFailData = async (page, obj) =>{
     if(!obj.contents) return null;
-    
+
     if(obj.contents.includes("images.samsung")){
         const src = obj.contents;
 
@@ -30,7 +30,7 @@ const checkFailData = async (page, obj) =>{
         console.log("box : ", obj.contents);
     } 
     // badge count
-    else if (obj.contents.length === 1) {
+    else if (obj.contents.length === 1 && obj.contents < 7) {
         
         console.log(obj.contents)
     }
@@ -70,8 +70,8 @@ const checkFailData = async (page, obj) =>{
                                 const computedStyle = window.getComputedStyle(element); // 요소의 현재 스타일 가져오기
                                 const width = parseInt(computedStyle.width); // 현재 너비 가져오기
                                 const height = parseInt(computedStyle.height); // 현재 높이 가져오기
-                                element.style.width = (width + 20) + 'px';
-                                element.style.height = (height + 20) + 'px';
+                                element.style.width = (width + 30) + 'vw';
+                                element.style.height = (height + 30) + 'vw';
                                 element.style.outline = '7px solid red';
                             }
                             else element.style.border = '7px solid red';

@@ -17,7 +17,7 @@ const takeScreenshot = async (siteCode) => {
 
     const page = await browser.newPage();
     const url = `https://www.samsung.com/${siteCode}`;
-    await page.setViewport({ width: 1440, height: 10000 });
+    await page.setViewport({ width: 360, height: 10000 });
     await page.goto(url, {waitUntil: 'load'});
     breaker.cookiePopupBreaker(page)
 
