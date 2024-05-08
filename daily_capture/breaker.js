@@ -30,7 +30,15 @@ const lazyLoadingBreaker = async (page) =>{
   })
 }
 
+const accessibilityPopupBreaker = async (page) =>{
+  await page.evaluate(()=>{
+      const accessibilityPopup = document.querySelector('.ht-skip')
+      if (accessibilityPopup) accessibilityPopup.remove()
+  })
+}
+
 module.exports = {
   cookiePopupBreaker,
-  lazyLoadingBreaker
+  lazyLoadingBreaker,
+  accessibilityPopupBreaker
 }
