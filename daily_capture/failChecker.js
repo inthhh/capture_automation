@@ -1,31 +1,26 @@
+const { Page } = require("puppeteer");
 
 
 const checkFailData = async (page, obj) =>{
-
+    if(!obj.contents) return null;
+    
     if(obj.contents.includes("images.samsung")){
         const src = obj.contents;
-        const imageHandle = await page.$(`img[src*="${src}"]`);
-        if(imageHandle) {
-            console.log("image found : ", src);
-            // const siblingHandle = await imageHandle.evaluateHandle(element => element.nextSibling);
-            // await siblingHandle.evaluateHandle(element => {
-            //     const newDiv = document.createElement('div');
-            //     newDiv.style.position = 'fixed';
-            //     newDiv.style.top = 0;
-            //     newDiv.style.width = '100%';
-            //     newDiv.style.height = '100%';
-            //     newDiv.style.zIndex = 9999;
-            //     newDiv.style.border = '7px solid red'
-            //     element.parentNode.insertBefore(newDiv, element.nextSibling);
-            // });
-            const imgsrc = await page.evaluate(image => image.src, imageHandle);
-            await page.evaluate((element) => {
-                element.style.border = '7px solid red';
-            }, imageHandle);
-        } 
-        else {
-            // console.error("-----Image not found")
+
+        let selector = await page.$(`div[class*="showcase-card-tab__inner"]`);
+        if (selector) {
+            const matchingElements = await page.evaluate((selector, src) => {
+                const elements = selector.querySelectorAll('img');
+                elements.forEach(element => {
+                    if(element.src.includes(src)){
+                        element.style.border = '7px solid red';
+                        return;
+                    }
+                });
+            }, selector, src);
+
         }
+        
     }
     else if (obj.contents.includes("SSSSSSSS") || obj.contents.includes("LSSSSSS") ||
         obj.contents.includes("SSLSSSS") || obj.contents.includes("SSSSLSS") ||
@@ -34,7 +29,7 @@ const checkFailData = async (page, obj) =>{
         // box check
         console.log("box : ", obj.contents);
     } 
-    // badge count 같은 경우 3이 컨텐츠랑 비교되서 다른 이미 모두 보더쳐짐
+    // badge count
     else if (obj.contents.length === 1) {
         
         console.log(obj.contents)
@@ -47,11 +42,11 @@ const checkFailData = async (page, obj) =>{
         else if(obj.key.includes("FT03")) str = "FT03";
         else return 0;
         
-        console.log("keyyyyyyyyyyyyyy", obj.key);
+        // console.log("keyyyyyyyyyyyyyy", obj.key);
         let selector = null;
 
         if (str == "CO05"){
-            selector = await page.$(`div[class*="cm-g-text-block-container"]`);
+            selector = await page.$(`div[class*="ho-g-showcase-card-tab"]`);
         } else if (str == "HD01"){
             selector = await page.$(`div[class*="ho-g-home-kv-carousel"]`);
         } else if (str == "FT03"){
@@ -64,22 +59,29 @@ const checkFailData = async (page, obj) =>{
 
         // console.log(str, " / ",selector);
         if (selector) {
-                console.log("area contents = ", obj.contents);
 
-                const matchingElements = await page.evaluate((s, contents) => {
+                // if(obj.contents=="Hot") console.log(obj.contents)
+                const matchingElements = await page.evaluate((s, obj) => {
                     const elements = s.querySelectorAll('*');
-                    const matchingElements = [];
+                    // const matchingElements = [];
                     elements.forEach(element => {
-                        // console.log("--------------",element)
-                        if (element.innerHTML.includes(contents) && element.innerHTML.split('<').length - 1 === 2) {
-                            element.style.border = '7px solid red';
-                            matchingElements.push(element.innerHTML);
+                        if (element.innerHTML.includes(obj.contents) && element.children.length === 0){ // 최하위 요소일 때
+                            if(obj.description == "Badge"){
+                                const computedStyle = window.getComputedStyle(element); // 요소의 현재 스타일 가져오기
+                                const width = parseInt(computedStyle.width); // 현재 너비 가져오기
+                                const height = parseInt(computedStyle.height); // 현재 높이 가져오기
+                                element.style.width = (width + 20) + 'px';
+                                element.style.height = (height + 20) + 'px';
+                                element.style.outline = '7px solid red';
+                            }
+                            else element.style.border = '7px solid red';
+                                // matchingElements.push(element.innerHTML);
                         }
                     });
-                    return matchingElements;
-                }, selector, obj.contents);
+                    // return matchingElements;
+                }, selector, obj);
 
-                console.log(matchingElements);
+                // console.log(matchingElements);
 
             } else {
                 console.log("-----not found area");

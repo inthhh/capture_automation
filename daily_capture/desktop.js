@@ -32,7 +32,7 @@ const takeScreenshot = async (siteCode) => {
 
     await carouselBreak.eventListenerBreak(page)
 
-    const failedData = await getRawData("2024-05-06", siteCode, "N")
+    const failedData = await getRawData("2024-05-06", siteCode, "N", "Desktop")
 
     for (let i = 0; i < failedData.length; i++){
         // console.log(failedImage[i])
@@ -43,7 +43,7 @@ const takeScreenshot = async (siteCode) => {
 
     const fileName = `.\\result\\test\\desktop\\${siteCode}-${dateNow}-desktop-screenshot.jpeg`
 
-    await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 10});
+    await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
 
     browser.close();
 
