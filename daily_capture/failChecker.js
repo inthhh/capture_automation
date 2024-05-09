@@ -48,9 +48,13 @@ const checkFailData = async (page, obj) =>{
 
         const swiperWrapper = await page.$('.swiper-wrapper:not([class*="kv"])');
         
+        // id, my 국가 : selectedElement가 undefined로 나옴. 수정필요
         const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
+        //[class*="showcase-card-tab__card-items.swiper-slide"]
         const selectedElement = await swiperChildren[buttonIndex];
+
         console.log("button & swiper : ", buttonIndex, "&", selectedElement)
+
         if (await selectedElement) {  
             console.log(`merchandising select`);
             // console.log(selectedElement.innerHTML)
