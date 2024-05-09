@@ -27,11 +27,42 @@ const checkFailData = async (page, obj) =>{
         obj.contents.includes("SSSSSSL") || obj.contents.includes("SSSSSS") ||
         obj.contents.includes("SSSSL") || obj.contents.includes("SSLSS")) {
         // box check
-        console.log("box : ", obj.contents);
+        console.log(obj.area, " / box : ", obj.contents);
+        const area = obj.area;
+        const buttons = await page.$$eval('.tab__item-title', buttons => {
+            const result = [];
+            buttons.forEach(button => {
+                if (button.getAttribute('an-ac') == 'merchandising') {
+                    result.push(button.innerText);
+                    console.log(button.innerText)
+                }
+            });
+            return result;
+        });
+        // console.log(buttons);
+        const buttonIndex = buttons.findIndex((text, index) => {
+            console.log(text, area);
+            return text === area;
+        });
+        
+
+        const swiperWrapper = await page.$('.swiper-wrapper:not([class*="kv"])');
+        
+        const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
+        const selectedElement = await swiperChildren[buttonIndex];
+        console.log("button & swiper : ", buttonIndex, "&", selectedElement)
+        if (await selectedElement) {  
+            console.log(`merchandising select`);
+            // console.log(selectedElement.innerHTML)
+            await selectedElement.evaluate(element => {
+                element.style.border = '7px solid blue';
+            });
+        } else {
+            console.log(`merchandising select : failed`);
+        }
     } 
     // badge count
     else if (obj.contents.length === 1 && obj.contents < 7) {
-        
         console.log(obj.contents)
     }
     else { // key에 co05가 포함 ->(머천다이징 영역)\
