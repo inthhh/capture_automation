@@ -53,7 +53,7 @@ const checkFailData = async (page, obj) =>{
         //[class*="showcase-card-tab__card-items.swiper-slide"]
         const selectedElement = await swiperChildren[buttonIndex];
 
-        console.log("button & swiper : ", buttonIndex, "&", selectedElement)
+        // console.log("button & swiper : ", buttonIndex, "&", selectedElement)
 
         if (await selectedElement) {  
             console.log(`merchandising select`);

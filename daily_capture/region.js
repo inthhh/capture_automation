@@ -1,4 +1,5 @@
-const site_code = ["ca_fr",
+const site_code = [
+  "ca_fr",
   "ca",
   "mx",
   "br",
@@ -74,7 +75,7 @@ const site_code = ["ca_fr",
   "ps",
   "sa",
   "sa_en",
-  "tr",
+  // "tr", // Protocol error (DOM.describeNode): Cannot find context with specified id
   "iran",
   "levant",
   "levant_ar",

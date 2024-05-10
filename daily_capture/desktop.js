@@ -14,7 +14,8 @@ const takeScreenshot = async (siteCode) => {
     const browser = await puppeteer.launch({
         headless: false,
     });
-
+    console.log("-----", siteCode,"-----");
+    
     const page = await browser.newPage();
     const url = `https://www.samsung.com/${siteCode}`;
     await page.setViewport({ width: 1440, height: 10000 });
