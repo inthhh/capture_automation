@@ -9,8 +9,9 @@ load_dotenv(verbose=False)
 # 사내 망(Cato) 으로 접속 부탁드립니다.
 # ====================================
 
-host = os.getenv("DB_HOST")
+db_host = os.getenv("DB_HOST")
 db_name = os.getenv("DB_NAME")
+test_db_host = os.getenv("TEST_DB_HOST")
 test_db_name = os.getenv("TEST_DB_NAME")
 user = os.getenv("DB_USER")
 password = os.getenv("DB_PASSWORD")
@@ -25,7 +26,7 @@ port = os.getenv("DB_PORT")
 
 class Database :
     def __init__(self, mod_status):
-        self.conn = psycopg2.connect(host=host, dbname=db_name if mod_status == 'live' else test_db_name,user=user,password=password,port=port)
+        self.conn = psycopg2.connect(host=db_host if mod_status =='live' else test_db_host, dbname=db_name if mod_status == 'live' else test_db_name,user=user,password=password,port=port)
         self.cursor = self.conn.cursor()
     def execute(self, query, args={}):
         try:
