@@ -1,6 +1,7 @@
 const kvCarouselBreak = async (page) =>{
+    await page.waitForSelector('.indicator__controls');
     await page.evaluate (() => {
-
+        
         //KV Autoplay stop button
         const playButton = document.querySelector('.indicator__controls')
         playButton?.click()
@@ -28,7 +29,9 @@ const kvCarouselBreak = async (page) =>{
         }
 
         const kvCarousel = document.querySelector('.home-kv-carousel')
-        if(kvCarousel) kvCarousel.style.overflow = 'visible'
+        if(kvCarousel) {
+            kvCarousel.style.overflow = 'visible'
+        }
 
         const kvCarouselMediaWraps = document.querySelectorAll('.home-kv-carousel__background-media-wrap')
 
