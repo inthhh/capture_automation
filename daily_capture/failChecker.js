@@ -1,5 +1,10 @@
 const { Page } = require("puppeteer");
 
+// const delay = (time) => {
+//     return new Promise(function(resolve) {
+//         setTimeout(resolve, time)
+//     });
+// }
 
 const checkFailData = async (page, obj) =>{
     if(!obj.contents) return null;
@@ -22,10 +27,8 @@ const checkFailData = async (page, obj) =>{
         }
         
     }
-    else if (obj.contents.includes("SSSSSSSS") || obj.contents.includes("LSSSSSS") ||
-        obj.contents.includes("SSLSSSS") || obj.contents.includes("SSSSLSS") ||
-        obj.contents.includes("SSSSSSL") || obj.contents.includes("SSSSSS") ||
-        obj.contents.includes("SSSSL") || obj.contents.includes("SSLSS")) {
+    else if (obj.desc == "Tile Layout"
+    ) {
         // box check
         console.log(obj.area, " / box : ", obj.contents);
         const area = obj.area;
@@ -46,14 +49,19 @@ const checkFailData = async (page, obj) =>{
         });
         
 
-        const swiperWrapper = await page.$('.swiper-wrapper:not([class*="kv"])');
+        // const swiperWrapper = await page.$('.swiper-wrapper:not([class*="kv"]:not([class*="disabled"])');
         
-        // id, my 국가 : selectedElement가 undefined로 나옴. 수정필요
+        const swiperWrapper = await page.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
+        
         const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
-        //[class*="showcase-card-tab__card-items.swiper-slide"]
-        const selectedElement = await swiperChildren[buttonIndex];
 
+        console.log(swiperChildren);
+
+        console.log("swiperWrapper : ", swiperWrapper);
+        console.log("swiperChildren : ",swiperChildren);
         // console.log("button & swiper : ", buttonIndex, "&", selectedElement)
+
+        const selectedElement = await swiperChildren[buttonIndex];
 
         if (await selectedElement) {  
             console.log(`merchandising select`);
