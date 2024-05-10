@@ -14,7 +14,7 @@ const takeScreenshot = async (siteCode) => {
     const browser = await puppeteer.launch({
         headless: false,
     });
-
+    console.log("-----", siteCode,"-----");
     const page = await browser.newPage();
     const url = `https://www.samsung.com/${siteCode}`;
     await page.setViewport({ width: 360, height: 10000 });
@@ -33,10 +33,11 @@ const takeScreenshot = async (siteCode) => {
     await carouselBreak.eventListenerBreak(page)
 
     const failedData = await getRawData("2024-05-09", siteCode, "N", "Mobile")
-
-    for (let i = 0; i < failedData.length; i++){
-        // console.log(failedImage[i])
-        await failChecker.checkFailData(page,failedData[i])
+    if(failedData && failedData.length>0){
+        for (let i = 0; i < failedData.length; i++){
+            // console.log(failedImage[i])
+            await failChecker.checkFailData(page,failedData[i])
+        }
     }
 
     const dateNow = moment().format("YYYY-MM-DD_HH-mm-ss")

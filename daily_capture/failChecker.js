@@ -27,8 +27,7 @@ const checkFailData = async (page, obj) =>{
         }
         
     }
-    else if (obj.desc == "Tile Layout"
-    ) {
+    else if (obj.desc == "Tile Layout") {
         // box check
         console.log(obj.area, " / box : ", obj.contents);
         const area = obj.area;
@@ -74,7 +73,7 @@ const checkFailData = async (page, obj) =>{
         }
     } 
     // badge count
-    else if (obj.contents.length === 1 && obj.contents < 7) {
+    else if (obj.contents && obj.contents.length === 1 && obj.contents < 7) {
         console.log(obj.contents)
     }
     else { // key에 co05가 포함 ->(머천다이징 영역)\
