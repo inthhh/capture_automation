@@ -2,6 +2,7 @@
 > PTKOREA DSG-T6 Cell2의 형상관리 레포지토리입니다.
 
 ## History
+- 24.04.17 - humint-front : 휴민트페이지 프론트 
 - 24.04.02 - Buds2 hofix 0402 : 광고주 긴급요청건 -로고수정 진행  
 - 24.03.29 - QA Automation 
 - 24.03.20 - Buds2 hofix 2nd : Buds2 Pro 만 해당

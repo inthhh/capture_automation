@@ -1,31 +1,41 @@
 const http = require("http");
 require("dotenv").config();
+const axios = require("axios")
 
-const getRawData = async (date="", siteCode="", checkResult="") =>{
-    let targetURI = `${process.env["RAW_DATA_API_END_POINT"]}:${process.env["RAW_DATA_API_PORT"]}${process.env["RAW_DATA_API_ROUTER"]}?date=${date}&site-code=${siteCode}&check-result=${checkResult}`
-    console.log(targetURI)
-    await http.get(targetURI, (res)=>{
-        const { statusCode } = res;
-        let error;
-
-        if (statusCode != 200) return new Error(`Request Failed. Status Code: ${statusCode}`)
-
-        res.setEncoding('utf8')
-        let result;
-        res.on('data', (chunk)=>{
-            result += chunk;
+const getRawData = async (date="", siteCode="", checkResult="", Desc="") =>{
+    let targetURI = `${process.env["RAW_DATA_API_END_POINT"]}${process.env["RAW_DATA_API_ROUTER"]}?date=${date}&site-code=${siteCode}&check-result=${checkResult}`
+    // console.log(targetURI)
+    try {
+        const { data } = await axios.get(targetURI);
+        // console.log(data)
+        const failImgArr = data.data.map((obj, idx) => {
+            if(Desc == "Desktop"){
+                if(obj.description != "Mobile"){
+                    return {
+                        desc: obj.description,
+                        key: obj.key,
+                        area: obj.area,
+                        contents: obj.contents.includes("https://") ? (obj.contents.replace("https://", "")) : (obj.contents)
+                    };
+                }
+            } else if(Desc == "Mobile"){
+                if(obj.description != "Desktop"){
+                    return {
+                        desc: obj.description,
+                        key: obj.key,
+                        area: obj.area,
+                        contents: obj.contents.includes("https://") ? (obj.contents.replace("https://", "")) : (obj.contents)
+                    };
+                }
+            }
+            else return null;
         })
-        console.log(result)
-    })
 
+        // console.log(failImgArr.filter(Boolean));
+        return failImgArr.filter(Boolean);
+    } catch (e) {
+        console.error(e)
+    }
 }
 
-getRawData("2024-04-18", "us", "N")
-
-
-//
-//
-//
-// module.exports = {
-//     "getRawData":getRawData
-// }
+module.exports = getRawData

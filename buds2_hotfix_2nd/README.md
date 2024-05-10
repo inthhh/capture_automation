@@ -28,6 +28,9 @@
 - 브랜드사이트 : https://www.samsung.com/global/galaxy/galaxy-buds2/#galaxyBuds2
 - https://www.samsung.com/global/galaxy/galaxy-buds2-pro/
 
+##Buds2 브랜드사이트
+- 2번째 디스크립션 17px 뺴야함 : .sc-buds-ai-list__description font-size:17px
+
 
 
  ##브랜드사이트 Replace

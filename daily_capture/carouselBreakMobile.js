@@ -5,14 +5,6 @@ const carouselBreakMobile = async (page) =>{
         const playButton = document.querySelector('.indicator__controls')
         playButton.click()
 
-//ChatBot close button
-// const popupClosButton = document.querySelector('.pop_up_close_btn')
-// popupClosButton.click()
-
-//Cookie bar button
-// const cookieBarCloseButton = document.querySelector('.indicator__controls')
-// cookieBarCloseButton.click()
-
         const w = window.innerWidth;  //PC일떈 1440px
         const kvWraps = document.querySelectorAll('.swiper-container-fade .swiper-slide')
         kvWraps.forEach((kvWrap) => {
