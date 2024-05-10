@@ -20,7 +20,39 @@ exception_words=["QLED",
 "BESPOKE",
 "PSSD",
 "SDXC"]
-def qa_check_text(cell_value):
+
+def qa_check_kv_text(cell_value, text_option):
+	cell_check, cell_remarks = '', ''
+	# print("@@@@@@@@@@@@@@@@@@@@@@@@@" + cell_value)
+	clean_cell_value = re.sub(r'<\/?[a-zA-Z0-9]+>', '', cell_value)
+	clean_cell_value = clean_cell_value.replace('<br>', '')
+# 	print("@@@@@@@@@@@@@@@@@@@@@@@@@" + clean_cell_value)
+
+	if text_option == 'headline':
+		cell_check, cell_remarks = qa_check_text(clean_cell_value, 'Yes')
+		if len(clean_cell_value) > 30:
+			cell_check = 'N'
+			if cell_remarks == 'Pass':
+				cell_remarks = "Guide: KV's Headline Text use 30 characters max"
+			else:
+				cell_remarks += "Guide: KV's Headline Text use 30 characters max"
+			return cell_check, cell_remarks
+
+
+	elif text_option == 'description':
+		cell_check, cell_remarks = qa_check_text(clean_cell_value)
+		if len(clean_cell_value) > 78:
+			cell_check = 'N'
+			if cell_remarks == 'Pass':
+				cell_remarks = "Guide: KV's Description Text use 78 characters max"
+			else:
+				cell_remarks +="Guide: KV's Description Text use 78 characters max"
+			return cell_check, cell_remarks
+
+	return cell_check, cell_remarks
+
+
+def qa_check_text(cell_value, using_periods=""):
 	cell_remarks = ''
 	cell_check = ''
 	if cell_value != '':
@@ -30,11 +62,11 @@ def qa_check_text(cell_value):
 		cell_remark2 = "Pass"
 		cell_remark3 = "Pass"
 
-		if "font-size" in cell_value_lower:
+		if "font-size:" in cell_value_lower or "font-size :" in cell_value_lower:
 			cell_remark1 = "Guide: Unable to change font size"
-		if "font-color" in cell_value_lower:
+		if "color:" in cell_value_lower or "color :" in cell_value_lower:
 			cell_remark2 = "Guide: Unable to change font color"
-		if "Font-family" in cell_value_lower:
+		if "font-family:" in cell_value_lower or "font-family :" in cell_value_lower:
 			cell_remark3 = "Guide: Unable to change fonts"
 
 		cell_remark4 = "Pass"
@@ -43,7 +75,7 @@ def qa_check_text(cell_value):
 			if not correct_format:
 				cell_remark4 = "Guide: 'Samsung' must be consistently written"
 
-		if '. ' in cell_value_lower or cell_value_lower.endswith('.'):
+		if ('. ' in cell_value_lower or cell_value_lower.endswith('.')) and using_periods == 'Yes':
 			cell_remark5 = 'Guide: Check for the insertion of periods'
 		else:
 			cell_remark5 = 'Pass'
@@ -94,9 +126,6 @@ def qa_check_text(cell_value):
 			cell_remarks += cell_remark6 + "\n"
 		if cell_remark7 != "Pass":
 			cell_remarks += cell_remark7
-	else:
-		cell_check = ''
-		cell_remarks = ''
 
 	return cell_check, cell_remarks
 

@@ -113,7 +113,7 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                             content_carousel_div,
                             "div > div.home-kv-carousel__text-wrap", "H", "home-kv-carousel__headline", "data-desktop-headline-text",
                             )
-                        cell_check, cell_remarks = qa_check_text(cell_value)
+                        cell_check, cell_remarks = qa_check_kv_text(cell_value, 'headline')
                         key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"], "HD01", component_counter["HD01"],
                                                  "KV" + str(carousel_no), "Headline Text",'Desktop')
                         excel_save_data(exl_ws,
@@ -128,7 +128,7 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                             content_carousel_div,
                             "div > div.home-kv-carousel__text-wrap", "H", "home-kv-carousel__headline", "data-mobile-headline-text"
                             )
-                        cell_check, cell_remarks = qa_check_text(cell_value)
+                        cell_check, cell_remarks = qa_check_kv_text(cell_value, 'headline')
                         key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"], "HD01",
                                                     component_counter["HD01"],
                                                     "KV" + str(carousel_no), "Headline Text", 'Mobile')
@@ -142,7 +142,7 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                             content_carousel_div,
                             "div > div.home-kv-carousel__text-wrap", "p", "home-kv-carousel__desc", "data-desktop-description"
                             )
-                        cell_check, cell_remarks = '', ''
+                        cell_check, cell_remarks = qa_check_kv_text(cell_value, 'description')
                         key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"], "HD01",
                                                     component_counter["HD01"],
                                                     "KV" + str(carousel_no), "Description", 'PC')
@@ -156,7 +156,7 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                             content_carousel_div,
                             "div > div.home-kv-carousel__text-wrap", "p", "home-kv-carousel__desc", "data-mobile-description"
                             )
-                        cell_check, cell_remarks = '', ''
+                        cell_check, cell_remarks = qa_check_kv_text(cell_value, 'description')
                         key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"], "HD01",
                                                     component_counter["HD01"],
                                                     "KV" + str(carousel_no), "Description", 'Mobile')
@@ -374,7 +374,7 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
                                 # Title PC
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-name--desktop")
-                                cell_check, cell_remarks = qa_check_text(cell_value)
+                                cell_check, cell_remarks = qa_check_text(cell_value, "Yes")
                                 key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
                                                             "CO05", component_counter["CO05"],
                                                             "", "Title", "Desktop", tab_name_key_value, card_list_no)
@@ -384,7 +384,7 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
                                 # Title Mobile
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-name--mobile")
-                                cell_check, cell_remarks = qa_check_text(cell_value)
+                                cell_check, cell_remarks = qa_check_text(cell_value, "Yes")
                                 key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
                                                             "CO05", component_counter["CO05"],
                                                             "", "Title", "Mobile", tab_name_key_value, card_list_no)
@@ -643,7 +643,7 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
                                 # Title PC
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-name--desktop")
-                                cell_check, cell_remarks = qa_check_text(cell_value)
+                                cell_check, cell_remarks = qa_check_text(cell_value, "Yes")
                                 key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
                                                             "CO05", component_counter["CO05"],
                                                             "", "Title", "Desktop", tab_name_key_value, card_list_no)
@@ -653,7 +653,7 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
 
                                 # Title Mobile
                                 cell_value = process_label_text(card_compo_detail, "N", "span", "showcase-card-tab-card__product-name--mobile")
-                                cell_check, cell_remarks = qa_check_text(cell_value)
+                                cell_check, cell_remarks = qa_check_text(cell_value, "Yes")
                                 key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
                                                             "CO05", component_counter["CO05"],
                                                             "", "Title", "Mobile", tab_name_key_value, card_list_no)
@@ -735,6 +735,7 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                                     img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, mod_status, db_conn, key_id_value)
 
                 #Component: FT03_Feature Full Bleed
+<<<<<<< HEAD
                 # if 'pd-g-feature-benefit-full-bleed' in content_comp_name:
                 #     component_counter["FT03"] += 1
                 #
@@ -991,6 +992,264 @@ def component_qa(url_code, page_codes, mod_status, setting_img_check_size, setti
                 #                                'Mobile Image : ' + img_title,
                 #                                cell_check, img_html,
                 #                                id_no)
+=======
+                if 'pd-g-feature-benefit-full-bleed' in content_comp_name:
+                    component_counter["FT03"] += 1
+
+                    ft03_components = content_comp_div.select('section > div.st-feature-benefit-full-bleed__wrap')
+                    ft03_compo_width = content_comp_div.find('section').get('class', [])
+                    if 'st-feature-benefit-full-bleed--width-1920' in ft03_compo_width:
+                        bg_image_desktop_width = 1920
+                        bg_image_desktop_height = 0
+                    else:
+                        bg_image_desktop_width = 1440
+                        bg_image_desktop_height = 0
+
+                    if 'st-feature-benefit-full-bleed--image-radius' in ft03_compo_width:
+                        bg_image_mobile_width = 624
+                        bg_image_mobile_height = 0
+                    else:
+                        bg_image_mobile_width = 720
+                        bg_image_mobile_height = 0
+                    ft03_no = 0
+                    for ft03_component in ft03_components :
+                        ft03_no += 1
+
+                        # Headline Text All
+                        cell_value = process_label_text(ft03_component, "div > div > div.st-feature-benefit-full-bleed__content-area", "H", "st-feature-benefit-full-bleed__title")
+                        cell_check, cell_remarks = qa_check_text(cell_value)
+                        excel_save_data(exl_ws,
+                            'Banner', 'Column ' + str(ft03_no), 'Headline Text', 'All',
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
+
+                        # Sub Headline Text All
+                        cell_value = process_label_text(ft03_component, "div > div > div.st-feature-benefit-full-bleed__content-area", "H", "st-feature-benefit-full-bleed__sub-title")
+                        cell_check, cell_remarks = qa_check_text(cell_value)
+                        excel_save_data(exl_ws,
+                            'Banner', 'Column ' + str(ft03_no), 'Sub Headline Text', 'All',
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
+
+                        # Description Text All
+                        cell_value = process_label_text(ft03_component, "div > div > div.st-feature-benefit-full-bleed__content-area", "p", "st-feature-benefit-full-bleed__text")
+                        cell_check, cell_remarks = '', ''
+                        excel_save_data(exl_ws,
+                            'Banner', 'Column ' + str(ft03_no), 'Description', 'All',
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
+
+                        # CTA
+                        cell_ctas = process_cta_buttons(ft03_component, "div > div > div > div.st-feature-benefit-full-bleed__cta")
+                        if cell_ctas:
+                            cta_no = 0
+                            for cell_value, cell_check, cell_remarks in cell_ctas :
+                                cta_no += 1
+                                excel_save_data(exl_ws,
+                                    "Banner", "Column", "CTA", 'Label ' + str(cta_no),
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn)
+
+                        # BG Image
+                        img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(ft03_component, "figure.st-feature-benefit-full-bleed__figure")
+
+                        # BG Image > Desktop
+                        cell_remarks_size = qa_check_img_size(img_desktop, bg_image_desktop_width, bg_image_desktop_height, setting_img_check_size)
+                        cell_remarks_logo = qa_check_img_logo(img_desktop_url, img_desktop, setting_img_check_logo)
+                        cell_remarks_bgcolor = 'Pass'
+                        cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
+                        excel_save_data(exl_ws,
+                            "Banner", "Column" , "BG Image", 'Desktop',
+                            img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, mod_status, db_conn)
+
+                        # BG Image > Mobile
+                        cell_remarks_size = qa_check_img_size(img_mobile, bg_image_mobile_width, bg_image_mobile_height, setting_img_check_size)
+                        cell_remarks_logo = qa_check_img_logo(img_mobile_url, img_mobile, setting_img_check_logo)
+                        cell_remarks_bgcolor = 'Pass'
+                        cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
+                        excel_save_data(exl_ws,
+                            "Banner",  "Column", "BG Image", 'Mobile',
+                            img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, mod_status, db_conn)
+
+                #Component: CO07_Key Feature Tab
+                if 'ho-g-key-feature-tab' in content_comp_name:
+                    component_counter["CO07"] += 1
+                    col_location = process_label_text(content_comp_div, "section > div.key-feature-tab__contents > div.key-feature-tab__header-wrap", "H", "key-feature-tab__title")
+                    bg_image_desktop_width = 1440
+                    bg_image_desktop_height = 810
+                    bg_image_mobile_width = 720
+                    bg_image_mobile_height = 1280
+                    comp_tab_no = 0
+                    for comp_co07_tab in content_comp_div.select('section > div.key-feature-tab__contents > div.key-feature-tab__header-wrap > div > ul > li'):
+                        comp_co07_contents = content_comp_div.select('section > div.key-feature-tab__contents > div.key-feature-tab__container > div > div.key-feature-tab__slide')[comp_tab_no]
+                        comp_tab_no += 1
+                        col_area = process_label_text(comp_co07_tab, "N", "button", "tab__item-title")
+                        col_area = re.sub(r'<span class="tab__item-line"></span>', '', col_area)
+                        col_area = html.unescape(col_area)
+                        tab_name_key_value = process_tab_name_attribute_to_key(comp_co07_tab)
+
+                        # Headline Text All
+                        cell_value = process_label_text(comp_co07_contents, "div > div.key-feature-tab__inner-wrap > div.key-feature-tab__text-wrap", "H", "key-feature-tab__headline")
+                        cell_check, cell_remarks = qa_check_text(cell_value)
+                        key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
+                                                    "CO07", component_counter["CO07"],
+                                                    "", "Headline Text", "All", tab_name_key_value)
+                        excel_save_data(exl_ws,
+                            col_location, col_area, 'Headline Text', 'All',
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn, key_id_value)
+
+                        # Description All
+                        cell_value = process_label_text(comp_co07_contents, "div > div.key-feature-tab__inner-wrap > div.key-feature-tab__text-wrap", "p", "key-feature-tab__desc")
+                        # cell_check, cell_remarks = qa_check_text(cell_value)
+                        cell_check, cell_remarks = '', ''
+                        key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
+                                                    "CO07", component_counter["CO07"],
+                                                    "", "Description", "All", tab_name_key_value)
+                        excel_save_data(exl_ws,
+                            col_location, col_area, 'Description', 'All',
+                            cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn, key_id_value)
+
+                        # CTA
+                        cell_ctas = process_cta_buttons(comp_co07_contents, "div > div.key-feature-tab__inner-wrap > div.key-feature-tab__cta-wrap")
+                        if cell_ctas:
+                            cta_no = 0
+                            for cell_value, cell_check, cell_remarks in cell_ctas :
+                                cta_no += 1
+                                key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
+                                                            "CO07", component_counter["CO07"],
+                                                            "", "CTA", "Label " + str(cta_no), tab_name_key_value)
+                                excel_save_data(exl_ws,
+                                    col_location, col_area, "CTA", 'Label ' + str(cta_no),
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status, db_conn, key_id_value)
+
+                        # BG Image
+                        img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(comp_co07_contents, "div > div.key-feature-tab__background-wrap > div")
+                        # AEM에서 Background Contents Type = None 으로 설정 시, class명이 기존과 다름에 따른 분기 처리
+                        if img_desktop_url == "Component doesn't exist." and img_desktop is None and img_mobile_url is None and img_mobile is None:
+                            img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(comp_co07_contents, "div > div.key-feature-tab__media-wrap > div")
+
+                        # BG Image > Desktop
+                        cell_remarks_size = qa_check_img_size(img_desktop, bg_image_desktop_width, bg_image_desktop_height, setting_img_check_size)
+                        cell_remarks_logo = qa_check_img_logo(img_desktop_url, img_desktop, setting_img_check_logo)
+                        cell_remarks_bgcolor = 'Pass'
+                        cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
+                        key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
+                                                    "CO07", component_counter["CO07"],
+                                                    "", "BG Image", "Desktop", tab_name_key_value)
+                        excel_save_data(exl_ws,
+                            col_location, col_area, "BG Image", 'Desktop',
+                            img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta, mod_status, db_conn, key_id_value)
+
+                        # BG Image > Mobile
+                        cell_remarks_size = qa_check_img_size(img_mobile, bg_image_mobile_width, bg_image_mobile_height, setting_img_check_size)
+                        cell_remarks_logo = qa_check_img_logo(img_mobile_url, img_mobile, setting_img_check_logo)
+                        cell_remarks_bgcolor = 'Pass'
+                        cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo, cell_remarks_bgcolor)
+                        key_id_value = key_id_maker(raw_data_meta["site_code"], raw_data_meta["page_type"],
+                                                    "CO07", component_counter["CO07"],
+                                                    "", "BG Image", "Mobile", tab_name_key_value)
+                        excel_save_data(exl_ws,
+                            col_location, col_area, "BG Image", 'Mobile',
+                            img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta, mod_status, db_conn, key_id_value)
+
+                # Component: CO16_Discover Column
+                if 'cm-g-discover-column-new' in content_comp_name:
+                    component_counter["CO16"] += 1
+
+                    if component_num >= 2:
+                        content_comp_name_previous = content_all[component_num - 2].get('class', [])
+                        if 'cm-g-text-block' in content_comp_name_previous:
+                            col_location = process_label_text(content_all[component_num - 2],
+                                                              "div > div.textblock__body", "H",
+                                                              "textblock__title")
+                        elif component_num >= 3 and 'cm-g-text-block' in content_all[component_num - 3].get(
+                                'class',
+                                []):
+                            col_location = process_label_text(content_all[component_num - 3],
+                                                              "div > div.textblock__body", "H",
+                                                              "textblock__title")
+                        elif 'cm-g-discover-column-new' not in content_comp_name_previous:
+                            col_location = 'Category'
+                    else:
+                        col_location = 'Category'
+                        co16_components = content_comp_div.select(
+                            'section > div > div > div.co16-discover-column-new__columns-item')
+
+                    bg_image_desktop_width = 568
+                    bg_image_desktop_height = 320
+                    bg_image_mobile_width = 512
+                    bg_image_mobile_height = 288
+
+                    co16_no = 0
+                    for co16_component in co16_components:
+                        co16_no += 1
+
+                    # Headline Text All
+                    cell_value = process_label_text(co16_component,
+                                                    "div.co16-discover-column-new__content > div.co16-discover-column-new__headline-wrapper",
+                                                    "H", "co16-discover-column-new__headline")
+                    cell_check, cell_remarks = qa_check_text(cell_value)
+                    excel_save_data(exl_ws,
+                                    col_location, 'Column ' + str(co16_no), 'Headline Text', 'All',
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status,
+                                    db_conn)
+                    img_title = cell_value
+
+                    # Description Text All
+                    cell_value = process_label_text(co16_component,
+                                                    "div.co16-discover-column-new__content > div.co16-discover-column-new__description-wrapper",
+                                                    "p", "co16-discover-column-new__description")
+                    cell_check, cell_remarks = '', ''
+                    excel_save_data(exl_ws,
+                                    col_location, 'Column ' + str(co16_no), 'Headline Text', 'All',
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status,
+                                    db_conn)
+
+                    # CTA
+                    cell_ctas = process_cta_buttons(co16_component,
+                                                    "div.co16-discover-column-new__content > div.co16-discover-column-new__cta-wrapper")
+                    cta_no = 0
+                    for cell_value, cell_check, cell_remarks in cell_ctas:
+                        cta_no += 1
+                    excel_save_data(exl_ws,
+                                    col_location, 'Column ' + str(co16_no), "CTA", 'Label ' + str(cta_no),
+                                    cell_value, cell_check, cell_remarks, '', raw_data_meta, mod_status,
+                                    db_conn)
+
+                    # BG Image
+                    img_desktop_url, img_desktop, img_mobile_url, img_mobile = process_background_image(
+                        co16_component,
+                        "div.co16-discover-column-new__image > div")
+                    # BG Image > Desktop
+                    cell_remarks_size = qa_check_img_size(img_desktop, bg_image_desktop_width,
+                                                          bg_image_desktop_height,
+                                                          setting_img_check_size)
+                    cell_remarks_logo = qa_check_img_logo(img_desktop_url, img_desktop, setting_img_check_logo)
+                    cell_remarks_bgcolor = 'Pass'
+                    cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo,
+                                                         cell_remarks_bgcolor)
+                    excel_save_data(exl_ws,
+                                    col_location, 'Column ' + str(co16_no), "BG Image", 'Desktop',
+                                    img_desktop_url, cell_check, cell_remarks, img_desktop, raw_data_meta,
+                                    mod_status, db_conn)
+                    img_html, id_no = img_save(img_desktop_url, img_desktop, url_code,
+                                               'PC Image : ' + img_title,
+                                               cell_check, img_html,
+                                               id_no)
+                    # BG Image > Mobile
+                    cell_remarks_size = qa_check_img_size(img_mobile, bg_image_mobile_width,
+                                                          bg_image_mobile_height,
+                                                          setting_img_check_size)
+                    cell_remarks_logo = qa_check_img_logo(img_mobile_url, img_mobile, setting_img_check_logo)
+                    cell_remarks_bgcolor = 'Pass'
+                    cell_check, cell_remarks = img_check(cell_remarks_size, cell_remarks_logo,
+                                                         cell_remarks_bgcolor)
+                    excel_save_data(exl_ws,
+                                    col_location, 'Column ' + str(co16_no), "BG Image", 'Mobile',
+                                    img_mobile_url, cell_check, cell_remarks, img_mobile, raw_data_meta,
+                                    mod_status,
+                                    db_conn)
+                    img_html, id_no = img_save(img_mobile_url, img_mobile, url_code,
+                                               'Mobile Image : ' + img_title,
+                                               cell_check, img_html,
+                                               id_no)
+>>>>>>> 1a85d81 (feat: KV's new Guide)
 
 
             excel_end(exl_ws, exl_wb, start_time, url, img_html)
