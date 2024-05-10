@@ -1,17 +1,11 @@
 import re
 import requests
 import unicodedata
-import html
 from PIL import Image as PILImage
 from io import BytesIO
 import numpy as np
 import cv2
 import os
-from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
-from msrest.authentication import ApiKeyCredentials
-from azure.cognitiveservices.vision.computervision import ComputerVisionClient
-from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes, VisualFeatureTypes
-from msrest.authentication import CognitiveServicesCredentials
 from datetime import datetime
 from urllib.parse import urlparse
 
