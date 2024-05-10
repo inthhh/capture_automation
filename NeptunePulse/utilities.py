@@ -323,10 +323,8 @@ def qa_check_img_bgcolor(img_url, img_file, setting_img_check_bgcolor):
 
 		bg_hex_code = rgb_to_hex(dominant_color)
 
-		if str(bg_hex_code) == "#000000":
-			bg_hex_code = "can not detect color"
 
-		fail_msg = "Guide : Background color must be transparent or #f4f4f4 but " + str(bg_hex_code)
+		fail_msg = "Guide : Background color must be transparent or #f4f4f4"
 		result_msg = "Pass" if is_color_in_range(dominant_color) else fail_msg
 
 		return result_msg
