@@ -122,6 +122,8 @@ fabric.properties
 result/*
 html/
 
+### main.py
+main.py
 
 # node
 node_modules/
