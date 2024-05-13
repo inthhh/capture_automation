@@ -27,7 +27,7 @@ const takeScreenshot = async (siteCode) => {
     let body = await bodyHandle.boundingBox();
     await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
-    await carouselBreak.carouselBreakMobile(page)
+    await carouselBreak.carouselBreakMobile(page, siteCode)
 
     await delay(40000)
 
