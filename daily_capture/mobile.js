@@ -33,7 +33,7 @@ const takeScreenshot = async (siteCode) => {
 
     await carouselBreak.eventListenerBreak(page)
 
-    const failedData = await getRawData("2024-05-09", siteCode, "N", "Mobile")
+    const failedData = await getRawData("2024-05-13", siteCode, "N", "Mobile")
     if(failedData && failedData.length>0){
         for (let i = 0; i < failedData.length; i++){
             // console.log(failedImage[i])

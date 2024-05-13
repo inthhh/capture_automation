@@ -30,11 +30,11 @@ const takeScreenshot = async (siteCode) => {
 
     await carouselBreak.carouselBreakMobile(page, siteCode)
 
-    await delay(10000)
+    await delay(40000)
 
     await carouselBreak.eventListenerBreak(page)
 
-    const failedData = await getRawData("2024-05-12", siteCode, "N", "Desktop")
+    const failedData = await getRawData("2024-05-13", siteCode, "N", "Desktop")
 
     if(failedData && failedData.length>0){
         for (let i = 0; i < failedData.length; i++){
