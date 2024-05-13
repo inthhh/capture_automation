@@ -13,6 +13,7 @@ const delay = (time) => {
 const takeScreenshot = async (siteCode) => {
     const browser = await puppeteer.launch({
         headless: false,
+        timeout: 100000
     });
     console.log("-----", siteCode,"-----");
     const page = await browser.newPage();
@@ -26,13 +27,13 @@ const takeScreenshot = async (siteCode) => {
     let body = await bodyHandle.boundingBox();
     await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
-    await carouselBreak.carouselBreakMobile(page)
+    await carouselBreak.carouselBreakMobile(page, siteCode)
 
     await delay(40000)
 
     await carouselBreak.eventListenerBreak(page)
 
-    const failedData = await getRawData("2024-05-09", siteCode, "N", "Mobile")
+    const failedData = await getRawData("2024-05-13", siteCode, "N", "Mobile")
     if(failedData && failedData.length>0){
         for (let i = 0; i < failedData.length; i++){
             // console.log(failedImage[i])

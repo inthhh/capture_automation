@@ -100,11 +100,13 @@ const showcaseCardBreak = async (page) => {
     })
 }
 
-const carouselBreakMobile = async (page) =>{
-    await page.evaluate (() => {
-        const playButton = document.querySelector('.swiper-autoplay-stop-btn')
-        if(playButton) playButton.click()
-
+const carouselBreakMobile = async (page, site_code) =>{
+    await page.evaluate ((site_code) => {
+        // const playStop = document.querySelector('.indicator__controls.indicator__controls--play')
+        const playButton = document.querySelector('.indicator__controls')
+        // if(!playStop)
+             playButton?.click()
+        
 //ChatBot close button
 // const popupClosButton = document.querySelector('.pop_up_close_btn')
 // popupClosButton.click()

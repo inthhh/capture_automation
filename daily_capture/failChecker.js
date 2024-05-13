@@ -1,14 +1,10 @@
 const { Page } = require("puppeteer");
 
-// const delay = (time) => {
-//     return new Promise(function(resolve) {
-//         setTimeout(resolve, time)
-//     });
-// }
-
 const checkFailData = async (page, obj) =>{
-    if(!obj.contents) return null;
-
+    if(!obj.contents){
+        console.log("obj.contents is null");
+        return;
+    }
     if(obj.contents.includes("images.samsung")){
         const src = obj.contents;
 
@@ -54,7 +50,7 @@ const checkFailData = async (page, obj) =>{
         
         const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
 
-        console.log(swiperChildren);
+        // console.log(swiperChildren);
 
         console.log("swiperWrapper : ", swiperWrapper);
         console.log("swiperChildren : ",swiperChildren);
@@ -75,6 +71,50 @@ const checkFailData = async (page, obj) =>{
     // badge count
     else if (obj.contents && obj.contents.length === 1 && obj.contents < 7) {
         console.log(obj.contents)
+        const area = obj.area;
+        const buttons = await page.$$eval('.tab__item-title', buttons => {
+            const result = [];
+            buttons.forEach(button => {
+                if (button.getAttribute('an-ac') == 'merchandising') {
+                    result.push(button.innerText);
+                    console.log(button.innerText)
+                }
+            });
+            return result;
+        });
+
+        const buttonIndex = buttons.findIndex((text, index) => {
+            console.log(text, area);
+            return text === area;
+        });
+        
+        const swiperWrapper = await page.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
+        const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
+
+        const selectedElement = await swiperChildren[buttonIndex];
+
+        if (await selectedElement) {  
+            const Handle = await selectedElement.evaluateHandle(element => element);
+            console.log(`badge count select`);
+            // const content = obj.contents;
+            await selectedElement.evaluate((element) => {
+                // const content = obj.contents;
+                const newDiv = document.createElement('div');
+                newDiv.textContent = 'Badge Count Issue';
+                newDiv.style.backgroundColor = 'yellow';
+                newDiv.style.color = 'red';
+                newDiv.style.fontSize = '24px';
+        
+                if (element.firstChild) {
+                    console.log("add badge-count newdiv")
+                    element.insertBefore(newDiv, element.firstChild);
+                } else {
+                    element.appendChild(newDiv);
+                }
+            });
+        } else {
+            console.log(`badge count area select : failed`);
+        }
     }
     else { // key에 co05가 포함 ->(머천다이징 영역)\
         let str = "";
