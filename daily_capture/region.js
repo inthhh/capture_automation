@@ -1,27 +1,27 @@
 const site_code = [
-  "ca_fr",
-  "ca",
-  "mx",
-  "br",
-  "latin",
-  "latin_en",
-  "co",
-  "ar",
-  "py",
-  "uy",
-  "cl",
-  "pe",
-  "sg",
-  "au",
-  "nz",
-  "id",
-  "th",
-  "mm",
-  "vn",
-  "my",
-  "ph",
-  "jp",
-  "cn",
+  // "ca_fr", //TimeoutError - 단독으로 돌리면 해결
+  // "ca",
+  // "mx",
+  // "br",
+  // "latin",
+  // "latin_en", //null (reading 'includes')(reading 'length') - 해결
+  // "co",
+  // "ar",
+  // "py",
+  // "uy",
+  // "cl",
+  // "pe",
+  // "sg",
+  // "au",
+  // "nz",
+  // "id",
+  // "th",
+  // "mm",
+  // "vn",
+  // "my",
+  // "ph",
+  // "jp",
+  "cn", // mobile-ERR_NAME_NOT_RESOLVED
   "hk",
   "hk_en",
   "tw",
@@ -89,7 +89,8 @@ const site_code = [
   "africa_fr",
   "africa_pt",
   "za",
-  "us"];
+  "us"
+];
 
   module.exports = {site_code};
 // const site_code = ["in"]

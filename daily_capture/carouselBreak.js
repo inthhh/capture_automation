@@ -13,7 +13,7 @@ const kvCarouselBreak = async (page) =>{
         }
         const kvWraps = document.querySelectorAll('.swiper-container-fade .swiper-slide')
 
-        if(kvWraps){
+        if(kvWraps && kvWraps.length>0){
             for (let cnt =0; cnt < kvWraps.length-2; cnt++ ) {
 
                 const kvWrap = kvWraps[cnt]
@@ -115,7 +115,7 @@ const carouselBreakMobile = async (page) =>{
         const w = window.innerWidth;  //PC일떈 1440px
         const kvWraps = document.querySelectorAll('.swiper-container-fade .swiper-slide')
 
-        if(kvWraps){
+        if(kvWraps && kvWraps.length > 0){
             for (let cnt =0; cnt < kvWraps.length-2; cnt++ ) {
 
                 const kvWrap = kvWraps[cnt]
@@ -172,7 +172,7 @@ const carouselBreakMobile = async (page) =>{
         }
         const kvCarouselSlides = document.querySelectorAll('.home-kv-carousel__wrapper .home-kv-carousel__slide')
         // kvCarouselSlides.length
-        if(kvCarouselSlides){
+        if(kvCarouselSlides && kvCarouselSlides.length>0){
             for(let i = 0; i < kvCarouselSlides.length-2; i++){
                 const slide = kvCarouselSlides[i]
                 slide.style.opacity = '1'
