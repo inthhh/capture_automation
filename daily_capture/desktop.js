@@ -48,7 +48,7 @@ const takeScreenshot = async (siteCode) => {
     const fileName = `.\\result\\test\\desktop\\${siteCode}-${dateNow}-desktop-screenshot.jpeg`
 
     await breaker.accessibilityPopupBreaker(page)
-    await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 10});
+    await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
 
     browser.close();
 
