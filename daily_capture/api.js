@@ -15,7 +15,7 @@ const getRawData = async (date="", siteCode="", checkResult="", Desc="") =>{
                         desc: obj.description,
                         key: obj.key,
                         area: obj.area,
-                        contents: obj.contents.includes("https://") ? (obj.contents.replace("https://", "")) : (obj.contents)
+                        contents: (obj.contents&&obj.contents.includes("https://") ? (obj.contents.replace("https://", "")) : (obj.contents))
                     };
                 }
             } else if(Desc == "Mobile"){
@@ -24,7 +24,7 @@ const getRawData = async (date="", siteCode="", checkResult="", Desc="") =>{
                         desc: obj.description,
                         key: obj.key,
                         area: obj.area,
-                        contents: obj.contents.includes("https://") ? (obj.contents.replace("https://", "")) : (obj.contents)
+                        contents: (obj.contents&&obj.contents.includes("https://") ? (obj.contents.replace("https://", "")) : (obj.contents))
                     };
                 }
             }

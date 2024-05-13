@@ -13,6 +13,7 @@ const delay = (time) => {
 const takeScreenshot = async (siteCode) => {
     const browser = await puppeteer.launch({
         headless: false,
+        timeout: 100000
     });
     console.log("-----", siteCode,"-----");
     const page = await browser.newPage();

@@ -13,6 +13,7 @@ const delay = (time) => {
 const takeScreenshot = async (siteCode) => {
     const browser = await puppeteer.launch({
         headless: false,
+        timeout: 100000
     });
     console.log("-----", siteCode,"-----");
     
@@ -33,7 +34,7 @@ const takeScreenshot = async (siteCode) => {
 
     await carouselBreak.eventListenerBreak(page)
 
-    const failedData = await getRawData("2024-05-06", siteCode, "N", "Desktop")
+    const failedData = await getRawData("2024-05-12", siteCode, "N", "Desktop")
 
     if(failedData && failedData.length>0){
         for (let i = 0; i < failedData.length; i++){
@@ -47,7 +48,7 @@ const takeScreenshot = async (siteCode) => {
     const fileName = `.\\result\\test\\desktop\\${siteCode}-${dateNow}-desktop-screenshot.jpeg`
 
     await breaker.accessibilityPopupBreaker(page)
-    await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
+    await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 10});
 
     browser.close();
 

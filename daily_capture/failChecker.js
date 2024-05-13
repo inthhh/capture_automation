@@ -1,14 +1,10 @@
 const { Page } = require("puppeteer");
 
-// const delay = (time) => {
-//     return new Promise(function(resolve) {
-//         setTimeout(resolve, time)
-//     });
-// }
-
 const checkFailData = async (page, obj) =>{
-    if(!obj.contents) return null;
-
+    if(!obj.contents){
+        console.log("obj.contents is null");
+        return;
+    }
     if(obj.contents.includes("images.samsung")){
         const src = obj.contents;
 
@@ -54,7 +50,7 @@ const checkFailData = async (page, obj) =>{
         
         const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
 
-        console.log(swiperChildren);
+        // console.log(swiperChildren);
 
         console.log("swiperWrapper : ", swiperWrapper);
         console.log("swiperChildren : ",swiperChildren);
