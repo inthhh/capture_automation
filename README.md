@@ -1,11 +1,12 @@
 # cell2
 > PTKOREA DSG-T6 Cell2의 형상관리 레포지토리입니다.
 
-## 실행 방법
+## daily_capture 실행 방법
 1. 터미널 경로 daily_capture 폴더에서 node testPool.js 입력 시 캡쳐 진행됨
 2. 프로그램 실행 국가는 testPool.js 파일 내부의 site_code 변수
 3. region.js 파일에서 모든 국가 리스트 참조 가능
 4. 여러 국가 실행 시, testPool.js 내부 for문에서 batchSize 갯수만큼 병렬로 실행됨
+5. testPool.js 내부에서 desktop.takeScreenshot(site) or mobile.takeScreenshot(site)
 
 ## History
 - 24.05 - humint front page & border capture 개발
