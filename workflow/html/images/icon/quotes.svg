@@ -1,8 +1,0 @@
-<svg width="40" height="30" viewBox="0 0 40 30" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g fill="none" fill-rule="evenodd">
-        <path d="M5.02 15.71c.127-3.373.376-8.383 8.092-12.116L12.119 0C.435 6.52.012 10.83 0 15.71v13.623h16.333V15.71H5.02z" fill="#ccc" mask="url(#5scy4jd68c)"/>
-        <g transform="translate(23.667)">
-            <path d="M5.02 15.71c.128-3.373.376-8.383 8.092-12.116L12.119 0C.435 6.52.012 10.83 0 15.71v13.623h16.333V15.71H5.02z" fill="#ccc" mask="url(#bdr7ajtk8e)"/>
-        </g>
-    </g>
-</svg>
