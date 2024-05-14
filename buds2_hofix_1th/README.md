@@ -1,4 +1,4 @@
-# Buds2 hotfix 1st
+# Buds2 hotfix 0402
 
 ## Rules
 1. 브랜드사이트 작업시, 글꼴 "sssB" 확인하기.
@@ -10,3 +10,8 @@
 ## History
 - 03.22 | 폰트 line-height 핫픽스
 - 03.21 | 기획자가 전달하는 픽셀이 실제 작업에 적용해야하는 픽셀과 상이할 수 있으니 확인할 것.
+
+##Brand Site QA URL 
+- 브랜드사이트(ORG) : https://org-glx.samsung.com/global/galaxy/galaxy-buds2/
+- 브랜드사이트(STG) : https://stg-glx.samsung.com/global/galaxy/galaxy-buds2/
+- 브랜드사이트 : https://www.samsung.com/global/galaxy/galaxy-buds2/#galaxyBuds2

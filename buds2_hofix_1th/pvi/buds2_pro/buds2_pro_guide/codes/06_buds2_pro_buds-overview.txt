@@ -1,0 +1,43 @@
+ <!--Buds Overview -->
+
+  <div class="sc-buds-overview">
+    <div class="sc-buds-overview__wrap">
+      <div class="sc-buds-overview__track">
+        <div class="sc-buds-overview__fixed">
+          <div class="sc-buds-overview__image">
+            <img
+              src="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/blank.gif"
+              class="js-img-src js-res-img"
+              data-src-pc="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-overview-bg.jpg"
+              data-src-tablet="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-overview-bg.jpg?imwidth=1080"
+              data-src-mobile="https://images.samsung.com/is/image/samsung/assets/[site-code]/unpacked/2022-2h/galaxy-buds2-pro/galaxy-buds2-pro-overview-bg-mo.jpg"
+              alt=""
+            />
+          </div>
+          <span class="sc-buds-overview__dimmed"></span>
+          <div class="sc-buds-overview__list-wrap">
+            <ul class="sc-buds-overview__list" role="list">
+              <li class="sc-buds-overview__item" role="listitem">
+                <strong class="sc-buds-overview__text"
+                  >Ultimate Hi-Fi sound in your ear</strong
+                >
+              </li>
+              <li class="sc-buds-overview__item" role="listitem">
+                <strong class="sc-buds-overview__text"
+                  >Seamless connectivity</strong
+                >
+              </li>
+              <li class="sc-buds-overview__item" role="listitem">
+                <strong class="sc-buds-overview__text">Comfortable fit</strong>
+              </li>
+              <li class="sc-buds-overview__item" role="listitem">
+                <strong class="sc-buds-overview__text"
+                  >AI assistance right in your ear</strong
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

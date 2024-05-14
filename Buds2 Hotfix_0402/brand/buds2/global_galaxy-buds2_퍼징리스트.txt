@@ -1,0 +1,16 @@
+[galaxy-buds2]
+1. html 수정
+
+[Modified Resource]
+https://org-glx.samsung.com/global/galaxy/galaxy-buds2/index.html
+
+[Purging File List]
+https://www.samsung.com/global/galaxy/galaxy-buds2/
+
+[추가]
+추가없음
+
+
+
+[삭제]
+삭제 없음

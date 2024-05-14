@@ -1,0 +1,19 @@
+[galaxy-buds2-pro]
+1. html 수정
+2. 이미지 추가
+3. 이미지 삭제
+
+[Modified Resource]
+https://org-glx.samsung.com/global/galaxy/galaxy-buds2-pro/index.html
+
+[Purging File List]
+https://www.samsung.com/global/galaxy/galaxy-buds2-pro/
+
+[추가]
+/global/galaxy/galaxy-buds2-pro/images/galaxy-buds2-auracast_mo_0325.png
+/global/galaxy/galaxy-buds2-pro/images/galaxy-buds2-auracast_pc_0325.png
+
+
+
+[삭제]
+/global/galaxy/galaxy-buds2-pro/images/galaxy-buds2-ai-logo.png

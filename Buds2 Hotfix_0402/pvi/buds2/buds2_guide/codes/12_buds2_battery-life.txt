@@ -1,0 +1,77 @@
+<!-- Battery life -->
+<section
+  class="m_ o section sc-battery-life"
+  data-sc-section
+  id="batteryLife"
+>
+  <div class="sc-battery-life__wrap">
+    <div class="sc-battery-life__head">
+      <h3 class="sc-battery-life__eyebrow">BATTERY LIFE</h3>
+      <strong class="sc-battery-life__headline"
+        >Plenty of play time,<br />wherever you go</strong
+      >
+      <div class="sc-battery-life__desc">
+        <p>
+          Whether you&apos;re watching your favorite shows, blazing through your
+          playlist, or enjoying the outdoors, Galaxy Buds2 keeps you connected
+          and comfortable all day long. The long lasting battery life gives
+          you up to 5 hours of play-time and 15 more with a fully charged
+          case.
+          <sup>
+            <a href="#desc-section" class="click_sup" title="See disclaimer"
+              >6</a
+            >,
+            <a href="#desc-section" class="click_sup" title="See disclaimer"
+              >7</a
+            >
+          </sup>
+        </p>
+      </div>
+    </div>
+    <div class="sc-battery-life__cont">
+      <div class="sc-battery-life__img">
+        <div class="js-picture" data-async>
+          <img
+            data-media="(min-width: 768)"
+            src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+            alt=""
+            data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-battery-life.jpg"
+          />
+          <img
+            data-media="(max-width: 767)"
+            src="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/blank.gif"
+            alt=""
+            data-srcset="https://images.samsung.com/is/image/samsung/assets/test/mobile/2022-2h/galaxy-buds2/galaxy-buds2-battery-life-mo.jpg"
+          />
+          <p class="blind" data-alt>
+            A Galaxy Buds2 case is open and tilted to the right in an angle.
+            The interior of the case is black, and there is one earbud in the
+            case. The other earbud is outside of the case, placed with the
+            eartip pointing up.
+          </p>
+        </div>
+      </div>
+      <div class="sc-battery-life__callout-wrap">
+        <div class="js-parallax-callout">
+          <div class="sc-battery-life__callout">
+            <em class="s-txt-em" aria-hidden="true">
+              <span class="s-txt-big">5</span>
+              <span class="s-txt">hours</span>
+            </em>
+            <p>Up to 5 hours of play time with ANC on</p>
+          </div>
+          <div class="sc-battery-life__callout">
+            <em class="s-txt-em" aria-hidden="true">
+              <span class="s-txt-big">20</span>
+              <span class="s-txt">hours</span>
+            </em>
+            <p>
+              Up to a total 20 hours of play time when<br />charged using the
+              case
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
