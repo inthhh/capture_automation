@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>btn_more_hover</title>
-    <g id="btn_more_hover" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <circle id="Oval" fill="#FFFFFF" cx="30" cy="30" r="30"></circle>
-        <path d="M32.9497475,21.5355339 L39.9849314,28.5703607 L40.0208153,28.5355339 L41.4350288,29.9497475 L41.399145,29.9845743 L41.4350288,30.0208153 L40.0208153,31.4350288 L39.9849314,31.3987878 L32.9497475,38.4350288 L31.5355339,37.0208153 L37.555,30.9995339 L18,31 L18,29 L37.585,28.9995339 L31.5355339,22.9497475 L32.9497475,21.5355339 Z" id="Combined-Shape" fill="#000000"></path>
-    </g>
-</svg>
