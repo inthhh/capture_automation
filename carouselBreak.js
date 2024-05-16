@@ -277,5 +277,7 @@ const eventListenerBreak = async (page) =>{
 
 module.exports = {
     'carouselBreakMobile': carouselBreakMobile,
-    'eventListenerBreak' : eventListenerBreak
+    'eventListenerBreak' : eventListenerBreak,
+    'showcaseCardBreak' : showcaseCardBreak,
+    'kvCarouselBreak' : kvCarouselBreak
 }
