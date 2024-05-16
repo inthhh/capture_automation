@@ -46,6 +46,8 @@ const takeScreenshot = async (siteCode) => {
 
     const fileName = `.\\result\\test\\mobile\\${siteCode}-${dateNow}-mobile-screenshot.jpeg`
 
+    const sharp = require('sharp');
+
     await breaker.accessibilityPopupBreaker(page)
     await breaker.cookiePopupBreaker(page)
     if(siteCode=="tr"){
@@ -54,6 +56,23 @@ const takeScreenshot = async (siteCode) => {
     }
     await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
 
+    const maxHeight = 15000;
+    const outputImagePath = `.\\result\\test\\mobile\\${siteCode}-${dateNow}-mobile-screenshot-cutting.jpeg`
+
+    await sharp(fileName)
+    .metadata()
+    .then(metadata => {
+        const height = metadata.height;
+        if (height > maxHeight) {
+            return sharp(fileName)
+                .extract({ left: 0, top: 0, width: metadata.width, height: maxHeight })
+                .toFile(outputImagePath);
+        } else return;
+    })
+    .catch(err => {
+        console.error('이미지 자르기 중 오류가 발생했습니다:', err);
+    });
+    
     browser.close();
 
 }
