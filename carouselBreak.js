@@ -1,5 +1,5 @@
 const kvCarouselBreak = async (page) =>{
-    await page.waitForSelector('.indicator__controls');
+    // await page.waitForSelector('.indicator__controls');
     await page.evaluate (() => {
         
         //KV Autoplay stop button
@@ -102,10 +102,11 @@ const showcaseCardBreak = async (page) => {
 
 const carouselBreakMobile = async (page, site_code) =>{
     await page.evaluate ((site_code) => {
-        // const playStop = document.querySelector('.indicator__controls.indicator__controls--play')
+        // const grayoverlay = document.querySelector('#insider-opt-in-native-dialog')
+        // if(grayoverlay) grayoverlay.style.display = 'none'
+        
         const playButton = document.querySelector('.indicator__controls')
-        // if(!playStop)
-             playButton?.click()
+            playButton?.click()
         
 //ChatBot close button
 // const popupClosButton = document.querySelector('.pop_up_close_btn')
@@ -275,7 +276,5 @@ const eventListenerBreak = async (page) =>{
 
 module.exports = {
     'carouselBreakMobile': carouselBreakMobile,
-    'eventListenerBreak' : eventListenerBreak,
-    'kvCarouselBreak' : kvCarouselBreak,
-    'showcaseCardBreak' : showcaseCardBreak
+    'eventListenerBreak' : eventListenerBreak
 }
