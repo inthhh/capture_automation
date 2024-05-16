@@ -101,6 +101,7 @@ const showcaseCardBreak = async (page) => {
 }
 
 const carouselBreakMobile = async (page, site_code) =>{
+    await page.waitForSelector('.home-kv-carousel')
     await page.evaluate ((site_code) => {
         // const grayoverlay = document.querySelector('#insider-opt-in-native-dialog')
         // if(grayoverlay) grayoverlay.style.display = 'none'
