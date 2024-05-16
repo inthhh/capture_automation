@@ -19,6 +19,7 @@ const takeScreenshot = async (siteCode) => {
     const page = await browser.newPage();
     const url = `https://www.samsung.com/${siteCode}`;
     await page.setViewport({ width: 360, height: 10000 });
+    await page.setDefaultTimeout(200000);
     await page.goto(url, {waitUntil: 'load'});
     breaker.cookiePopupBreaker(page)
 
@@ -46,6 +47,11 @@ const takeScreenshot = async (siteCode) => {
     const fileName = `.\\result\\test\\mobile\\${siteCode}-${dateNow}-mobile-screenshot.jpeg`
 
     await breaker.accessibilityPopupBreaker(page)
+    await breaker.cookiePopupBreaker(page)
+    if(siteCode=="tr"){
+        await carouselBreak.carouselBreakMobile(page, siteCode)
+        await carouselBreak.eventListenerBreak(page)
+    }
     await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
 
     browser.close();
