@@ -18,10 +18,12 @@ const takeScreenshot = async (siteCode) => {
     console.log("-----", siteCode,"-----");
     const page = await browser.newPage();
     const url = `https://www.samsung.com/${siteCode}`;
+    await delay(1000)
     await page.setViewport({ width: 360, height: 10000 });
     await page.setDefaultTimeout(200000);
-    await page.goto(url, {waitUntil: 'load'});
-    breaker.cookiePopupBreaker(page)
+    await page.goto(url,{ waitUntil: 'load', timeout: 200000 });
+    await delay(1000)
+    
 
     // Get the height of the rendered page
     let bodyHandle = await page.$('body');
@@ -29,12 +31,20 @@ const takeScreenshot = async (siteCode) => {
     await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
     await breaker.cookiePopupBreaker(page)
-    await breaker.clickFirstMerchan(page)
+
+    if(siteCode != "tr"){
+        await breaker.clickFirstMerchan(page)
+    }
+    if(siteCode=="tr"){
+        await delay(1000)
+        await breaker.cookiePopupBreaker(page)
+        await breaker.clickFirstMerchan(page)
+    }
+    await delay(20000)
     await carouselBreak.carouselBreakMobile(page, siteCode)
 
-    await delay(40000)
+    await delay(20000)
 
-    await carouselBreak.eventListenerBreak(page)
 
     const failedData = await getRawData("2024-05-13", siteCode, "N", "Mobile")
     if(failedData && failedData.length>0){
@@ -48,16 +58,14 @@ const takeScreenshot = async (siteCode) => {
 
     const fileName = `.\\result\\test\\mobile\\${siteCode}-${dateNow}-mobile-screenshot.jpeg`
 
-    const sharp = require('sharp');
 
     await breaker.accessibilityPopupBreaker(page)
     await breaker.cookiePopupBreaker(page)
-    if(siteCode=="tr"){
-        await carouselBreak.carouselBreakMobile(page, siteCode)
-        await carouselBreak.eventListenerBreak(page)
-    }
-    await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
+    await carouselBreak.eventListenerBreak(page)
 
+    await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
+    
+    const sharp = require('sharp');
     const maxHeight = 15000;
     const outputImagePath = `.\\result\\test\\mobile\\${siteCode}-${dateNow}-mobile-screenshot-cutting.jpeg`
 
