@@ -20,20 +20,25 @@ const takeScreenshot = async (siteCode) => {
     const page = await browser.newPage();
     const url = `https://www.samsung.com/${siteCode}`;
     await page.setViewport({ width: 1440, height: 10000 });
-    await page.setDefaultTimeout(200000);
     await page.goto(url, {waitUntil: 'load'}, {timeout: 0});
-    breaker.cookiePopupBreaker(page)
-
+    await page.setDefaultTimeout(200000);
+    // breaker.cookiePopupBreaker(page)
+    
     // Get the height of the rendered page
     let bodyHandle = await page.$('body');
     let body = await bodyHandle.boundingBox();
     await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
-    await carouselBreak.carouselBreakMobile(page, siteCode)
     
+    
+    // await carouselBreak.carouselBreakMobile(page, siteCode)
+    await breaker.cookiePopupBreaker(page)
+    await breaker.clickFirstMerchan(page)
+    
+    await carouselBreak.kvCarouselBreak(page)
+    await carouselBreak.showcaseCardBreak(page)
+
     await delay(40000)
-    await carouselBreak.eventListenerBreak(page)
-    
 
     const failedData = await getRawData("2024-05-13", siteCode, "N", "Desktop")
 
@@ -49,11 +54,7 @@ const takeScreenshot = async (siteCode) => {
     const fileName = `.\\result\\test\\desktop\\${siteCode}-${dateNow}-desktop-screenshot.jpeg`
 
     await breaker.accessibilityPopupBreaker(page)
-    await breaker.cookiePopupBreaker(page)
-    if(siteCode=="tr"){
-        await carouselBreak.carouselBreakMobile(page, siteCode)
-        await carouselBreak.eventListenerBreak(page)
-    }
+    await carouselBreak.eventListenerBreak(page)
     await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
 
     browser.close();

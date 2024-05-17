@@ -24,10 +24,35 @@ const cookiePopupBreaker = async (page) =>{
 
       // Dialog popup
       document.querySelector('.cookie-bar__close')?.click()
+    
+    const buttons = document.querySelectorAll('.tab__item-title')
+
+    buttons?.forEach(async (button, index) => {
+      if (button.getAttribute('an-ac') === 'merchandising') {
+        // 1초 간격으로 클릭
+        await new Promise(resolve => setTimeout(resolve, 1000 * index));
+        button.click();
+        console.log("*************button click");
+      }
+    });
   })
+  
 }
 
-
+const clickFirstMerchan = async (page) =>{
+  await page.evaluate(async()=>{
+    const buttons = document.querySelectorAll('.tab__item-title')
+    await new Promise(resolve => setTimeout(resolve, 10000));
+    console.log("btn : ", buttons);
+    for (let i = 0; i < buttons.length; i++) {
+      if (buttons[i].getAttribute('an-ac') === 'merchandising') {
+        buttons[i].click();
+        console.log("click first button-------------")
+        break;
+      }
+    }
+  })
+}
 
 const lazyLoadingBreaker = async (page) =>{
   await page.evaluate(()=>{
@@ -52,5 +77,6 @@ const accessibilityPopupBreaker = async (page) =>{
 module.exports = {
   cookiePopupBreaker,
   lazyLoadingBreaker,
-  accessibilityPopupBreaker
+  accessibilityPopupBreaker,
+  clickFirstMerchan
 }
