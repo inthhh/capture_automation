@@ -1,5 +1,6 @@
 const kvCarouselBreak = async (page) =>{
     // await page.waitForSelector('.indicator__controls');
+    await page.waitForSelector('.home-kv-carousel')
     await page.evaluate (async() => {
         
         //KV Autoplay stop button

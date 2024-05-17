@@ -1,4 +1,5 @@
 const cookiePopupBreaker = async (page) =>{
+  await page.waitForSelector('.tab__item-title')
   await page.evaluate(()=>{
       //Popup wrap
       const popupWrap = document.querySelector('#truste-consent-track')
@@ -40,6 +41,7 @@ const cookiePopupBreaker = async (page) =>{
 }
 
 const clickFirstMerchan = async (page) =>{
+  await page.waitForSelector('.tab__item-title')
   await page.evaluate(async()=>{
     const buttons = document.querySelectorAll('.tab__item-title')
     await new Promise(resolve => setTimeout(resolve, 10000));
@@ -47,9 +49,10 @@ const clickFirstMerchan = async (page) =>{
     for (let i = 0; i < buttons.length; i++) {
       if (buttons[i].getAttribute('an-ac') === 'merchandising') {
         buttons[i].click();
-        console.log("click first button-------------")
+        console.log("click first button-------------",buttons[i])
         break;
       }
+      else continue;
     }
   })
 }

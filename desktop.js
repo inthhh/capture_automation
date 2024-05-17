@@ -20,8 +20,13 @@ const takeScreenshot = async (siteCode) => {
     const page = await browser.newPage();
     const url = `https://www.samsung.com/${siteCode}`;
     await page.setViewport({ width: 1440, height: 10000 });
-    await page.goto(url, {waitUntil: 'load'}, {timeout: 0});
+    // await page.goto(url, {waitUntil: 'load'});
+    await delay(1000)
     await page.setDefaultTimeout(200000);
+    await page.goto(url, { waitUntil: 'load', timeout: 200000 });
+    // await page.waitForNavigation({ waitUntil: 'load', timeout: 200000 });
+    await delay(1000)
+    
     // breaker.cookiePopupBreaker(page)
     
     // Get the height of the rendered page
@@ -33,8 +38,15 @@ const takeScreenshot = async (siteCode) => {
     
     // await carouselBreak.carouselBreakMobile(page, siteCode)
     await breaker.cookiePopupBreaker(page)
-    await breaker.clickFirstMerchan(page)
-    // await breaker.clickFirstKV(page)
+    if(siteCode != "tr"){
+        await breaker.clickFirstMerchan(page)
+    }
+
+    if(siteCode == "tr"){
+        await delay(1000)
+        await breaker.cookiePopupBreaker(page)
+        await breaker.clickFirstMerchan(page)
+    }
     
     await delay(20000)
     await carouselBreak.kvCarouselBreak(page)
@@ -55,11 +67,13 @@ const takeScreenshot = async (siteCode) => {
 
     const fileName = `.\\result\\test\\desktop\\${siteCode}-${dateNow}-desktop-screenshot.jpeg`
 
-    await breaker.accessibilityPopupBreaker(page)
-    await carouselBreak.eventListenerBreak(page)
+    
+
+        await breaker.accessibilityPopupBreaker(page)
+        await carouselBreak.eventListenerBreak(page)
     await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
 
-    browser.close();
+    // browser.close();
 
 }
 
