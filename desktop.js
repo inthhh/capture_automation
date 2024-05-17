@@ -34,11 +34,13 @@ const takeScreenshot = async (siteCode) => {
     // await carouselBreak.carouselBreakMobile(page, siteCode)
     await breaker.cookiePopupBreaker(page)
     await breaker.clickFirstMerchan(page)
+    // await breaker.clickFirstKV(page)
     
+    await delay(20000)
     await carouselBreak.kvCarouselBreak(page)
     await carouselBreak.showcaseCardBreak(page)
 
-    await delay(40000)
+    await delay(20000)
 
     const failedData = await getRawData("2024-05-13", siteCode, "N", "Desktop")
 

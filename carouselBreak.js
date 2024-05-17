@@ -1,6 +1,6 @@
 const kvCarouselBreak = async (page) =>{
     // await page.waitForSelector('.indicator__controls');
-    await page.evaluate (() => {
+    await page.evaluate (async() => {
         
         //KV Autoplay stop button
         const playButton = document.querySelector('.indicator__controls')
@@ -57,11 +57,20 @@ const kvCarouselBreak = async (page) =>{
         })
     }
 
+        const kvVideos = document.querySelectorAll('.home-kv-carousel__background-media-wrap .video')
+        if(kvVideos){
+            kvVideos.forEach((v)=>{
+                v.style.display = 'none';
+            })
+        }
 
-        const kvCarouselMediaImagePreview = document.querySelector('.home-kv-carousel__background-media-wrap .image-v2__preview+.image-v2__main')
+        const kvCarouselMediaImagePreview = document.querySelectorAll('.home-kv-carousel__background-media-wrap .image-v2__preview+.image-v2__main')
         if(kvCarouselMediaImagePreview){
-            kvCarouselMediaImagePreview.style.visibility = 'visible'
-            kvCarouselMediaImagePreview.style.opacity = '1'
+            console.log("*********select kvCarouselMediaImagePreview ", kvCarouselMediaImagePreview)
+            kvCarouselMediaImagePreview.forEach((img, index) => {
+                img.style.visibility = 'visible'
+                img.style.opacity = '1'
+            })
         }
 
         const kvCarouselSlides = document.querySelectorAll('.home-kv-carousel__wrapper .home-kv-carousel__slide')
@@ -70,8 +79,11 @@ const kvCarouselBreak = async (page) =>{
             kvCarouselSlides.forEach((slide) => {
                 const imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image-v2__main');
                 if (imgArea != null) {
-
-                    const getSrc = imgArea.getAttribute('data-src');
+                    imgArea.style.visibility = 'visible'
+                    imgArea.style.opacity = '1'
+                    // const getSrc = imgArea.getAttribute('data-src');
+                    const getSrc = imgArea.getAttribute('src'); // - 일부 해결
+                    // const getSrc = imgArea.getAttribute('data-desktop-src');
                     imgArea.setAttribute('src', getSrc);
                 }
 

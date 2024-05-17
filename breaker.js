@@ -54,6 +54,15 @@ const clickFirstMerchan = async (page) =>{
   })
 }
 
+const clickFirstKV = async (page) =>{
+  await page.evaluate(async()=>{
+    await new Promise(resolve => setTimeout(resolve, 18000));
+    const kv = document.querySelector('.home-kv-carousel__indicator-wrap')
+    const kvbtn = kv.querySelector('.indicator__item');
+    if(kvbtn) kvbtn.click();
+  })
+}
+
 const lazyLoadingBreaker = async (page) =>{
   await page.evaluate(()=>{
       const lazyImages = document.querySelectorAll('img[data-desktop-src]');
@@ -78,5 +87,6 @@ module.exports = {
   cookiePopupBreaker,
   lazyLoadingBreaker,
   accessibilityPopupBreaker,
-  clickFirstMerchan
+  clickFirstMerchan,
+  // clickFirstKV
 }
