@@ -44,7 +44,7 @@ const clickFirstMerchan = async (page) =>{
   await page.waitForSelector('.tab__item-title')
   await page.evaluate(async()=>{
     const buttons = document.querySelectorAll('.tab__item-title')
-    await new Promise(resolve => setTimeout(resolve, 10000));
+    await new Promise(resolve => setTimeout(resolve, 20000));
     console.log("btn : ", buttons);
     for (let i = 0; i < buttons.length; i++) {
       if (buttons[i].getAttribute('an-ac') === 'merchandising') {

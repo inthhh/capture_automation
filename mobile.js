@@ -23,7 +23,6 @@ const takeScreenshot = async (siteCode) => {
     await delay(1000)
     await page.setDefaultTimeout(200000);
     await page.goto(url,{ waitUntil: 'load', timeout: 200000 });
-    await delay(1000)
     
 
     // Get the height of the rendered page
@@ -33,11 +32,13 @@ const takeScreenshot = async (siteCode) => {
 
     await breaker.cookiePopupBreaker(page)
     if(siteCode != "tr"){
+        await delay(1000)
         await breaker.clickFirstMerchan(page)
     }
     if(siteCode=="tr"){
         await delay(1000)
         await breaker.cookiePopupBreaker(page)
+        await delay(1000)
         await breaker.clickFirstMerchan(page)
     }
     await delay(20000)
@@ -82,7 +83,7 @@ const takeScreenshot = async (siteCode) => {
         console.error('이미지 자르기 중 오류가 발생했습니다:', err);
     });
     
-    // browser.close();
+    browser.close();
 
 }
 
