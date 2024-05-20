@@ -256,6 +256,16 @@ const carouselBreakMobile = async (page, site_code) =>{
                         img.style.visibility = 'visible';
                         img.style.opacity = '1';
                     }
+                    else if(slide.querySelector('.home-kv-carousel__background-media-wrap picture')){
+                        // 대표이미지 다른 형식으로 존재
+                    }
+                    else {
+                        const vid = slide.querySelector('.video');
+                        if(vid){
+                            // video preview 이미지 없을 시 border 처리
+                            vid.style.border = '7px solid red';
+                        }
+                    }
                 }
             }
         }
@@ -272,11 +282,11 @@ const carouselBreakMobile = async (page, site_code) =>{
 
         /*모바일 */
 
-        const mobileCarousel = document.querySelectorAll(".swiper-container");
+        // const mobileCarousel = document.querySelectorAll(".swiper-container");
 
-        mobileCarousel?.forEach((slide) => {
-            slide.style.overflow = 'visible';
-        })
+        // mobileCarousel?.forEach((slide) => {
+        //     slide.style.overflow = 'visible';
+        // })
 
 
         /*
