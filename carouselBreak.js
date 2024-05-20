@@ -1,6 +1,7 @@
 const kvCarouselBreak = async (page) =>{
     // await page.waitForSelector('.indicator__controls');
     await page.waitForSelector('.home-kv-carousel')
+    await page.waitForSelector('.home-kv-carousel__background-media-wrap .image-v2__main')
     await page.evaluate (async() => {
         
         //KV Autoplay stop button
@@ -58,36 +59,33 @@ const kvCarouselBreak = async (page) =>{
         })
     }
 
-        const kvVideos = document.querySelectorAll('.home-kv-carousel__background-media-wrap .video')
-        if(kvVideos){
-            kvVideos.forEach((v)=>{
-                v.style.display = 'none';
-            })
-        }
-
-        const kvCarouselMediaImagePreview = document.querySelectorAll('.home-kv-carousel__background-media-wrap .image-v2__preview+.image-v2__main')
-        if(kvCarouselMediaImagePreview){
-            console.log("*********select kvCarouselMediaImagePreview ", kvCarouselMediaImagePreview)
-            kvCarouselMediaImagePreview.forEach((img, index) => {
-                img.style.visibility = 'visible'
-                img.style.opacity = '1'
-            })
-        }
-
         const kvCarouselSlides = document.querySelectorAll('.home-kv-carousel__wrapper .home-kv-carousel__slide')
 
         if(kvCarouselSlides){
             kvCarouselSlides.forEach((slide) => {
-                const imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image-v2__main');
+                console.log("slide",slide);
+                let imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image-v2__main');
                 if (imgArea != null) {
                     imgArea.style.visibility = 'visible'
                     imgArea.style.opacity = '1'
                     // const getSrc = imgArea.getAttribute('data-src');
-                    const getSrc = imgArea.getAttribute('src'); // - 일부 해결
-                    // const getSrc = imgArea.getAttribute('data-desktop-src');
-                    imgArea.setAttribute('src', getSrc);
+                    // const getSrc = imgArea.getAttribute('src'); // - 일부 해결
+                    let getSrc = imgArea?.getAttribute('data-1366w2x-src');
+                    if (getSrc) {
+                        imgArea.setAttribute('src', getSrc);
+                        console.log("*** img src", getSrc);
+                    }
                 }
-
+                else{
+                    console.log("slide else - ",slide);
+                    imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image');
+                    console.log(" ///////////// ",imgArea)
+                    if(imgArea){
+                        imgArea.style.visibility = 'visible';
+                        imgArea.style.opacity = '1';
+                        imgArea.style.zIndex = '10';
+                    }
+                }
             });
         }
     });
