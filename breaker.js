@@ -9,6 +9,8 @@ const cookiePopupBreaker = async (page) =>{
       if(grayoverlay) grayoverlay.style.display = 'none'
       const overlay = document.getElementById('insider-opt-in-native-dialog')
       if(overlay) overlay.style.display = 'none'
+      const uaOverlay = document.querySelector('.insider-opt-in-overlay');
+      if(uaOverlay) uaOverlay.style.zIndex = '0'
 
       const surveyIframe = document.getElementById('QSIFeedbackButton-survey-iframe');
       if (surveyIframe) {

@@ -88,9 +88,17 @@ const kvCarouselBreak = async (page) =>{
                         imgArea.style.visibility = 'visible';
                         imgArea.style.opacity = '1';
                         imgArea.style.zIndex = '10';
-                    } else {
+                    } 
+                    else if(slide.querySelector('.home-kv-carousel__background-media-wrap picture')){
+                        // 대표이미지 다른 형식으로 존재
+                    }
+                    else {
                         // imgArea 없을 때 video selector, 마지막 장면 캡쳐
-                        let vid = slide.querySelector('video');
+                        const vid = slide.querySelector('.video');
+                        if(vid){
+                            // video preview 이미지 없을 시 border 처리
+                            vid.style.border = '7px solid red';
+                        }
                         // if (vid) {
                         //     vid.play();
                         //     vid.onended = (event) => {
