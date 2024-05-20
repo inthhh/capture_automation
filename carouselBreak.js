@@ -79,11 +79,29 @@ const kvCarouselBreak = async (page) =>{
                 else{
                     console.log("slide else - ",slide);
                     imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image');
-                    console.log(" ///////////// ",imgArea)
-                    if(imgArea){
+                    let img = imgArea?.querySelector('.image__main');
+                    if(imgArea && img){
+                        const pcSrc = img.getAttribute('data-desktop-src');
+                        img.setAttribute('src', pcSrc);
+                        img.style.visibility = 'visible';
+                        img.style.opacity = '1';
                         imgArea.style.visibility = 'visible';
                         imgArea.style.opacity = '1';
                         imgArea.style.zIndex = '10';
+                    } else {
+                        // imgArea 없을 때 video selector, 마지막 장면 캡쳐
+                        let vid = slide.querySelector('video');
+                        // if (vid) {
+                        //     vid.play();
+                        //     vid.onended = (event) => {
+                        //         alert("The video has ended");
+
+                        //         //캡쳐 한번 더 
+                        //     };
+                        // } else {
+                        //     console.error("No video element found in slide.");
+                        // }
+                          
                     }
                 }
             });
@@ -92,7 +110,7 @@ const kvCarouselBreak = async (page) =>{
 }
 
 
-const showcaseCardBreak = async (page) => {
+const showcaseCardBreak = async (page) => { // co05
     await page.evaluate (() => {
 
         //Todo : click middle tab of showcase tabs
@@ -190,29 +208,45 @@ const carouselBreakMobile = async (page, site_code) =>{
         if(kvCarouselSlides && kvCarouselSlides.length>0){
             for(let i = 0; i < kvCarouselSlides.length-2; i++){
                 const slide = kvCarouselSlides[i]
-                slide.style.opacity = '1'
-                slide.style.transform = 'translate3d(0, 0, 0)'
+                // slide.style.opacity = '1'
+                // slide.style.transform = 'translate3d(0, 0, 0)'
 
 
-                const imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image-v2 .image-v2__main');
+                let imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image-v2 .image-v2__main');
 
                 if (imgArea != null) {
+                    const getSrc2 = imgArea.getAttribute('data-360w2x-src');
+                    if(getSrc2) imgArea.setAttribute('src', getSrc2);
                     // cnt -= 1
-                    const getSrc = imgArea.getAttribute('data-mobile-src');  // Todo !!! PC :  data-src Mobile : data-mobile-src
+                    // const getSrc = imgArea.getAttribute('data-mobile-src');  // Todo !!! PC :  data-src Mobile : data-mobile-src
 
-                    const isVideo = imgArea.querySelector('.image-v2__preview')
-                    if (isVideo) {
-                        isVideo.style.visibility = 'visible';
-                        isVideo.style.opacity = '1'
+                    // const isVideo = imgArea.querySelector('.image-v2__preview')
+                    // if (isVideo) {
+                    //     isVideo.style.visibility = 'visible';
+                    //     isVideo.style.opacity = '1'
 
-                    }
+                    // }
 
-                    if (getSrc != null) {
-                        imgArea.setAttribute('src', getSrc);
+                    // if (getSrc != null) {
+                    //     imgArea.setAttribute('src', getSrc);
 
-                    } else {
-                        const getSrc2 = imgArea.getAttribute('data-360w2x-src');
-                        if(getSrc2) imgArea.setAttribute('src', getSrc2);
+                    // } else {
+                    //     const getSrc2 = imgArea.getAttribute('data-360w2x-src');
+                    //     if(getSrc2) imgArea.setAttribute('src', getSrc2);
+                    // }
+                }
+                else{
+                    imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image');
+                    let img = imgArea?.querySelector('.image__main');
+                    console.log("**",slide.querySelector('.home-kv-carousel__background-media-wrap .image'))
+                    if(imgArea && img){
+                        const mobileSrc = img.getAttribute('data-mobile-src');
+                        img.setAttribute('src', mobileSrc);
+                        imgArea.style.visibility = 'visible';
+                        imgArea.style.opacity = '1';
+                        imgArea.style.zIndex = '10';
+                        img.style.visibility = 'visible';
+                        img.style.opacity = '1';
                     }
                 }
             }

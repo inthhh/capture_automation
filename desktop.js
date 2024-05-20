@@ -54,7 +54,7 @@ const takeScreenshot = async (siteCode) => {
 
     await delay(20000)
 
-    const failedData = await getRawData("2024-05-13", siteCode, "N", "Desktop")
+    const failedData = await getRawData("2024-05-20", siteCode, "N", "Desktop")
 
     if(failedData && failedData.length>0){
         for (let i = 0; i < failedData.length; i++){

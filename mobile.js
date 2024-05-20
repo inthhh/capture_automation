@@ -18,8 +18,9 @@ const takeScreenshot = async (siteCode) => {
     console.log("-----", siteCode,"-----");
     const page = await browser.newPage();
     const url = `https://www.samsung.com/${siteCode}`;
-    await delay(1000)
     await page.setViewport({ width: 360, height: 10000 });
+
+    await delay(1000)
     await page.setDefaultTimeout(200000);
     await page.goto(url,{ waitUntil: 'load', timeout: 200000 });
     await delay(1000)
@@ -31,7 +32,6 @@ const takeScreenshot = async (siteCode) => {
     await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
     await breaker.cookiePopupBreaker(page)
-
     if(siteCode != "tr"){
         await breaker.clickFirstMerchan(page)
     }
@@ -46,7 +46,7 @@ const takeScreenshot = async (siteCode) => {
     await delay(20000)
 
 
-    const failedData = await getRawData("2024-05-13", siteCode, "N", "Mobile")
+    const failedData = await getRawData("2024-05-20", siteCode, "N", "Mobile")
     if(failedData && failedData.length>0){
         for (let i = 0; i < failedData.length; i++){
             // console.log(failedImage[i])
@@ -60,14 +60,13 @@ const takeScreenshot = async (siteCode) => {
 
 
     await breaker.accessibilityPopupBreaker(page)
-    await breaker.cookiePopupBreaker(page)
     await carouselBreak.eventListenerBreak(page)
 
     await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
     
     const sharp = require('sharp');
-    const maxHeight = 15000;
-    const outputImagePath = `.\\result\\test\\mobile\\${siteCode}-${dateNow}-mobile-screenshot-cutting.jpeg`
+    const maxHeight = 10000;
+    const outputImagePath = `.\\result\\test\\mobile\\${siteCode}-${dateNow}-mobile-cutting.jpeg`
 
     await sharp(fileName)
     .metadata()
@@ -83,7 +82,7 @@ const takeScreenshot = async (siteCode) => {
         console.error('이미지 자르기 중 오류가 발생했습니다:', err);
     });
     
-    browser.close();
+    // browser.close();
 
 }
 
