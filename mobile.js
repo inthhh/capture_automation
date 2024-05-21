@@ -24,23 +24,15 @@ const takeScreenshot = async (siteCode) => {
     await page.setDefaultTimeout(200000);
     await page.goto(url,{ waitUntil: 'load', timeout: 200000 });
     
-
-    // Get the height of the rendered page
     let bodyHandle = await page.$('body');
     let body = await bodyHandle.boundingBox();
     await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
     await breaker.cookiePopupBreaker(page)
-    // if(siteCode != "tr"){
-    //     await delay(1000)
-    //     await breaker.clickFirstMerchan(page)
-    // }
-    // if(siteCode=="tr"){
-        await delay(2000)
-        await breaker.cookiePopupBreaker(page)
-        await delay(1000)
-        await breaker.clickFirstMerchan(page)
-    // }
+    await delay(2000)
+    await breaker.cookiePopupBreaker(page)
+    await delay(1000)
+    await breaker.clickFirstMerchan(page)
     await delay(20000)
     await carouselBreak.carouselBreakMobile(page, siteCode)
 
@@ -50,13 +42,11 @@ const takeScreenshot = async (siteCode) => {
     const failedData = await getRawData("2024-05-20", siteCode, "N", "Mobile")
     if(failedData && failedData.length>0){
         for (let i = 0; i < failedData.length; i++){
-            // console.log(failedImage[i])
             await failChecker.checkFailData(page,failedData[i])
         }
     }
 
     const dateNow = moment().format("YYYY-MM-DD_HH-mm-ss")
-
     const fileName = `.\\result\\test\\mobile\\${siteCode}-${dateNow}-mobile-screenshot.jpeg`
 
 
@@ -68,7 +58,7 @@ const takeScreenshot = async (siteCode) => {
     const sharp = require('sharp');
     const maxHeight = 10000;
     const outputImagePath = `.\\result\\test\\mobile\\${siteCode}-${dateNow}-mobile-cutting.jpeg`
-
+    
     await sharp(fileName)
     .metadata()
     .then(metadata => {
@@ -86,8 +76,6 @@ const takeScreenshot = async (siteCode) => {
     browser.close();
 
 }
-
-// takeScreenshot('lb');
 
 module.exports = {
     takeScreenshot
