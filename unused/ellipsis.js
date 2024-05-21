@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const moment = require('moment');
 const carouselBreak = require ('./carouselBreak');
 const failChecker = require('./failChecker')
-const { ellipsisDetector } = require('./ellipsisDetector')
+const { ellipsisDetector } = require('./unused/ellipsisDetector')
 const utility = require("./src/utility");
 
 const db = require("./db")
