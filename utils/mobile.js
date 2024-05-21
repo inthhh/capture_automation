@@ -1,9 +1,9 @@
 const puppeteer = require('puppeteer');
 const moment = require('moment');
-const carouselBreak = require ('./carouselBreak');
-const failChecker = require("./failChecker");
-const getRawData = require("./api")
-const breaker = require("./breaker")
+const carouselBreak = require ('./capture-utils/carouselBreak');
+const failChecker = require("./capture-utils/failChecker");
+const getRawData = require("./capture-utils/getRawData")
+const breaker = require("./capture-utils/breaker")
 
 const delay = (time) => {
     return new Promise(function(resolve) {
@@ -30,6 +30,7 @@ const takeScreenshot = async (siteCode) => {
 
     await breaker.cookiePopupBreaker(page)
     await delay(2000)
+    // 새로고침되는 경우를 위해 breaker를 한번 더 실행
     await breaker.cookiePopupBreaker(page)
     await delay(1000)
     await breaker.clickFirstMerchan(page)

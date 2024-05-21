@@ -75,7 +75,7 @@ const site_code = [
   "ps",
   "sa",
   "sa_en",
-  //"tr", // Protocol error (DOM.describeNode): Cannot find context with specified id
+  "tr",
   "iran",
   "levant",
   "levant_ar",
@@ -93,7 +93,3 @@ const site_code = [
 ];
 
   module.exports = {site_code};
-// const site_code = ["in"]
-//   const test_code = ["uk", "us", "au", "es", "mx"]
-
-  // module.exports = {site_code, test_code};

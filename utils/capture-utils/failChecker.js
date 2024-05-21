@@ -1,10 +1,13 @@
 const { Page } = require("puppeteer");
 
+// 페이지 내에서 API 데이터와 동일한 요소를 찾고 border 표시하는 함수
 const checkFailData = async (page, obj) =>{
+    // 1. 내용이 없을 경우 return
     if(!obj.contents){
         console.log("obj.contents is null");
         return;
     }
+    // 2. 이미지 오류의 경우
     if(obj.contents.includes("images.samsung")){
         const src = obj.contents;
 
@@ -19,14 +22,13 @@ const checkFailData = async (page, obj) =>{
                     }
                 });
             }, selector, src);
-
         }
-        
     }
+    // 3. co05 타일 레이아웃 오류의 경우
     else if (obj.desc == "Tile Layout") {
-        // box check
-        console.log(obj.area, " / box : ", obj.contents);
+        // 해당 레이아웃의 제목(area)를 저장
         const area = obj.area;
+        // co05의 모든 버튼을 저장
         const buttons = await page.$$eval('.tab__item-title', buttons => {
             const result = [];
             buttons.forEach(button => {
@@ -37,30 +39,24 @@ const checkFailData = async (page, obj) =>{
             });
             return result;
         });
-        // console.log(buttons);
+        // area에 해당하는 버튼의 인덱스를 저장
         const buttonIndex = buttons.findIndex((text, index) => {
             console.log(text, area);
             return text === area;
         });
         
-
-        // const swiperWrapper = await page.$('.swiper-wrapper:not([class*="kv"]:not([class*="disabled"])');
-        
+        // co05의 모든 슬라이드를 저장
         const swiperWrapper = await page.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
-        
         const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
-
-        // console.log(swiperChildren);
 
         console.log("swiperWrapper : ", swiperWrapper);
         console.log("swiperChildren : ",swiperChildren);
-        // console.log("button & swiper : ", buttonIndex, "&", selectedElement)
 
+        // area에 해당하는 버튼의 인덱스를 활용하여, 몇 번째 슬라이드인지 검색 후 border 처리
         const selectedElement = await swiperChildren[buttonIndex];
 
         if (await selectedElement) {  
             console.log(`merchandising select`);
-            // console.log(selectedElement.innerHTML)
             await selectedElement.evaluate(element => {
                 element.style.border = '7px solid blue';
             });
@@ -68,8 +64,9 @@ const checkFailData = async (page, obj) =>{
             console.log(`merchandising select : failed`);
         }
     } 
-    // badge count
+    // 4. co05 뱃지 개수 오류의 경우
     else if (obj.contents && obj.contents.length === 1 && obj.contents < 7) {
+        // 3번과 동일하게 버튼의 인덱스를 찾은 후 해당 슬라이드 영역 상단에 표시
         console.log(obj.contents)
         const area = obj.area;
         const buttons = await page.$$eval('.tab__item-title', buttons => {
@@ -96,9 +93,7 @@ const checkFailData = async (page, obj) =>{
         if (await selectedElement) {  
             const Handle = await selectedElement.evaluateHandle(element => element);
             console.log(`badge count select`);
-            // const content = obj.contents;
             await selectedElement.evaluate((element) => {
-                // const content = obj.contents;
                 const newDiv = document.createElement('div');
                 newDiv.textContent = 'Badge Count Issue';
                 newDiv.style.backgroundColor = 'yellow';
@@ -116,17 +111,19 @@ const checkFailData = async (page, obj) =>{
             console.log(`badge count area select : failed`);
         }
     }
-    else { // key에 co05가 포함 ->(머천다이징 영역)\
+    // 5. 텍스트 오류의 경우
+    else {
         let str = "";
+        
         if(obj.key.includes("CO05")) str = "CO05";
         else if(obj.key.includes("CO07")) str = "CO07";
         else if(obj.key.includes("HD01")) str = "HD01";
         else if(obj.key.includes("FT03")) str = "FT03";
         else return 0;
         
-        // console.log("keyyyyyyyyyyyyyy", obj.key);
         let selector = null;
 
+        // 각 영역 별 셀렉터 저장
         if (str == "CO05"){
             selector = await page.$(`div[class*="ho-g-showcase-card-tab"]`);
         } else if (str == "HD01"){
@@ -139,36 +136,34 @@ const checkFailData = async (page, obj) =>{
             //
         }
 
-        // console.log(str, " / ",selector);
         if (selector) {
-
-                // if(obj.contents=="Hot") console.log(obj.contents)
-                const matchingElements = await page.evaluate((s, obj) => {
-                    const elements = s.querySelectorAll('*');
-                    // const matchingElements = [];
-                    elements.forEach(element => {
-                        if (element.innerHTML.includes(obj.contents) && element.children.length === 0){ // 최하위 요소일 때
-                            if(obj.description == "Badge"){
-                                const computedStyle = window.getComputedStyle(element); // 요소의 현재 스타일 가져오기
-                                const width = parseInt(computedStyle.width); // 현재 너비 가져오기
-                                const height = parseInt(computedStyle.height); // 현재 높이 가져오기
-                                element.style.width = (width + 30) + 'vw';
-                                element.style.height = (height + 30) + 'vw';
-                                element.style.outline = '7px solid red';
-                            }
-                            else element.style.border = '7px solid red';
-                                // matchingElements.push(element.innerHTML);
+            
+            const matchingElements = await page.evaluate((s, obj) => {
+                const elements = s.querySelectorAll('*');
+                
+                elements.forEach(element => {
+                    // 현재 요소가 자식이 없는 최하위 요소일 때
+                    if (element.innerHTML.includes(obj.contents) && element.children.length === 0){
+                        // 뱃지 텍스트의 경우
+                        if(obj.description == "Badge"){
+                            // 뱃지의 현재 스타일을 가져와서 편집
+                            const computedStyle = window.getComputedStyle(element);
+                            const width = parseInt(computedStyle.width);
+                            const height = parseInt(computedStyle.height);
+                            element.style.width = (width + 30) + 'vw';
+                            element.style.height = (height + 30) + 'vw';
+                            element.style.outline = '7px solid red';
                         }
-                    });
-                    // return matchingElements;
-                }, selector, obj);
+                        // 일반 텍스트의 경우
+                        else element.style.border = '7px solid red';
+                    }
+                });
+            }, selector, obj);
 
-                // console.log(matchingElements);
-
-            } else {
-                console.log("-----not found area");
-            }
+        } else {
+            console.log("-----not found area");
         }
+    }
     
 }
 
