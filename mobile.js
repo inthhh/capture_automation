@@ -31,16 +31,16 @@ const takeScreenshot = async (siteCode) => {
     await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
     await breaker.cookiePopupBreaker(page)
-    if(siteCode != "tr"){
-        await delay(1000)
-        await breaker.clickFirstMerchan(page)
-    }
-    if(siteCode=="tr"){
-        await delay(1000)
+    // if(siteCode != "tr"){
+    //     await delay(1000)
+    //     await breaker.clickFirstMerchan(page)
+    // }
+    // if(siteCode=="tr"){
+        await delay(2000)
         await breaker.cookiePopupBreaker(page)
         await delay(1000)
         await breaker.clickFirstMerchan(page)
-    }
+    // }
     await delay(20000)
     await carouselBreak.carouselBreakMobile(page, siteCode)
 

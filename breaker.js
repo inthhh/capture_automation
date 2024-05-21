@@ -19,6 +19,12 @@ const cookiePopupBreaker = async (page) =>{
       const feedbackcontainer = document.querySelector('#QSIFeedbackButton-target-container')
       if(feedbackcontainer) feedbackcontainer.style.display = 'none'
 
+      const cnIframe = document.querySelector("surveyIframe")
+      if (cnIframe) {
+        cnIframe.style.display = 'none';
+        cnIframe.remove();
+    }
+
       // Big popup
       document.querySelector('#truste-consent-button')?.click()
       
@@ -28,6 +34,8 @@ const cookiePopupBreaker = async (page) =>{
       // Dialog popup
       document.querySelector('.cookie-bar__close')?.click()
     
+      const insiderOverlay = document.querySelector('#insider-opt-in-native-dialog');
+      if(insiderOverlay) insiderOverlay.style.display = 'none'
     const buttons = document.querySelectorAll('.tab__item-title')
 
     buttons?.forEach(async (button, index) => {
