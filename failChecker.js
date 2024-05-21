@@ -8,9 +8,61 @@ const checkFailData = async (page, obj) =>{
         return;
     }
     // 2. 이미지 오류의 경우
-    if(obj.contents.includes("images.samsung")){
+    if(obj.area.includes("KV") && obj.contents.includes("images.samsung")){
+        // kv 이미지
+        console.log("finding KV image")
+        const src = obj.contents;
+            const kvCarouselSlides = await page.$(`div[class*="home-kv-carousel__wrapper"]`);
+            if(kvCarouselSlides){
+                const kvElements = await page.evaluate((kvCarouselSlides, src)=>{
+                    const elements = kvCarouselSlides.querySelectorAll('img');
+                    elements.forEach(element => {
+                        if(element.src.includes(src)){
+                            console.log("kv match1")
+                            element.style.border = '7px solid red';
+                            return;
+                        }
+                        else if(element.getAttribute('data-desktop-src')){
+                            console.log("kv match2")
+                            if(element.getAttribute('data-desktop-src').includes(src)) element.style.border = '7px solid red';
+                            return;
+                        }
+                        else if(element.getAttribute('data-mobile-src')){
+                            console.log("kv match3")
+                            if(element.getAttribute('data-mobile-src').includes(src)) element.style.border = '7px solid red';
+                            return;
+                        }
+                        else if(element.getAttribute('data-360w2x-src')){
+                            console.log("kv match4")
+                            if(element.getAttribute('data-360w2x-src').includes(src)) element.style.border = '7px solid red';
+                            return;
+                        }
+                        else if(element.getAttribute('data-1366w2x-src')){
+                            console.log("kv match5")
+                            if(element.getAttribute('data-1366w2x-src').includes(src)) element.style.border = '7px solid red';
+                            return;
+                        }
+                        else if(kvCarouselSlides.querySelectorAll('source'))
+                        {
+                            const els = kvCarouselSlides.querySelectorAll('source');
+                            
+                            els.forEach(el => {
+                                if(el.getAttribute('srcset')){
+                                    if(el.getAttribute('srcset').includes(src)) el.style.border = '7px solid red';
+                                    return;
+                                }
+                            })
+                        }
+                    
+                    });
+                }, kvCarouselSlides, src);
+            }
+        
+    }
+    else if(obj.contents.includes("images.samsung")){
         const src = obj.contents;
 
+        // co05 이미지
         let selector = await page.$(`div[class*="showcase-card-tab__inner"]`);
         if (selector) {
             const matchingElements = await page.evaluate((selector, src) => {
@@ -23,7 +75,9 @@ const checkFailData = async (page, obj) =>{
                 });
             }, selector, src);
         }
+        
     }
+        
     // 3. co05 타일 레이아웃 오류의 경우
     else if (obj.desc == "Tile Layout") {
         // 해당 레이아웃의 제목(area)를 저장

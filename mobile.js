@@ -1,9 +1,9 @@
 const puppeteer = require('puppeteer');
 const moment = require('moment');
-const carouselBreak = require ('./capture-utils/carouselBreak');
-const failChecker = require("./capture-utils/failChecker");
-const getRawData = require("./capture-utils/getRawData")
-const breaker = require("./capture-utils/breaker")
+const carouselBreak = require ('./carouselBreak');
+const failChecker = require("./failChecker");
+const getRawData = require("./getRawData")
+const breaker = require("./breaker")
 
 const delay = (time) => {
     return new Promise(function(resolve) {
@@ -40,7 +40,7 @@ const takeScreenshot = async (siteCode) => {
     await delay(20000)
 
 
-    const failedData = await getRawData("2024-05-20", siteCode, "N", "Mobile")
+    const failedData = await getRawData("2024-05-21", siteCode, "N", "Mobile")
     if(failedData && failedData.length>0){
         for (let i = 0; i < failedData.length; i++){
             await failChecker.checkFailData(page,failedData[i])
