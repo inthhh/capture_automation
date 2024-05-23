@@ -1,5 +1,7 @@
+
+// isDesktop = desktop home ver일때만 true
 const cookiePopupBreaker = async (page, isDesktop) =>{
-  await page.waitForSelector('.tab__item-title')
+  if(isDesktop) await page.waitForSelector('.tab__item-title')
   await page.evaluate((isDesktop)=>{
     //Popup wrap
     const popupWrap = document.querySelector('#truste-consent-track')

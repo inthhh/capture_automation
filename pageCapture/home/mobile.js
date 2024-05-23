@@ -1,9 +1,9 @@
 const puppeteer = require('puppeteer');
 const moment = require('moment');
-const carouselBreak = require ('./utils/capture-utils/carouselBreak');
-const failChecker = require("./utils/capture-utils/failChecker");
-const getRawData = require("./utils/capture-utils/getRawData")
-const breaker = require("./utils/capture-utils/breaker")
+const carouselBreak = require ('../capture-utils/carouselBreak');
+const failChecker = require("../capture-utils/failChecker");
+const getRawData = require("../capture-utils/getRawData")
+const breaker = require("../capture-utils/breaker")
 
 const delay = (time) => {
     return new Promise(function(resolve) {

@@ -1,10 +1,12 @@
 const region = require("./region")
-const mobile = require("./mobile")
-const desktop = require("./desktop")
+const mobile = require("./pageCapture/home/mobile")
+const desktop = require("./pageCapture/home/desktop")
+const mobile_offer = require("./pageCapture/offer/mobile_offer")
+const desktop_offer = require("./pageCapture/offer/desktop_offer")
 
 const goScreenshot = async () => {
   // const site_code = region.site_code;
-const site_code = ['ca','latin_en'];
+const site_code = ['uk','au'];
   const batchSize = 3;
   const totalBatches = Math.ceil(site_code.length / batchSize);
   const results = [];
@@ -17,8 +19,14 @@ const site_code = ['ca','latin_en'];
       const dataDate = "2024-05-21";
       const promises = batch.map(async site => {
           try {
-              // return await desktop.takeScreenshot(site, dataDate); // Desktop ver 실행 시
-              return await mobile.takeScreenshot(site, dataDate); // Mobile ver 실행 시
+            // 주석처리 해제한 스크린샷 작업을 병렬로 실행
+                const screenshots = await Promise.all([
+                  // desktop.takeScreenshot(site, dataDate), // Desktop home 실행 시
+                  // desktop_offer.takeScreenshot(site, dataDate), // Desktop offer 실행 시
+                  mobile.takeScreenshot(site, dataDate), // Mobile home 실행 시
+                  mobile_offer.takeScreenshot(site, dataDate) // Mobile offer 실행 시
+              ]);
+              return screenshots;
           } catch (error) {
               console.error(`Error taking screenshot for site ${site}:`, error);
               // 스크린샷 도중 오류가 발생한 경우 null을 반환
