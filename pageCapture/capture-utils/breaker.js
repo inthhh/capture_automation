@@ -50,7 +50,7 @@ const cookiePopupBreaker = async (page, isDesktop) =>{
 
 // co05 첫 버튼을 눌러서 첫 케로쉘로 다시 돌아오게 하기
 const clickFirstMerchan = async (page) =>{
-  await page.waitForSelector('.tab__item-title')
+  // await page.waitForSelector('.tab__item-title')
   await page.evaluate(async()=>{
     const buttons = document.querySelectorAll('.tab__item-title')
     await new Promise(resolve => setTimeout(resolve, 20000));
@@ -68,7 +68,7 @@ const clickFirstMerchan = async (page) =>{
 }
 
 const removeIframe = async (page) =>{
-  await page.waitForSelector('.tab__item-title')
+  // await page.waitForSelector('.tab__item-title')
   await page.evaluate(async()=>{
     const surveyIframe = document.getElementById('QSIFeedbackButton-survey-iframe');
     if (surveyIframe) surveyIframe.remove();
