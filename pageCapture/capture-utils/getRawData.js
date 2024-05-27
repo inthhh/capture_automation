@@ -3,12 +3,14 @@ require("dotenv").config();
 const axios = require("axios")
 
 const getRawData = async (date="", siteCode="", checkResult="", Desc="") =>{
+    
+    // API에서 전체 데이터를 받아옴
     let targetURI = `${process.env["RAW_DATA_API_END_POINT"]}${process.env["RAW_DATA_API_ROUTER"]}?date=${date}&site-code=${siteCode}&check-result=${checkResult}`
-    // console.log(targetURI)
+    
     try {
         const { data } = await axios.get(targetURI);
-        // console.log(data)
         const failImgArr = data.data.map((obj, idx) => {
+            // Desktop ver일 때, Mobile 요소는 제외
             if(Desc == "Desktop"){
                 if(obj.description != "Mobile"){
                     return {
@@ -18,7 +20,9 @@ const getRawData = async (date="", siteCode="", checkResult="", Desc="") =>{
                         contents: (obj.contents&&obj.contents.includes("https://") ? (obj.contents.replace("https://", "")) : (obj.contents))
                     };
                 }
-            } else if(Desc == "Mobile"){
+            } 
+            // Mobile ver일 때, Desktop 요소는 제외
+            else if(Desc == "Mobile"){
                 if(obj.description != "Desktop"){
                     return {
                         desc: obj.description,
@@ -31,8 +35,8 @@ const getRawData = async (date="", siteCode="", checkResult="", Desc="") =>{
             else return null;
         })
 
-        // console.log(failImgArr.filter(Boolean));
         return failImgArr.filter(Boolean);
+
     } catch (e) {
         console.error(e)
     }
