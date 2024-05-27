@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const moment = require('moment');
-const carouselBreak = require ('../capture-utils/carouselBreak');
+const carouselBreak_offer = require ('../capture-utils/carouselBreak_offer');
 const failChecker = require("../capture-utils/failChecker");
 const getRawData = require("../capture-utils/getRawData")
 const breaker = require("../capture-utils/breaker")
@@ -42,7 +42,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     // }
     // await breaker.removeIframe(page)
     await delay(10000)
-    // await carouselBreak.kvCarouselBreak(page)
+    await carouselBreak_offer.kvCarouselBreak(page)
     
     // await carouselBreak.showcaseCardBreak(page)
 

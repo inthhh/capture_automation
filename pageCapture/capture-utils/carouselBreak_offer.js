@@ -6,8 +6,12 @@ const kvCarouselBreak = async (page) =>{
 
     await page.evaluate (async() => {
         //KV Autoplay stop button
-        const playButton = document.querySelector('.indicator__controls')
-        playButton?.click()
+        const playButtons = document.querySelectorAll('.indicator__controls')
+        if(playButtons){
+            for(let i=0; i<playButtons.length; i++){
+                playButtons[i].click();
+            }
+        }
 
         const kvCarouselHoG = document.querySelector('.ho-g-home-kv-carousel')
         if(kvCarouselHoG){
@@ -15,10 +19,10 @@ const kvCarouselBreak = async (page) =>{
             kvCarouselHoG.style.margin ='0 auto'
         }
         // const kvWraps = document.querySelectorAll('.home-kv-carousel__slide')
-        const kvWraps = document.querySelectorAll('.swiper-container-fade .swiper-slide')
+        const kvWraps = document.querySelectorAll('.home-kv-carousel__container .swiper-slide')
 
         if(kvWraps && kvWraps.length>0){
-            for (let cnt =1; cnt < kvWraps.length-1; cnt++ ) {
+            for (let cnt = 0; cnt < kvWraps.length-2; cnt++ ) {
                 const kvWrap = kvWraps[cnt]
                 let getId = kvWrap.getAttribute('id')
 
