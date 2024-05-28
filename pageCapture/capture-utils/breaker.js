@@ -25,8 +25,22 @@ const cookiePopupBreaker = async (page, isDesktop) =>{
     document.querySelector('.cta.cta--contained.cta--emphasis')?.click()
     // Dialog popup
     document.querySelector('.cookie-bar__close')?.click()
+
+    if(isDesktop){
+      const kvarea = document.querySelectorAll('.home-kv-carousel--height-medium .home-kv-carousel__background-media-wrap');
+      kvarea?.forEach((kv)=>{
+        kv.style.paddingBottom = 'calc(46.444444%)';
+      })
+  }
+  }, isDesktop)
   
-    // co05 버튼 리스트 순차 클릭
+}
+
+// co05 버튼 리스트 순차 클릭
+const clickEveryMerchan = async (page) =>{
+  await page.waitForSelector('.tab__item-title')
+  await page.evaluate(()=>{
+    
     const buttons = document.querySelectorAll('.tab__item-title')
 
     buttons?.forEach(async (button, index) => {
@@ -37,15 +51,7 @@ const cookiePopupBreaker = async (page, isDesktop) =>{
         console.log("**button click");
       }
     });
-
-    if(isDesktop){
-      const kvarea = document.querySelectorAll('.home-kv-carousel--height-medium .home-kv-carousel__background-media-wrap');
-      kvarea?.forEach((kv)=>{
-        kv.style.paddingBottom = 'calc(46.444444%)';
-      })
-  }
-  }, isDesktop)
-  
+  })
 }
 
 // co05 첫 버튼을 눌러서 첫 케로쉘로 다시 돌아오게 하기
@@ -93,6 +99,7 @@ const accessibilityPopupBreaker = async (page) =>{
 module.exports = {
   cookiePopupBreaker,
   accessibilityPopupBreaker,
+  clickEveryMerchan,
   clickFirstMerchan,
   removeIframe
 }
