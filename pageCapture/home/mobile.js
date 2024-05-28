@@ -29,17 +29,12 @@ const takeScreenshot = async (siteCode, dataDate) => {
     await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
     await breaker.cookiePopupBreaker(page, false)
+    // 사이트가 새로고침되며 팝업이 다시 뜨는 경우, popupBreaker 한번 더 실행 필요
     await delay(2000)
     
-    if(siteCode != "tr"){
-        await breaker.clickFirstMerchan(page)
-    }
-    // 새로고침되는 경우 breaker를 한번 더 실행
-    if(siteCode == "tr"){
-        await delay(1000)
-        await breaker.cookiePopupBreaker(page, true)
-        await breaker.clickFirstMerchan(page)
-    }
+    await breaker.clickEveryMerchan(page)
+    await breaker.clickFirstMerchan(page)
+
     await breaker.removeIframe(page)
     await delay(20000)
     await carouselBreak.carouselBreakMobile(page, siteCode)
@@ -62,23 +57,25 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
     await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
     
-    const sharp = require('sharp');
     const maxHeight = 10000;
     const outputImagePath = `.\\result\\test\\mobile\\${siteCode}-${dateNow}-mobile-cutting.jpeg`
     
-    await sharp(fileName)
-    .metadata()
-    .then(metadata => {
-        const height = metadata.height;
-        if (height > maxHeight) {
-            return sharp(fileName)
-                .extract({ left: 0, top: 0, width: metadata.width, height: maxHeight })
-                .toFile(outputImagePath);
-        } else return;
-    })
-    .catch(err => {
-        console.error('이미지 자르기 중 오류가 발생했습니다:', err);
-    });
+    if(siteCode == 'it'){
+        try {
+            const sharp = require('sharp');
+            const metadata = await sharp(fileName).metadata();
+            const height = metadata.height;
+
+            if (height > maxHeight) {
+                await sharp(fileName)
+                    .extract({ left: 0, top: 0, width: metadata.width, height: maxHeight })
+                    .toFile(outputImagePath);
+            } else return;
+        }
+        catch (err) {
+            console.error('이미지 자르기 중 오류가 발생했습니다:', err);
+        }
+    }
     
     browser.close();
 
