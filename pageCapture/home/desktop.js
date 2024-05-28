@@ -58,7 +58,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     await carouselBreak.eventListenerBreak(page)
     await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
 
-    // browser.close();
+    browser.close();
 
 }
 

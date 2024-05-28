@@ -38,8 +38,9 @@ const takeScreenshot = async (siteCode, dataDate) => {
     await breaker.removeIframe(page)
     await delay(20000)
     await carouselBreak.carouselBreakMobile(page, siteCode)
-    await delay(20000)
-
+    await delay(10000)
+    await carouselBreak.eventListenerBreak(page)
+    await delay(10000)
 
     const failedData = await getRawData(dataDate, siteCode, "N", "Mobile")
     if(failedData && failedData.length>0){
@@ -53,7 +54,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
 
     await breaker.accessibilityPopupBreaker(page)
-    await carouselBreak.eventListenerBreak(page)
+    // await carouselBreak.eventListenerBreak(page)
 
     await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
     

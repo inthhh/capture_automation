@@ -19,21 +19,21 @@ const checkFailData = async (page, obj) =>{
                     
                     elements.forEach(element => {
                         if(element.src.includes(src)){
-                            element.style.width = 'calc(100% - 14px)';
+                            // element.style.width = 'calc(100% - 14px)';
                             element.style.border = '7px solid red';
                             return;
                         }
                         else if(element.getAttribute('data-360w2x-src')){
                             if(element.getAttribute('data-360w2x-src').includes(src)) {
-                                element.style.width = 'calc(100% - 14px)';
-                                element.style.border = '147px solid green';
+                                // element.style.width = 'calc(100% - 14px)';
+                                element.style.border = '7px solid red';
                             }
                             return;
                         }
                         else if(element.getAttribute('data-1366w2x-src')){
                             if(element.getAttribute('data-1366w2x-src').includes(src)) {
-                                element.style.width = 'calc(100% - 14px)';
-                                element.style.border = '14px solid yellow';
+                                // element.style.width = 'calc(100% - 14px)';
+                                element.style.border = '14px solid red';
                             }
                             return;
                         }
@@ -43,9 +43,12 @@ const checkFailData = async (page, obj) =>{
                             els.forEach(el => {
                                 if(el.getAttribute('srcset')){
                                     if(el.getAttribute('srcset').includes(src)) {
-                                        element.style.width = 'calc(100% - 14px)';
-                                        el.style.border = '7px solid red';
-                                    }
+                                        const parentEl = el.parentElement;
+
+                                        const imgEl = parentEl.querySelector('img');
+                                        if (imgEl) {
+                                            imgEl.style.border = '7px solid red';
+                                        }}
                                     return;
                                 }
                             })
