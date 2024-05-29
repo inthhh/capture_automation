@@ -36,7 +36,6 @@ const takeScreenshot = async (siteCode, dataDate) => {
     await breaker.clickFirstMerchan(page)
 
     await breaker.removeIframe(page)
-    await delay(20000)
     await carouselBreak.carouselBreakMobile(page, siteCode)
     await delay(10000)
     await carouselBreak.eventListenerBreak(page)

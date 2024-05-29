@@ -5,6 +5,14 @@ const kvCarouselBreak = async (page) =>{
     await page.waitForSelector('.swiper-slide');
 
     await page.evaluate (async() => {
+
+        const links = document.querySelectorAll('a');
+
+        links?.forEach(link => {
+            // href 속성을 #로 설정하여 비활성화
+            link.setAttribute('href', 'javascript:void(0);');
+        });
+
         //KV Autoplay stop button
         const playButtons = document.querySelectorAll('.indicator__controls')
         if(playButtons){
@@ -107,7 +115,6 @@ const kvCarouselBreak = async (page) =>{
                             const vid = slide.querySelector('.video');
                             if(vid){
                                 // video preview 이미지 없을 시 border 처리
-                                vid.style.paddingBottom = '0';
                                 vid.style.width = 'calc(100% - 14px)';
                                 vid.style.border = '7px solid red';
                             }
@@ -157,6 +164,42 @@ const kvCarouselBreak = async (page) =>{
     
 }
 
+// 카드 케로쉘을 펼치는 함수
+const cardCarouselBreak = async (page) => {
+    await page.evaluate (() => {
+
+        //     // 케로쉘 깨기
+        //     const showCaseCardTab = document.querySelector(".swiper-container.basic-swiper")
+        //     const showCaseCardTabWrapper = document.querySelector(".swiper-container.basic-swiper .swiper-wrapper")
+            
+        //     if(showCaseCardTab) showCaseCardTab.style.overflow = 'visible'
+        //     if(showCaseCardTabWrapper) showCaseCardTabWrapper.style.overflow = 'visible'
+        // });
+    })
+}
+
+const viewmoreBreak = async (page) =>{
+    await page.evaluate(()=>{
+        
+        function clickButton() {
+            const viewmoreBtn = document.querySelector('.swiper-slide.all-offer-card__panel .cta.cta--outlined');
+            if (viewmoreBtn) {
+                viewmoreBtn.click();
+                console.log("Clicked viewmore button");
+            }
+        }
+        // 1초 간격으로 clickButton 함수를 실행
+        const intervalId = setInterval(clickButton, 1000);
+        
+        // 10초 후에 인터벌 중지
+        setTimeout(() => {
+            clearInterval(intervalId);
+            console.log("Stopped clicking viewmore button");
+        }, 10000); // 10초 후에 중지
+    }
+)
+}
+
 const eventListenerBreak = async (page) =>{
     await page.evaluate(()=>{
         const elementsWithListeners = document.querySelectorAll('*');
@@ -172,6 +215,8 @@ const eventListenerBreak = async (page) =>{
 }
 
 module.exports = {
-    'kvCarouselBreak' : kvCarouselBreak,
-    'eventListenerBreak' : eventListenerBreak
+    kvCarouselBreak,
+    eventListenerBreak,
+    // cardCarouselBreak,
+    viewmoreBreak
 }

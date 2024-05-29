@@ -97,22 +97,9 @@ const kvCarouselBreak = async (page) =>{
                         const vid = slide.querySelector('.video');
                         if(vid){
                             // video preview 이미지 없을 시 border 처리
-                            vid.style.paddingBottom = '0';
                             vid.style.width = 'calc(100% - 14px)';
                             vid.style.border = '7px solid red';
                         }
-                        // imgArea 없을 때 video selector, 마지막 장면 캡쳐를 위한 로직 plan
-                        // if (vid) {
-                        //     vid.play();
-                        //     vid.onended = (event) => {
-                        //         alert("The video has ended");
-
-                        //         //캡쳐 한번 더 
-                        //     };
-                        // } else {
-                        //     console.error("No video element found in slide.");
-                        // }
-                          
                     }
                 }
             });
@@ -228,7 +215,6 @@ const carouselBreakMobile = async (page, site_code) =>{
                         const vid = slide.querySelector('.video');
                         if(vid){
                             // video preview 이미지 없을 시 border 처리
-                            vid.style.paddingBottom = '0';
                             vid.style.width = 'calc(100% - 14px)';
                             vid.style.border = '7px solid red';
                         }
