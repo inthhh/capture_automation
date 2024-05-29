@@ -5,6 +5,14 @@ const kvCarouselBreak = async (page) =>{
     await page.waitForSelector('.swiper-slide');
 
     await page.evaluate (async() => {
+
+        const links = document.querySelectorAll('a');
+
+        links?.forEach(link => {
+            // href 속성을 #로 설정하여 비활성화
+            link.setAttribute('href', 'javascript:void(0);');
+        });
+
         //KV Autoplay stop button
         const playButtons = document.querySelectorAll('.indicator__controls')
         if(playButtons){
@@ -172,26 +180,24 @@ const cardCarouselBreak = async (page) => {
 
 const viewmoreBreak = async (page) =>{
     await page.evaluate(()=>{
-        // MutationObserver 생성
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                // 버튼이 추가되었는지 확인
-                const viewmoreBtn = document.querySelector('.swiper-wrapper .cta.cta--outlined');
-                if(viewmoreBtn){
-                    viewmoreBtn.click();
-                }
-            });
-        });
-
-        const config = { childList: true, subtree: true };
-        observer.observe(document.body, config);
-
-        // 특정 시간이 지난 후 observer를 중지합니다.
+        
+        function clickButton() {
+            const viewmoreBtn = document.querySelector('.swiper-slide.all-offer-card__panel .cta.cta--outlined');
+            if (viewmoreBtn) {
+                viewmoreBtn.click();
+                console.log("Clicked viewmore button");
+            }
+        }
+        // 1초 간격으로 clickButton 함수를 실행
+        const intervalId = setInterval(clickButton, 1000);
+        
+        // 10초 후에 인터벌 중지
         setTimeout(() => {
-            observer.disconnect();
-        }, 20000); // 10초 후에 중지
-
-    })
+            clearInterval(intervalId);
+            console.log("Stopped clicking viewmore button");
+        }, 10000); // 10초 후에 중지
+    }
+)
 }
 
 const eventListenerBreak = async (page) =>{

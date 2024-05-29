@@ -32,15 +32,13 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
     await breaker.cookiePopupBreaker(page, false)
     await delay(2000)
-    // await breaker.clickFirstMerchan(page)
     await breaker.removeIframe(page)
-    await delay(20000)
     await carouselBreak_offer.kvCarouselBreak(page)
     await delay(10000)
     await carouselBreak_offer.viewmoreBreak(page)
     // await carouselBreak_offer.cardCarouselBreak(page)
 
-    await delay(10000)
+    await delay(12000)
 
     // const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
 

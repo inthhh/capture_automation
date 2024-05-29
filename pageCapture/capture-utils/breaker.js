@@ -7,16 +7,6 @@ const cookiePopupBreaker = async (page, isDesktop) =>{
     const popupWrap = document.querySelector('#truste-consent-track')
     if(popupWrap) popupWrap.style.display = 'none'
 
-    // const overlay = document.getElementById("insider-opt-in-native-dialog");
-    // if (overlay) {
-    //   console.log("----------overlay remove")
-    //   overlay.remove();
-    // }
-    // const uaOverlay = document.querySelector(".insider-opt-in-overlay");
-    // if (uaOverlay) {
-    //   console.log("overlay remove")
-    //   uaOverlay.remove();
-    // }
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
           const uaOverlay = document.querySelector(".insider-opt-in-overlay");
@@ -26,9 +16,8 @@ const cookiePopupBreaker = async (page, isDesktop) =>{
               observer.disconnect();  // 요소를 찾으면 더 이상 감시하지 않음
           }
       });
-  });
-  
-  observer.observe(document.body, { childList: true, subtree: true });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
 
     // Big popup
     document.querySelector('#truste-consent-button')?.click()
@@ -101,6 +90,7 @@ const removeIframe = async (page) =>{
 
 // 접근성 팝업 제거
 const accessibilityPopupBreaker = async (page) =>{
+  await page.waitForSelector('.nv00-gnb')
   await page.evaluate(()=>{
       const accessibilityPopup = document.querySelector('.ht-skip')
       if (accessibilityPopup) accessibilityPopup.remove()
