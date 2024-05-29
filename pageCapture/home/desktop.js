@@ -38,10 +38,10 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
     await breaker.removeIframe(page)
     await carouselBreak.kvCarouselBreak(page)
-    await delay(20000)
+    await delay(12000)
     await carouselBreak.showcaseCardBreak(page)
 
-    await delay(20000)
+    await delay(12000)
 
     const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
 
