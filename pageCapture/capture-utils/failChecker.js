@@ -19,11 +19,13 @@ const checkFailData = async (page, obj) =>{
                     
                     elements.forEach(element => {
                         if(element.src.includes(src)){
-                            // element.style.width = 'calc(100% - 14px)';
                             const parentEl1 = element.parentElement;
                             const parentEl2 = parentEl1.parentElement;
                             const parentEl3 = parentEl2.parentElement;
-                            if(parentEl3) parentEl3.style.border = '7px solid red';
+                            if(parentEl3){
+                                parentEl3.style.width = 'calc(100% - 10px)';
+                                parentEl3.style.border = '7px solid red';
+                            }
                             return;
                         }
                         else if(kvCarouselSlides.querySelector('source'))
@@ -37,6 +39,7 @@ const checkFailData = async (page, obj) =>{
                                         const parentEl3 = parentEl2.parentElement;
                                         // const imgEl = parentEl.querySelector('img');
                                         if (parentEl3) {
+                                            parentEl3.style.width = 'calc(100% - 10px)';
                                             parentEl3.style.border = '7px solid red';
                                         }}
                                     return;
@@ -190,18 +193,13 @@ const checkFailData = async (page, obj) =>{
                 elements.forEach(element => {
                     // 현재 요소가 자식이 없는 최하위 요소일 때
                     if (element.innerHTML.includes(obj.contents) && element.children.length === 0){
-                        // 뱃지 텍스트의 경우
-                        if(obj.description == "Badge"){
-                            // 뱃지의 현재 스타일을 가져와서 편집
-                            const computedStyle = window.getComputedStyle(element);
-                            const width = parseInt(computedStyle.width);
-                            const height = parseInt(computedStyle.height);
-                            element.style.width = (width + 30) + 'vw';
-                            element.style.height = (height + 30) + 'vw';
-                            element.style.outline = '4px solid red';
+                        if(obj.area.includes("KV")){
+                            element.style.border = '4px solid red';
                         }
-                        // 일반 텍스트의 경우
-                        else element.style.border = '7px solid red';
+                        else {
+                            const parent = element.parentElement;
+                            if(parent) parent.style.border = '4px solid red';
+                        }
                     }
                 });
             }, selector, obj);

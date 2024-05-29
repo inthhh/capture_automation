@@ -37,12 +37,12 @@ const cookiePopupBreaker = async (page, isDesktop) =>{
     // Dialog popup
     document.querySelector('.cookie-bar__close')?.click()
 
-    if(isDesktop){
-      const kvarea = document.querySelectorAll('.home-kv-carousel--height-medium .home-kv-carousel__background-media-wrap');
-      kvarea?.forEach((kv)=>{
-        kv.style.paddingBottom = 'calc(46.444444%)';
-      })
-    }
+    // if(isDesktop){
+    //   const kvarea = document.querySelectorAll('.home-kv-carousel--height-medium .home-kv-carousel__background-media-wrap');
+    //   kvarea?.forEach((kv)=>{
+    //     kv.style.paddingBottom = 'calc(46.444444%)';
+    //   })
+    // }
   }, isDesktop)
   
 }
