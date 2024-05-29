@@ -107,7 +107,6 @@ const kvCarouselBreak = async (page) =>{
                             const vid = slide.querySelector('.video');
                             if(vid){
                                 // video preview 이미지 없을 시 border 처리
-                                vid.style.paddingBottom = '0';
                                 vid.style.width = 'calc(100% - 14px)';
                                 vid.style.border = '7px solid red';
                             }
@@ -157,6 +156,44 @@ const kvCarouselBreak = async (page) =>{
     
 }
 
+// 카드 케로쉘을 펼치는 함수
+const cardCarouselBreak = async (page) => {
+    await page.evaluate (() => {
+
+        //     // 케로쉘 깨기
+        //     const showCaseCardTab = document.querySelector(".swiper-container.basic-swiper")
+        //     const showCaseCardTabWrapper = document.querySelector(".swiper-container.basic-swiper .swiper-wrapper")
+            
+        //     if(showCaseCardTab) showCaseCardTab.style.overflow = 'visible'
+        //     if(showCaseCardTabWrapper) showCaseCardTabWrapper.style.overflow = 'visible'
+        // });
+    })
+}
+
+const viewmoreBreak = async (page) =>{
+    await page.evaluate(()=>{
+        // MutationObserver 생성
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                // 버튼이 추가되었는지 확인
+                const viewmoreBtn = document.querySelector('.swiper-wrapper .cta.cta--outlined');
+                if(viewmoreBtn){
+                    viewmoreBtn.click();
+                }
+            });
+        });
+
+        const config = { childList: true, subtree: true };
+        observer.observe(document.body, config);
+
+        // 특정 시간이 지난 후 observer를 중지합니다.
+        setTimeout(() => {
+            observer.disconnect();
+        }, 20000); // 10초 후에 중지
+
+    })
+}
+
 const eventListenerBreak = async (page) =>{
     await page.evaluate(()=>{
         const elementsWithListeners = document.querySelectorAll('*');
@@ -172,6 +209,8 @@ const eventListenerBreak = async (page) =>{
 }
 
 module.exports = {
-    'kvCarouselBreak' : kvCarouselBreak,
-    'eventListenerBreak' : eventListenerBreak
+    kvCarouselBreak,
+    eventListenerBreak,
+    // cardCarouselBreak,
+    viewmoreBreak
 }

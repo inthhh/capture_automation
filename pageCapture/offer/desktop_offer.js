@@ -13,7 +13,8 @@ const delay = (time) => {
 const takeScreenshot = async (siteCode, dataDate) => {
     const browser = await puppeteer.launch({
         headless: false,
-        timeout: 100000
+        timeout: 500000,
+        protocolTimeout: 500000
     });
     console.log("---", siteCode,":offer ---");
     
@@ -21,7 +22,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     const url = `https://www.samsung.com/${siteCode}/offer`;
     await page.setViewport({ width: 1440, height: 10000 });
     await delay(1000)
-    await page.setDefaultTimeout(200000);
+    await page.setDefaultTimeout(500000);
     await page.goto(url, { waitUntil: 'load', timeout: 200000 });
     // await delay(1000)
     
@@ -33,12 +34,13 @@ const takeScreenshot = async (siteCode, dataDate) => {
     await delay(2000)
     // await breaker.clickFirstMerchan(page)
     await breaker.removeIframe(page)
-    await delay(12000)
+    await delay(20000)
     await carouselBreak_offer.kvCarouselBreak(page)
-    
-    // await carouselBreak.showcaseCardBreak(page)
+    await delay(10000)
+    await carouselBreak_offer.viewmoreBreak(page)
+    // await carouselBreak_offer.cardCarouselBreak(page)
 
-    await delay(12000)
+    await delay(10000)
 
     // const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
 
@@ -53,7 +55,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
     await breaker.accessibilityPopupBreaker(page)
     await carouselBreak_offer.eventListenerBreak(page)
-    await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
+    await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 10});
 
     browser.close();
 

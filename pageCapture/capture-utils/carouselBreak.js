@@ -100,18 +100,6 @@ const kvCarouselBreak = async (page) =>{
                             vid.style.width = 'calc(100% - 14px)';
                             vid.style.border = '7px solid red';
                         }
-                        // imgArea 없을 때 video selector, 마지막 장면 캡쳐를 위한 로직 plan
-                        // if (vid) {
-                        //     vid.play();
-                        //     vid.onended = (event) => {
-                        //         alert("The video has ended");
-
-                        //         //캡쳐 한번 더 
-                        //     };
-                        // } else {
-                        //     console.error("No video element found in slide.");
-                        // }
-                          
                     }
                 }
             });
