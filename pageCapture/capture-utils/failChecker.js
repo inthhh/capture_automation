@@ -20,21 +20,10 @@ const checkFailData = async (page, obj) =>{
                     elements.forEach(element => {
                         if(element.src.includes(src)){
                             // element.style.width = 'calc(100% - 14px)';
-                            element.style.border = '7px solid red';
-                            return;
-                        }
-                        else if(element.getAttribute('data-360w2x-src')){
-                            if(element.getAttribute('data-360w2x-src').includes(src)) {
-                                // element.style.width = 'calc(100% - 14px)';
-                                element.style.border = '7px solid red';
-                            }
-                            return;
-                        }
-                        else if(element.getAttribute('data-1366w2x-src')){
-                            if(element.getAttribute('data-1366w2x-src').includes(src)) {
-                                // element.style.width = 'calc(100% - 14px)';
-                                element.style.border = '14px solid red';
-                            }
+                            const parentEl1 = element.parentElement;
+                            const parentEl2 = parentEl1.parentElement;
+                            const parentEl3 = parentEl2.parentElement;
+                            if(parentEl3) parentEl3.style.border = '7px solid red';
                             return;
                         }
                         else if(kvCarouselSlides.querySelector('source'))
@@ -43,11 +32,12 @@ const checkFailData = async (page, obj) =>{
                             els.forEach(el => {
                                 if(el.getAttribute('srcset')){
                                     if(el.getAttribute('srcset').includes(src)) {
-                                        const parentEl = el.parentElement;
-
-                                        const imgEl = parentEl.querySelector('img');
-                                        if (imgEl) {
-                                            imgEl.style.border = '7px solid red';
+                                        const parentEl1 = el.parentElement;
+                                        const parentEl2 = parentEl1.parentElement;
+                                        const parentEl3 = parentEl2.parentElement;
+                                        // const imgEl = parentEl.querySelector('img');
+                                        if (parentEl3) {
+                                            parentEl3.style.border = '7px solid red';
                                         }}
                                     return;
                                 }
@@ -69,7 +59,9 @@ const checkFailData = async (page, obj) =>{
                 const elements = selector.querySelectorAll('img');
                 elements.forEach(element => {
                     if(element.src.includes(src)){
-                        element.style.border = '7px solid red';
+                        const parentEl1 = element.parentElement;
+                        const parentEl2 = parentEl1.parentElement;
+                        if(parentEl2) parentEl2.style.border = '7px solid red';
                         return;
                     }
                 });
@@ -206,7 +198,7 @@ const checkFailData = async (page, obj) =>{
                             const height = parseInt(computedStyle.height);
                             element.style.width = (width + 30) + 'vw';
                             element.style.height = (height + 30) + 'vw';
-                            element.style.outline = '7px solid red';
+                            element.style.outline = '4px solid red';
                         }
                         // 일반 텍스트의 경우
                         else element.style.border = '7px solid red';

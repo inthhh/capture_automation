@@ -7,17 +7,28 @@ const cookiePopupBreaker = async (page, isDesktop) =>{
     const popupWrap = document.querySelector('#truste-consent-track')
     if(popupWrap) popupWrap.style.display = 'none'
 
-    const grayoverlay = document.querySelector('#insider-opt-in-native-dialog')
-    if(grayoverlay) grayoverlay.style.display = 'none'
-
-    const overlay = document.getElementById('insider-opt-in-native-dialog')
-    if(overlay) overlay.style.display = 'none'
-
-    const uaOverlay = document.querySelector('.insider-opt-in-overlay');
-    if(uaOverlay) uaOverlay.style.zIndex = '0'
-
-    const insiderOverlay = document.querySelector('#insider-opt-in-native-dialog');
-    if(insiderOverlay) insiderOverlay.style.display = 'none'
+    // const overlay = document.getElementById("insider-opt-in-native-dialog");
+    // if (overlay) {
+    //   console.log("----------overlay remove")
+    //   overlay.remove();
+    // }
+    // const uaOverlay = document.querySelector(".insider-opt-in-overlay");
+    // if (uaOverlay) {
+    //   console.log("overlay remove")
+    //   uaOverlay.remove();
+    // }
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+          const uaOverlay = document.querySelector(".insider-opt-in-overlay");
+          if (uaOverlay) {
+              console.log("overlay remove");
+              uaOverlay.remove();
+              observer.disconnect();  // 요소를 찾으면 더 이상 감시하지 않음
+          }
+      });
+  });
+  
+  observer.observe(document.body, { childList: true, subtree: true });
 
     // Big popup
     document.querySelector('#truste-consent-button')?.click()
@@ -31,7 +42,7 @@ const cookiePopupBreaker = async (page, isDesktop) =>{
       kvarea?.forEach((kv)=>{
         kv.style.paddingBottom = 'calc(46.444444%)';
       })
-  }
+    }
   }, isDesktop)
   
 }
