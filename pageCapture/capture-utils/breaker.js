@@ -93,6 +93,9 @@ const removeIframe = async (page) =>{
 
         const serveyimg = document.querySelector("img.surveyImg");
         if(serveyimg) serveyimg.remove();
+
+        const whatsAppPopup = document.querySelector('.ins-preview-wrapper')
+        if(whatsAppPopup) whatsAppPopup.remove()
       });
     });
     
@@ -112,19 +115,11 @@ const accessibilityPopupBreaker = async (page) =>{
   })
 }
 
-const whatsAppPopupBreaker = async(page) =>{
-  await page.waitForSelector('.ins-preview-wrapper');
-  await page.evaluate(()=>{
-    const whatsAppPopup = document.querySelector('.ins-preview-wrapper')
-    if(whatsAppPopup) whatsAppPopup.remove()
-  })
-}
-
 module.exports = {
   cookiePopupBreaker,
   accessibilityPopupBreaker,
   clickEveryMerchan,
   clickFirstMerchan,
   removeIframe,
-  whatsAppPopupBreaker
+  // whatsAppPopupBreaker
 }
