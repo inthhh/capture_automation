@@ -4,6 +4,8 @@ const carouselBreak_offer = require ('../capture-utils/carouselBreak_offer');
 const failChecker = require("../capture-utils/failChecker");
 const getRawData = require("../capture-utils/getRawData")
 const breaker = require("../capture-utils/breaker")
+const fs = require('node:fs');
+const path = require('node:path')
 
 const delay = (time) => {
     return new Promise(function(resolve) {
@@ -20,7 +22,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     
     const page = await browser.newPage();
     const url = `https://www.samsung.com/${siteCode}/offer`;
-    await page.setViewport({ width: 1440, height: 10000 });
+    await page.setViewport({ width: 1440, height: 1000 });
     await delay(1000)
     await page.setDefaultTimeout(500000);
     await page.goto(url, { waitUntil: 'load', timeout: 200000 });
@@ -30,12 +32,14 @@ const takeScreenshot = async (siteCode, dataDate) => {
     let body = await bodyHandle.boundingBox();
     await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
-    await breaker.cookiePopupBreaker(page, false)
-    await delay(10000)
-    await breaker.removeIframe(page)
-    await carouselBreak_offer.kvCarouselBreak(page)
-    await delay(10000)
-    await carouselBreak_offer.viewmoreBreak(page)
+    // await breaker.cookiePopupBreaker(page, false)
+    //
+    // await delay(10000)
+    // await breaker.removeIframe(page)
+    // await carouselBreak_offer.kvCarouselBreak(page)
+    // await delay(10000)
+    // await carouselBreak_offer.viewmoreBreak(page)
+
     // await carouselBreak_offer.cardCarouselBreak(page)
 
     await delay(12000)
@@ -48,14 +52,19 @@ const takeScreenshot = async (siteCode, dataDate) => {
     //     }
     // }
 
+
+
+    // await breaker.accessibilityPopupBreaker(page)
+    // await breaker.whatsAppPopupBreaker(page)
+    // await carouselBreak_offer.eventListenerBreak(page)
     const dateNow = moment().format("YYYY-MM-DD_HH-mm-ss")
-    const fileName = `.\\result\\test\\desktop_offer\\${siteCode}-${dateNow}-desktop-offer.jpeg`
+    const date = new Date()
+    const pathName = `result/${date.getFullYear()}${String(date.getDate()).padStart(2, '0')}${String(date.getMonth() + 1).padStart(2, '0')}/desktop`
+    const fileName =`${siteCode}-${dateNow}-desktop-offer.jpeg`
+    fs.mkdirSync(pathName, { recursive: true });
+    await page.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 10});
 
-    await breaker.accessibilityPopupBreaker(page)
-    await carouselBreak_offer.eventListenerBreak(page)
-    await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 10});
-
-    browser.close();
+    // browser.close();
 
 }
 

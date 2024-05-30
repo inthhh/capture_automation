@@ -112,10 +112,19 @@ const accessibilityPopupBreaker = async (page) =>{
   })
 }
 
+const whatsAppPopupBreaker = async(page) =>{
+  await page.waitForSelector('.ins-preview-wrapper');
+  await page.evaluate(()=>{
+    const whatsAppPopup = document.querySelector('.ins-preview-wrapper')
+    if(whatsAppPopup) whatsAppPopup.remove()
+  })
+}
+
 module.exports = {
   cookiePopupBreaker,
   accessibilityPopupBreaker,
   clickEveryMerchan,
   clickFirstMerchan,
-  removeIframe
+  removeIframe,
+  whatsAppPopupBreaker
 }

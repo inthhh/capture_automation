@@ -4,6 +4,8 @@ const carouselBreak = require ('../capture-utils/carouselBreak');
 const failChecker = require("../capture-utils/failChecker");
 const getRawData = require("../capture-utils/getRawData")
 const breaker = require("../capture-utils/breaker")
+const fs = require('node:fs');
+const path = require('node:path')
 
 const delay = (time) => {
     return new Promise(function(resolve) {
@@ -51,12 +53,17 @@ const takeScreenshot = async (siteCode, dataDate) => {
         }
     }
 
-    const dateNow = moment().format("YYYY-MM-DD_HH-mm-ss")
-    const fileName = `.\\result\\test\\desktop\\${siteCode}-${dateNow}-desktop-screenshot.jpeg`
+
 
     await breaker.accessibilityPopupBreaker(page)
     await carouselBreak.eventListenerBreak(page)
-    await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
+
+    const dateNow = moment().format("YYYY-MM-DD_HH-mm-ss")
+    const date = new Date()
+    const pathName = `result/${date.getFullYear()}${String(date.getDate()).padStart(2, '0')}${String(date.getMonth() + 1).padStart(2, '0')}/desktop`
+    const fileName =`${siteCode}-${dateNow}-desktop.jpeg`
+    fs.mkdirSync(pathName, { recursive: true });
+    await page.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 20});
 
     browser.close();
 
