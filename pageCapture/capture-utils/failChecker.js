@@ -2,6 +2,18 @@
 
 // 페이지 내에서 API 데이터와 동일한 요소를 찾고 border 표시하는 함수
 const checkFailData = async (page, obj) =>{
+    // co05의 모든 버튼을 저장
+    const buttons = await page.$$eval('.tab__item-title', buttons => {
+        const result = [];
+        buttons.forEach(button => {
+            if (button.getAttribute('an-ac') == 'merchandising') {
+                result.push(button.innerText);
+                // console.log(button.innerText)
+            }
+        });
+        return result;
+    });
+
     // 1. 내용이 없을 경우 return
     if(!obj.contents){
         console.log("obj.contents is null");
@@ -77,29 +89,16 @@ const checkFailData = async (page, obj) =>{
     else if (obj.desc == "Tile Layout") {
         // 해당 레이아웃의 제목(area)를 저장
         const area = obj.area;
-        // co05의 모든 버튼을 저장
-        const buttons = await page.$$eval('.tab__item-title', buttons => {
-            const result = [];
-            buttons.forEach(button => {
-                if (button.getAttribute('an-ac') == 'merchandising') {
-                    result.push(button.innerText);
-                    console.log(button.innerText)
-                }
-            });
-            return result;
-        });
+        
         // area에 해당하는 버튼의 인덱스를 저장
         const buttonIndex = buttons.findIndex((text, index) => {
-            console.log(text, area);
-            return text === area;
+            // console.log(text, area);
+            return area.includes(text);
         });
         
         // co05의 모든 슬라이드를 저장
         const swiperWrapper = await page.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
         const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
-
-        console.log("swiperWrapper : ", swiperWrapper);
-        console.log("swiperChildren : ",swiperChildren);
 
         // area에 해당하는 버튼의 인덱스를 활용하여, 몇 번째 슬라이드인지 검색 후 border 처리
         const selectedElement = await swiperChildren[buttonIndex];
@@ -118,20 +117,9 @@ const checkFailData = async (page, obj) =>{
         // 3번과 동일하게 버튼의 인덱스를 찾은 후 해당 슬라이드 영역 상단에 표시
         console.log(obj.contents)
         const area = obj.area;
-        const buttons = await page.$$eval('.tab__item-title', buttons => {
-            const result = [];
-            buttons.forEach(button => {
-                if (button.getAttribute('an-ac') == 'merchandising') {
-                    result.push(button.innerText);
-                    console.log(button.innerText)
-                }
-            });
-            return result;
-        });
 
         const buttonIndex = buttons.findIndex((text, index) => {
-            console.log(text, area);
-            return text === area;
+            return area.includes(text);
         });
         
         const swiperWrapper = await page.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
@@ -163,8 +151,22 @@ const checkFailData = async (page, obj) =>{
     // 5. 텍스트 오류의 경우
     else {
         let str = "";
+        let merchanArea = "";
+        let tileNumber = "";
         
-        if(obj.key.includes("CO05")) str = "CO05";
+        if(obj.key.includes("CO05")) {
+            str = "CO05";
+            const regex = /CO05_1_(.*?)_/;
+            const match = obj.key.match(regex); // merchan 영역 찾기
+            if (match && match[1]) {
+                merchanArea = match[1];
+                const numberRegex = new RegExp(`${merchanArea}_(\\d+)_`);
+                let tilenum = obj.key.match(numberRegex);
+                tileNumber = tilenum[1];
+            } else {
+                console.log('No match found');
+            }
+        }
         else if(obj.key.includes("CO07")) str = "CO07";
         else if(obj.key.includes("HD01")) str = "HD01";
         else if(obj.key.includes("FT03")) str = "FT03";
@@ -185,7 +187,47 @@ const checkFailData = async (page, obj) =>{
             //
         }
 
-        if (selector) {
+        if(str == "CO05"){
+            const area = obj.area;
+            const buttonIndex = buttons.findIndex((text, index) => {
+                return area.includes(text)
+            });
+            const swiperWrapper = await page.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
+            const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
+
+            // 몇 번째 슬라이드인지 검색
+            const selectedElement = await swiperChildren[buttonIndex];
+            if (await selectedElement) {
+                const cards = await selectedElement.$$('.showcase-card-tab-card')
+                const card = await cards[tileNumber-1]
+                
+                if(card) {
+                    const els = await card.$$(' * '); // 모든 자식 요소 선택
+                    for (let el of els) {
+                        let innerHTML = await el.evaluate(node => node.innerHTML)
+                        let childrenLength = await el.evaluate(node => node.children.length);
+                        let cleanedContents = obj.contents.replace(/<sup>.*?<\/sup>/g, '');
+                        // console.log(merchanArea, " - ", tileNumber, " index / ", cleanedContents)
+                        if (innerHTML.includes(cleanedContents) && childrenLength === 0) {
+                            await el.evaluate(node => {
+                                let parent = node.parentElement;
+                                parent.style.border = '4px solid red';
+                            });
+                        }
+                        else if(innerHTML.includes('sup') && !innerHTML.includes('span') && innerHTML.includes(cleanedContents) && childrenLength === 1){
+                            console.log(merchanArea, " - ", innerHTML, " / ", cleanedContents," ------ ")
+                            await el.evaluate(node => {
+                                let parent = node.parentElement;
+                                parent.style.border = '4px solid red';
+                            });
+                        }
+                    }
+                }
+            } else {
+                console.log(`merchandising text select : failed`);
+            }
+        }
+        else if (selector) {
             
             const matchingElements = await page.evaluate((s, obj) => {
                 const elements = s.querySelectorAll('*');
