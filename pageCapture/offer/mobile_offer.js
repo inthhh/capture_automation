@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const moment = require('moment');
-const carouselBreak = require ('../capture-utils/carouselBreak');
+const carouselBreak_offer = require ('../capture-utils/carouselBreak_offer');
 const failChecker = require("../capture-utils/failChecker");
 const getRawData = require("../capture-utils/getRawData")
 const breaker = require("../capture-utils/breaker")
@@ -13,7 +13,8 @@ const delay = (time) => {
 const takeScreenshot = async (siteCode, dataDate) => {
     const browser = await puppeteer.launch({
         headless: false,
-        timeout: 100000
+        timeout: 500000,
+        protocolTimeout: 500000
     });
     console.log("---", siteCode,": offer ---");
     const page = await browser.newPage();
@@ -21,30 +22,27 @@ const takeScreenshot = async (siteCode, dataDate) => {
     await page.setViewport({ width: 360, height: 10000 });
 
     await delay(1000)
-    await page.setDefaultTimeout(200000);
+    await page.setDefaultTimeout(500000);
     await page.goto(url,{ waitUntil: 'load', timeout: 200000 });
     
     let bodyHandle = await page.$('body');
     let body = await bodyHandle.boundingBox();
+    const footerHandle = await page.$('footer');
+    const footerBox = await footerHandle.boundingBox();
+    const screenshotHeight = footerBox.y;
+
+    // await page.setViewport({ width: Math.floor(body.width), height: Math.min(body.height, screenshotHeight) });
     await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
     await breaker.cookiePopupBreaker(page, false)
-    // await delay(2000)
-    
-    // if(siteCode != "tr"){
-        // await breaker.clickFirstMerchan(page)
-    // }
-    // 새로고침되는 경우 breaker를 한번 더 실행
-    // if(siteCode == "tr"){
-    //     await delay(1000)
-    //     await breaker.cookiePopupBreaker(page, true)
-    //     await breaker.clickFirstMerchan(page)
-    // }
-    // await breaker.removeIframe(page)
-    await delay(10000)
-    // await carouselBreak.carouselBreakMobile(page, siteCode)
-    await delay(10000)
+    await delay(12000)
+    await breaker.removeIframe(page)
+    await carouselBreak_offer.kvMobileCarouselBreak(page)
+    await delay(12000)
+    await carouselBreak_offer.viewmoreBreak(page)
+    await carouselBreak_offer.cardCarouselBreak(page)
 
+    await delay(12000)
 
     // const failedData = await getRawData(dataDate, siteCode, "N", "Mobile")
     // if(failedData && failedData.length>0){
@@ -57,10 +55,11 @@ const takeScreenshot = async (siteCode, dataDate) => {
     const fileName = `.\\result\\test\\mobile_offer\\${siteCode}-${dateNow}-mobile-offer.jpeg`
 
 
-    // await breaker.accessibilityPopupBreaker(page)
-    // await carouselBreak.eventListenerBreak(page)
+    await breaker.accessibilityPopupBreaker(page)
+    await carouselBreak_offer.eventListenerBreak(page)
 
     await page.screenshot({ path: fileName, fullPage: true, type: 'jpeg', quality: 20});
+    // await page.screenshot({ path: fileName, fullPage: false, type: 'jpeg', quality: 20 });
     
     // const sharp = require('sharp');
     // const maxHeight = 10000;

@@ -7,17 +7,17 @@ const cookiePopupBreaker = async (page, isDesktop) =>{
     const popupWrap = document.querySelector('#truste-consent-track')
     if(popupWrap) popupWrap.style.display = 'none'
 
-    const observer = new MutationObserver((mutations) => {
+    const observer1 = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-          const uaOverlay = document.querySelector(".insider-opt-in-overlay");
-          if (uaOverlay) {
+          const grayOverlay = document.querySelector(".insider-opt-in-overlay");
+          if (grayOverlay) {
               console.log("overlay remove");
-              uaOverlay.remove();
-              observer.disconnect();  // 요소를 찾으면 더 이상 감시하지 않음
+              grayOverlay.remove();
+              observer1.disconnect();  // 요소를 찾으면 더 이상 감시하지 않음
           }
       });
     });
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer1.observe(document.body, { childList: true, subtree: true });
 
     // Big popup
     document.querySelector('#truste-consent-button')?.click()
@@ -26,12 +26,6 @@ const cookiePopupBreaker = async (page, isDesktop) =>{
     // Dialog popup
     document.querySelector('.cookie-bar__close')?.click()
 
-    // if(isDesktop){
-    //   const kvarea = document.querySelectorAll('.home-kv-carousel--height-medium .home-kv-carousel__background-media-wrap');
-    //   kvarea?.forEach((kv)=>{
-    //     kv.style.paddingBottom = 'calc(46.444444%)';
-    //   })
-    // }
   }, isDesktop)
   
 }
@@ -81,12 +75,33 @@ const removeIframe = async (page) =>{
 
     const feedbackcontainer = document.querySelector('#QSIFeedbackButton-target-container')
     if(feedbackcontainer) feedbackcontainer.style.display = 'none'
-    const cnIframe = document.querySelector("surveyIframe")
-    if (cnIframe) {
-      cnIframe.style.display = 'none';
-      cnIframe.remove();
-    }
-  })}
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+
+        const surveyiframe = document.querySelector(".surveyIframe.showSurvey");
+        if (surveyiframe) surveyiframe.remove();
+        
+        const previewWrapper = document.querySelector(".ins-preview-wrapper");
+        if (previewWrapper) previewWrapper.remove();
+    
+        const formIframe = document.querySelector("#MDigitalAnimationWrapper");
+        if (formIframe) formIframe.remove();
+
+        const chatIframe = document.querySelector("#zc__sdk__container");
+        if (chatIframe) chatIframe.remove();
+
+        const serveyimg = document.querySelector("img.surveyImg");
+        if(serveyimg) serveyimg.remove();
+      });
+    });
+    
+    // 관찰 시작
+    observer.observe(document.body, { childList: true, subtree: true });
+    
+
+  })
+}
 
 // 접근성 팝업 제거
 const accessibilityPopupBreaker = async (page) =>{
