@@ -31,7 +31,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
     await breaker.cookiePopupBreaker(page, false)
-    await delay(2000)
+    await delay(10000)
     await breaker.removeIframe(page)
     await carouselBreak_offer.kvCarouselBreak(page)
     await delay(10000)
