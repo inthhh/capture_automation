@@ -37,6 +37,7 @@ const checkFailData = async (page, obj) =>{
                             if(parentEl3){
                                 parentEl3.style.width = 'calc(100% - 10px)';
                                 parentEl3.style.border = '7px solid red';
+                                parentEl3.style.transform = 'translate3d(0, 0, 0)'
                             }
                             return;
                         }
@@ -53,6 +54,7 @@ const checkFailData = async (page, obj) =>{
                                         if (parentEl3) {
                                             parentEl3.style.width = 'calc(100% - 10px)';
                                             parentEl3.style.border = '7px solid red';
+                                            parentEl3.style.transform = 'translate3d(0, 0, 0)'
                                         }}
                                     return;
                                 }
