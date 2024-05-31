@@ -13,6 +13,10 @@ const checkFailData = async (page, obj) =>{
         });
         return result;
     });
+    const area = obj.area;
+    const buttonIndex = buttons.findIndex((text, index) => {
+        return area.includes(text)
+    });
 
     // 1. 내용이 없을 경우 return
     if(!obj.contents){
@@ -66,14 +70,19 @@ const checkFailData = async (page, obj) =>{
             }
         
     }
+    // KV 외의 이미지
     else if(obj.contents.includes("images.samsung")){
         const src = obj.contents;
+        const swiperWrapper = await page.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
+        const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
 
+        // area에 해당하는 버튼의 인덱스를 활용하여, 몇 번째 슬라이드인지 검색 후 border 처리
+        const selectedElement = await swiperChildren[buttonIndex];
         // co05 이미지
-        let selector = await page.$(`div[class*="showcase-card-tab__inner"]`);
-        if (selector) {
-            const matchingElements = await page.evaluate((selector, src) => {
-                const elements = selector.querySelectorAll('img');
+        // let selector = await page.$(`div[class*="showcase-card-tab__inner"]`);
+        if (selectedElement) {
+            const matchingElements = await page.evaluate((selectedElement, src) => {
+                const elements = selectedElement.querySelectorAll('img');
                 elements.forEach(element => {
                     if(element.src.includes(src)){
                         const parentEl1 = element.parentElement;
@@ -82,21 +91,13 @@ const checkFailData = async (page, obj) =>{
                         return;
                     }
                 });
-            }, selector, src);
+            }, selectedElement, src);
         }
         
     }
         
     // 3. co05 타일 레이아웃 오류의 경우
     else if (obj.desc == "Tile Layout") {
-        // 해당 레이아웃의 제목(area)를 저장
-        const area = obj.area;
-        
-        // area에 해당하는 버튼의 인덱스를 저장
-        const buttonIndex = buttons.findIndex((text, index) => {
-            // console.log(text, area);
-            return area.includes(text);
-        });
         
         // co05의 모든 슬라이드를 저장
         const swiperWrapper = await page.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
@@ -118,11 +119,6 @@ const checkFailData = async (page, obj) =>{
     else if (obj.contents && obj.contents.length === 1 && obj.contents < 7) {
         // 3번과 동일하게 버튼의 인덱스를 찾은 후 해당 슬라이드 영역 상단에 표시
         console.log(obj.contents)
-        const area = obj.area;
-
-        const buttonIndex = buttons.findIndex((text, index) => {
-            return area.includes(text);
-        });
         
         const swiperWrapper = await page.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
         const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
@@ -190,10 +186,7 @@ const checkFailData = async (page, obj) =>{
         }
 
         if(str == "CO05"){
-            const area = obj.area;
-            const buttonIndex = buttons.findIndex((text, index) => {
-                return area.includes(text)
-            });
+            
             const swiperWrapper = await page.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
             const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
 
@@ -206,18 +199,27 @@ const checkFailData = async (page, obj) =>{
                 if(card) {
                     const els = await card.$$(' * '); // 모든 자식 요소 선택
                     for (let el of els) {
-                        let innerHTML = await el.evaluate(node => node.innerHTML)
+                        let innerhtml = await el.evaluate(node => node.innerHTML)
                         let childrenLength = await el.evaluate(node => node.children.length);
                         let cleanedContents = obj.contents.replace(/<sup>.*?<\/sup>/g, '');
-                        // console.log(merchanArea, " - ", tileNumber, " index / ", cleanedContents)
-                        if (innerHTML.includes(cleanedContents) && childrenLength === 0) {
+                        cleanedContents = cleanedContents.replace("<br/>","");
+                        // if(cleanedContents.includes('400')) console.log(area, " - ", cleanedContents, ' / ',childrenLength, innerhtml)
+                        if (innerhtml.includes(cleanedContents) && childrenLength === 0) {
+                            // console.log(area, " - ", tileNumber, " index / ", cleanedContents)
                             await el.evaluate(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
                             });
                         }
-                        else if(innerHTML.includes('sup') && !innerHTML.includes('span') && innerHTML.includes(cleanedContents) && childrenLength === 1){
-                            console.log(merchanArea, " - ", innerHTML, " / ", cleanedContents," ------ ")
+                        else if(innerhtml.includes('<br>') && innerhtml.includes(cleanedContents) && childrenLength === 1){
+                            // console.log(area, " - ", tileNumber, " index / ", innerhtml)
+                            await el.evaluate(node => {
+                                let parent = node.parentElement;
+                                parent.style.border = '4px solid red';
+                            });
+                        }
+                        else if(innerhtml.includes('sup') && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 1){
+                            // console.log(merchanArea, " - ", innerHTML, " / ", cleanedContents," ------ ")
                             await el.evaluate(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
