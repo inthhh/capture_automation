@@ -17,7 +17,8 @@ const checkFailData = async (page, obj) =>{
     const buttonIndex = buttons.findIndex((text, index) => {
         return area.includes(text)
     });
-
+    const desc = obj.desc;
+    if(desc=="Badge") console.log("- ",desc);
     // 1. 내용이 없을 경우 return
     if(!obj.contents){
         console.log("obj.contents is null");
@@ -109,7 +110,7 @@ const checkFailData = async (page, obj) =>{
         if (await selectedElement) {  
             console.log(`merchandising select`);
             await selectedElement.evaluate(element => {
-                element.style.border = '7px solid blue';
+                element.style.border = '7px solid red';
             });
         } else {
             console.log(`merchandising select : failed`);
@@ -118,33 +119,33 @@ const checkFailData = async (page, obj) =>{
     // 4. co05 뱃지 개수 오류의 경우
     else if (obj.contents && obj.contents.length === 1 && obj.contents < 7) {
         // 3번과 동일하게 버튼의 인덱스를 찾은 후 해당 슬라이드 영역 상단에 표시
-        console.log(obj.contents)
+        // console.log(obj.contents)
         
-        const swiperWrapper = await page.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
-        const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
+        // const swiperWrapper = await page.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
+        // const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
 
-        const selectedElement = await swiperChildren[buttonIndex];
+        // const selectedElement = await swiperChildren[buttonIndex];
 
-        if (await selectedElement) {  
-            const Handle = await selectedElement.evaluateHandle(element => element);
-            console.log(`badge count select`);
-            await selectedElement.evaluate((element) => {
-                const newDiv = document.createElement('div');
-                newDiv.textContent = 'Badge Count Issue';
-                newDiv.style.backgroundColor = 'yellow';
-                newDiv.style.color = 'red';
-                newDiv.style.fontSize = '24px';
+        // if (await selectedElement) {  
+        //     const Handle = await selectedElement.evaluateHandle(element => element);
+        //     console.log(`badge count select`);
+        //     await selectedElement.evaluate((element) => {
+        //         const newDiv = document.createElement('div');
+        //         newDiv.textContent = 'Badge Count Issue';
+        //         newDiv.style.backgroundColor = 'yellow';
+        //         newDiv.style.color = 'red';
+        //         newDiv.style.fontSize = '24px';
         
-                if (element.firstChild) {
-                    console.log("add badge-count newdiv")
-                    element.insertBefore(newDiv, element.firstChild);
-                } else {
-                    element.appendChild(newDiv);
-                }
-            });
-        } else {
-            console.log(`badge count area select : failed`);
-        }
+        //         if (element.firstChild) {
+        //             console.log("add badge-count newdiv")
+        //             element.insertBefore(newDiv, element.firstChild);
+        //         } else {
+        //             element.appendChild(newDiv);
+        //         }
+        //     });
+        // } else {
+        //     console.log(`badge count area select : failed`);
+        // }
     }
     // 5. 텍스트 오류의 경우
     else {
@@ -189,7 +190,7 @@ const checkFailData = async (page, obj) =>{
             
             const swiperWrapper = await page.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
             const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
-
+            
             // 몇 번째 슬라이드인지 검색
             const selectedElement = await swiperChildren[buttonIndex];
             if (await selectedElement) {
@@ -206,17 +207,35 @@ const checkFailData = async (page, obj) =>{
                         // if(cleanedContents.includes('400')) console.log(area, " - ", cleanedContents, ' / ',childrenLength, innerhtml)
                         if (innerhtml.includes(cleanedContents) && childrenLength === 0) {
                             // console.log(area, " - ", tileNumber, " index / ", cleanedContents)
-                            await el.evaluate(node => {
-                                let parent = node.parentElement;
-                                parent.style.border = '4px solid red';
-                            });
+                            if(desc==="Badge") {
+                                await el.evaluate(node => {
+                                    let parent = node.parentElement;
+                                    parent.style.padding = '2px'
+                                    parent.style.border = '4px solid red';
+                                });
+                            }
+                            else{
+                                await el.evaluate(node => {
+                                    let parent = node.parentElement;
+                                    parent.style.border = '4px solid red';
+                                });
+                            }
                         }
                         else if(innerhtml.includes('<br>') && innerhtml.includes(cleanedContents) && childrenLength === 1){
                             // console.log(area, " - ", tileNumber, " index / ", innerhtml)
-                            await el.evaluate(node => {
-                                let parent = node.parentElement;
-                                parent.style.border = '4px solid red';
-                            });
+                            if(desc==="Badge") {
+                                await el.evaluate(node => {
+                                    let parent = node.parentElement;
+                                    parent.style.padding = '2px'
+                                    parent.style.border = '4px solid red';
+                                });
+                            }
+                            else{
+                                await el.evaluate(node => {
+                                    let parent = node.parentElement;
+                                    parent.style.border = '4px solid red';
+                                });
+                            }
                         }
                         else if(innerhtml.includes('sup') && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 1){
                             // console.log(merchanArea, " - ", innerHTML, " / ", cleanedContents," ------ ")

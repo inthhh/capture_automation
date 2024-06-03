@@ -26,7 +26,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     await delay(1000)
     await page.setDefaultTimeout(500000);
     await page.goto(url, { waitUntil: 'load', timeout: 200000 });
-    await delay(1000)
+    await delay(5000)
     
     let bodyHandle = await page.$('body');
     let body = await bodyHandle.boundingBox();
@@ -34,7 +34,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
     await breaker.cookiePopupBreaker(page, false)
     
-    await delay(10000)
+    await delay(15000)
     await breaker.removeIframe(page)
     await carouselBreak_offer.kvCarouselBreak(page)
     await delay(10000)
@@ -42,7 +42,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
     await carouselBreak_offer.cardCarouselBreak(page)
 
-    await delay(12000)
+    await delay(15000)
 
     // const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
 
@@ -63,7 +63,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     fs.mkdirSync(pathName, { recursive: true });
     await page.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 10});
 
-    browser.close();
+    // browser.close();
 
 }
 

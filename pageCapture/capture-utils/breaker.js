@@ -96,6 +96,9 @@ const removeIframe = async (page) =>{
 
         const whatsAppPopup = document.querySelector('.ins-preview-wrapper')
         if(whatsAppPopup) whatsAppPopup.remove()
+
+        const divbtn = document.querySelector('#nebula_div_btn')
+        if(divbtn) divbtn.remove();
       });
     });
     
