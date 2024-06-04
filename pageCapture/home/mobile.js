@@ -62,7 +62,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     const fileName =`W${weekNumber}_Screenshot_mobile_${dateNow}(${siteCode}).jpeg`
     const fullPath = `${pathName}/${fileName}`;
     fs.mkdirSync(pathName, { recursive: true });
-    await page.screenshot({ path: fullPath, fullPage: true, type: 'jpeg', quality: 20});
+    await page.screenshot({ path: fullPath, fullPage: true, type: 'jpeg', quality: 30});
     const fileName2 =`W${weekNumber}_Screenshot_mobile_${dateNow}(${siteCode})_cutting.jpeg`
     const fullPath2 = `${pathName}/${fileName2}`;
     
