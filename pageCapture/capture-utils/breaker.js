@@ -56,7 +56,7 @@ const clickFirstMerchan = async (page) =>{
   // await page.waitForSelector('.tab__item-title')
   await page.evaluate(async()=>{
     const buttons = document.querySelectorAll('.tab__item-title')
-    await new Promise(resolve => setTimeout(resolve, 20000));
+    await new Promise(resolve => setTimeout(resolve, 28000));
     console.log("btn : ", buttons);
     // 버튼 리스트에서 머천다이징의 첫 버튼을 찾아서 클릭 후 종료
     for (let i = 0; i < buttons.length; i++) {

@@ -36,34 +36,34 @@ const checkFailData = async (page, obj, isMobile) =>{
                     
                     elements.forEach(element => {
                         if(element.src.includes(src)){
-                            const parentEl1 = element.parentElement;
-                            const parentEl2 = parentEl1.parentElement;
-                            const parentEl3 = parentEl2.parentElement;
-                            if(parentEl3){
-                                parentEl3.style.width = 'calc(100% - 10px)';
-                                parentEl3.style.border = '7px solid red';
-                                parentEl3.style.transform = 'translate3d(0, 0, 0)'
-                            }
+                            // const parentEl1 = element.parentElement;
+                            // const parentEl2 = parentEl1.parentElement;
+                            // const parentEl3 = parentEl2.parentElement;
+                            // if(parentEl3){
+                            //     parentEl3.style.width = 'calc(100% - 10px)';
+                            //     parentEl3.style.border = '7px solid red';
+                            //     parentEl3.style.transform = 'translate3d(0, 0, 0)'
+                            // }
                             return;
                         }
                         else if(kvCarouselSlides.querySelector('source'))
                         {
                             const els = kvCarouselSlides.querySelectorAll('source');
-                            els.forEach(el => {
-                                if(el.getAttribute('srcset')){
-                                    if(el.getAttribute('srcset').includes(src)) {
-                                        const parentEl1 = el.parentElement;
-                                        const parentEl2 = parentEl1.parentElement;
-                                        const parentEl3 = parentEl2.parentElement;
-                                        // const imgEl = parentEl.querySelector('img');
-                                        if (parentEl3) {
-                                            parentEl3.style.width = 'calc(100% - 10px)';
-                                            parentEl3.style.border = '7px solid red';
-                                            parentEl3.style.transform = 'translate3d(0, 0, 0)'
-                                        }}
-                                    return;
-                                }
-                            })
+                            // els.forEach(el => {
+                            //     if(el.getAttribute('srcset')){
+                            //         if(el.getAttribute('srcset').includes(src)) {
+                            //             const parentEl1 = el.parentElement;
+                            //             const parentEl2 = parentEl1.parentElement;
+                            //             const parentEl3 = parentEl2.parentElement;
+                            //             // const imgEl = parentEl.querySelector('img');
+                            //             if (parentEl3) {
+                            //                 parentEl3.style.width = 'calc(100% - 10px)';
+                            //                 parentEl3.style.border = '7px solid red';
+                            //                 parentEl3.style.transform = 'translate3d(0, 0, 0)'
+                            //             }}
+                            //         return;
+                            //     }
+                            // })
                         }
                     
                     });
@@ -285,7 +285,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                             element.style.border = '4px solid red';
                             return;
                         }
-                        else {
+                        else { 
                             const parent = element.parentElement;
                             if(parent) parent.style.border = '4px solid red';
                             return;

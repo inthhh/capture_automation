@@ -97,8 +97,8 @@ const kvCarouselBreak = async (page) =>{
                         const vid = slide.querySelector('.video');
                         if(vid){
                             // video preview 이미지 없을 시 border 처리
-                            vid.style.width = 'calc(100% - 14px)';
-                            vid.style.border = '7px solid red';
+                            // vid.style.width = 'calc(100% - 14px)';
+                            // vid.style.border = '7px solid red';
                         }
                     }
                 }
@@ -215,8 +215,8 @@ const carouselBreakMobile = async (page, site_code) =>{
                         const vid = slide.querySelector('.video');
                         if(vid){
                             // video preview 이미지 없을 시 border 처리
-                            vid.style.width = 'calc(100% - 14px)';
-                            vid.style.border = '7px solid red';
+                            // vid.style.width = 'calc(100% - 14px)';
+                            // vid.style.border = '7px solid red';
                         }
                     }
                 }
