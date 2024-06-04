@@ -7,6 +7,9 @@ const cookiePopupBreaker = async (page, isDesktop) =>{
     const popupWrap = document.querySelector('#truste-consent-track')
     if(popupWrap) popupWrap.style.display = 'none'
 
+    const tablist = document.querySelector('.showcase-card-tab__inner .tab')
+    if(tablist) tablist.style.overflow = 'visible'
+
     const observer1 = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
           const grayOverlay = document.querySelector(".insider-opt-in-overlay");

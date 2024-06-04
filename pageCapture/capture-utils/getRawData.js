@@ -14,6 +14,7 @@ const getRawData = async (date="", siteCode="", checkResult="", Desc="") =>{
             if(Desc == "Desktop"){
                 if(obj.description != "Mobile"){
                     return {
+                        title: obj.title,
                         desc: obj.description,
                         key: obj.key,
                         area: obj.area,
@@ -25,6 +26,7 @@ const getRawData = async (date="", siteCode="", checkResult="", Desc="") =>{
             else if(Desc == "Mobile"){
                 if(obj.description != "Desktop"){
                     return {
+                        title: obj.title,
                         desc: obj.description,
                         key: obj.key,
                         area: obj.area,

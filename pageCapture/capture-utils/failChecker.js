@@ -1,7 +1,7 @@
 // const { Page } = require("../../puppeteer");
 
 // 페이지 내에서 API 데이터와 동일한 요소를 찾고 border 표시하는 함수
-const checkFailData = async (page, obj) =>{
+const checkFailData = async (page, obj, isMobile) =>{
     // co05의 모든 버튼을 저장
     const buttons = await page.$$eval('.tab__item-title', buttons => {
         const result = [];
@@ -18,7 +18,7 @@ const checkFailData = async (page, obj) =>{
         return area.includes(text)
     });
     const desc = obj.desc;
-    if(desc=="Badge") console.log("- ",desc);
+
     // 1. 내용이 없을 경우 return
     if(!obj.contents){
         console.log("obj.contents is null");
@@ -111,13 +111,14 @@ const checkFailData = async (page, obj) =>{
             console.log(`merchandising select`);
             await selectedElement.evaluate(element => {
                 element.style.border = '7px solid red';
+                return;
             });
         } else {
             console.log(`merchandising select : failed`);
         }
     } 
     // 4. co05 뱃지 개수 오류의 경우
-    else if (obj.contents && obj.contents.length === 1 && obj.contents < 7) {
+    else if (obj.contents && obj.contents.length === 1 && obj.desc =="Badge Count") {
         // 3번과 동일하게 버튼의 인덱스를 찾은 후 해당 슬라이드 영역 상단에 표시
         // console.log(obj.contents)
         
@@ -200,48 +201,70 @@ const checkFailData = async (page, obj) =>{
                 if(card) {
                     const els = await card.$$(' * '); // 모든 자식 요소 선택
                     for (let el of els) {
-                        let innerhtml = await el.evaluate(node => node.innerHTML)
+                        let innerhtml = await el.evaluate(node => node.innerHTML.replace(/\s/g, '').replace(/"/g,'').replace(/<br>/g, ''))
+                        let outerhtml = await el.evaluate(node => node.outerHTML.replace(/\s/g, '').replace(/"/g,''))
                         let childrenLength = await el.evaluate(node => node.children.length);
-                        let cleanedContents = obj.contents.replace(/<sup>.*?<\/sup>/g, '');
-                        cleanedContents = cleanedContents.replace("<br/>","");
-                        // if(cleanedContents.includes('400')) console.log(area, " - ", cleanedContents, ' / ',childrenLength, innerhtml)
-                        if (innerhtml.includes(cleanedContents) && childrenLength === 0) {
+                        let cleanedContents = obj.contents.replace(/<sup>.*?<\/sup>/g, '').replace(/<br\/>/g, '').replace(/\s/g, '').replace(/"/g,'');
+                        // cleanedContents = '>' + cleanedContents + '<';
+                        
+                        if (obj.title=="Description" && outerhtml.includes("showcase-card-tab-card__product-name")) {
+                            // console.log("desc가 title이 됨\n", innerhtml, " \n*** ", cleanedContents);
+                            continue;
+                        }
+                        else if (innerhtml.includes(cleanedContents) && childrenLength === 0) {
+                            
                             // console.log(area, " - ", tileNumber, " index / ", cleanedContents)
-                            if(desc==="Badge") {
+                            if(isMobile && desc==="Badge") {
+                                await el.evaluate(node => {
+                                    let parent = node.parentElement;
+                                    let elWidth = window.getComputedStyle(node).width;
+                                    let newWidth = (parseFloat(elWidth) + 20) + 'px';
+                                    parent.style.width = newWidth;
+                                    parent.style.padding = '2px'
+                                    parent.style.border = '4px solid red';
+                                    return;
+                                });
+                            }
+                            else if(desc==="Badge") {
                                 await el.evaluate(node => {
                                     let parent = node.parentElement;
                                     parent.style.padding = '2px'
                                     parent.style.border = '4px solid red';
+                                    return;
                                 });
                             }
                             else{
+                                // console.log(innerhtml, " / ", cleanedContents)
                                 await el.evaluate(node => {
                                     let parent = node.parentElement;
                                     parent.style.border = '4px solid red';
+                                    return;
                                 });
                             }
                         }
-                        else if(innerhtml.includes('<br>') && innerhtml.includes(cleanedContents) && childrenLength === 1){
+                        else if(outerhtml.includes('<br>') && innerhtml.includes(cleanedContents) && childrenLength === 1){
                             // console.log(area, " - ", tileNumber, " index / ", innerhtml)
-                            if(desc==="Badge") {
-                                await el.evaluate(node => {
-                                    let parent = node.parentElement;
-                                    parent.style.padding = '2px'
-                                    parent.style.border = '4px solid red';
-                                });
-                            }
-                            else{
-                                await el.evaluate(node => {
-                                    let parent = node.parentElement;
-                                    parent.style.border = '4px solid red';
-                                });
-                            }
+                            await el.evaluate(node => {
+                                let parent = node.parentElement;
+                                parent.style.border = '4px solid red';
+                                return;
+                            });
+                        }
+                        else if((outerhtml.match(/<br>/g) || []).length >= 2 && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 2){
+                            // if (cleanedContents.includes("15%")) console.log(area, " - ", innerhtml, " / ", cleanedContents, childrenLength)
+                        
+                            await el.evaluate(node => {
+                                let parent = node.parentElement;
+                                parent.style.border = '4px solid red';
+                                return;
+                            });
                         }
                         else if(innerhtml.includes('sup') && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 1){
                             // console.log(merchanArea, " - ", innerHTML, " / ", cleanedContents," ------ ")
                             await el.evaluate(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
+                                return;
                             });
                         }
                     }
@@ -260,10 +283,12 @@ const checkFailData = async (page, obj) =>{
                     if (element.innerHTML.includes(obj.contents) && element.children.length === 0){
                         if(obj.area.includes("KV")){
                             element.style.border = '4px solid red';
+                            return;
                         }
                         else {
                             const parent = element.parentElement;
                             if(parent) parent.style.border = '4px solid red';
+                            return;
                         }
                     }
                 });

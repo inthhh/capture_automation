@@ -49,7 +49,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     const failedData = await getRawData(dataDate, siteCode, "N", "Mobile")
     if(failedData && failedData.length>0){
         for (let i = 0; i < failedData.length; i++){
-            await failChecker.checkFailData(page,failedData[i])
+            await failChecker.checkFailData(page, failedData[i], true)
         }
     }
 
@@ -60,32 +60,28 @@ const takeScreenshot = async (siteCode, dataDate) => {
     const weekNumber = getWeekNumber(date);
     const pathName = `result/${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}/mobile`
     const fileName =`W${weekNumber}_Screenshot_${siteCode}_mobile_${dateNow}.jpeg`
+    const fullPath = `${pathName}/${fileName}`;
     fs.mkdirSync(pathName, { recursive: true });
-    await page.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 20});
+    await page.screenshot({ path: fullPath, fullPage: true, type: 'jpeg', quality: 20});
+    const fileName2 =`W${weekNumber}_Screenshot_${siteCode}_mobile_${dateNow}_cutting.jpeg`
+    const fullPath2 = `${pathName}/${fileName2}`;
     
-    // if(siteCode == 'it'){
-    //     const absoluteFilePath = path.resolve(pathName, fileName);
-    //     const outputImagePath = path.resolve(pathName, `W${weekNumber}_Screenshot_${siteCode}_mobile_${dateNow}_cutting.jpeg`);
-    //     const maxHeight = 11000;
-    //     await fs.access(absoluteFilePath);
-    //     console.log(`File exists: ${absoluteFilePath}`);
-    //     try {
-    //         const metadata = await sharp(absoluteFilePath).metadata();
-    //         const height = metadata.height;
-
-    //         if (height > maxHeight) {
-    //             await sharp(absoluteFilePath)
-    //                 .extract({ left: 0, top: 0, width: metadata.width, height: maxHeight })
-    //                 .toFile(outputImagePath);
-    //             console.log(`Image cropped and saved to: ${outputImagePath}`);
-    //         } else {
-    //             console.log('Image height is within the limit, no cropping needed.');
-    //         }
-    //     }
-    //     catch (err) {
-    //         console.error('이미지 자르기 중 오류가 발생했습니다:', err);
-    //     }
-    // }
+    if (siteCode == 'it') {
+        try {
+            const maxHeight = 12000;
+            const sharp = require('sharp');
+            const metadata = await sharp(fullPath).metadata();
+            const height = metadata.height;
+    
+            if (height > maxHeight) {
+                await sharp(fullPath)
+                    .extract({ left: 0, top: 0, width: metadata.width, height: maxHeight })
+                    .toFile(fullPath2);
+            } else return;
+        } catch (err) {
+            console.error('이미지 자르기 중 오류가 발생했습니다:', err);
+        }
+    }
     
     browser.close();
 
