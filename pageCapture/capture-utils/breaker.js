@@ -43,7 +43,7 @@ const clickEveryMerchan = async (page) =>{
     buttons?.forEach(async (button, index) => {
       if (button.getAttribute('an-ac') === 'merchandising') {
         // 1초 간격으로 클릭
-        await new Promise(resolve => setTimeout(resolve, 1000 * index));
+        await new Promise(resolve => setTimeout(resolve, 1200 * index));
         button.click();
         console.log("**button click");
       }

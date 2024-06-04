@@ -32,7 +32,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     let body = await bodyHandle.boundingBox();
     await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
-    await delay(2000)
+    await delay(4000)
     await breaker.cookiePopupBreaker(page, true)
     // 사이트가 새로고침되며 팝업이 다시 뜨는 경우, popupBreaker 한번 더 실행 필요
     await delay(2000)
@@ -64,7 +64,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     const pathName = `result/${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}/desktop`
     const fileName =`W${weekNumber}_Screenshot_desktop_${dateNow}(${siteCode}).jpeg`
     fs.mkdirSync(pathName, { recursive: true });
-    await page.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 20});
+    await page.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 30});
 
     browser.close();
 

@@ -242,7 +242,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                                 });
                             }
                         }
-                        else if(outerhtml.includes('<br>') && innerhtml.includes(cleanedContents) && childrenLength === 1){
+                        else if(outerhtml.includes('<br>') && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 1){
                             // console.log(area, " - ", tileNumber, " index / ", innerhtml)
                             await el.evaluate(node => {
                                 let parent = node.parentElement;
