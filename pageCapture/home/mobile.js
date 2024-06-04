@@ -59,11 +59,11 @@ const takeScreenshot = async (siteCode, dataDate) => {
     const date = new Date()
     const weekNumber = getWeekNumber(date);
     const pathName = `result/${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}/mobile`
-    const fileName =`W${weekNumber}_Screenshot_${siteCode}_mobile_${dateNow}.jpeg`
+    const fileName =`W${weekNumber}_Screenshot_mobile_${dateNow}(${siteCode}).jpeg`
     const fullPath = `${pathName}/${fileName}`;
     fs.mkdirSync(pathName, { recursive: true });
     await page.screenshot({ path: fullPath, fullPage: true, type: 'jpeg', quality: 20});
-    const fileName2 =`W${weekNumber}_Screenshot_${siteCode}_mobile_${dateNow}_cutting.jpeg`
+    const fileName2 =`W${weekNumber}_Screenshot_mobile_${dateNow}(${siteCode})_cutting.jpeg`
     const fullPath2 = `${pathName}/${fileName2}`;
     
     if (siteCode == 'it') {

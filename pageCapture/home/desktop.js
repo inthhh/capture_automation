@@ -62,7 +62,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     const date = new Date()
     const weekNumber = getWeekNumber(date);
     const pathName = `result/${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}/desktop`
-    const fileName =`W${weekNumber}_Screenshot_${siteCode}_desktop_${dateNow}.jpeg`
+    const fileName =`W${weekNumber}_Screenshot_desktop_${dateNow}(${siteCode}).jpeg`
     fs.mkdirSync(pathName, { recursive: true });
     await page.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 20});
 
