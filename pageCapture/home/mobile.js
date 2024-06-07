@@ -3,7 +3,7 @@ const moment = require('moment');
 const carouselBreak = require ('../capture-utils/carouselBreak');
 const failChecker = require("../capture-utils/failChecker");
 const getRawData = require("../capture-utils/getRawData")
-const breaker = require("../capture-utils/breaker")
+const popupBreak = require("../capture-utils/popupBreak")
 const fs = require('fs');
 const path = require('node:path');
 const sharp = require('sharp');
@@ -33,17 +33,22 @@ const takeScreenshot = async (siteCode, dataDate) => {
     let body = await bodyHandle.boundingBox();
     await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
-    await breaker.cookiePopupBreaker(page, false)
+    await popupBreak.cookiePopupBreaker(page, false)
     // 사이트가 새로고침되며 팝업이 다시 뜨는 경우, popupBreaker 한번 더 실행 필요
     await delay(2000)
     
-    await breaker.clickEveryMerchan(page)
-    await breaker.clickFirstMerchan(page)
+    await popupBreak.clickEveryMerchan(page)
+    await popupBreak.clickFirstMerchan(page)
 
-    await breaker.removeIframe(page)
-    await carouselBreak.carouselBreakMobile(page, siteCode)
-    await delay(10000)
-    await carouselBreak.eventListenerBreak(page)
+    await popupBreak.removeIframe(page)
+    if(siteCode === "sec"){
+        await secBreak.kvCarouselBreak(page)
+    }
+    else{
+        await carouselBreak.carouselBreakMobile(page, siteCode)
+        await delay(10000)
+        await carouselBreak.eventListenerBreak(page)
+    }
     await delay(8000)
 
     const failedData = await getRawData(dataDate, siteCode, "N", "Mobile")
@@ -53,7 +58,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         }
     }
 
-    await breaker.accessibilityPopupBreaker(page)
+    await popupBreak.accessibilityPopupBreaker(page)
     // await carouselBreak.eventListenerBreak(page)
     const dateNow = moment().format("YYMMDD")
     const date = new Date()

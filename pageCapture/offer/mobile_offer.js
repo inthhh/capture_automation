@@ -3,7 +3,7 @@ const moment = require('moment');
 const carouselBreak_offer = require ('../capture-utils/carouselBreak_offer');
 const failChecker = require("../capture-utils/failChecker");
 const getRawData = require("../capture-utils/getRawData")
-const breaker = require("../capture-utils/breaker")
+const popupBreak = require("../capture-utils/popupBreak")
 const fs = require('node:fs');
 const path = require('node:path')
 
@@ -36,9 +36,9 @@ const takeScreenshot = async (siteCode, dataDate) => {
     // await page.setViewport({ width: Math.floor(body.width), height: Math.min(body.height, screenshotHeight) });
     await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
-    await breaker.cookiePopupBreaker(page, false)
+    await popupBreak.cookiePopupBreaker(page, false)
     await delay(12000)
-    await breaker.removeIframe(page)
+    await popupBreak.removeIframe(page)
     await carouselBreak_offer.kvMobileCarouselBreak(page)
     await delay(12000)
     await carouselBreak_offer.viewmoreBreak(page)
@@ -56,7 +56,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
 
 
-    await breaker.accessibilityPopupBreaker(page)
+    await popupBreak.accessibilityPopupBreaker(page)
     await carouselBreak_offer.eventListenerBreak(page)
     const dateNow = moment().format("YYYY-MM-DD_HH-mm-ss")
     const date = new Date()
