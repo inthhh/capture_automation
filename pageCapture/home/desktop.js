@@ -2,8 +2,9 @@ const puppeteer = require('puppeteer');
 const moment = require('moment');
 const carouselBreak = require ('../capture-utils/carouselBreak');
 const failChecker = require("../capture-utils/failChecker");
-const getRawData = require("../capture-utils/getRawData")
-const breaker = require("../capture-utils/breaker")
+const getRawData = require("../capture-utils/getRawData");
+const popupBreak = require("../capture-utils/popupBreak");
+const secBreak = require("../capture-utils/secBreak");
 const fs = require('node:fs');
 const path = require('node:path')
 const { getWeekNumber } = require('../result-utils/getWeekNumber')
@@ -30,32 +31,51 @@ const takeScreenshot = async (siteCode, dataDate) => {
     
     let bodyHandle = await page.$('body');
     let body = await bodyHandle.boundingBox();
-    await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
+    // await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
+    // await page.setViewport({ width: 5000, height: Math.floor(body.height)});
 
-    await delay(4000)
-    await breaker.cookiePopupBreaker(page, true)
-    // 사이트가 새로고침되며 팝업이 다시 뜨는 경우, popupBreaker 한번 더 실행 필요
-    await delay(2000)
+    // console.log(Math.floor(body.width), " ", Math.floor(body.height))
+    
+    if(siteCode === "sec"){
+        await page.setViewport({ width: 1440*7, height: Math.floor(body.height)});
 
-    await breaker.clickEveryMerchan(page)
-    await breaker.clickFirstMerchan(page)
-
-    await breaker.removeIframe(page)
-    await carouselBreak.kvCarouselBreak(page)
-    await delay(10000)
-    await carouselBreak.showcaseCardBreak(page)
-
-    await delay(10000)
-
-    const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
-
-    if(failedData && failedData.length>0){
-        for (let i = 0; i < failedData.length; i++){
-            await failChecker.checkFailData(page, failedData[i], false)
-        }
+        await popupBreak.cookiePopupBreaker(page, false)
+        console.log('is sec')
+        await delay(2000)
+        await secBreak.kvCarouselBreak(page)
+        await delay(5000)
+        await secBreak.showcaseCardBreak(page)
+        await delay(5000)
+        console.log('out sec')
     }
+    else{
+        await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
+        await delay(4000)
+        await popupBreak.cookiePopupBreaker(page, true)
+        // 사이트가 새로고침되며 팝업이 다시 뜨는 경우, popupBreaker 한번 더 실행 필요
+        await delay(2000)
 
-    await breaker.accessibilityPopupBreaker(page)
+        await popupBreak.clickEveryMerchan(page)
+        await popupBreak.clickFirstMerchan(page)
+
+        await popupBreak.removeIframe(page)
+        await carouselBreak.kvCarouselBreak(page)
+        await delay(10000)
+        await carouselBreak.showcaseCardBreak(page)
+        await delay(10000)
+        await popupBreak.accessibilityPopupBreaker(page)
+    }
+    
+
+    // const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
+
+    // if(failedData && failedData.length>0){
+    //     for (let i = 0; i < failedData.length; i++){
+    //         await failChecker.checkFailData(page, failedData[i], false)
+    // //     }
+    // }
+
+    
     await carouselBreak.eventListenerBreak(page)
 
     const dateNow = moment().format("YYMMDD")
@@ -66,7 +86,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     fs.mkdirSync(pathName, { recursive: true });
     await page.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 30});
 
-    browser.close();
+    // browser.close();
 
 }
 
