@@ -31,21 +31,25 @@ const takeScreenshot = async (siteCode, dataDate) => {
     
     let bodyHandle = await page.$('body');
     let body = await bodyHandle.boundingBox();
-    // await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
-    // await page.setViewport({ width: 5000, height: Math.floor(body.height)});
-
-    // console.log(Math.floor(body.width), " ", Math.floor(body.height))
     
     if(siteCode === "sec"){
         await page.setViewport({ width: 1440*7, height: Math.floor(body.height)});
 
-        await popupBreak.cookiePopupBreaker(page, false)
+        await delay(10000)
+        
+        // await popupBreak.cookiePopupBreaker(page, false)
+        await popupBreak.removeIframe(page)
         console.log('is sec')
-        await delay(2000)
+        await delay(10000)
         await secBreak.kvCarouselBreak(page)
-        await delay(10000)
+        await delay(5000)
+        await secBreak.contentsToLeft(page)
+        await delay(5000)
         await secBreak.showcaseCardBreak(page)
-        await delay(10000)
+        
+        await delay(5000)
+        await carouselBreak.eventListenerBreak(page)
+        await delay(5000)
         console.log('out sec')
     }
     else{
@@ -64,6 +68,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await carouselBreak.showcaseCardBreak(page)
         await delay(10000)
         await popupBreak.accessibilityPopupBreaker(page)
+        await carouselBreak.eventListenerBreak(page)
     }
     
 
@@ -76,7 +81,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     }
 
     
-    await carouselBreak.eventListenerBreak(page)
+    
     await delay(1000)
     const dateNow = moment().format("YYMMDD")
     const date = new Date()
@@ -86,7 +91,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     fs.mkdirSync(pathName, { recursive: true });
     await page.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 30});
 
-    browser.close();
+    // browser.close();
 
 }
 
