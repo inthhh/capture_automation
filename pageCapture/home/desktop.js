@@ -72,7 +72,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     if(failedData && failedData.length>0){
         for (let i = 0; i < failedData.length; i++){
             await failChecker.checkFailData(page, failedData[i], false)
-    //     }
+        }
     }
 
     
