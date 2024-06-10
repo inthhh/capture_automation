@@ -72,74 +72,6 @@ const kvCarouselBreak = async (page) =>{
             }
         }
 
-    
-        const kvCarouselMediaWraps = document.querySelectorAll('.home-kv-carousel__background-media-wrap')
-
-        // if(kvCarouselMediaWraps){
-        //     kvCarouselMediaWraps.forEach((kvCarouselMediaWrap) => {
-        //         const kvCarouselMediaImage = document.querySelector('.home-kv-carousel__background-media-wrap .image')
-        //         const kvCarouselMediaImageV2 = document.querySelector('.home-kv-carousel__background-media-wrap .image-v2')
-        //         const kvCarouselMediaImageFirstImage = document.querySelector('.home-kv-carousel__background-media-wrap .first-image')
-        //         const kvCarouselMediaImageFirstVideo = document.querySelector('.home-kv-carousel__background-media-wrap .video')
-
-        //         if (kvCarouselMediaImage != null) {
-        //             kvCarouselMediaImage.style.height = '100% !important';
-        //         }
-        //         if (kvCarouselMediaImageV2 != null) {
-        //             kvCarouselMediaImageV2.style.height = '100% !important';
-        //         }
-        //         if (kvCarouselMediaImageFirstImage != null) {
-        //             kvCarouselMediaImageFirstImage.style.height = '100% !important';
-        //         }
-        //         if (kvCarouselMediaImageFirstVideo != null) {
-        //             kvCarouselMediaImageFirstVideo.style.height = '100% !important';
-        //         }
-        //     })
-        // }
-
-        // 각 kv 슬라이드의 대표 이미지를 찾는 로직
-        // const kvCarouselSlides = document.querySelectorAll('.home-kv-carousel__wrapper .home-kv-carousel__slide')
-
-        // if(kvCarouselSlides){
-        //     kvCarouselSlides.forEach((slide) => {
-        //         console.log("slide",slide);
-        //         let imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image-v2__main');
-        //         if (imgArea != null) {
-        //             imgArea.style.visibility = 'visible'
-        //             imgArea.style.opacity = '1'
-        //             let getSrc = imgArea?.getAttribute('data-1366w2x-src');
-        //             if (getSrc) {
-        //                 imgArea.setAttribute('src', getSrc);
-        //                 console.log("*** img src", getSrc);
-        //             }
-        //         }
-        //         else{
-        //             console.log("slide else - ",slide);
-        //             imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image');
-        //             let img = imgArea?.querySelector('.image__main');
-        //             if(imgArea && img){
-        //                 const pcSrc = img.getAttribute('data-desktop-src');
-        //                 img.setAttribute('src', pcSrc);
-        //                 img.style.visibility = 'visible';
-        //                 img.style.opacity = '1';
-        //                 imgArea.style.visibility = 'visible';
-        //                 imgArea.style.opacity = '1';
-        //                 imgArea.style.zIndex = '10';
-        //             } 
-        //             else if(slide.querySelector('.home-kv-carousel__background-media-wrap picture')){
-        //                 // 대표이미지 다른 형식으로 존재
-        //             }
-        //             else {
-        //                 const vid = slide.querySelector('.video');
-        //                 if(vid){
-        //                     // video preview 이미지 없을 시 border 처리
-        //                     // vid.style.width = 'calc(100% - 14px)';
-        //                     // vid.style.border = '7px solid red';
-        //                 }
-        //             }
-        //         }
-        //     });
-        // }
     });
 }
 
@@ -147,13 +79,13 @@ const kvCarouselBreak = async (page) =>{
 const showcaseCardBreak = async (page) => {
     await page.evaluate (() => {
 
-        const showCaseCardTabInner = document.querySelector(".tablist-prd-container")
-        const showCaseCardTabCardWrap = document.querySelector(".slider-tabtype-list.swiper-container-initialized")
-        const swiperContainer = document.querySelector(".swiper-wrapper")
-
-        if(showCaseCardTabInner) showCaseCardTabInner.style.overflow = 'visible'
-        if(showCaseCardTabCardWrap) showCaseCardTabCardWrap.style.overflow = 'visible'
-        if(swiperContainer) swiperContainer.style.overflow = 'visible'
+        // const wrapper = document.querySelector(".wrap-component.tabtype-container.pt-nrw.pb-nrw.w1440px")
+        const conbox = document.querySelector(".conbox.conbox-b2c-main")
+        const wrapcontainer = conbox.querySelector(".component-contents.pt-none.pb-none")
+        const container = document.querySelector(".tablist-prd-container")
+        if(conbox) conbox.style.overflow = 'visible'
+        if(wrapcontainer) wrapcontainer.style.overflow = 'visible'
+        if(container) container.style.overflow = 'visible'
     })
 }
 

@@ -43,9 +43,9 @@ const takeScreenshot = async (siteCode, dataDate) => {
         console.log('is sec')
         await delay(2000)
         await secBreak.kvCarouselBreak(page)
-        await delay(5000)
+        await delay(10000)
         await secBreak.showcaseCardBreak(page)
-        await delay(5000)
+        await delay(10000)
         console.log('out sec')
     }
     else{
@@ -60,24 +60,24 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
         await popupBreak.removeIframe(page)
         await carouselBreak.kvCarouselBreak(page)
-        await delay(10000)
+        await delay(5000)
         await carouselBreak.showcaseCardBreak(page)
         await delay(10000)
         await popupBreak.accessibilityPopupBreaker(page)
     }
     
 
-    // const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
+    const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
 
-    // if(failedData && failedData.length>0){
-    //     for (let i = 0; i < failedData.length; i++){
-    //         await failChecker.checkFailData(page, failedData[i], false)
-    // //     }
-    // }
+    if(failedData && failedData.length>0){
+        for (let i = 0; i < failedData.length; i++){
+            await failChecker.checkFailData(page, failedData[i], false)
+    //     }
+    }
 
     
     await carouselBreak.eventListenerBreak(page)
-
+    await delay(1000)
     const dateNow = moment().format("YYMMDD")
     const date = new Date()
     const weekNumber = getWeekNumber(date);
@@ -86,7 +86,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     fs.mkdirSync(pathName, { recursive: true });
     await page.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 30});
 
-    // browser.close();
+    browser.close();
 
 }
 
