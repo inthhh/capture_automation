@@ -1,12 +1,12 @@
 
 // Desktop ver - KV 케로쉘을 펼치는 함수
-const kvCarouselBreak = async (page) =>{
+const kvCarouselBreak = async (page, isDesktop) =>{
     // select할 요소들이 나타날 때 까지 대기
     console.log('------ kv break')
     await page.waitForSelector('.visual.slick-slide')
     await page.waitForSelector('.slide-btn.slide-pause')
 
-    await page.evaluate (async() => {
+    await page.evaluate (async(isDesktop) => {
         const floating = document.querySelector('#floatingSticky')
         if(floating) floating.remove();
         //KV Autoplay stop button
@@ -22,7 +22,10 @@ const kvCarouselBreak = async (page) =>{
 
         const kvCarouselHoG = document.querySelector('.wrap-component.carousel-container') // ?
         if(kvCarouselHoG){
-            kvCarouselHoG.style.width = '1440px'
+            if(isDesktop){
+                kvCarouselHoG.style.width = '1440px'
+            }
+            else kvCarouselHoG.style.width = '360px'
             kvCarouselHoG.style.margin ='0 auto'
             kvCarouselHoG.style.overflow = 'visible'
         }
@@ -48,12 +51,15 @@ const kvCarouselBreak = async (page) =>{
                 let getId = kvWrap.getAttribute('id')
                 kvWrap.setAttribute('id',getId+"-broken")
                 kvWrap.style.opacity = '1'
-                kvWrap.style.width = '1440px'
                 kvWrap.style.left = '0'
+                if(isDesktop){
+                    kvWrap.style.width = '1440px'
+                }
+                else kvWrap.style.width = '360px'
             }
         }
 
-    });
+    },isDesktop);
 }
 
 const contentsToLeft = async (page) => {
@@ -96,8 +102,32 @@ const showcaseCardBreak = async (page) => {
     })
 }
 
+const buttonBreak = async(page)=>{
+    await page.evaluate(()=>{
+
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                const menuwrap = document.querySelector('.menu__wrap');
+                if (menuwrap) menuwrap.remove();
+
+                const innermask = document.querySelector('.inner__mask');
+                if(innermask) innermask.remove();
+
+                const story = document.querySelector(".b2c-box.box-story")
+                if(story) {
+                    story.style.overflow = 'hidden';
+                    story.style.width = '360px';
+                }
+                // observer1.disconnect();  // 요소를 찾으면 더 이상 감시하지 않음
+            });
+          });
+          observer.observe(document.body, { childList: true, subtree: true });
+    })
+}
+
 module.exports = {
     kvCarouselBreak,
     showcaseCardBreak,
-    contentsToLeft
+    contentsToLeft,
+    buttonBreak
 }

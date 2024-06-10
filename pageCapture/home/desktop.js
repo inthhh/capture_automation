@@ -41,7 +41,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await popupBreak.removeIframe(page)
         console.log('is sec')
         await delay(10000)
-        await secBreak.kvCarouselBreak(page)
+        await secBreak.kvCarouselBreak(page, true)
         await delay(5000)
         await secBreak.contentsToLeft(page)
         await delay(5000)
@@ -71,6 +71,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await carouselBreak.eventListenerBreak(page)
     }
     
+    await delay(1000)
 
     const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
 
@@ -79,10 +80,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
             await failChecker.checkFailData(page, failedData[i], false)
         }
     }
-
     
-    
-    await delay(1000)
     const dateNow = moment().format("YYMMDD")
     const date = new Date()
     const weekNumber = getWeekNumber(date);

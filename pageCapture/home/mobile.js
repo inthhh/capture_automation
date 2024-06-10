@@ -4,6 +4,7 @@ const carouselBreak = require ('../capture-utils/carouselBreak');
 const failChecker = require("../capture-utils/failChecker");
 const getRawData = require("../capture-utils/getRawData")
 const popupBreak = require("../capture-utils/popupBreak")
+const secBreak = require("../capture-utils/secBreak");
 const fs = require('fs');
 const path = require('node:path');
 const sharp = require('sharp');
@@ -31,25 +32,45 @@ const takeScreenshot = async (siteCode, dataDate) => {
     
     let bodyHandle = await page.$('body');
     let body = await bodyHandle.boundingBox();
-    await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
 
-    await popupBreak.cookiePopupBreaker(page, false)
-    // 사이트가 새로고침되며 팝업이 다시 뜨는 경우, popupBreaker 한번 더 실행 필요
-    await delay(2000)
-    
-    await popupBreak.clickEveryMerchan(page)
-    await popupBreak.clickFirstMerchan(page)
-
-    await popupBreak.removeIframe(page)
     if(siteCode === "sec"){
-        await secBreak.kvCarouselBreak(page)
-    }
-    else{
-        await carouselBreak.carouselBreakMobile(page, siteCode)
+        await page.setViewport({ width: 360, height: Math.floor(body.height)});
+
         await delay(10000)
         await carouselBreak.eventListenerBreak(page)
+        await secBreak.buttonBreak(page)
+        await delay(10000)
+        // await popupBreak.cookiePopupBreaker(page, false)
+        await popupBreak.removeIframe(page)
+        console.log('is sec')
+        await delay(10000)
+        await secBreak.kvCarouselBreak(page, false)
+        await delay(5000)
+        await secBreak.contentsToLeft(page)
+        await delay(5000)
+        await secBreak.showcaseCardBreak(page)
+        
+        await delay(5000)
+        console.log('out sec')
     }
-    await delay(8000)
+    else{
+        await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
+        await delay(4000)
+        await popupBreak.cookiePopupBreaker(page, false)
+        // 사이트가 새로고침되며 팝업이 다시 뜨는 경우, popupBreaker 한번 더 실행 필요
+        await delay(2000)
+
+        await popupBreak.clickEveryMerchan(page)
+        await popupBreak.clickFirstMerchan(page)
+
+        await popupBreak.removeIframe(page)
+        await delay(5000)
+        await carouselBreak.carouselBreakMobile(page)
+        await delay(10000)
+        await popupBreak.accessibilityPopupBreaker(page)
+        await carouselBreak.eventListenerBreak(page)
+    }
+    await delay(1000)
 
     const failedData = await getRawData(dataDate, siteCode, "N", "Mobile")
     if(failedData && failedData.length>0){
@@ -58,8 +79,6 @@ const takeScreenshot = async (siteCode, dataDate) => {
         }
     }
 
-    await popupBreak.accessibilityPopupBreaker(page)
-    // await carouselBreak.eventListenerBreak(page)
     const dateNow = moment().format("YYMMDD")
     const date = new Date()
     const weekNumber = getWeekNumber(date);
@@ -88,7 +107,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         }
     }
     
-    browser.close();
+    // browser.close();
 
 }
 
