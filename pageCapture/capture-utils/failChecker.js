@@ -211,7 +211,8 @@ const checkFailData = async (page, obj, isMobile) =>{
                             // console.log("desc가 title이 됨\n", innerhtml, " \n*** ", cleanedContents);
                             continue;
                         }
-                        else if (innerhtml.includes(cleanedContents) && childrenLength === 0) {
+                        // else if (innerhtml.includes(cleanedContents) && childrenLength === 0) {
+                            else if (innerhtml==cleanedContents && childrenLength === 0) {
                             
                             // console.log(area, " - ", tileNumber, " index / ", cleanedContents)
                             if(isMobile && desc==="Badge") {
@@ -222,6 +223,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                                     parent.style.width = newWidth;
                                     parent.style.padding = '2px'
                                     parent.style.border = '4px solid red';
+                                    console.log("b")
                                     return;
                                 });
                             }
@@ -230,6 +232,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                                     let parent = node.parentElement;
                                     parent.style.padding = '2px'
                                     parent.style.border = '4px solid red';
+                                    console.log("b1")
                                     return;
                                 });
                             }
@@ -238,6 +241,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                                 await el.evaluate(node => {
                                     let parent = node.parentElement;
                                     parent.style.border = '4px solid red';
+                                    console.log("b1-2")
                                     return;
                                 });
                             }
@@ -247,6 +251,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                             await el.evaluate(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
+                                console.log("b2")
                                 return;
                             });
                         }
@@ -256,6 +261,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                             await el.evaluate(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
+                                console.log("b3")
                                 return;
                             });
                         }
@@ -264,6 +270,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                             await el.evaluate(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
+                                console.log("b4")
                                 return;
                             });
                         }
