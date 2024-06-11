@@ -13,7 +13,7 @@ const checkFailData = async (page, obj, isMobile) =>{
         });
         return result;
     });
-    const area = obj.area;
+    let area = obj.area.replace('&amp;', '&');
     const buttonIndex = buttons.findIndex((text, index) => {
         return area.includes(text)
     });
@@ -114,7 +114,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                 return;
             });
         } else {
-            console.log(`merchandising select : failed`);
+            console.log(`merchandising select : failed`, obj.area);
         }
     } 
     // 4. co05 뱃지 개수 오류의 경우
@@ -270,7 +270,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                     }
                 }
             } else {
-                console.log(`merchandising text select : failed`);
+                console.log(`merchandising text select : failed `, obj.area);
             }
         }
         else if (selector) {

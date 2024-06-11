@@ -89,7 +89,8 @@ const site_code = [
   "africa_fr",
   "africa_pt",
   "za",
-  "us" // offer 랜딩 이슈 존재
+  "us", // offer 랜딩 이슈 존재
+  // "sec"
 ];
 
   module.exports = {site_code};

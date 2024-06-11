@@ -223,14 +223,16 @@ const carouselBreakMobile = async (page, site_code) =>{
             }
         }
 
+        const swiperContainer = document.querySelector(".swiper-container")
+        if(swiperContainer) swiperContainer.style.overflow = 'visible'
 
         const showCaseCardTabInner = document.querySelector(".showcase-card-tab__inner")
         const showCaseCardTabCardWrap = document.querySelector(".showcase-card-tab__card-wrap")
-        const swiperContainer = document.querySelector(".swiper-container")
+        const tablist = showCaseCardTabInner.querySelector(".tab__list")
 
         if(showCaseCardTabInner) showCaseCardTabInner.style.overflow = 'visible'
         if(showCaseCardTabCardWrap) showCaseCardTabCardWrap.style.overflow = 'visible'
-        if(swiperContainer) swiperContainer.style.overflow = 'visible'
+        if(tablist) tablist.style.overflow = 'visible'
 
         
         // co07 모든 케로쉘 깨는 로직 (필요 시 사용)

@@ -82,8 +82,11 @@ const removeIframe = async (page) =>{
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
 
-        const surveyiframe = document.querySelector(".surveyIframe.showSurvey");
+        const surveyiframe = document.querySelector(".surveyIframe");
         if (surveyiframe) surveyiframe.remove();
+
+        const surveyiframe2 = document.querySelector(".surveyIframe.showSurvey");
+        if (surveyiframe2) surveyiframe2.remove();
         
         const previewWrapper = document.querySelector(".ins-preview-wrapper");
         if (previewWrapper) previewWrapper.remove();

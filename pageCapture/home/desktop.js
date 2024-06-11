@@ -89,7 +89,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     fs.mkdirSync(pathName, { recursive: true });
     await page.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 30});
 
-    // browser.close();
+    browser.close();
 
 }
 

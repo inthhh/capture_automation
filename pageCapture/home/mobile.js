@@ -107,7 +107,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         }
     }
     
-    // browser.close();
+    browser.close();
 
 }
 
