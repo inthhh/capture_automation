@@ -35,7 +35,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     let body = await bodyHandle.boundingBox();
 
     if(siteCode === "sec"){
-        await page.setViewport({ width: 360, height: Math.floor(body.height)});
+        await page.setViewport({ width: 360, height: 6000});
 
         await delay(10000)
         await carouselBreak.eventListenerBreak(page)

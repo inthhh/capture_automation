@@ -34,9 +34,9 @@ const takeScreenshot = async (siteCode, dataDate) => {
     let body = await bodyHandle.boundingBox();
     
     if(siteCode === "sec"){
-        await page.setViewport({ width: 1440*7, height: Math.floor(body.height)});
-        await delay(10000)
+        await page.setViewport({ width: 1440*7, height: 6500});
         
+        await delay(10000)
         // await popupBreak.cookiePopupBreaker(page, false)
         await carouselBreak.eventListenerBreak(page)
         await delay(5000)
@@ -46,7 +46,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await secBreak.kvCarouselBreak(page, true)
         await delay(5000)
         await secBreak.contentsToLeft(page)
-        await delay(5000)
+        await delay(10000)
         await secBreak.showcaseCardBreak(page)
         await delay(10000)
 
@@ -99,7 +99,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     fs.mkdirSync(pathName, { recursive: true });
     await page.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 30});
 
-    browser.close();
+    // browser.close();
 
 }
 
