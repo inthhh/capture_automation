@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const moment = require('moment');
 const carouselBreak = require ('../capture-utils/carouselBreak');
+const secFailChecker = require("../capture-utils/secFailChecker");
 const failChecker = require("../capture-utils/failChecker");
 const getRawData = require("../capture-utils/getRawData")
 const popupBreak = require("../capture-utils/popupBreak")
@@ -43,7 +44,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         // await popupBreak.cookiePopupBreaker(page, false)
         await popupBreak.removeIframe(page)
         console.log('is sec')
-        await delay(10000)
+        await delay(5000)
         await secBreak.kvCarouselBreak(page, false)
         await delay(5000)
         await secBreak.contentsToLeft(page)
@@ -51,6 +52,15 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await secBreak.showcaseCardBreak(page)
         
         await delay(5000)
+
+        const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
+
+        if(failedData && failedData.length>0){
+            for (let i = 0; i < failedData.length; i++){
+                await secFailChecker.checkFailData(page, failedData[i], false)
+            }
+        }
+
         console.log('out sec')
     }
     else{
@@ -69,13 +79,14 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await delay(10000)
         await popupBreak.accessibilityPopupBreaker(page)
         await carouselBreak.eventListenerBreak(page)
-    }
-    await delay(1000)
+    
+        await delay(1000)
 
-    const failedData = await getRawData(dataDate, siteCode, "N", "Mobile")
-    if(failedData && failedData.length>0){
-        for (let i = 0; i < failedData.length; i++){
-            await failChecker.checkFailData(page, failedData[i], true)
+        const failedData = await getRawData(dataDate, siteCode, "N", "Mobile")
+        if(failedData && failedData.length>0){
+            for (let i = 0; i < failedData.length; i++){
+                await failChecker.checkFailData(page, failedData[i], true)
+            }
         }
     }
 
