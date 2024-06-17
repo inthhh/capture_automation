@@ -21,6 +21,7 @@ const getRawData = async (date="", siteCode="", checkResult="", Desc="") =>{
                         contents: (obj.contents&&obj.contents.includes("https://") ? (obj.contents.replace("https://", "")) : (obj.contents))
                     };
                 }
+                else return null;
             } 
             // Mobile ver일 때, Desktop 요소는 제외
             else if(Desc == "Mobile"){
@@ -33,6 +34,7 @@ const getRawData = async (date="", siteCode="", checkResult="", Desc="") =>{
                         contents: (obj.contents&&obj.contents.includes("https://") ? (obj.contents.replace("https://", "")) : (obj.contents))
                     };
                 }
+                else return null;
             }
             else return null;
         })

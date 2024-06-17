@@ -13,7 +13,7 @@ const checkFailData = async (page, obj, isMobile) =>{
         });
         return result;
     });
-    let area = obj.area.replace('&amp;', '&');
+    let area = obj.area.replace(/&amp;/g, '&');
     const buttonIndex = buttons.findIndex((text, index) => {
         return area.includes(text)
     });
@@ -88,7 +88,10 @@ const checkFailData = async (page, obj, isMobile) =>{
                     if(element.src.includes(src)){
                         const parentEl1 = element.parentElement;
                         const parentEl2 = parentEl1.parentElement;
-                        if(parentEl2) parentEl2.style.border = '7px solid red';
+                        if(parentEl2) {
+                            parentEl2.style.border = '7px solid red';
+                            parentEl2.style.borderRadius = '20px';
+                        }
                         return;
                     }
                 });
@@ -201,20 +204,27 @@ const checkFailData = async (page, obj, isMobile) =>{
                 if(card) {
                     const els = await card.$$(' * '); // 모든 자식 요소 선택
                     for (let el of els) {
-                        let innerhtml = await el.evaluate(node => node.innerHTML.replace(/\s/g, '').replace(/"/g,'').replace(/<br>/g, ''))
+                        let innerhtml = await el.evaluate(node => node.innerHTML.replace(/\s/g, '').replace(/"/g,'')
+                                        .replace(/<br>/g, '').replace(/<small>/g, '').replace(/<\/small>/g, '').replace(/&nbsp;/g, ''))
                         let outerhtml = await el.evaluate(node => node.outerHTML.replace(/\s/g, '').replace(/"/g,''))
                         let childrenLength = await el.evaluate(node => node.children.length);
-                        let cleanedContents = obj.contents.replace(/<sup>.*?<\/sup>/g, '').replace(/<br\/>/g, '').replace(/\s/g, '').replace(/"/g,'');
+                        const isDisplayed = await el.evaluate(node => {
+                            const style = window.getComputedStyle(node);
+                            return style.display !== 'none';
+                        });
+                        let cleanedContents = obj.contents.replace(/<sup>.*?<\/sup>/g, '').replace(/<br\/>/g, '').replace(/\s/g, '')
+                                        .replace(/"/g,'').replace(/<small>/g, '').replace(/<\/small>/g, '');
                         // cleanedContents = '>' + cleanedContents + '<';
-                        
+                        // if(cleanedContents.includes("МаксимумВАУ")&&innerhtml.includes("МаксимумВАУ")&&childrenLength<2) console.log(innerhtml, " /-----/ ",cleanedContents)
                         if (obj.title=="Description" && outerhtml.includes("showcase-card-tab-card__product-name")) {
                             // console.log("desc가 title이 됨\n", innerhtml, " \n*** ", cleanedContents);
                             continue;
                         }
+                        else if(!isDisplayed) continue;
                         // else if (innerhtml.includes(cleanedContents) && childrenLength === 0) {
-                            else if (innerhtml==cleanedContents && childrenLength === 0) {
-                            
-                            // console.log(area, " - ", tileNumber, " index / ", cleanedContents)
+                        else if (innerhtml==cleanedContents && childrenLength === 0 && isDisplayed) {
+                            // console.log(innerhtml, " /-----/ ",cleanedContents, isDisplayed)
+                            console.log("1 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed, desc)
                             if(isMobile && desc==="Badge") {
                                 await el.evaluate(node => {
                                     let parent = node.parentElement;
@@ -223,7 +233,6 @@ const checkFailData = async (page, obj, isMobile) =>{
                                     parent.style.width = newWidth;
                                     parent.style.padding = '2px'
                                     parent.style.border = '4px solid red';
-                                    console.log("b")
                                     return;
                                 });
                             }
@@ -232,36 +241,32 @@ const checkFailData = async (page, obj, isMobile) =>{
                                     let parent = node.parentElement;
                                     parent.style.padding = '2px'
                                     parent.style.border = '4px solid red';
-                                    console.log("b1")
                                     return;
                                 });
                             }
                             else{
-                                // console.log(innerhtml, " / ", cleanedContents)
                                 await el.evaluate(node => {
                                     let parent = node.parentElement;
                                     parent.style.border = '4px solid red';
-                                    console.log("b1-2")
                                     return;
                                 });
                             }
                         }
                         else if(outerhtml.includes('<br>') && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 1){
                             // console.log(area, " - ", tileNumber, " index / ", innerhtml)
+                            console.log("2 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed, desc)
                             await el.evaluate(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
-                                console.log("b2")
                                 return;
                             });
                         }
                         else if((outerhtml.match(/<br>/g) || []).length >= 2 && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 2){
                             // if (cleanedContents.includes("15%")) console.log(area, " - ", innerhtml, " / ", cleanedContents, childrenLength)
-                        
+                            console.log("3 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed)
                             await el.evaluate(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
-                                console.log("b3")
                                 return;
                             });
                         }
@@ -270,7 +275,6 @@ const checkFailData = async (page, obj, isMobile) =>{
                             await el.evaluate(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
-                                console.log("b4")
                                 return;
                             });
                         }
