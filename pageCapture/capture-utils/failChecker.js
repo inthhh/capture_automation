@@ -224,7 +224,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                         // else if (innerhtml.includes(cleanedContents) && childrenLength === 0) {
                         else if (innerhtml==cleanedContents && childrenLength === 0 && isDisplayed) {
                             // console.log(innerhtml, " /-----/ ",cleanedContents, isDisplayed)
-                            console.log("1 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed, desc)
+                            // console.log("1 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed, desc)
                             if(isMobile && desc==="Badge") {
                                 await el.evaluate(node => {
                                     let parent = node.parentElement;
@@ -254,7 +254,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                         }
                         else if(outerhtml.includes('<br>') && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 1){
                             // console.log(area, " - ", tileNumber, " index / ", innerhtml)
-                            console.log("2 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed, desc)
+                            // console.log("2 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed, desc)
                             await el.evaluate(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
@@ -263,7 +263,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                         }
                         else if((outerhtml.match(/<br>/g) || []).length >= 2 && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 2){
                             // if (cleanedContents.includes("15%")) console.log(area, " - ", innerhtml, " / ", cleanedContents, childrenLength)
-                            console.log("3 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed)
+                            // console.log("3 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed)
                             await el.evaluate(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
