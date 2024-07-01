@@ -18,7 +18,7 @@ const delay = (time) => {
 }
 const takeScreenshot = async (siteCode, dataDate) => {
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         timeout: 100000
     });
     console.log("-----", siteCode,"-----");
@@ -27,8 +27,8 @@ const takeScreenshot = async (siteCode, dataDate) => {
     await page.setViewport({ width: 360, height: 10000 });
 
     await delay(1000)
-    await page.setDefaultTimeout(200000);
-    await page.goto(url,{ waitUntil: 'load', timeout: 200000 });
+    await page.setDefaultTimeout(5000000);
+    await page.goto(url,{ waitUntil: 'load', timeout: 5000000 });
     await delay(2000)
     
     let bodyHandle = await page.$('body');

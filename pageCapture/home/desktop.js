@@ -17,7 +17,7 @@ const delay = (time) => {
 }
 const takeScreenshot = async (siteCode, dataDate) => {
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         timeout: 100000
     });
     console.log("-----", siteCode,"-----");
@@ -26,8 +26,8 @@ const takeScreenshot = async (siteCode, dataDate) => {
     const url = `https://www.samsung.com/${siteCode}`;
     await page.setViewport({ width: 1440, height: 10000 });
     await delay(2000)
-    await page.setDefaultTimeout(200000);
-    await page.goto(url, { waitUntil: 'load', timeout: 200000 });
+    await page.setDefaultTimeout(5000000);
+    await page.goto(url, { waitUntil: 'load', timeout: 5000000 });
     await delay(2000)
     
     let bodyHandle = await page.$('body');
@@ -42,7 +42,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await delay(5000)
         await popupBreak.removeIframe(page)
         console.log('is sec')
-        await delay(10000)
+        await delay(5000)
         await secBreak.kvCarouselBreak(page, true)
         await delay(5000)
         await secBreak.contentsToLeft(page)
