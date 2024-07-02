@@ -205,7 +205,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                     const els = await card.$$(' * '); // 모든 자식 요소 선택
                     for (let el of els) {
                         let innerhtml = await el.evaluate(node => node.innerHTML.replace(/\s/g, '').replace(/"/g,'')
-                                        .replace(/<br>/g, '').replace(/<small>/g, '').replace(/<\/small>/g, '').replace(/&nbsp;/g, ''))
+                                        .replace(/<br>/g, '').replace(/<small>/g, '').replace(/<\/small>/g, '').replace(/&nbsp;/g, ''));
                         let outerhtml = await el.evaluate(node => node.outerHTML.replace(/\s/g, '').replace(/"/g,''))
                         let childrenLength = await el.evaluate(node => node.children.length);
                         const isDisplayed = await el.evaluate(node => {
@@ -215,14 +215,21 @@ const checkFailData = async (page, obj, isMobile) =>{
                         let cleanedContents = obj.contents.replace(/<sup>.*?<\/sup>/g, '').replace(/<br\/>/g, '').replace(/\s/g, '')
                                         .replace(/"/g,'').replace(/<small>/g, '').replace(/<\/small>/g, '');
                         // cleanedContents = '>' + cleanedContents + '<';
-                        // if(cleanedContents.includes("МаксимумВАУ")&&innerhtml.includes("МаксимумВАУ")&&childrenLength<2) console.log(innerhtml, " /-----/ ",cleanedContents)
+                        // if(cleanedContents.includes("OLED")&&innerhtml.includes("OLED")&&childrenLength<2) console.log(innerhtml, " /-----/ ",cleanedContents, childrenLength)
                         if (obj.title=="Description" && outerhtml.includes("showcase-card-tab-card__product-name")) {
                             // console.log("desc가 title이 됨\n", innerhtml, " \n*** ", cleanedContents);
                             continue;
                         }
                         else if(!isDisplayed) continue;
                         // else if (innerhtml.includes(cleanedContents) && childrenLength === 0) {
-                        else if (innerhtml==cleanedContents && childrenLength === 0 && isDisplayed) {
+                        else if(innerhtml==cleanedContents && childrenLength === 1 && innerhtml.includes("span")){
+                            await el.evaluate(node => {
+                                let parent = node.parentElement;
+                                parent.style.border = '4px solid red';
+                                return;
+                            });
+                        }
+                        else if (innerhtml==cleanedContents && childrenLength === 0) {
                             // console.log(innerhtml, " /-----/ ",cleanedContents, isDisplayed)
                             // console.log("1 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed, desc)
                             if(isMobile && desc==="Badge") {
