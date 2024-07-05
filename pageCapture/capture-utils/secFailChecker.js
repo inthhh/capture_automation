@@ -2,7 +2,7 @@ const { text } = require("body-parser");
 
 // 페이지 내에서 API 데이터와 동일한 요소를 찾고 border 표시하는 함수
 const checkFailData = async (page, obj, isMobile) =>{
-
+    console.log(obj.contents)
     // co05의 모든 버튼을 저장
     const buttons = await page.$$eval('.swiper-wrapper button', buttons => {
         const result = [];
@@ -75,6 +75,7 @@ const checkFailData = async (page, obj, isMobile) =>{
     }
     // KV 외의 이미지
     else if(obj.contents.includes("images.samsung")){
+        console.log("image capture")
         const src = obj.contents;
         const swiperChildren = await page.$$('.swiper-slide.set-tab-prd.rounded');
 
@@ -151,6 +152,7 @@ const checkFailData = async (page, obj, isMobile) =>{
     }
     // 5. 텍스트 오류의 경우
     else {
+        console.log("text capture")
         let str = "";
         let merchanArea = "";
         let tileNumber = "";
@@ -168,89 +170,117 @@ const checkFailData = async (page, obj, isMobile) =>{
                 console.log('No match found');
             }
         }
-        else if(obj.key.includes("CO07")) str = "CO07";
-        else if(obj.key.includes("HD01")) str = "HD01";
-        else if(obj.key.includes("FT03")) str = "FT03";
-        else return 0;
+        // else if(obj.key.includes("CO07")) str = "CO07";
+        // else if(obj.key.includes("HD01")) str = "HD01";
+        // else if(obj.key.includes("FT03")) str = "FT03";
+        // else return 0;
         
         let selector = null;
 
         // 각 영역 별 셀렉터 저장
-        if (str == "CO05"){
-            selector = await page.$(`div[class*="slider-tabtype-list"]`);
-        } else if (str == "HD01"){
+        // if (str == "CO05"){
+            // selector = await page.$(`div[class*="slider-tabtype-list"]`);
+        // } else if (str == "HD01"){
             // selector = await page.$(`div[class*="ho-g-home-kv-carousel"]`);
-        } else if (str == "FT03"){
+        // } else if (str == "FT03"){
             // selector = await page.$(`div[class*="pd-g-feature-benefit-full-bleed"]`);
-        } else if (str == "CO07") {
+        // } else if (str == "CO07") {
             // selector = await page.$(`div[class*="ho-g-key-feature-tab"]`);
-        } else {
+        // } else {
             //
-        }
+        // }
 
-        if(str == "CO05"){
-            // weight,height = img_desktop.size
-            // LSSSS, BigTile Title Text: (0,height * 0.7,weight,height*0.9)
-            // LSSSS, Big Tile Description Text: (0,height * 0.87,weight,height)
-            // LSSSS, Small Tile Text: (0,height * 0.7,weight,height)
-            // LLL, Text : (0,height * 0.7,weight,height)
+        // if(str == "CO05"){
             
             const swiperChildren = await page.$$('.swiper-slide.set-tab-prd.rounded');
             const selectedElement = await swiperChildren[buttonIndex];
-
-            // 키값으로 몇 번째 타일인지 확인
-            // const regex = 정규표현식
-
+            console.log(buttonIndex)
             // text 위치 확인 (title or desc)
             let textType = "";
-
+            let tileCount = -1;
             // 문자열에 대해 정규표현식을 사용하여 숫자 추출
             if (obj.title == "Description") {
-                tileCount = parseInt(match[1], 10);
+                tileCount = 0; // 
                 textType = "desc";
             } else if (obj.title == "Title"){
-                tileCount = parseInt(match[1], 10);
+                tileCount = 0; // 
                 textType = "title";
             }
             // co05 이미지
             if (selectedElement) {
+                console.log(selectedElement)
                 const matchingElements = await page.evaluate((textType, tileCount) => {
-                    const tileChildren = page.$$('.swiper-slide.set-tab-prd.rounded .prd-item');
-                    const element = tileChildren[tileCount-1]; // 타일 진입
-                    const childElement = element?.firstElementChild; // 첫번째 자식 요소 (이미지) 접근
-                    if(childElement){
-                            const overlayRect = document.createElement('div');
-                            overlayRect.style.position = 'absolute';
-                            overlayRect.style.border = '2px solid red';
-                            overlayRect.style.backgroundColor = 'transparent';
-                            
+                    const tileChildren = document.querySelectorAll('.swiper-slide.set-tab-prd.rounded .prd-item');
+                    console.log("tile children check")
+                    // const element = tileChildren[0]; // 타일 진입
+                    console.log(element)
+                    tileChildren.forEach((element)=>{
+                        console.log(tileCount);
+                        if(element){
                             // 이미지 위치와 크기 계산
-                            const rect = childElement.getBoundingClientRect();
+                            const rect = element.getBoundingClientRect();
                             const imageHeight = rect.height;
-                            
-                            if(textType === "title"){
-                                overlayRect.style.top = `${rect.top + window.scrollY + 0.7 * imageHeight}px`;
-                                overlayRect.style.left = `${rect.left + window.scrollX}px`;
-                                overlayRect.style.width = `${rect.width}px`;
-                                overlayRect.style.height = `${0.15 * imageHeight}px`;
-                            }
-                            else if(textType === "desc"){
-                                overlayRect.style.top = `${rect.top + window.scrollY + 0.85 * imageHeight}px`;
-                                overlayRect.style.left = `${rect.left + window.scrollX}px`;
-                                overlayRect.style.width = `${rect.width}px`;
-                                overlayRect.style.height = `${0.15 * imageHeight}px`;
-                            }
-                            else{ // 뱃지 text
+                            const newWidth = rect.width - 40; // width를 20px 줄임
+                            const newLeft = rect.left + (rect.width - newWidth) / 2 + window.scrollX;
 
+                            if(textType === "title"){
+                                const overlayRect = document.createElement('div');
+                                overlayRect.style.position = 'absolute';
+                                overlayRect.style.border = '2px solid red';
+                                overlayRect.style.backgroundColor = 'transparent';
+                                overlayRect.style.left = `${newLeft}px`;
+                                overlayRect.style.width = `${newWidth}px`;
+                                overlayRect.style.zIndex = '9999';
+                                
+                                // if(textType === "title"){
+                                if(tileCount==10 || tileCount==11 || tileCount==12) { // LLL 3개일때
+                                    overlayRect.style.top = `${rect.top + window.scrollY + 0.8 * imageHeight}px`;
+                                    overlayRect.style.height = `${0.1 * imageHeight}px`;
+                                }
+                                else if(tileCount%5 == 0){ // big tile
+                                    overlayRect.style.top = `${rect.top + window.scrollY + 0.8 * imageHeight}px`;
+                                    overlayRect.style.height = `${0.06 * imageHeight}px`;
+                                }
+                                else{ // small tile
+                                    overlayRect.style.top = `${rect.top + window.scrollY + 0.73 * imageHeight}px`;
+                                    overlayRect.style.height = `${0.11 * imageHeight}px`;
+                                }
+                                // }
+                                document.body.appendChild(overlayRect);
                             }
-                            // 부모 요소에 사각형 추가
-                            document.body.appendChild(overlayRect);
-                            return;
-                        
-                    };
+
+                            if(textType === "desc"){
+
+                                const descRect = document.createElement('div');
+                                descRect.style.position = 'absolute';
+                                descRect.style.border = '2px solid red';
+                                descRect.style.backgroundColor = 'transparent';
+                                
+                                if(tileCount%5 == 0){ // big tile
+                                    descRect.style.top = `${rect.top + window.scrollY + 0.87 * imageHeight}px`;
+                                    descRect.style.left = `${newLeft}px`;
+                                    descRect.style.width = `${newWidth}px`;
+                                    descRect.style.height = `${0.06 * imageHeight}px`;
+                                    descRect.style.zIndex = '9999';
+                                }
+                                else{
+                                    descRect.style.top = `${rect.top + window.scrollY + 0.85 * imageHeight}px`;
+                                    descRect.style.left = `${newLeft}px`;
+                                    descRect.style.width = `${newWidth}px`;
+                                    descRect.style.height = `${0.1 * imageHeight}px`;
+                                    descRect.style.zIndex = '9999';
+                                }
+                                document.body.appendChild(descRect);
+                            }
+                                
+                            if(tileCount==12) tileCount += 2;
+                            tileCount ++;
+                        }
+                    })
+                    // console.log(matchingElements)
                 }, textType, tileCount);
             }
-        }
+        // }
     }
     
 }
