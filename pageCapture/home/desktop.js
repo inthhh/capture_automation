@@ -39,8 +39,8 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await delay(10000)
         // await popupBreak.cookiePopupBreaker(page, false)
         await carouselBreak.eventListenerBreak(page)
-        await delay(5000)
-        await popupBreak.removeIframe(page)
+        // await delay(5000)
+        // await popupBreak.removeIframe(page)
         console.log('is sec')
         await delay(5000)
         await secBreak.kvCarouselBreak(page, true)
@@ -48,7 +48,6 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await secBreak.contentsToLeft(page)
         await delay(10000)
         await secBreak.showcaseCardBreak(page)
-        await delay(10000)
 
         const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
 
@@ -57,7 +56,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
                 await secFailChecker.checkFailData(page, failedData[i], false)
             }
         }
-        
+        await delay(10000)
         console.log('out sec')
     }
     else{

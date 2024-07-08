@@ -209,7 +209,7 @@ const checkFailData = async (page, obj, isMobile) =>{
             // co05 이미지
             if (selectedElement) {
                 console.log(selectedElement)
-                const matchingElements = await page.evaluate((textType, tileCount) => {
+                const matchingElements = await page.evaluate((textType, tileCount, isMobile) => {
                     const tileChildren = document.querySelectorAll('.swiper-slide.set-tab-prd.rounded .prd-item');
                     console.log("tile children check")
                     // const element = tileChildren[0]; // 타일 진입
@@ -220,32 +220,54 @@ const checkFailData = async (page, obj, isMobile) =>{
                             // 이미지 위치와 크기 계산
                             const rect = element.getBoundingClientRect();
                             const imageHeight = rect.height;
-                            const newWidth = rect.width - 40; // width를 20px 줄임
-                            const newLeft = rect.left + (rect.width - newWidth) / 2 + window.scrollX;
+                            const newWidthPc = rect.width - 40; // width를 40px 줄임
+                            const newLeftPc = rect.left + (rect.width - newWidthPc) / 2 + window.scrollX;
+                            const newWidthMobile = rect.width / 2 - 30;
+                            const newLeftMobile = rect.left + (rect.width / 2 + 10) + window.scrollX;
 
                             if(textType === "title"){
                                 const overlayRect = document.createElement('div');
                                 overlayRect.style.position = 'absolute';
                                 overlayRect.style.border = '2px solid red';
                                 overlayRect.style.backgroundColor = 'transparent';
-                                overlayRect.style.left = `${newLeft}px`;
-                                overlayRect.style.width = `${newWidth}px`;
                                 overlayRect.style.zIndex = '9999';
                                 
-                                // if(textType === "title"){
-                                if(tileCount==10 || tileCount==11 || tileCount==12) { // LLL 3개일때
-                                    overlayRect.style.top = `${rect.top + window.scrollY + 0.8 * imageHeight}px`;
-                                    overlayRect.style.height = `${0.1 * imageHeight}px`;
+                                if(!isMobile){ // PC ver
+                                    overlayRect.style.left = `${newLeftPc}px`;
+                                    overlayRect.style.width = `${newWidthPc}px`;
+                                    if(tileCount==10 || tileCount==11 || tileCount==12) { // LLL 3개일때
+                                        overlayRect.style.top = `${rect.top + window.scrollY + 0.8 * imageHeight}px`;
+                                        overlayRect.style.height = `${0.1 * imageHeight}px`;
+                                    }
+                                    else if(tileCount%5 == 0){ // big tile
+                                        overlayRect.style.top = `${rect.top + window.scrollY + 0.8 * imageHeight}px`;
+                                        overlayRect.style.height = `${0.06 * imageHeight}px`;
+                                    }
+                                    else{ // small tile
+                                        overlayRect.style.top = `${rect.top + window.scrollY + 0.73 * imageHeight}px`;
+                                        overlayRect.style.height = `${0.11 * imageHeight}px`;
+                                    }
                                 }
-                                else if(tileCount%5 == 0){ // big tile
-                                    overlayRect.style.top = `${rect.top + window.scrollY + 0.8 * imageHeight}px`;
-                                    overlayRect.style.height = `${0.06 * imageHeight}px`;
+                                else{ // Mobile ver
+                                    if(tileCount==10 || tileCount==11 || tileCount==12) { // LLL 3개일때
+                                        overlayRect.style.left = `${newLeftMobile - 10}px`;
+                                        overlayRect.style.width = `${newWidthMobile + 20}px`;
+                                        overlayRect.style.top = `${rect.top + window.scrollY + 0.35 * imageHeight}px`;
+                                        overlayRect.style.height = `${0.3 * imageHeight}px`;
+                                    }
+                                    else if(tileCount%5 == 0){ // big tile
+                                        overlayRect.style.left = `${newLeftMobile}px`;
+                                        overlayRect.style.width = `${newWidthMobile}px`;
+                                        overlayRect.style.top = `${rect.top + window.scrollY + 0.25 * imageHeight}px`;
+                                        overlayRect.style.height = `${0.25 * imageHeight}px`;
+                                    }
+                                    else{ // small tile
+                                        overlayRect.style.left = `${rect.left + 10 + window.scrollX}px`;
+                                        overlayRect.style.width = `${rect.width - 20}px`;
+                                        overlayRect.style.top = `${rect.top + window.scrollY + 0.68 * imageHeight}px`;
+                                        overlayRect.style.height = `${0.2 * imageHeight}px`;
+                                    }
                                 }
-                                else{ // small tile
-                                    overlayRect.style.top = `${rect.top + window.scrollY + 0.73 * imageHeight}px`;
-                                    overlayRect.style.height = `${0.11 * imageHeight}px`;
-                                }
-                                // }
                                 document.body.appendChild(overlayRect);
                             }
 
@@ -258,15 +280,15 @@ const checkFailData = async (page, obj, isMobile) =>{
                                 
                                 if(tileCount%5 == 0){ // big tile
                                     descRect.style.top = `${rect.top + window.scrollY + 0.87 * imageHeight}px`;
-                                    descRect.style.left = `${newLeft}px`;
-                                    descRect.style.width = `${newWidth}px`;
+                                    descRect.style.left = `${newLeftPc}px`;
+                                    descRect.style.width = `${newWidthPc}px`;
                                     descRect.style.height = `${0.06 * imageHeight}px`;
                                     descRect.style.zIndex = '9999';
                                 }
                                 else{
                                     descRect.style.top = `${rect.top + window.scrollY + 0.85 * imageHeight}px`;
-                                    descRect.style.left = `${newLeft}px`;
-                                    descRect.style.width = `${newWidth}px`;
+                                    descRect.style.left = `${newLeftPc}px`;
+                                    descRect.style.width = `${newWidthPc}px`;
                                     descRect.style.height = `${0.1 * imageHeight}px`;
                                     descRect.style.zIndex = '9999';
                                 }
@@ -278,7 +300,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                         }
                     })
                     // console.log(matchingElements)
-                }, textType, tileCount);
+                }, textType, tileCount, isMobile);
             }
         // }
     }

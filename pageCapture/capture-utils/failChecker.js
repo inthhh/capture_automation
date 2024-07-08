@@ -215,10 +215,13 @@ const checkFailData = async (page, obj, isMobile) =>{
                         let cleanedContents = obj.contents.replace(/<sup>.*?<\/sup>/g, '').replace(/<br\/>/g, '').replace(/\s/g, '')
                                         .replace(/"/g,'').replace(/<small>/g, '').replace(/<\/small>/g, '');
                         // cleanedContents = '>' + cleanedContents + '<';
-                        // if(cleanedContents.includes("OLED")&&innerhtml.includes("OLED")&&childrenLength<2) console.log(innerhtml, " /-----/ ",cleanedContents, childrenLength)
+                        // if(cleanedContents.includes("خصم")&&innerhtml.includes("خصم")&&childrenLength<2) console.log(innerhtml, " /-----/ ",cleanedContents, childrenLength)
                         if (obj.title=="Description" && outerhtml.includes("showcase-card-tab-card__product-name")) {
                             // console.log("desc가 title이 됨\n", innerhtml, " \n*** ", cleanedContents);
                             continue;
+                        }
+                        else if(desc==="Badge" && childrenLength!=0) {
+                            continue; // 뱃지일 때 뱃지 내용을 포함한 title,desc가 잡히는 버그 방지
                         }
                         else if(!isDisplayed) continue;
                         // else if (innerhtml.includes(cleanedContents) && childrenLength === 0) {
