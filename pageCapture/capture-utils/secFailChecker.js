@@ -2,22 +2,27 @@ const { text } = require("body-parser");
 
 // 페이지 내에서 API 데이터와 동일한 요소를 찾고 border 표시하는 함수
 const checkFailData = async (page, obj, isMobile) =>{
-    console.log(obj.contents)
+
+    let key = obj.key
+    if(obj.contents.includes("에어컨")) key = "sec_Home_CO05_4_all-outlets_4_LSSSS_Title_Desktop";
+    else if(obj.contents.includes("얼리버드")) key = "sec_Home_CO05_3_july-special-benefit_0_LLL_Title_Desktop";
+    console.log(key, obj.contents)
     // co05의 모든 버튼을 저장
     const buttons = await page.$$eval('.swiper-wrapper button', buttons => {
         const result = [];
         buttons.forEach(button => {
             if (button.getAttribute('data-omni').includes('merchandising')) { 
-                const title = button.getAttribute('title')
-                result.push(title);
-                console.log(title)
+                const title = button.getAttribute('data-omni')
+                result.push(title.replace('merchandising:',''));
             }
         });
         return result;
     });
-    let area = obj.area.replace('&amp;', '&');
+    // .replace('&amp;', '&')
     const buttonIndex = buttons.findIndex((text, index) => {
-        return area.includes(text)
+        let text_ = text.replace(/_/g,'-')
+        console.log(text_)
+        return key.includes(text_)
     });
     const desc = obj.desc;
 
@@ -155,20 +160,25 @@ const checkFailData = async (page, obj, isMobile) =>{
         console.log("text capture")
         let str = "";
         let merchanArea = "";
+        let isLLL = false;
         let tileNumber = "";
         
-        if(obj.key.includes("CO05")) {
+        if(key.includes("CO05")) {
             str = "CO05";
-            const regex = /CO05_1_(.*?)_/;
-            const match = obj.key.match(regex); // merchan 영역 찾기
+            const regex = /CO05_\d+_(.*?)_/;
+            const match = key.match(regex); // merchan 영역 찾기
             if (match && match[1]) {
                 merchanArea = match[1];
                 const numberRegex = new RegExp(`${merchanArea}_(\\d+)_`);
-                let tilenum = obj.key.match(numberRegex);
+                let tilenum = key.match(numberRegex);
                 tileNumber = tilenum[1];
+                console.log(merchanArea, tileNumber)
             } else {
                 console.log('No match found');
             }
+        }
+        if(key.includes("LLL")){
+            isLLL = true;
         }
         // else if(obj.key.includes("CO07")) str = "CO07";
         // else if(obj.key.includes("HD01")) str = "HD01";
@@ -194,28 +204,22 @@ const checkFailData = async (page, obj, isMobile) =>{
             
             const swiperChildren = await page.$$('.swiper-slide.set-tab-prd.rounded');
             const selectedElement = await swiperChildren[buttonIndex];
-            console.log(buttonIndex)
+            console.log("index :", buttonIndex, tileNumber, swiperChildren.length)
             // text 위치 확인 (title or desc)
             let textType = "";
-            let tileCount = -1;
             // 문자열에 대해 정규표현식을 사용하여 숫자 추출
             if (obj.title == "Description") {
-                tileCount = 0; // 
                 textType = "desc";
             } else if (obj.title == "Title"){
-                tileCount = 0; // 
                 textType = "title";
             }
             // co05 이미지
             if (selectedElement) {
-                console.log(selectedElement)
-                const matchingElements = await page.evaluate((textType, tileCount, isMobile) => {
-                    const tileChildren = document.querySelectorAll('.swiper-slide.set-tab-prd.rounded .prd-item');
-                    console.log("tile children check")
-                    // const element = tileChildren[0]; // 타일 진입
+                const matchingElements = await page.evaluate((textType, tileNumber, isMobile, isLLL,selectedElement) => {
+                    const tileChildren = selectedElement.querySelectorAll('.swiper-slide.set-tab-prd.rounded .prd-item');
+                    const element = tileChildren[tileNumber]; // 타일 진입
                     console.log(element)
-                    tileChildren.forEach((element)=>{
-                        console.log(tileCount);
+                    // tileChildren.forEach((element)=>{
                         if(element){
                             // 이미지 위치와 크기 계산
                             const rect = element.getBoundingClientRect();
@@ -224,7 +228,21 @@ const checkFailData = async (page, obj, isMobile) =>{
                             const newLeftPc = rect.left + (rect.width - newWidthPc) / 2 + window.scrollX;
                             const newWidthMobile = rect.width / 2 - 30;
                             const newLeftMobile = rect.left + (rect.width / 2 + 10) + window.scrollX;
+                            
+                            // if(desc==="Badge"){
+                                const badgeRect = document.createElement('div');
+                                badgeRect.style.position = 'absolute';
+                                badgeRect.style.border = '2px solid red';
+                                badgeRect.style.backgroundColor = 'transparent';
+                                badgeRect.style.zIndex = '9999';
 
+                                badgeRect.style.left = `${newLeftPc+15}px`;
+                                badgeRect.style.width = `70px`;
+                                badgeRect.style.top = `${rect.top + window.scrollY + 40}px`;
+                                badgeRect.style.height = `40px`;
+
+                                document.body.appendChild(badgeRect);
+                            // }
                             if(textType === "title"){
                                 const overlayRect = document.createElement('div');
                                 overlayRect.style.position = 'absolute';
@@ -235,11 +253,11 @@ const checkFailData = async (page, obj, isMobile) =>{
                                 if(!isMobile){ // PC ver
                                     overlayRect.style.left = `${newLeftPc}px`;
                                     overlayRect.style.width = `${newWidthPc}px`;
-                                    if(tileCount==10 || tileCount==11 || tileCount==12) { // LLL 3개일때
+                                    if(isLLL) { // LLL 3개일때
                                         overlayRect.style.top = `${rect.top + window.scrollY + 0.8 * imageHeight}px`;
                                         overlayRect.style.height = `${0.1 * imageHeight}px`;
                                     }
-                                    else if(tileCount%5 == 0){ // big tile
+                                    else if(tileNumber == 0){ // big tile
                                         overlayRect.style.top = `${rect.top + window.scrollY + 0.8 * imageHeight}px`;
                                         overlayRect.style.height = `${0.06 * imageHeight}px`;
                                     }
@@ -249,13 +267,13 @@ const checkFailData = async (page, obj, isMobile) =>{
                                     }
                                 }
                                 else{ // Mobile ver
-                                    if(tileCount==10 || tileCount==11 || tileCount==12) { // LLL 3개일때
+                                    if(isLLL) { // LLL 3개일때
                                         overlayRect.style.left = `${newLeftMobile - 10}px`;
                                         overlayRect.style.width = `${newWidthMobile + 20}px`;
                                         overlayRect.style.top = `${rect.top + window.scrollY + 0.35 * imageHeight}px`;
                                         overlayRect.style.height = `${0.3 * imageHeight}px`;
                                     }
-                                    else if(tileCount%5 == 0){ // big tile
+                                    else if(tileNumber == 0){ // big tile
                                         overlayRect.style.left = `${newLeftMobile}px`;
                                         overlayRect.style.width = `${newWidthMobile}px`;
                                         overlayRect.style.top = `${rect.top + window.scrollY + 0.25 * imageHeight}px`;
@@ -270,15 +288,14 @@ const checkFailData = async (page, obj, isMobile) =>{
                                 }
                                 document.body.appendChild(overlayRect);
                             }
-
-                            if(textType === "desc"){
+                            else if(textType === "desc"){
 
                                 const descRect = document.createElement('div');
                                 descRect.style.position = 'absolute';
                                 descRect.style.border = '2px solid red';
                                 descRect.style.backgroundColor = 'transparent';
                                 
-                                if(tileCount%5 == 0){ // big tile
+                                if(tileNumber == 0){ // big tile
                                     descRect.style.top = `${rect.top + window.scrollY + 0.87 * imageHeight}px`;
                                     descRect.style.left = `${newLeftPc}px`;
                                     descRect.style.width = `${newWidthPc}px`;
@@ -294,13 +311,10 @@ const checkFailData = async (page, obj, isMobile) =>{
                                 }
                                 document.body.appendChild(descRect);
                             }
-                                
-                            if(tileCount==12) tileCount += 2;
-                            tileCount ++;
                         }
-                    })
+                    // })
                     // console.log(matchingElements)
-                }, textType, tileCount, isMobile);
+                }, textType, tileNumber, isMobile, isLLL, selectedElement);
             }
         // }
     }

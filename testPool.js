@@ -9,7 +9,7 @@ const goScreenshot = async () => {
 
   const site_code = region.site_code;
   const batchSize = 3; // batch 크기 변경 (병렬실행 갯수)
-  const dataDate = "2024-07-09"; // api 날짜에 맞게 변경
+  const dataDate = "2024-07-16"; // api 날짜에 맞게 변경
 
   const totalBatches = Math.ceil(site_code.length / batchSize);
   const results = [];

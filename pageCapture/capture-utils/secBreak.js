@@ -91,8 +91,6 @@ const contentsToLeft = async (page) => {
 const showcaseCardBreak = async (page) => {
     console.log("--- open co05")
     await page.evaluate (() => {
-
-        // const wrapper = document.querySelector(".wrap-component.tabtype-container.pt-nrw.pb-nrw.w1440px")
         const conbox = document.querySelector(".conbox.conbox-b2c-main")
         const wrapcontainer = conbox.querySelector(".component-contents.pt-none.pb-none")
         const container = document.querySelector(".tablist-prd-container")
