@@ -27,9 +27,9 @@ const takeScreenshot = async (siteCode, dataDate) => {
     await page.setViewport({ width: 1440, height: 10000 });
     await delay(2000)
     await page.setDefaultTimeout(5000000);
+    await page.goto(url, { timeout: 5000000 });
+    await delay(1000)
     await page.goto(url, { waitUntil: 'load', timeout: 5000000 });
-    await delay(2000)
-    
     let bodyHandle = await page.$('body');
     let body = await bodyHandle.boundingBox();
     
@@ -37,8 +37,9 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await page.setViewport({ width: 1440*7, height: 6500});
         
         await delay(10000)
-        // await popupBreak.cookiePopupBreaker(page, false)
+        await popupBreak.cookiePopupBreaker(page, false)
         await carouselBreak.eventListenerBreak(page)
+        await secBreak.buttonBreak(page)
         // await delay(5000)
         // await popupBreak.removeIframe(page)
         console.log('is sec')
