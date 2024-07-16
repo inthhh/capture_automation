@@ -205,17 +205,17 @@ const checkFailData = async (page, obj, isMobile) =>{
                     const els = await card.$$(' * '); // 모든 자식 요소 선택
                     for (let el of els) {
                         let innerhtml = await el.evaluate(node => node.innerHTML.replace(/\s/g, '').replace(/"/g,'')
-                                        .replace(/<br>/g, '').replace(/<small>/g, '').replace(/<\/small>/g, '').replace(/&nbsp;/g, ''));
+                                        .replace(/<br>/g, '').replace(/<small>/g, '').replace(/<\/small>/g, '').replace(/&nbsp;/g, '').replace(/<sup>.*?<\/sup>/g, ''));
                         let outerhtml = await el.evaluate(node => node.outerHTML.replace(/\s/g, '').replace(/"/g,''))
                         let childrenLength = await el.evaluate(node => node.children.length);
                         const isDisplayed = await el.evaluate(node => {
                             const style = window.getComputedStyle(node);
                             return style.display !== 'none';
                         });
-                        let cleanedContents = obj.contents.replace(/<sup>.*?<\/sup>/g, '').replace(/<br\/>/g, '').replace(/\s/g, '')
+                        let cleanedContents = obj.contents.replace(/<sup>.*?<\/sup>/g, '').replace(/<br\/>/g, '').replace(/\s/g, '').replace(/&nbsp;/g, '')
                                         .replace(/"/g,'').replace(/<small>/g, '').replace(/<\/small>/g, '');
                         // cleanedContents = '>' + cleanedContents + '<';
-                        // if(cleanedContents.includes("خصم")&&innerhtml.includes("خصم")&&childrenLength<2) console.log(innerhtml, " /-----/ ",cleanedContents, childrenLength)
+                        // if(cleanedContents.includes("$80")&&innerhtml.includes("$80")&&childrenLength<3) console.log(innerhtml, " /-----/ ",cleanedContents, childrenLength)
                         if (obj.title=="Description" && outerhtml.includes("showcase-card-tab-card__product-name")) {
                             // console.log("desc가 title이 됨\n", innerhtml, " \n*** ", cleanedContents);
                             continue;
@@ -280,7 +280,15 @@ const checkFailData = async (page, obj, isMobile) =>{
                                 return;
                             });
                         }
-                        else if(innerhtml.includes('sup') && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 1){
+                        // else if(innerhtml.includes('sup') && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 1){
+                        //     // console.log(merchanArea, " - ", innerHTML, " / ", cleanedContents," ------ ")
+                        //     await el.evaluate(node => {
+                        //         let parent = node.parentElement;
+                        //         parent.style.border = '4px solid red';
+                        //         return;
+                        //     });
+                        // }
+                        else if(outerhtml.includes('sup') && !innerhtml.includes('span') && innerhtml == cleanedContents && childrenLength <= 2){
                             // console.log(merchanArea, " - ", innerHTML, " / ", cleanedContents," ------ ")
                             await el.evaluate(node => {
                                 let parent = node.parentElement;
