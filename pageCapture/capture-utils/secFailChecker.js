@@ -217,11 +217,12 @@ const checkFailData = async (page, obj, isMobile) =>{
             if (selectedElement) {
                 const matchingElements = await page.evaluate((textType, tileNumber, isMobile, isLLL,selectedElement, desc) => {
                     const tileChildren = selectedElement.querySelectorAll('.swiper-slide.set-tab-prd.rounded .prd-item');
-                    // const element = tileChildren[tileNumber]; // 타일 진입
-                    console.log(element)
-                    tileNumber = -1;
-                    tileChildren.forEach((element)=>{
-                        tileNumber++;
+                    // const tileChildren = document.querySelectorAll('.swiper-slide.set-tab-prd.rounded .prd-item');
+                    const element = tileChildren[tileNumber]; // 타일 진입
+                    // console.log(element)
+                    // tileNumber = -1;
+                    // tileChildren.forEach((element)=>{
+                        // tileNumber++;
                         if(element){
                             // 이미지 위치와 크기 계산
                             const rect = element.getBoundingClientRect();
@@ -232,6 +233,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                             const newLeftMobile = rect.left + (rect.width / 2 + 10) + window.scrollX;
                             
                             if(desc==="Badge" && !isMobile){
+                            // if(!isMobile){
                                 if(tileNumber == 0){
                                     const badgeRect = document.createElement('div');
                                     badgeRect.style.position = 'absolute';
@@ -241,7 +243,7 @@ const checkFailData = async (page, obj, isMobile) =>{
 
                                     badgeRect.style.left = `${rect.left+30}px`;
                                     badgeRect.style.width = `70px`;
-                                    badgeRect.style.top = `${rect.top + window.scrollY + 40}px`;
+                                    badgeRect.style.top = `${rect.top + window.scrollY + 32}px`;
                                     badgeRect.style.height = `40px`;
 
                                     document.body.appendChild(badgeRect);
@@ -255,13 +257,14 @@ const checkFailData = async (page, obj, isMobile) =>{
 
                                     badgeRect.style.left = `${rect.left+30}px`;
                                     badgeRect.style.width = `70px`;
-                                    badgeRect.style.top = `${rect.top + window.scrollY + 40}px`;
+                                    badgeRect.style.top = `${rect.top + window.scrollY + 32}px`;
                                     badgeRect.style.height = `40px`;
 
                                     document.body.appendChild(badgeRect);
                                 }
                             }
                             if(desc==="Badge" && isMobile){
+                            // if(isMobile){
                                 if(tileNumber == 0){
                                     const badgeRect = document.createElement('div');
                                     badgeRect.style.position = 'absolute';
@@ -269,10 +272,10 @@ const checkFailData = async (page, obj, isMobile) =>{
                                     badgeRect.style.backgroundColor = 'transparent';
                                     badgeRect.style.zIndex = '999';
 
-                                    badgeRect.style.left = `${newLeftMobile}px`;
-                                    badgeRect.style.width = `40px`;
-                                    badgeRect.style.top = `${rect.top + window.scrollY + 60}px`;
-                                    badgeRect.style.height = `20px`;
+                                    badgeRect.style.left = `${newLeftMobile+5}px`;
+                                    badgeRect.style.width = `50px`;
+                                    badgeRect.style.top = `${rect.top + window.scrollY + 55}px`;
+                                    badgeRect.style.height = `30px`;
 
                                     document.body.appendChild(badgeRect);
                                 }
@@ -284,9 +287,9 @@ const checkFailData = async (page, obj, isMobile) =>{
                                     badgeRect.style.zIndex = '999';
 
                                     badgeRect.style.left = `${rect.left+15}px`;
-                                    badgeRect.style.width = `40px`;
-                                    badgeRect.style.top = `${rect.top + window.scrollY + 20}px`;
-                                    badgeRect.style.height = `20px`;
+                                    badgeRect.style.width = `50px`;
+                                    badgeRect.style.top = `${rect.top + window.scrollY + 15}px`;
+                                    badgeRect.style.height = `30px`;
 
                                     document.body.appendChild(badgeRect);
                                 }
@@ -360,7 +363,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                                 document.body.appendChild(descRect);
                             }
                         }
-                    })
+                    // })
                     // console.log(matchingElements)
                 }, textType, tileNumber, isMobile, isLLL, selectedElement, desc);
             }
