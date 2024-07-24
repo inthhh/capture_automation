@@ -1,12 +1,12 @@
 const { text } = require("body-parser");
 
 // 페이지 내에서 API 데이터와 동일한 요소를 찾고 border 표시하는 함수
-const checkFailData = async (page, obj, isMobile) =>{
+const checkFailData = async (page, obj, isMobile, badgeData) =>{
 
     let key = obj.key
     if(obj.contents.includes("에어컨")) key = "sec_Home_CO05_4_all-outlets_4_LSSSS_Title_Desktop";
     else if(obj.contents.includes("얼리버드")) key = "sec_Home_CO05_3_july-special-benefit_0_LLL_Title_Desktop";
-    console.log(key, obj.contents)
+    // console.log(key, obj.contents)
     // co05의 모든 버튼을 저장
     const buttons = await page.$$eval('.swiper-wrapper button', buttons => {
         const result = [];
@@ -21,7 +21,7 @@ const checkFailData = async (page, obj, isMobile) =>{
     // .replace('&amp;', '&')
     const buttonIndex = buttons.findIndex((text, index) => {
         let text_ = text.replace(/_/g,'-')
-        console.log(text_)
+        // console.log(text_)
         return key.includes(text_)
     });
     const desc = obj.desc;
@@ -80,7 +80,7 @@ const checkFailData = async (page, obj, isMobile) =>{
     }
     // KV 외의 이미지
     else if(obj.contents.includes("images.samsung")){
-        console.log("image capture")
+        // console.log("image capture")
         const src = obj.contents;
         const swiperChildren = await page.$$('.swiper-slide.set-tab-prd.rounded');
 
@@ -95,7 +95,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                         const parentEl1 = element.parentElement;
                         const parentEl2 = parentEl1.parentElement;
                         const parentEl3 = parentEl2.parentElement;
-                        if(parentEl3) parentEl3.style.border = '7px solid red';
+                        if(parentEl3) parentEl3.style.outline = '7px solid red';
                         return;
                     }
                 });
@@ -157,12 +157,12 @@ const checkFailData = async (page, obj, isMobile) =>{
     }
     // 5. 텍스트 오류의 경우
     else {
-        console.log("text capture")
+        // console.log("text capture")
         let str = "";
         let merchanArea = "";
         let isLLL = false;
-        let tileNumber = "";
-        
+        let tileNumber = "";    
+        let isBadgeBig = false;
         if(key.includes("CO05")) {
             str = "CO05";
             const regex = /CO05_\d+_(.*?)_/;
@@ -172,7 +172,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                 const numberRegex = new RegExp(`${merchanArea}_(\\d+)_`);
                 let tilenum = key.match(numberRegex);
                 tileNumber = tilenum[1];
-                console.log(merchanArea, tileNumber)
+                // console.log(merchanArea, tileNumber)
             } else {
                 console.log('No match found');
             }
@@ -184,6 +184,26 @@ const checkFailData = async (page, obj, isMobile) =>{
         // else if(obj.key.includes("HD01")) str = "HD01";
         // else if(obj.key.includes("FT03")) str = "FT03";
         // else return 0;
+
+        
+        if(badgeData){
+            const badgeInBigTile = badgeData.map((badge)=>{
+                let bkey = badge.key;
+                const regex = /CO05_\d+_(.*?)_/;
+                const match = bkey.match(regex); // merchan 영역 찾기
+                if (match && match[1]==merchanArea) {
+                    const numberRegex = new RegExp(`${merchanArea}_(\\d+)_`);
+                    let tilenum = bkey.match(numberRegex);
+                    if(tilenum[1]=='0') return true;
+                    else return false;
+                }
+            })
+            if(badgeInBigTile.includes(true)){
+                // console.log("badge in large tile");
+                isBadgeBig = true;
+            }
+        }
+       
         
         let selector = null;
 
@@ -204,7 +224,7 @@ const checkFailData = async (page, obj, isMobile) =>{
             
             const swiperChildren = await page.$$('.swiper-slide.set-tab-prd.rounded');
             const selectedElement = await swiperChildren[buttonIndex];
-            console.log("index :", buttonIndex, tileNumber, swiperChildren.length)
+            // console.log("index :", buttonIndex, tileNumber, swiperChildren.length)
             // text 위치 확인 (title or desc)
             let textType = "";
             // 문자열에 대해 정규표현식을 사용하여 숫자 추출
@@ -215,7 +235,7 @@ const checkFailData = async (page, obj, isMobile) =>{
             }
             // co05 이미지
             if (selectedElement) {
-                const matchingElements = await page.evaluate((textType, tileNumber, isMobile, isLLL,selectedElement, desc) => {
+                const matchingElements = await page.evaluate((textType, tileNumber, isMobile, isLLL,selectedElement, desc,isBadgeBig) => {
                     const tileChildren = selectedElement.querySelectorAll('.swiper-slide.set-tab-prd.rounded .prd-item');
                     // const tileChildren = document.querySelectorAll('.swiper-slide.set-tab-prd.rounded .prd-item');
                     const element = tileChildren[tileNumber]; // 타일 진입
@@ -305,8 +325,8 @@ const checkFailData = async (page, obj, isMobile) =>{
                                     overlayRect.style.left = `${newLeftPc}px`;
                                     overlayRect.style.width = `${newWidthPc}px`;
                                     if(isLLL) { // LLL 3개일때
-                                        overlayRect.style.top = `${rect.top + window.scrollY + 0.8 * imageHeight}px`;
-                                        overlayRect.style.height = `${0.1 * imageHeight}px`;
+                                        overlayRect.style.top = `${rect.top + window.scrollY + 0.78 * imageHeight}px`;
+                                        overlayRect.style.height = `${0.12 * imageHeight}px`;
                                     }
                                     else if(tileNumber == 0){ // big tile
                                         overlayRect.style.top = `${rect.top + window.scrollY + 0.8 * imageHeight}px`;
@@ -314,7 +334,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                                     }
                                     else{ // small tile
                                         overlayRect.style.top = `${rect.top + window.scrollY + 0.73 * imageHeight}px`;
-                                        overlayRect.style.height = `${0.11 * imageHeight}px`;
+                                        overlayRect.style.height = `${0.2 * imageHeight}px`;
                                     }
                                 }
                                 else{ // Mobile ver
@@ -325,16 +345,24 @@ const checkFailData = async (page, obj, isMobile) =>{
                                         overlayRect.style.height = `${0.3 * imageHeight}px`;
                                     }
                                     else if(tileNumber == 0){ // big tile
-                                        overlayRect.style.left = `${newLeftMobile}px`;
-                                        overlayRect.style.width = `${newWidthMobile}px`;
-                                        overlayRect.style.top = `${rect.top + window.scrollY + 0.25 * imageHeight}px`;
-                                        overlayRect.style.height = `${0.25 * imageHeight}px`;
+                                        if(isBadgeBig){
+                                            overlayRect.style.left = `${newLeftMobile}px`;
+                                            overlayRect.style.width = `${newWidthMobile}px`;
+                                            overlayRect.style.top = `${rect.top + window.scrollY + 0.4 * imageHeight}px`;
+                                            overlayRect.style.height = `${0.2 * imageHeight}px`;
+                                        }
+                                        else{
+                                            overlayRect.style.left = `${newLeftMobile}px`;
+                                            overlayRect.style.width = `${newWidthMobile}px`;
+                                            overlayRect.style.top = `${rect.top + window.scrollY + 0.25 * imageHeight}px`;
+                                            overlayRect.style.height = `${0.25 * imageHeight}px`;
+                                        }
                                     }
                                     else{ // small tile
                                         overlayRect.style.left = `${rect.left + 10 + window.scrollX}px`;
                                         overlayRect.style.width = `${rect.width - 20}px`;
-                                        overlayRect.style.top = `${rect.top + window.scrollY + 0.68 * imageHeight}px`;
-                                        overlayRect.style.height = `${0.2 * imageHeight}px`;
+                                        overlayRect.style.top = `${rect.top + window.scrollY + 0.65 * imageHeight}px`;
+                                        overlayRect.style.height = `${0.25 * imageHeight}px`;
                                     }
                                 }
                                 document.body.appendChild(overlayRect);
@@ -346,26 +374,48 @@ const checkFailData = async (page, obj, isMobile) =>{
                                 descRect.style.border = '2px solid red';
                                 descRect.style.backgroundColor = 'transparent';
                                 
-                                if(tileNumber == 0){ // big tile
-                                    descRect.style.top = `${rect.top + window.scrollY + 0.87 * imageHeight}px`;
-                                    descRect.style.left = `${newLeftPc}px`;
-                                    descRect.style.width = `${newWidthPc}px`;
-                                    descRect.style.height = `${0.06 * imageHeight}px`;
-                                    descRect.style.zIndex = '9999';
+                                if(!isMobile){ // PC ver
+                                    if(tileNumber == 0){ // big tile
+                                        descRect.style.top = `${rect.top + window.scrollY + 0.87 * imageHeight}px`;
+                                        descRect.style.left = `${newLeftPc}px`;
+                                        descRect.style.width = `${newWidthPc}px`;
+                                        descRect.style.height = `${0.06 * imageHeight}px`;
+                                        descRect.style.zIndex = '9999';
+                                    }
+                                    // else{ // small tile desc
+                                    //     descRect.style.top = `${rect.top + window.scrollY + 0.85 * imageHeight}px`;
+                                    //     descRect.style.left = `${newLeftPc}px`;
+                                    //     descRect.style.width = `${newWidthPc}px`;
+                                    //     descRect.style.height = `${0.1 * imageHeight}px`;
+                                    //     descRect.style.zIndex = '9999';
+                                    // }
                                 }
-                                else{
-                                    descRect.style.top = `${rect.top + window.scrollY + 0.85 * imageHeight}px`;
-                                    descRect.style.left = `${newLeftPc}px`;
-                                    descRect.style.width = `${newWidthPc}px`;
-                                    descRect.style.height = `${0.1 * imageHeight}px`;
-                                    descRect.style.zIndex = '9999';
+                                else { // mobile일때
+                                    if(isBadgeBig){
+                                        if(tileNumber == 0){ // big tile
+                                            descRect.style.top = `${rect.top + window.scrollY + 0.6 * imageHeight}px`;
+                                            descRect.style.left = `${newLeftMobile}px`;
+                                            descRect.style.width = `${newWidthMobile+10}px`;
+                                            descRect.style.height = `${0.22 * imageHeight}px`;
+                                            descRect.style.zIndex = '9999';
+                                        }
+                                    }
+                                    else{
+                                        if(tileNumber == 0){ // big tile
+                                            descRect.style.top = `${rect.top + window.scrollY + 0.5 * imageHeight}px`;
+                                            descRect.style.left = `${newLeftMobile}px`;
+                                            descRect.style.width = `${newWidthMobile+10}px`;
+                                            descRect.style.height = `${0.22 * imageHeight}px`;
+                                            descRect.style.zIndex = '9999';
+                                        }
+                                    }
                                 }
                                 document.body.appendChild(descRect);
                             }
                         }
                     // })
                     // console.log(matchingElements)
-                }, textType, tileNumber, isMobile, isLLL, selectedElement, desc);
+                }, textType, tileNumber, isMobile, isLLL, selectedElement, desc, isBadgeBig);
             }
         // }
     }

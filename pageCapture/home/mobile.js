@@ -6,6 +6,7 @@ const failChecker = require("../capture-utils/failChecker");
 const getRawData = require("../capture-utils/getRawData")
 const popupBreak = require("../capture-utils/popupBreak")
 const secBreak = require("../capture-utils/secBreak");
+const getSecRawData = require("../capture-utils/secRawData");
 const fs = require('fs');
 const path = require('node:path');
 const sharp = require('sharp');
@@ -53,11 +54,13 @@ const takeScreenshot = async (siteCode, dataDate) => {
         
         await delay(5000)
 
-        const failedData = await getRawData(dataDate, siteCode, "N", "Mobile")
+        const badgeData = await getSecRawData(dataDate, siteCode);
+
+        const failedData = await getRawData(dataDate, siteCode, "N", "Mobile");
 
         if(failedData && failedData.length>0){
             for (let i = 0; i < failedData.length; i++){
-                await secFailChecker.checkFailData(page, failedData[i], true)
+                await secFailChecker.checkFailData(page, failedData[i], true, badgeData)
             }
         }
         await delay(5000)
