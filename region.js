@@ -1,3 +1,6 @@
+/**
+ * 92개국의 국가 코드를 가진 리스트입니다.
+ */
 const site_code = [
   "ca_fr",
   "ca",
@@ -75,7 +78,7 @@ const site_code = [
   "ps",
   "sa",
   "sa_en",
-  // "tr", // Protocol error (DOM.describeNode): Cannot find context with specified id
+  "tr",
   "iran",
   "levant",
   "levant_ar",
@@ -89,11 +92,8 @@ const site_code = [
   "africa_fr",
   "africa_pt",
   "za",
-  "us"
+  "us", // offer 랜딩 이슈 존재
+  // "sec"
 ];
 
   module.exports = {site_code};
-// const site_code = ["in"]
-//   const test_code = ["uk", "us", "au", "es", "mx"]
-
-  // module.exports = {site_code, test_code};
