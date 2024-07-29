@@ -105,6 +105,13 @@ const checkFailData = async (page, obj, isMobile, badgeData) =>{
                         if(parentEl3) parentEl3.style.outline = '7px solid red';
                         return;
                     }
+                    else if(element.data-src.includes(src)){
+                        const parentEl1 = element.parentElement;
+                        const parentEl2 = parentEl1.parentElement;
+                        const parentEl3 = parentEl2.parentElement;
+                        if(parentEl3) parentEl3.style.outline = '7px solid red';
+                        return;
+                    }
                 });
             }, selectedElement, src);
         }
