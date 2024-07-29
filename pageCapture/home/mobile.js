@@ -17,6 +17,12 @@ const delay = (time) => {
         setTimeout(resolve, time)
     });
 }
+/**
+ * Home 페이지를 캡쳐합니다. (Mobile ver)
+ * @param {string} siteCode 
+ * @param {date} dataDate 
+ * @returns 
+ */
 const takeScreenshot = async (siteCode, dataDate) => {
     const browser = await puppeteer.launch({
         headless: true,

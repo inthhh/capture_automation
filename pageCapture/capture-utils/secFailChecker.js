@@ -1,6 +1,13 @@
 const { text } = require("body-parser");
 
-// 페이지 내에서 API 데이터와 동일한 요소를 찾고 border 표시하는 함수
+/**
+ * 페이지 내에서 fail Data와 동일한 요소를 찾아, Border 표시로 시각화합니다. (sec ver)
+ * @param {*} page 
+ * @param {*} obj 
+ * @param {*} isMobile 
+ * @param {*} badgeData 
+ * @returns 
+ */
 const checkFailData = async (page, obj, isMobile, badgeData) =>{
 
     let key = obj.key

@@ -1,5 +1,9 @@
 
-// Desktop ver - KV 케로쉘을 펼치는 함수
+/**
+ * KV 케로쉘을 펼칩니다. (sec Home ver)
+ * @param {*} page 
+ * @param {*} isDesktop 
+ */
 const kvCarouselBreak = async (page, isDesktop) =>{
     // select할 요소들이 나타날 때 까지 대기
     console.log('------ kv break')
@@ -62,6 +66,10 @@ const kvCarouselBreak = async (page, isDesktop) =>{
     },isDesktop);
 }
 
+/**
+ * 모든 콘텐츠를 좌측정렬합니다. (sec Home ver)
+ * @param {*} page 
+ */
 const contentsToLeft = async (page) => {
     await page.waitForSelector('#footer')
     console.log("--- to left")
@@ -87,7 +95,10 @@ const contentsToLeft = async (page) => {
     })
 }
 
-// co05 케로쉘을 펼치는 함수
+/**
+ * CO05 케로쉘을 펼칩니다. (sec Home ver)
+ * @param {*} page 
+ */
 const showcaseCardBreak = async (page) => {
     console.log("--- open co05")
     await page.evaluate (() => {
@@ -100,6 +111,10 @@ const showcaseCardBreak = async (page) => {
     })
 }
 
+/**
+ * 메뉴바 등 불필요한 요소를 제거합니다. (sec Home ver)
+ * @param {*} page 
+ */
 const buttonBreak = async(page)=>{
     await page.evaluate(()=>{
 

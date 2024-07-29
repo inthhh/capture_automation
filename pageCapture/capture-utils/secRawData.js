@@ -2,6 +2,12 @@ const http = require("http");
 require("dotenv").config();
 const axios = require("axios")
 
+/**
+ * 냅튠 API에서 sec의 data를 불러오고, 전처리 과정을 거쳐 Badge 정보를 저장합니다. (sec ver)
+ * @param {*} date 
+ * @param {*} siteCode 
+ * @returns 
+ */
 const getSecRawData = async (date="", siteCode="") =>{
     
     // API에서 전체 데이터를 받아옴

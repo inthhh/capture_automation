@@ -1,3 +1,8 @@
+/**
+ * 결과물의 파일명에 들어갈 Week Number를 계산합니다.
+ * @param {date} date 
+ * @returns 
+ */
 function getWeekNumber(date) {
     const today = new Date(date);
 

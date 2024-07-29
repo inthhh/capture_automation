@@ -1,5 +1,9 @@
 
-// isDesktop = desktop home ver일때만 true
+/**
+ * 쿠키 설정 등 다양한 팝업을 제거합니다.
+ * @param {*} page 
+ * @param {boolean(Desktop/Home ver일 경우에만 true)} isDesktop 
+ */
 const cookiePopupBreaker = async (page, isDesktop) =>{
   if(isDesktop) await page.waitForSelector('.tab__item-title')
   await page.evaluate((isDesktop)=>{
@@ -33,7 +37,10 @@ const cookiePopupBreaker = async (page, isDesktop) =>{
   
 }
 
-// co05 버튼 리스트 순차 클릭
+/**
+ * CO05 버튼 목록의 순차적인 클릭을 통해 모든 이미지를 preload합니다.
+ * @param {*} page 
+ */
 const clickEveryMerchan = async (page) =>{
   await page.waitForSelector('.tab__item-title')
   await page.evaluate(()=>{
@@ -51,7 +58,10 @@ const clickEveryMerchan = async (page) =>{
   })
 }
 
-// co05 첫 버튼을 눌러서 첫 케로쉘로 다시 돌아오게 하기
+/**
+ * CO05의 첫번째 케로쉘로 다시 돌아갑니다.
+ * @param {*} page 
+ */
 const clickFirstMerchan = async (page) =>{
   // await page.waitForSelector('.tab__item-title')
   await page.evaluate(async()=>{
@@ -70,6 +80,10 @@ const clickFirstMerchan = async (page) =>{
   })
 }
 
+/**
+ * 동적으로 나타나는 모든 iframe을 제거합니다.
+ * @param {*} page 
+ */
 const removeIframe = async (page) =>{
   // await page.waitForSelector('.tab__item-title')
   await page.evaluate(async()=>{
@@ -115,7 +129,10 @@ const removeIframe = async (page) =>{
   })
 }
 
-// 접근성 팝업 제거
+/**
+ * 접근성 팝업을 제거합니다.
+ * @param {*} page 
+ */
 const accessibilityPopupBreaker = async (page) =>{
   await page.waitForSelector('.nv00-gnb')
   await page.evaluate(()=>{

@@ -1,3 +1,7 @@
+/**
+ * KV 케로쉘을 펼칩니다. (Desktop/Offer ver)
+ * @param {*} page 
+ */
 const kvCarouselBreak = async (page) =>{
     // select할 요소들이 나타날 때 까지 대기
     // await page.waitForSelector('.indicator__controls')
@@ -179,7 +183,10 @@ const kvCarouselBreak = async (page) =>{
     });
     
 }
-
+/**
+ * KV 케로쉘을 펼칩니다. (Mobile/Offer ver)
+ * @param {*} page 
+ */
 const kvMobileCarouselBreak = async (page) =>{
     // select할 요소들이 나타날 때 까지 대기
     // await page.waitForSelector('.indicator__controls')
@@ -364,7 +371,10 @@ const kvMobileCarouselBreak = async (page) =>{
     
 }
 
-// 카드 케로쉘을 펼치는 함수
+/**
+ * Offer 페이지의 co16 카드 케로쉘을 펼칩니다. (Offer ver)
+ * @param {*} page 
+ */
 const cardCarouselBreak = async (page) => {
     await page.evaluate (() => {
 
@@ -387,6 +397,10 @@ const cardCarouselBreak = async (page) => {
     })
 }
 
+/**
+ * Offer 페이지의 '더보기' 버튼을 눌러 펼칩니다. (Offer ver)
+ * @param {*} page 
+ */
 const viewmoreBreak = async (page) =>{
     await page.evaluate(()=>{
         
@@ -409,6 +423,10 @@ const viewmoreBreak = async (page) =>{
 )
 }
 
+/**
+ * 이벤트리스너를 제거합니다. (Offer ver)
+ * @param {*} page 
+ */
 const eventListenerBreak = async (page) =>{
     await page.evaluate(()=>{
         const elementsWithListeners = document.querySelectorAll('*');

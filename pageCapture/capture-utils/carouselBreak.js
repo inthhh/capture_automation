@@ -1,5 +1,7 @@
-
-// Desktop ver - KV 케로쉘을 펼치는 함수
+/**
+ * KV 케로쉘을 펼칩니다. (Desktop/Home ver)
+ * @param {*} page 
+ */
 const kvCarouselBreak = async (page) =>{
     // select할 요소들이 나타날 때 까지 대기
     await page.waitForSelector('.home-kv-carousel')
@@ -107,7 +109,10 @@ const kvCarouselBreak = async (page) =>{
     });
 }
 
-// Desktop ver - co05 케로쉘을 펼치는 함수
+/**
+ * CO05 케로쉘을 펼칩니다. (Desktop/Home ver)
+ * @param {*} page 
+ */
 const showcaseCardBreak = async (page) => {
     await page.evaluate (() => {
 
@@ -123,7 +128,11 @@ const showcaseCardBreak = async (page) => {
     })
 }
 
-// Mobile ver - KV와 co05 케로쉘을 펼치는 함수
+/**
+ * KV 및 CO05 케로쉘을 펼칩니다. (Mobile/Home ver)
+ * @param {*} page 
+ * @param {*} site_code 
+ */
 const carouselBreakMobile = async (page, site_code) =>{
     // select할 요소들이 나타날 때 까지 대기
     await page.waitForSelector('.home-kv-carousel')
@@ -263,6 +272,10 @@ const carouselBreakMobile = async (page, site_code) =>{
     });
 }
 
+/**
+ * 이벤트리스너를 제거합니다. (Home ver)
+ * @param {*} page 
+ */
 const eventListenerBreak = async (page) =>{
     await page.evaluate(()=>{
         const elementsWithListeners = document.querySelectorAll('*');

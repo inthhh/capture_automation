@@ -2,6 +2,14 @@ const http = require("http");
 require("dotenv").config();
 const axios = require("axios")
 
+/**
+ * 냅튠 API에서 fail data를 불러오고, 전처리 과정을 거쳐 저장합니다.
+ * @param {date} date 
+ * @param {string} siteCode 
+ * @param {string(Y/N)} checkResult 
+ * @param {string(Desktop/Mobile)} Desc 
+ * @returns 
+ */
 const getRawData = async (date="", siteCode="", checkResult="", Desc="") =>{
     
     // API에서 전체 데이터를 받아옴
