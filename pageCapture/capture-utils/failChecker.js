@@ -210,7 +210,7 @@ const checkFailData = async (page, obj, isMobile) =>{
                 if(card) {
                     const els = await card.$$(' * '); // 모든 자식 요소 선택
                     for (let el of els) {
-                        let innerhtml = await el.evaluate(node => node.innerHTML.replace(/\s/g, '').replace(/"/g,'')
+                        let innerhtml = await el.evaluate(node => node.innerHTML.replace(/\s/g, '').replace(/"/g,'').replace(/&amp;/g,'&')
                                         .replace(/<br>/g, '').replace(/<small>/g, '').replace(/<\/small>/g, '').replace(/&nbsp;/g, '').replace(/<sup>.*?<\/sup>/g, ''));
                         let outerhtml = await el.evaluate(node => node.outerHTML.replace(/\s/g, '').replace(/"/g,''))
                         let childrenLength = await el.evaluate(node => node.children.length);
@@ -219,9 +219,9 @@ const checkFailData = async (page, obj, isMobile) =>{
                             return style.display !== 'none';
                         });
                         let cleanedContents = obj.contents.replace(/<sup>.*?<\/sup>/g, '').replace(/<br\/>/g, '').replace(/\s/g, '').replace(/&nbsp;/g, '')
-                                        .replace(/"/g,'').replace(/<small>/g, '').replace(/<\/small>/g, '');
+                                        .replace(/"/g,'').replace(/<small>/g, '').replace(/<\/small>/g, '').replace(/&amp;/g,'&');
                         // cleanedContents = '>' + cleanedContents + '<';
-                        // if(cleanedContents.includes("$80")&&innerhtml.includes("$80")&&childrenLength<3) console.log(innerhtml, " /-----/ ",cleanedContents, childrenLength)
+                        // if(cleanedContents.includes("JETTRADE")&&innerhtml.includes("JETTRADE")&&childrenLength<3) console.log(innerhtml, " /-----/ ",cleanedContents, childrenLength)
                         if (obj.title=="Description" && outerhtml.includes("showcase-card-tab-card__product-name")) {
                             // console.log("desc가 title이 됨\n", innerhtml, " \n*** ", cleanedContents);
                             continue;
