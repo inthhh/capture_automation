@@ -211,17 +211,21 @@ const checkFailData = async (page, obj, isMobile) =>{
                     const els = await card.$$(' * '); // 모든 자식 요소 선택
                     for (let el of els) {
                         let innerhtml = await el.evaluate(node => node.innerHTML.replace(/\s/g, '').replace(/"/g,'').replace(/&amp;/g,'&')
-                                        .replace(/<br>/g, '').replace(/<small>/g, '').replace(/<\/small>/g, '').replace(/&nbsp;/g, '').replace(/<sup>.*?<\/sup>/g, ''));
+                                        .replace(/<br>/g, '').replace(/<small>/g, '').replace(/<\/small>/g, '').replace(/&nbsp;/g, '').replace(/<sup>/g, '').replace(/<\/sup>/g, ''));
                         let outerhtml = await el.evaluate(node => node.outerHTML.replace(/\s/g, '').replace(/"/g,''))
                         let childrenLength = await el.evaluate(node => node.children.length);
                         const isDisplayed = await el.evaluate(node => {
                             const style = window.getComputedStyle(node);
                             return style.display !== 'none';
                         });
-                        let cleanedContents = obj.contents.replace(/<sup>.*?<\/sup>/g, '').replace(/<br\/>/g, '').replace(/\s/g, '').replace(/&nbsp;/g, '')
+                        let cleanedContents = obj.contents.replace(/<sup>/g, '').replace(/<\/sup>/g, '').replace(/<br\/>/g, '').replace(/\s/g, '').replace(/&nbsp;/g, '')
                                         .replace(/"/g,'').replace(/<small>/g, '').replace(/<\/small>/g, '').replace(/&amp;/g,'&');
                         // cleanedContents = '>' + cleanedContents + '<';
-                        // if(cleanedContents.includes("JETTRADE")&&innerhtml.includes("JETTRADE")&&childrenLength<3) console.log(innerhtml, " /-----/ ",cleanedContents, childrenLength)
+
+                        // 버그 확인 (콘솔에 내용 출력)
+                        // if(cleanedContents.includes("$100")&&innerhtml.includes("$100")&&childrenLength<2) 
+                        //     console.log(innerhtml, " /-----/ ",cleanedContents, childrenLength)
+
                         if (obj.title=="Description" && outerhtml.includes("showcase-card-tab-card__product-name")) {
                             // console.log("desc가 title이 됨\n", innerhtml, " \n*** ", cleanedContents);
                             continue;
