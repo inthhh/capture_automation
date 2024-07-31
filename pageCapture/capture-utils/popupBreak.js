@@ -19,7 +19,7 @@ const cookiePopupBreaker = async (driver, isDesktop) =>{
       mutations.forEach((mutation) => {
           const grayOverlay = document.querySelector(".insider-opt-in-overlay");
           if (grayOverlay) {
-              console.log("overlay remove");
+              // console.log("overlay remove");
               grayOverlay.remove();
               observer1.disconnect();  // 요소를 찾으면 더 이상 감시하지 않음
           }
@@ -53,7 +53,7 @@ const clickEveryMerchan = async (driver) =>{
         // 1초 간격으로 클릭
         await new Promise(resolve => setTimeout(resolve, 1200 * index));
         button.click();
-        console.log("**button click");
+        // console.log("**button click");
       }
     });
   })
@@ -68,12 +68,12 @@ const clickFirstMerchan = async (driver) =>{
   await driver.executeScript(async()=>{
     const buttons = document.querySelectorAll('.tab__item-title')
     await new Promise(resolve => setTimeout(resolve, 28000));
-    console.log("btn : ", buttons);
+    // console.log("btn : ", buttons);
     // 버튼 리스트에서 머천다이징의 첫 버튼을 찾아서 클릭 후 종료
     for (let i = 0; i < buttons.length; i++) {
       if (buttons[i].getAttribute('an-ac') === 'merchandising') {
         buttons[i].click();
-        console.log("**click first button",buttons[i])
+        // console.log("**click first button",buttons[i])
         break;
       }
       else continue;

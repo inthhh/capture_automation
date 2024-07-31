@@ -1,3 +1,4 @@
+const { Builder, By, until } = require('selenium-webdriver'); // until 포함
 /**
  * 페이지 내에서 fail Data와 동일한 요소를 찾아, Border 표시로 시각화합니다. (global ver)
  * @param {*} driver 
@@ -18,7 +19,7 @@ const checkFailData = async (driver, obj, isMobile) => {
         });
         return result;
     })
-
+    console.log("fail check 시작")
     let area = obj.area.replace(/&amp;/g, '&');
     const buttonIndex = buttons.findIndex((text, index) => {
         return area.includes(text)
@@ -35,7 +36,7 @@ const checkFailData = async (driver, obj, isMobile) => {
         // kv 이미지
         console.log("finding KV image")
         const src = obj.contents;
-        const kvCarouselSlides = await driver.findElement(By.css(`div[class*="home-kv-carousel__wrapper"]`));
+        const kvCarouselSlides = await driver.findElements(By.css(`div[class*="home-kv-carousel__wrapper"]`));
         if (kvCarouselSlides) {
             const kvElements = await driver.executeScript((kvCarouselSlides, src) => {
                 const elements = kvCarouselSlides.querySelectorAll('img');
@@ -79,8 +80,8 @@ const checkFailData = async (driver, obj, isMobile) => {
     // KV 외의 이미지
     else if (obj.contents.includes("images.samsung")) {
         const src = obj.contents;
-        const swiperWrapper = await driver.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
-        const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
+        const swiperWrapper = await driver.findElement(By.css('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized'))
+        const swiperChildren = await swiperWrapper.findElements(By.css('.showcase-card-tab__card-items.swiper-slide'));
 
         // area에 해당하는 버튼의 인덱스를 활용하여, 몇 번째 슬라이드인지 검색 후 border 처리
         const selectedElement = await swiperChildren[buttonIndex];
@@ -109,18 +110,19 @@ const checkFailData = async (driver, obj, isMobile) => {
     else if (obj.desc == "Tile Layout") {
 
         // co05의 모든 슬라이드를 저장
-        const swiperWrapper = await driver.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
-        const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
+        const swiperWrapper = await driver.findElement(By.css('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized'));
+        const swiperChildren = await swiperWrapper.findElements(By.css('.showcase-card-tab__card-items.swiper-slide'));
 
         // area에 해당하는 버튼의 인덱스를 활용하여, 몇 번째 슬라이드인지 검색 후 border 처리
         const selectedElement = await swiperChildren[buttonIndex];
 
         if (await selectedElement) {
             console.log(`merchandising select`);
-            await selectedElement.evaluate(element => {
-                element.style.border = '7px solid red';
-                return;
-            });
+            await selectedElement.executeScript
+                (element => {
+                    element.style.border = '7px solid red';
+                    return;
+                });
         } else {
             console.log(`merchandising select : failed`, obj.area);
         }
@@ -130,15 +132,15 @@ const checkFailData = async (driver, obj, isMobile) => {
         // 3번과 동일하게 버튼의 인덱스를 찾은 후 해당 슬라이드 영역 상단에 표시
         // console.log(obj.contents)
 
-        // const swiperWrapper = await page.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
-        // const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
+        // const swiperWrapper = await page.findElement(By.css('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized'))
+        // const swiperChildren = await swiperWrapper.findElements(By.css('.showcase-card-tab__card-items.swiper-slide'));
 
         // const selectedElement = await swiperChildren[buttonIndex];
 
         // if (await selectedElement) {  
         //     const Handle = await selectedElement.evaluateHandle(element => element);
         //     console.log(`badge count select`);
-        //     await selectedElement.evaluate((element) => {
+        //     await selectedElement.executeScript((element) => {
         //         const newDiv = document.createElement('div');
         //         newDiv.textContent = 'Badge Count Issue';
         //         newDiv.style.backgroundColor = 'yellow';
@@ -184,39 +186,43 @@ const checkFailData = async (driver, obj, isMobile) => {
 
         // 각 영역 별 셀렉터 저장
         if (str == "CO05") {
-            selector = await driver.$(`div[class*="ho-g-showcase-card-tab"]`);
+            selector = await driver.findElement(By.css(`div[class*="ho-g-showcase-card-tab"]`));
         } else if (str == "HD01") {
-            selector = await driver.$(`div[class*="ho-g-home-kv-carousel"]`);
+            selector = await driver.findElement(By.css(`div[class*="ho-g-home-kv-carousel"]`));
         } else if (str == "FT03") {
-            selector = await driver.$(`div[class*="pd-g-feature-benefit-full-bleed"]`);
+            selector = await driver.findElement(By.css(`div[class*="pd-g-feature-benefit-full-bleed"]`));
         } else if (str == "CO07") {
-            selector = await driver.$(`div[class*="ho-g-key-feature-tab"]`);
+            selector = await driver.findElement(By.css(`div[class*="ho-g-key-feature-tab"]`));
         } else {
             //
         }
 
         if (str == "CO05") {
 
-            const swiperWrapper = await driver.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
-            const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
+            const swiperWrapper = await driver.findElement(By.css('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized'))
+            const swiperChildren = await swiperWrapper.findElements(By.css('.showcase-card-tab__card-items.swiper-slide'));
 
             // 몇 번째 슬라이드인지 검색
             const selectedElement = await swiperChildren[buttonIndex];
             if (await selectedElement) {
-                const cards = await selectedElement.$$('.showcase-card-tab-card')
+                const cards = await selectedElement.findElements(By.css('.showcase-card-tab-card'))
                 const card = await cards[tileNumber - 1]
 
                 if (card) {
-                    const els = await card.$$(' * '); // 모든 자식 요소 선택
+                    const els = await card.findElements(By.css(' * ')); // 모든 자식 요소 선택
                     for (let el of els) {
-                        let innerhtml = await el.evaluate(node => node.innerHTML.replace(/\s/g, '').replace(/"/g, '').replace(/&amp;/g, '&')
-                            .replace(/<br>/g, '').replace(/<small>/g, '').replace(/<\/small>/g, '').replace(/&nbsp;/g, '').replace(/<sup>/g, '').replace(/<\/sup>/g, ''));
-                        let outerhtml = await el.evaluate(node => node.outerHTML.replace(/\s/g, '').replace(/"/g, ''))
-                        let childrenLength = await el.evaluate(node => node.children.length);
-                        const isDisplayed = await el.evaluate(node => {
+                        let innerhtml = await driver.executeScript(function(node){
+                            return node.innerHTML.replace(/\s/g, '').replace(/"/g, '').replace(/&amp;/g, '&')
+                            .replace(/<br>/g, '').replace(/<small>/g, '').replace(/<\/small>/g, '').replace(/&nbsp;/g, '').replace(/<sup>/g, '').replace(/<\/sup>/g, '')
+                        }, el);
+                        let outerhtml = await driver.executeScript(function(node){
+                            return node.outerHTML.replace(/\s/g, '').replace(/"/g, '');
+                        }, el);
+                        let childrenLength = await driver.executeScript(node => {node.children.length}, el);
+                        const isDisplayed = await driver.executeScript(node => {
                             const style = window.getComputedStyle(node);
                             return style.display !== 'none';
-                        });
+                        }, el);
                         let cleanedContents = obj.contents.replace(/<sup>/g, '').replace(/<\/sup>/g, '').replace(/<br\/>/g, '').replace(/\s/g, '').replace(/&nbsp;/g, '')
                             .replace(/"/g, '').replace(/<small>/g, '').replace(/<\/small>/g, '').replace(/&amp;/g, '&');
                         // cleanedContents = '>' + cleanedContents + '<';
@@ -235,17 +241,17 @@ const checkFailData = async (driver, obj, isMobile) => {
                         else if (!isDisplayed) continue;
                         // else if (innerhtml.includes(cleanedContents) && childrenLength === 0) {
                         else if (innerhtml == cleanedContents && childrenLength === 1 && innerhtml.includes("span")) {
-                            await el.evaluate(node => {
+                            await driver.executeScript(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
                                 return;
-                            });
+                            }, el);
                         }
                         else if (innerhtml == cleanedContents && childrenLength === 0) {
                             // console.log(innerhtml, " /-----/ ",cleanedContents, isDisplayed)
                             // console.log("1 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed, desc)
                             if (isMobile && desc === "Badge") {
-                                await el.evaluate(node => {
+                                await driver.executeScript(node => {
                                     let parent = node.parentElement;
                                     let elWidth = window.getComputedStyle(node).width;
                                     let newWidth = (parseFloat(elWidth) + 20) + 'px';
@@ -253,57 +259,57 @@ const checkFailData = async (driver, obj, isMobile) => {
                                     parent.style.padding = '2px'
                                     parent.style.border = '4px solid red';
                                     return;
-                                });
+                                }, el);
                             }
                             else if (desc === "Badge") {
-                                await el.evaluate(node => {
+                                await driver.executeScript(node => {
                                     let parent = node.parentElement;
                                     parent.style.padding = '2px'
                                     parent.style.border = '4px solid red';
                                     return;
-                                });
+                                }, el);
                             }
                             else {
-                                await el.evaluate(node => {
+                                await driver.executeScript(node => {
                                     let parent = node.parentElement;
                                     parent.style.border = '4px solid red';
                                     return;
-                                });
+                                }, el);
                             }
                         }
                         else if (outerhtml.includes('<br>') && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 1) {
                             // console.log(area, " - ", tileNumber, " index / ", innerhtml)
                             // console.log("2 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed, desc)
-                            await el.evaluate(node => {
+                            await driver.executeScript(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
                                 return;
-                            });
+                            }, el);
                         }
                         else if ((outerhtml.match(/<br>/g) || []).length >= 2 && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 2) {
                             // if (cleanedContents.includes("15%")) console.log(area, " - ", innerhtml, " / ", cleanedContents, childrenLength)
                             // console.log("3 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed)
-                            await el.evaluate(node => {
+                            await driver.executeScript(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
                                 return;
-                            });
+                            }, el);
                         }
                         // else if(innerhtml.includes('sup') && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 1){
                         //     // console.log(merchanArea, " - ", innerHTML, " / ", cleanedContents," ------ ")
-                        //     await el.evaluate(node => {
+                        //     await driver.executeScript(node => {
                         //         let parent = node.parentElement;
                         //         parent.style.border = '4px solid red';
                         //         return;
-                        //     });
+                        //     }, el);
                         // }
                         else if (outerhtml.includes('sup') && !innerhtml.includes('span') && innerhtml == cleanedContents && childrenLength <= 2) {
                             // console.log(merchanArea, " - ", innerHTML, " / ", cleanedContents," ------ ")
-                            await el.evaluate(node => {
+                            await driver.executeScript(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
                                 return;
-                            });
+                            }, el);
                         }
                     }
                 }

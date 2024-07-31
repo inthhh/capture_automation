@@ -69,7 +69,7 @@ const kvCarouselBreak = async (driver) =>{
 
         if(kvCarouselSlides){
             kvCarouselSlides.forEach((slide) => {
-                console.log("slide",slide);
+                // console.log("slide",slide);
                 let imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image-v2__main');
                 if (imgArea != null) {
                     imgArea.style.visibility = 'visible'
@@ -77,11 +77,11 @@ const kvCarouselBreak = async (driver) =>{
                     let getSrc = imgArea?.getAttribute('data-1366w2x-src');
                     if (getSrc) {
                         imgArea.setAttribute('src', getSrc);
-                        console.log("*** img src", getSrc);
+                        // console.log("*** img src", getSrc);
                     }
                 }
                 else{
-                    console.log("slide else - ",slide);
+                    // console.log("slide else - ",slide);
                     imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image');
                     let img = imgArea?.querySelector('.image__main');
                     if(imgArea && img){
@@ -208,7 +208,7 @@ const carouselBreakMobile = async (driver, site_code) =>{
                 else{
                     imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image');
                     let img = imgArea?.querySelector('.image__main');
-                    console.log("**",slide.querySelector('.home-kv-carousel__background-media-wrap .image'))
+                    // console.log("**",slide.querySelector('.home-kv-carousel__background-media-wrap .image'))
                     if(imgArea && img){
                         const mobileSrc = img.getAttribute('data-mobile-src');
                         img.setAttribute('src', mobileSrc);
@@ -254,21 +254,22 @@ const carouselBreakMobile = async (driver, site_code) =>{
 
         const trendingCard = document.querySelectorAll('.co69-trending-now__card .co69-trending-now__card-list');
 
-        if(trendingCard){
-            trendingCard.forEach((card) => {
-                const imgArea = card.querySelector('.co69-trending-now__card-image');
-                if (imgArea != null) {
-                    const listImg = imgArea.querySelector('.responsive-img')
-                    const isLoad = listImg.classList.contains('image--loaded');
-                    if (!isLoad) {
-                        const img = imgArea.querySelector('.image')
-                        const getSrc = img.getAttribute('data-mobile-src');
-                        img?.setAttribute('src', getSrc);
-                    }
-                }
+        // if(trendingCard){
+        //     trendingCard.forEach((card) => {
+        //         const imgArea = card.querySelector('.co69-trending-now__card-image');
+        //         if (imgArea != null) {
+        //             const listImg = imgArea.querySelector('.responsive-img')
+        //             if(!listImg) return;
+        //             const isLoad = listImg.classList.contains('image--loaded');
+        //             if (!isLoad) {
+        //                 const img = imgArea.querySelector('.image')
+        //                 const getSrc = img.getAttribute('data-mobile-src');
+        //                 img?.setAttribute('src', getSrc);
+        //             }
+        //         }
 
-            });
-        };
+        //     });
+        // };
 
     });
 }
@@ -284,9 +285,14 @@ const eventListenerBreak = async (driver) =>{
         // 모든 요소를 반복하며 이벤트 리스너를 제거
         if(elementsWithListeners){
             elementsWithListeners.forEach(element => {
+                element.style.display = 'grid'
+                element.style.justifyItems = 'start'
+                element.style.marginBottom = '0'
+                element.style.left = 0;
                 const clonedElement = element.cloneNode(true);
                 if(element.parentNode) element.parentNode.replaceChild(clonedElement, element);
             });
+
         }
     })
 }

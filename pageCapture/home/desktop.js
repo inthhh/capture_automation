@@ -23,7 +23,7 @@ const delay = (time) => {
  * @param {date} dataDate 
  */
 const takeScreenshot = async (siteCode, dataDate) => {
-    
+
     console.log("-----", siteCode, "-----");
 
     // const page = await browser.newPage();
@@ -32,6 +32,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     // 브라우저 옵션 설정
     let options = new chrome.Options();
     options.addArguments('--start-maximized'); // 창을 최대화하여 시작
+    options.addArguments('headless');
 
     // 드라이버 빌드
     let driver = await new Builder()
@@ -52,8 +53,17 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await delay(1000)
         let bodyElement = await driver.findElement(By.css('body'));
         let rect = await bodyElement.getRect();
-        let width_ = Math.floor(rect.width);
-        let height_ = Math.floor(rect.height);
+        let width_ = await driver.executeScript(`
+            return Math.max(
+                document.body.scrollWidth,
+                document.body.offsetWidth
+            );
+        `);
+        let height_ = await driver.executeScript(`
+            return Math.max(
+                document.body.scrollHeight
+            );
+        `);
 
         // for 릴리아나
         if (siteCode === "sec") { // selenium을 아직 적용하지 않음
@@ -98,8 +108,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
             await carouselBreak.showcaseCardBreak(driver)
             await delay(10000)
             await popupBreak.accessibilityPopupBreaker(driver)
-            await carouselBreak.eventListenerBreak(driver)
-
+            // await carouselBreak.eventListenerBreak(driver)
 
             await delay(1000)
 
@@ -107,7 +116,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
             if (failedData && failedData.length > 0) {
                 for (let i = 0; i < failedData.length; i++) {
-            await failChecker.checkFailData(driver, failedData[i], false)
+                    await failChecker.checkFailData(driver, failedData[i], false)
                 }
             }
 
@@ -119,7 +128,13 @@ const takeScreenshot = async (siteCode, dataDate) => {
         const pathName = `result/${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}/desktop`
         const fileName = `W${weekNumber}_Screenshot_desktop_${dateNow}(${siteCode}).jpeg`
         fs.mkdirSync(pathName, { recursive: true });
-        // await driver.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 30 });
+
+        width_ = await driver.executeScript(`
+            return Math.max(
+                document.body.scrollWidth,
+                document.body.offsetWidth
+            );
+        `);
         await driver.manage().window().setRect({ width: width_, height: height_ });
         let screenshot = await driver.takeScreenshot();
         fs.writeFileSync(`${pathName}/${fileName}`, screenshot, 'base64');
