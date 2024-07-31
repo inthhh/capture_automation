@@ -1,16 +1,17 @@
+const { Builder, By, until } = require('selenium-webdriver'); // until 포함
 
 /**
  * KV 케로쉘을 펼칩니다. (sec Home ver)
- * @param {*} page 
+ * @param {*} driver 
  * @param {*} isDesktop 
  */
-const kvCarouselBreak = async (page, isDesktop) =>{
+const kvCarouselBreak = async (driver, isDesktop) =>{
     // select할 요소들이 나타날 때 까지 대기
     console.log('------ kv break')
-    await page.waitForSelector('.visual.slick-slide')
-    await page.waitForSelector('.slide-btn.slide-pause')
+    await driver.wait(until.elementLocated(By.css('.visual.slick-slide')), 10000);
+    await driver.wait(until.elementLocated(By.css('.slide-btn.slide-pause')), 10000);
 
-    await page.evaluate (async(isDesktop) => {
+    await driver.executeScript (async(isDesktop) => {
         const floating = document.querySelector('#floatingSticky')
         if(floating) floating.remove();
         //KV Autoplay stop button
@@ -68,12 +69,12 @@ const kvCarouselBreak = async (page, isDesktop) =>{
 
 /**
  * 모든 콘텐츠를 좌측정렬합니다. (sec Home ver)
- * @param {*} page 
+ * @param {*} driver 
  */
-const contentsToLeft = async (page) => {
-    await page.waitForSelector('#footer')
+const contentsToLeft = async (driver) => {
+    await driver.wait(until.elementLocated(By.css('#footer')), 10000);
     console.log("--- to left")
-    await page.evaluate (async() => {
+    await driver.executeScript  (async() => {
         const headerInner = document.querySelector('.header__inner')
         const kvw = document.querySelector('.wrap-component.carousel-container.pt-none')
         const foot = document.querySelector('#footer')
@@ -97,11 +98,11 @@ const contentsToLeft = async (page) => {
 
 /**
  * CO05 케로쉘을 펼칩니다. (sec Home ver)
- * @param {*} page 
+ * @param {*} driver 
  */
-const showcaseCardBreak = async (page) => {
+const showcaseCardBreak = async (driver) => {
     console.log("--- open co05")
-    await page.evaluate (() => {
+    await driver.executeScript (() => {
         const conbox = document.querySelector(".conbox.conbox-b2c-main")
         const wrapcontainer = conbox.querySelector(".component-contents.pt-none.pb-none")
         const container = document.querySelector(".tablist-prd-container")
@@ -113,10 +114,10 @@ const showcaseCardBreak = async (page) => {
 
 /**
  * 메뉴바 등 불필요한 요소를 제거합니다. (sec Home ver)
- * @param {*} page 
+ * @param {*} driver 
  */
-const buttonBreak = async(page)=>{
-    await page.evaluate(()=>{
+const buttonBreak = async(driver)=>{
+    await driver.executeScript(()=>{
 
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
