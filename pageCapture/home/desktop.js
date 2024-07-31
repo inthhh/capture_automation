@@ -1,6 +1,8 @@
-const puppeteer = require('puppeteer');
+// const puppeteer = require('puppeteer');
+const { Builder, By, until } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 const moment = require('moment');
-const carouselBreak = require ('../capture-utils/carouselBreak');
+const carouselBreak = require('../capture-utils/carouselBreak');
 const secFailChecker = require("../capture-utils/secFailChecker");
 const failChecker = require("../capture-utils/failChecker");
 const getRawData = require("../capture-utils/getRawData");
@@ -11,7 +13,7 @@ const path = require('node:path')
 const { getWeekNumber } = require('../result-utils/getWeekNumber')
 
 const delay = (time) => {
-    return new Promise(function(resolve) {
+    return new Promise(function (resolve) {
         setTimeout(resolve, time)
     });
 }
@@ -21,91 +23,110 @@ const delay = (time) => {
  * @param {date} dataDate 
  */
 const takeScreenshot = async (siteCode, dataDate) => {
-    const browser = await puppeteer.launch({
-        headless: true,
-        timeout: 100000
-    });
-    console.log("-----", siteCode,"-----");
     
-    const page = await browser.newPage();
+    console.log("-----", siteCode, "-----");
+
+    // const page = await browser.newPage();
     const url = `https://www.samsung.com/${siteCode}`;
-    await page.setViewport({ width: 1440, height: 10000 });
-    await delay(2000)
-    await page.setDefaultTimeout(5000000);
-    await page.goto(url, { timeout: 5000000 });
-    await delay(1000)
-    await page.goto(url, { waitUntil: 'load', timeout: 5000000 });
-    let bodyHandle = await page.$('body');
-    let body = await bodyHandle.boundingBox();
-    
-    if(siteCode === "sec"){
-        await page.setViewport({ width: 1440*7, height: 6500});
-        
-        await delay(10000)
-        await popupBreak.cookiePopupBreaker(page, false)
-        await carouselBreak.eventListenerBreak(page)
-        await secBreak.buttonBreak(page)
-        // await delay(5000)
-        // await popupBreak.removeIframe(page)
-        console.log('is sec')
-        await delay(5000)
-        await secBreak.kvCarouselBreak(page, true)
-        await delay(5000)
-        await secBreak.contentsToLeft(page)
-        await delay(10000)
-        await secBreak.showcaseCardBreak(page)
 
-        const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
+    // 브라우저 옵션 설정
+    let options = new chrome.Options();
+    options.addArguments('--start-maximized'); // 창을 최대화하여 시작
 
-        if(failedData && failedData.length>0){
-            for (let i = 0; i < failedData.length; i++){
-                await secFailChecker.checkFailData(page, failedData[i], false)
-            }
-        }
-        await delay(10000)
-        console.log('out sec')
-    }
-    else{
-        await page.setViewport({ width: Math.floor(body.width), height: Math.floor(body.height)});
-        await delay(4000)
-        await popupBreak.cookiePopupBreaker(page, true)
-        // 사이트가 새로고침되며 팝업이 다시 뜨는 경우, popupBreaker 한번 더 실행 필요
+    // 드라이버 빌드
+    let driver = await new Builder()
+        .forBrowser('chrome')
+        .setChromeOptions(options)
+        .build();
+
+    try {
+        await driver.get(url);
+        // 화면 크기 설정
+        await driver.manage().window().setRect({ width: 1440, height: 10000 });
         await delay(2000)
+        // 페이지 이동 (= puppeteer goto, 타임아웃 설정 포함), 여기서 waitUntil: 'load'는 기본적으로 수행됨
+        await driver.get(url); // 
+        await delay(1000);
+        await driver.get(url);
 
-        await popupBreak.clickEveryMerchan(page)
-        await popupBreak.clickFirstMerchan(page)
-
-        await popupBreak.removeIframe(page)
-        await carouselBreak.kvCarouselBreak(page)
-        await delay(5000)
-        await carouselBreak.showcaseCardBreak(page)
-        await delay(10000)
-        await popupBreak.accessibilityPopupBreaker(page)
-        await carouselBreak.eventListenerBreak(page)
-    
-    
         await delay(1000)
+        let bodyElement = await driver.findElement(By.css('body'));
+        let rect = await bodyElement.getRect();
+        let width_ = Math.floor(rect.width);
+        let height_ = Math.floor(rect.height);
 
-        const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
+        // for 릴리아나
+        if (siteCode === "sec") { // selenium을 아직 적용하지 않음
+            await page.setViewport({ width: 1440 * 7, height: 6500 }); // 아래 글로벌 부분 참고해서 수정 필요
 
-        if(failedData && failedData.length>0){
-            for (let i = 0; i < failedData.length; i++){
-                await failChecker.checkFailData(page, failedData[i], false)
+            await delay(10000)
+            await popupBreak.cookiePopupBreaker(driver, false)
+            await carouselBreak.eventListenerBreak(driver)
+            await secBreak.buttonBreak(driver) // secBreak 내부 함수 - 수정 필요
+            console.log('is sec')
+            await delay(5000)
+            await secBreak.kvCarouselBreak(driver, true) // secBreak 내부 함수 - 수정 필요
+            await delay(5000)
+            await secBreak.contentsToLeft(driver) // secBreak 내부 함수 - 수정 필요
+            await delay(10000)
+            await secBreak.showcaseCardBreak(driver) // secBreak 내부 함수 - 수정 필요
+
+            const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
+
+            if (failedData && failedData.length > 0) {
+                for (let i = 0; i < failedData.length; i++) {
+                    await secFailChecker.checkFailData(driver, failedData[i], false) // secFailChecker 내부 함수 - 수정 필요
+                }
             }
+            await delay(10000)
+            console.log('out sec')
+        }
+        else { // 글로벌 캡쳐
+            // await driver.set_window_size({ width: Math.floor(width_), height: Math.floor(height_) });
+            await driver.manage().window().setRect({ width: width_, height: height_ });
+            await delay(4000)
+            await popupBreak.cookiePopupBreaker(driver, true)
+            // // 사이트가 새로고침되며 팝업이 다시 뜨는 경우, popupBreaker 한번 더 실행 필요
+            await delay(2000)
+
+            await popupBreak.clickEveryMerchan(driver)
+            await popupBreak.clickFirstMerchan(driver)
+
+            await popupBreak.removeIframe(driver)
+            await carouselBreak.kvCarouselBreak(driver)
+            await delay(5000)
+            await carouselBreak.showcaseCardBreak(driver)
+            await delay(10000)
+            await popupBreak.accessibilityPopupBreaker(driver)
+            await carouselBreak.eventListenerBreak(driver)
+
+
+            await delay(1000)
+
+            const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
+
+            if (failedData && failedData.length > 0) {
+                for (let i = 0; i < failedData.length; i++) {
+            await failChecker.checkFailData(driver, failedData[i], false)
+                }
+            }
+
         }
 
+        const dateNow = moment().format("YYMMDD")
+        const date = new Date()
+        const weekNumber = getWeekNumber(date);
+        const pathName = `result/${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}/desktop`
+        const fileName = `W${weekNumber}_Screenshot_desktop_${dateNow}(${siteCode}).jpeg`
+        fs.mkdirSync(pathName, { recursive: true });
+        // await driver.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 30 });
+        await driver.manage().window().setRect({ width: width_, height: height_ });
+        let screenshot = await driver.takeScreenshot();
+        fs.writeFileSync(`${pathName}/${fileName}`, screenshot, 'base64');
+
+    } finally {
+        await driver.quit();
     }
-    
-    const dateNow = moment().format("YYMMDD")
-    const date = new Date()
-    const weekNumber = getWeekNumber(date);
-    const pathName = `result/${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}/desktop`
-    const fileName =`W${weekNumber}_Screenshot_desktop_${dateNow}(${siteCode}).jpeg`
-    fs.mkdirSync(pathName, { recursive: true });
-    await page.screenshot({ path: `${pathName}/${fileName}`, fullPage: true, type: 'jpeg', quality: 30});
-
-    browser.close();
-
 }
 
 module.exports = {

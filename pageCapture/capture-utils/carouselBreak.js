@@ -1,13 +1,14 @@
+const { Builder, By, until } = require('selenium-webdriver'); // until 포함
 /**
  * KV 케로쉘을 펼칩니다. (Desktop/Home ver)
- * @param {*} page 
+ * @param {*} driver 
  */
-const kvCarouselBreak = async (page) =>{
+const kvCarouselBreak = async (driver) =>{
     // select할 요소들이 나타날 때 까지 대기
-    await page.waitForSelector('.home-kv-carousel')
-    await page.waitForSelector('.home-kv-carousel__background-media-wrap .image-v2__main')
+    await driver.wait(until.elementLocated(By.css('.home-kv-carousel')), 10000);
+    await driver.wait(until.elementLocated(By.css('.home-kv-carousel__background-media-wrap .image-v2__main')), 10000);
 
-    await page.evaluate (async() => {
+    await driver.executeScript (async() => {
         //KV Autoplay stop button
         const playButton = document.querySelector('.indicator__controls')
         playButton?.click()
@@ -111,10 +112,10 @@ const kvCarouselBreak = async (page) =>{
 
 /**
  * CO05 케로쉘을 펼칩니다. (Desktop/Home ver)
- * @param {*} page 
+ * @param {*} driver 
  */
-const showcaseCardBreak = async (page) => {
-    await page.evaluate (() => {
+const showcaseCardBreak = async (driver) => {
+    await driver.executeScript (() => {
 
         const showCaseCardTabs = document.querySelectorAll(".showcase-card-tab__inner .tab__item-title")
 
@@ -130,13 +131,13 @@ const showcaseCardBreak = async (page) => {
 
 /**
  * KV 및 CO05 케로쉘을 펼칩니다. (Mobile/Home ver)
- * @param {*} page 
+ * @param {*} driver 
  * @param {*} site_code 
  */
-const carouselBreakMobile = async (page, site_code) =>{
+const carouselBreakMobile = async (driver, site_code) =>{
     // select할 요소들이 나타날 때 까지 대기
-    await page.waitForSelector('.home-kv-carousel')
-    await page.evaluate ((site_code) => {
+    await driver.waitForSelector('.home-kv-carousel')
+    await driver.executeScript ((site_code) => {
         
         const playButton = document.querySelector('.indicator__controls')
         playButton?.click()
@@ -274,10 +275,10 @@ const carouselBreakMobile = async (page, site_code) =>{
 
 /**
  * 이벤트리스너를 제거합니다. (Home ver)
- * @param {*} page 
+ * @param {*} driver 
  */
-const eventListenerBreak = async (page) =>{
-    await page.evaluate(()=>{
+const eventListenerBreak = async (driver) =>{
+    await driver.executeScript(()=>{
         const elementsWithListeners = document.querySelectorAll('*');
 
         // 모든 요소를 반복하며 이벤트 리스너를 제거

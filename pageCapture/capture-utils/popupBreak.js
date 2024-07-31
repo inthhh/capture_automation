@@ -1,12 +1,13 @@
+const { Builder, By, until } = require('selenium-webdriver'); // until 포함
 
 /**
  * 쿠키 설정 등 다양한 팝업을 제거합니다.
- * @param {*} page 
+ * @param {*} driver 
  * @param {boolean(Desktop/Home ver일 경우에만 true)} isDesktop 
  */
-const cookiePopupBreaker = async (page, isDesktop) =>{
-  if(isDesktop) await page.waitForSelector('.tab__item-title')
-  await page.evaluate((isDesktop)=>{
+const cookiePopupBreaker = async (driver, isDesktop) =>{
+  if(isDesktop) await driver.wait(until.elementLocated(By.css('.tab__item-title')), 10000);
+  await driver.executeScript((isDesktop)=>{
     //Popup wrap
     const popupWrap = document.querySelector('#truste-consent-track')
     if(popupWrap) popupWrap.style.display = 'none'
@@ -39,11 +40,11 @@ const cookiePopupBreaker = async (page, isDesktop) =>{
 
 /**
  * CO05 버튼 목록의 순차적인 클릭을 통해 모든 이미지를 preload합니다.
- * @param {*} page 
+ * @param {*} driver 
  */
-const clickEveryMerchan = async (page) =>{
-  await page.waitForSelector('.tab__item-title')
-  await page.evaluate(()=>{
+const clickEveryMerchan = async (driver) =>{
+  await driver.wait(until.elementLocated(By.css('.tab__item-title')), 10000);
+  await driver.executeScript(()=>{
     
     const buttons = document.querySelectorAll('.tab__item-title')
 
@@ -60,11 +61,11 @@ const clickEveryMerchan = async (page) =>{
 
 /**
  * CO05의 첫번째 케로쉘로 다시 돌아갑니다.
- * @param {*} page 
+ * @param {*} driver 
  */
-const clickFirstMerchan = async (page) =>{
+const clickFirstMerchan = async (driver) =>{
   // await page.waitForSelector('.tab__item-title')
-  await page.evaluate(async()=>{
+  await driver.executeScript(async()=>{
     const buttons = document.querySelectorAll('.tab__item-title')
     await new Promise(resolve => setTimeout(resolve, 28000));
     console.log("btn : ", buttons);
@@ -82,11 +83,11 @@ const clickFirstMerchan = async (page) =>{
 
 /**
  * 동적으로 나타나는 모든 iframe을 제거합니다.
- * @param {*} page 
+ * @param {*} driver 
  */
-const removeIframe = async (page) =>{
+const removeIframe = async (driver) =>{
   // await page.waitForSelector('.tab__item-title')
-  await page.evaluate(async()=>{
+  await driver.executeScript(async()=>{
     const surveyIframe = document.getElementById('QSIFeedbackButton-survey-iframe');
     if (surveyIframe) surveyIframe.remove();
 
@@ -125,17 +126,16 @@ const removeIframe = async (page) =>{
     // 관찰 시작
     observer.observe(document.body, { childList: true, subtree: true });
     
-
   })
 }
 
 /**
  * 접근성 팝업을 제거합니다.
- * @param {*} page 
+ * @param {*} driver 
  */
-const accessibilityPopupBreaker = async (page) =>{
-  await page.waitForSelector('.nv00-gnb')
-  await page.evaluate(()=>{
+const accessibilityPopupBreaker = async (driver) =>{
+  await driver.wait(until.elementLocated(By.css('.nv00-gnb')), 10000);
+  await driver.executeScript(()=>{
       const accessibilityPopup = document.querySelector('.ht-skip')
       if (accessibilityPopup) accessibilityPopup.remove()
   })
