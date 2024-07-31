@@ -56,20 +56,20 @@ const takeScreenshot = async (siteCode, dataDate) => {
         let height_ = Math.floor(rect.height);
 
         // for 릴리아나
-        if (siteCode === "sec") { // selenium을 아직 적용하지 않음
-            await page.setViewport({ width: 1440 * 7, height: 6500 }); // 아래 글로벌 부분 참고해서 수정 필요
-
+        if (siteCode === "sec") {
+            // await page.setViewport({ width: 1440 * 7, height: 6500 });
+            await driver.manage().window().setRect({ width: 1440 * 7, height: 6500 });
             await delay(10000)
             await popupBreak.cookiePopupBreaker(driver, false)
             await carouselBreak.eventListenerBreak(driver)
-            await secBreak.buttonBreak(driver) // secBreak 내부 함수 - 수정 필요
+            await secBreak.buttonBreak(driver)
             console.log('is sec')
             await delay(5000)
-            await secBreak.kvCarouselBreak(driver, true) // secBreak 내부 함수 - 수정 필요
+            await secBreak.kvCarouselBreak(driver, true)
             await delay(5000)
-            await secBreak.contentsToLeft(driver) // secBreak 내부 함수 - 수정 필요
+            await secBreak.contentsToLeft(driver)
             await delay(10000)
-            await secBreak.showcaseCardBreak(driver) // secBreak 내부 함수 - 수정 필요
+            await secBreak.showcaseCardBreak(driver)
 
             const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
 
