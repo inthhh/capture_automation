@@ -65,9 +65,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
             );
         `);
 
-        // for 릴리아나
         if (siteCode === "sec") {
-            // await page.setViewport({ width: 1440 * 7, height: 6500 });
             await driver.manage().window().setRect({ width: 1440 * 7, height: 6500 });
             await delay(10000)
             await popupBreak.cookiePopupBreaker(driver, false)
@@ -108,7 +106,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
             await carouselBreak.showcaseCardBreak(driver)
             await delay(10000)
             await popupBreak.accessibilityPopupBreaker(driver)
-            // await carouselBreak.eventListenerBreak(driver)
+            await carouselBreak.eventListenerBreak(driver)
 
             await delay(1000)
 

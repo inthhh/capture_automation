@@ -1,5 +1,5 @@
 const { text } = require("body-parser");
-
+const { Builder, By, until } = require('selenium-webdriver');
 /**
  * 페이지 내에서 fail Data와 동일한 요소를 찾아, Border 표시로 시각화합니다. (sec ver)
  * @param {*} driver 
@@ -11,8 +11,8 @@ const { text } = require("body-parser");
 const checkFailData = async (driver, obj, isMobile, badgeData) =>{
 
     let key = obj.key
-    if(obj.contents.includes("에어컨")) key = "sec_Home_CO05_4_all-outlets_4_LSSSS_Title_Desktop";
-    else if(obj.contents.includes("얼리버드")) key = "sec_Home_CO05_3_july-special-benefit_0_LLL_Title_Desktop";
+    // if(obj.contents.includes("에어컨")) key = "sec_Home_CO05_4_all-outlets_4_LSSSS_Title_Desktop";
+    // else if(obj.contents.includes("얼리버드")) key = "sec_Home_CO05_3_july-special-benefit_0_LLL_Title_Desktop";
     // console.log(key, obj.contents)
     // co05의 모든 버튼을 저장
     const buttons = await driver.executeScript(function () {
@@ -90,7 +90,7 @@ const checkFailData = async (driver, obj, isMobile, badgeData) =>{
     else if (obj.contents.includes("images.samsung")) {
         // console.log("image capture")
         const src = obj.contents;
-        const swiperChildren = await driver.$$('.swiper-slide.set-tab-prd.rounded');
+        const swiperChildren = await driver.findElements(By.css('.swiper-slide.set-tab-prd.rounded'));
 
         // area에 해당하는 버튼의 인덱스를 활용하여, 몇 번째 슬라이드인지 검색 후 border 처리
         const selectedElement = await swiperChildren[buttonIndex];
@@ -123,7 +123,7 @@ const checkFailData = async (driver, obj, isMobile, badgeData) =>{
     else if (obj.desc == "Tile Layout") {
         
         // co05의 모든 슬라이드를 저장
-        // const swiperWrapper = await driver.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
+        // const swiperWrapper = await driver.findElement(By.css('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized'))
         // const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
 
         // area에 해당하는 버튼의 인덱스를 활용하여, 몇 번째 슬라이드인지 검색 후 border 처리
@@ -144,7 +144,7 @@ const checkFailData = async (driver, obj, isMobile, badgeData) =>{
         // 3번과 동일하게 버튼의 인덱스를 찾은 후 해당 슬라이드 영역 상단에 표시
         // console.log(obj.contents)
         
-        // const swiperWrapper = await driver.$('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized')
+        // const swiperWrapper = await driver.findElement(By.css('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized'))
         // const swiperChildren = await swiperWrapper.$$('.showcase-card-tab__card-items.swiper-slide');
 
         // const selectedElement = await swiperChildren[buttonIndex];
@@ -222,20 +222,20 @@ const checkFailData = async (driver, obj, isMobile, badgeData) =>{
 
         // 각 영역 별 셀렉터 저장
         // if (str == "CO05"){
-            // selector = await driver.$(`div[class*="slider-tabtype-list"]`);
+            // selector = await driver.findElement(By.css(`div[class*="slider-tabtype-list"]`));
         // } else if (str == "HD01"){
-            // selector = await driver.$(`div[class*="ho-g-home-kv-carousel"]`);
+            // selector = await driver.findElement(By.css(`div[class*="ho-g-home-kv-carousel"]`));
         // } else if (str == "FT03"){
-            // selector = await driver.$(`div[class*="pd-g-feature-benefit-full-bleed"]`);
+            // selector = await driver.findElement(By.css(`div[class*="pd-g-feature-benefit-full-bleed"]`));
         // } else if (str == "CO07") {
-            // selector = await driver.$(`div[class*="ho-g-key-feature-tab"]`);
+            // selector = await driver.findElement(By.css(`div[class*="ho-g-key-feature-tab"]`));
         // } else {
             //
         // }
 
         // if(str == "CO05"){
             
-            const swiperChildren = await driver.$$('.swiper-slide.set-tab-prd.rounded');
+            const swiperChildren = await driver.findElement(By.css('.swiper-slide.set-tab-prd.rounded'));
             const selectedElement = await swiperChildren[buttonIndex];
             // console.log("index :", buttonIndex, tileNumber, swiperChildren.length)
             // text 위치 확인 (title or desc)

@@ -5,10 +5,10 @@ const mobile_offer = require("./pageCapture/offer/mobile_offer")
 const desktop_offer = require("./pageCapture/offer/desktop_offer")
 
 const goScreenshot = async () => {
-  const site_code = ['sec']; // 단일 실행의 경우, 캡쳐를 실행하고 싶은 국가코드만 삽입
+  const site_code = ['sec','hr']; // 단일 실행의 경우, 캡쳐를 실행하고 싶은 국가코드만 삽입
   // const site_code = region.site_code; // sec 포함 총 92개국 리스트 실행
   const batchSize = 3; // batch 크기 변경 (병렬실행 갯수)
-  const dataDate = "2024-07-31"; // api 날짜에 맞게 변경
+  const dataDate = "2024-07-30"; // api 날짜에 맞게 변경
 
   const totalBatches = Math.ceil(site_code.length / batchSize);
   const results = [];
