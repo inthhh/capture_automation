@@ -1,14 +1,15 @@
+const { Builder, By, until } = require('selenium-webdriver');
 /**
  * KV 케로쉘을 펼칩니다. (Desktop/Offer ver)
- * @param {*} page 
+ * @param {*} driver 
  */
-const kvCarouselBreak = async (page) =>{
+const kvCarouselBreak = async (driver) =>{
     // select할 요소들이 나타날 때 까지 대기
-    // await page.waitForSelector('.indicator__controls')
-    // await page.waitForSelector('.home-kv-carousel__background-media-wrap .image-v2__main')
-    await page.waitForSelector('.swiper-slide');
+    // await driver.waitForSelector('.indicator__controls')
+    // await driver.waitForSelector('.home-kv-carousel__background-media-wrap .image-v2__main')
+    await driver.wait(until.elementLocated(By.css('.swiper-slide')),10000);
 
-    await page.evaluate (async() => {
+    await driver.executeScript (async() => {
 
         const links = document.querySelectorAll('a');
 
@@ -57,7 +58,6 @@ const kvCarouselBreak = async (page) =>{
                     kvWrap.style.opacity = '1'
                     kvWrap.style.width = '1440px'
                     kvWrap.style.overflow = 'visible'
-                    console.log("*****kv", kvWrap);
                 }
 
             }
@@ -91,7 +91,6 @@ const kvCarouselBreak = async (page) =>{
 
             if(kvCarouselSlides){
                 kvCarouselSlides.forEach((slide) => {
-                    console.log("slide",slide);
                     let imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image-v2__main');
                     if (imgArea != null) {
                         imgArea.style.visibility = 'visible'
@@ -99,11 +98,9 @@ const kvCarouselBreak = async (page) =>{
                         let getSrc = imgArea?.getAttribute('data-1366w2x-src');
                         if (getSrc) {
                             imgArea.setAttribute('src', getSrc);
-                            console.log("*** img src", getSrc);
                         }
                     }
                     else{
-                        console.log("slide else - ",slide);
                         imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image');
                         let img = imgArea?.querySelector('.image__main');
                         if(imgArea && img){
@@ -164,7 +161,6 @@ const kvCarouselBreak = async (page) =>{
                     kvWrap.style.opacity = '1'
                     kvWrap.style.width = '1440px'
                     kvWrap.style.overflow = 'visible'
-                    console.log("*****kv", kvWrap);
                 }
                 
                 let imgArea = document.querySelector('.offer-header__background-media-wrap')
@@ -185,15 +181,15 @@ const kvCarouselBreak = async (page) =>{
 }
 /**
  * KV 케로쉘을 펼칩니다. (Mobile/Offer ver)
- * @param {*} page 
+ * @param {*} driver 
  */
-const kvMobileCarouselBreak = async (page) =>{
+const kvMobileCarouselBreak = async (driver) =>{
     // select할 요소들이 나타날 때 까지 대기
-    // await page.waitForSelector('.indicator__controls')
-    // await page.waitForSelector('.home-kv-carousel__background-media-wrap .image-v2__main')
-    await page.waitForSelector('.swiper-slide');
+    // await driver.waitForSelector('.indicator__controls')
+    // await driver.waitForSelector('.home-kv-carousel__background-media-wrap .image-v2__main')
+    await driver.wait(until.elementLocated(By.css('.swiper-slide')),10000);
 
-    await page.evaluate (async() => {
+    await driver.executeScript (async() => {
 
         const links = document.querySelectorAll('a');
 
@@ -242,7 +238,6 @@ const kvMobileCarouselBreak = async (page) =>{
                     kvWrap.style.opacity = '1'
                     kvWrap.style.width = '360px'
                     kvWrap.style.overflow = 'visible'
-                    console.log("*****kv", kvWrap);
                 }
 
             }
@@ -276,7 +271,6 @@ const kvMobileCarouselBreak = async (page) =>{
 
             if(kvCarouselSlides){
                 kvCarouselSlides.forEach((slide) => {
-                    console.log("slide",slide);
                     let imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image-v2__main');
                     if (imgArea != null) {
                         imgArea.style.visibility = 'visible'
@@ -284,11 +278,10 @@ const kvMobileCarouselBreak = async (page) =>{
                         let getSrc = imgArea?.getAttribute('data-360w1x-src');
                         if (getSrc) {
                             imgArea.setAttribute('src', getSrc);
-                            console.log("*** img src", getSrc);
+                            // console.log("*** img src", getSrc);
                         }
                     }
                     else{
-                        console.log("slide else - ",slide);
                         imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image');
                         let img = imgArea?.querySelector('.image__main');
                         if(imgArea && img){
@@ -350,7 +343,6 @@ const kvMobileCarouselBreak = async (page) =>{
                     kvWrap.style.opacity = '1'
                     kvWrap.style.width = '360px'
                     kvWrap.style.overflow = 'visible'
-                    console.log("*****kv", kvWrap);
                 }
                 
                 let imgArea = document.querySelector('.offer-header__background-media-wrap')
@@ -373,10 +365,10 @@ const kvMobileCarouselBreak = async (page) =>{
 
 /**
  * Offer 페이지의 co16 카드 케로쉘을 펼칩니다. (Offer ver)
- * @param {*} page 
+ * @param {*} driver 
  */
-const cardCarouselBreak = async (page) => {
-    await page.evaluate (() => {
+const cardCarouselBreak = async (driver) => {
+    await driver.executeScript (() => {
 
         //     // pd06 케로쉘 깨기
         //     const showCaseCardTab = document.querySelector(".swiper-container.basic-swiper")
@@ -399,16 +391,16 @@ const cardCarouselBreak = async (page) => {
 
 /**
  * Offer 페이지의 '더보기' 버튼을 눌러 펼칩니다. (Offer ver)
- * @param {*} page 
+ * @param {*} driver 
  */
-const viewmoreBreak = async (page) =>{
-    await page.evaluate(()=>{
+const viewmoreBreak = async (driver) =>{
+    await driver.executeScript(()=>{
         
         function clickButton() {
             const viewmoreBtn = document.querySelector('.swiper-slide.all-offer-card__panel .cta.cta--outlined');
             if (viewmoreBtn) {
                 viewmoreBtn.click();
-                console.log("Clicked viewmore button");
+                // console.log("Clicked viewmore button");
             }
         }
         // 1초 간격으로 clickButton 함수를 실행
@@ -417,23 +409,27 @@ const viewmoreBreak = async (page) =>{
         // 10초 후에 인터벌 중지
         setTimeout(() => {
             clearInterval(intervalId);
-            console.log("Stopped clicking viewmore button");
+            // console.log("Stopped clicking viewmore button");
         }, 10000); // 10초 후에 중지
     }
 )
 }
 
 /**
- * 이벤트리스너를 제거합니다. (Offer ver)
- * @param {*} page 
+ * 모든 요소들을 좌측 정렬 후 이벤트리스너를 제거합니다. (Offer ver)
+ * @param {*} driver 
  */
-const eventListenerBreak = async (page) =>{
-    await page.evaluate(()=>{
+const eventListenerBreak = async (driver) =>{
+    await driver.executeScript(()=>{
         const elementsWithListeners = document.querySelectorAll('*');
 
         // 모든 요소를 반복하며 이벤트 리스너를 제거
         if(elementsWithListeners){
             elementsWithListeners.forEach(element => {
+                element.style.display = 'grid'
+                element.style.justifyItems = 'start'
+                element.style.marginBottom = '0'
+                element.style.left = 0;
                 const clonedElement = element.cloneNode(true);
                 if(element.parentNode) element.parentNode.replaceChild(clonedElement, element);
             });

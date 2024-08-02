@@ -136,7 +136,7 @@ const showcaseCardBreak = async (driver) => {
  */
 const carouselBreakMobile = async (driver, site_code) =>{
     // select할 요소들이 나타날 때 까지 대기
-    await driver.waitForSelector('.home-kv-carousel')
+    await driver.wait(until.elementLocated(By.css('.home-kv-carousel')),10000)
     await driver.executeScript ((site_code) => {
         
         const playButton = document.querySelector('.indicator__controls')
@@ -243,7 +243,6 @@ const carouselBreakMobile = async (driver, site_code) =>{
         if(showCaseCardTabInner) showCaseCardTabInner.style.overflow = 'visible'
         if(showCaseCardTabCardWrap) showCaseCardTabCardWrap.style.overflow = 'visible'
         if(tablist) tablist.style.overflow = 'visible'
-
         
         // co07 모든 케로쉘 깨는 로직 (필요 시 사용)
         // const mobileCarousel = document.querySelectorAll(".swiper-container");
@@ -275,7 +274,7 @@ const carouselBreakMobile = async (driver, site_code) =>{
 }
 
 /**
- * 이벤트리스너를 제거합니다. (Home ver)
+ * 모든 요소들을 좌측 정렬 후 이벤트리스너를 제거합니다. (Desktop/Home ver)
  * @param {*} driver 
  */
 const eventListenerBreak = async (driver) =>{
@@ -297,9 +296,29 @@ const eventListenerBreak = async (driver) =>{
     })
 }
 
+/**
+ * 이벤트리스너를 제거합니다. (Mobile/Home ver)
+ * @param {*} driver 
+ */
+const eventListenerBreakMobile = async (driver) =>{
+    await driver.executeScript(()=>{
+        const elementsWithListeners = document.querySelectorAll('*');
+
+        // 모든 요소를 반복하며 이벤트 리스너를 제거
+        if(elementsWithListeners){
+            elementsWithListeners.forEach(element => {
+                const clonedElement = element.cloneNode(true);
+                if(element.parentNode) element.parentNode.replaceChild(clonedElement, element);
+            });
+
+        }
+    })
+}
+
 module.exports = {
     'carouselBreakMobile': carouselBreakMobile,
     'eventListenerBreak' : eventListenerBreak,
     'showcaseCardBreak' : showcaseCardBreak,
-    'kvCarouselBreak' : kvCarouselBreak
+    'kvCarouselBreak' : kvCarouselBreak,
+    'eventListenerBreakMobile' : eventListenerBreakMobile,
 }
