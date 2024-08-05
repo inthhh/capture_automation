@@ -106,9 +106,12 @@ const showcaseCardBreak = async (driver) => {
         const conbox = document.querySelector(".conbox.conbox-b2c-main")
         const wrapcontainer = conbox.querySelector(".component-contents.pt-none.pb-none")
         const container = document.querySelector(".tablist-prd-container")
-        if(conbox) conbox.style.overflow = 'visible'
+        // if(conbox) conbox.style.overflow = 'visible'
         if(wrapcontainer) wrapcontainer.style.overflow = 'visible'
         if(container) container.style.overflow = 'visible'
+        
+        const slickList = document.querySelectorAll('.common-marketing-content');
+        if(slickList) slickList.forEach((s)=>{s.style.overflow = 'hidden';})
     })
 }
 
@@ -123,10 +126,14 @@ const buttonBreak = async(driver)=>{
             mutations.forEach((mutation) => {
                 const menuwrap = document.querySelector('.menu__wrap');
                 if (menuwrap) menuwrap.remove();
-
+                const bottom__navi = document.querySelector('#bottom__navi');
+                if(bottom__navi) bottom__navi.remove();
                 const innermask = document.querySelector('.inner__mask');
                 if(innermask) innermask.remove();
-
+                const marketingPop = document.querySelector('#marketingPop');
+                if(marketingPop) marketingPop.remove();
+                const mask = document.querySelector('#mask');
+                if(mask) mask.remove();
                 const story = document.querySelector(".b2c-box.box-story")
                 if(story) {
                     story.style.overflow = 'hidden';

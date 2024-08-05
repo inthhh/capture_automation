@@ -120,6 +120,12 @@ const removeIframe = async (driver) =>{
 
         const divbtn = document.querySelector('#nebula_div_btn')
         if(divbtn) divbtn.remove();
+
+        const feedbackbtn = document.querySelector('#QSIFeedbackButton-btn')
+        if(feedbackbtn) feedbackbtn.remove();
+
+        const cnBtn = document.querySelector('img.surveyImg')
+        if(cnBtn) cnBtn.remove();
       });
     });
     
