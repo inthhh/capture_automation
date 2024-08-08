@@ -17,6 +17,15 @@ const Jimp = require('jimp');
 
 const delay = (time) => new Promise(resolve => setTimeout(resolve, time));
 
+const writeAsync = (image, path) => {
+    return new Promise((resolve, reject) => {
+        image.write(path, (err, result) => {
+            if (err) reject(err);
+            else resolve(result);
+        });
+    });
+}
+
 /**
  * Home 페이지를 캡쳐합니다. (Mobile ver)
  * @param {string} siteCode 
@@ -43,6 +52,9 @@ const takeScreenshot = async (siteCode, dataDate) => {
     let options = new chrome.Options();
     options.setMobileEmulation(mobileEmulation);
     options.addArguments('disable-dev-shm-usage');
+    options.addArguments('--remote-debugging-port=9222');
+    options.addArguments('--ignore-certificate-errors'); // SSL 인증서 오류 무시
+    options.addArguments('--allow-insecure-localhost');
 
     let driver = await new Builder()
         .forBrowser('chrome')
@@ -148,26 +160,21 @@ const takeScreenshot = async (siteCode, dataDate) => {
                 if (scrollLeft === 0) break;
             }
         } else if(['sec'].includes(siteCode)){
+            //페이지를 초기위치로 되돌립니다.
             await driver.executeScript(`
                 document.body.style.transform = 'translateX(0px)';
                 document.body.style.transition = 'transform 0.5s ease';
             `);
-        
-            // Scroll to the right
+            
+            //scrollTo는 뷰포트가 이동하여 모바일 뷰포트가 웹을 넘지 못하는 현상 발생
+            //translateX는 뷰포트를 고정시키고 요소의 시각적인 요소만 X축을 따라 이동
             for (let scrollLeft = 0; scrollLeft < totalWidth; scrollLeft += mainWidth) {
                 await driver.executeScript(`
                     document.body.style.transform = 'translateX(-${scrollLeft}px)';
                 `);
                 console.log(scrollLeft);
-                await driver.sleep(3000); // Wait for the scroll effect to complete
+                await driver.sleep(3000);
                 let screenshot = await driver.takeScreenshot();
-                let viewportWidth = await driver.executeScript('return window.innerWidth;');
-                console.log("Viewport Width: ", viewportWidth);
-                console.log("total: ", totalWidth);
-                console.log("main: ", mainWidth);
-                console.log("scrollLeft: ", scrollLeft);
-                let pageWidth = await driver.executeScript('return document.documentElement.scrollWidth;');
-                console.log('Page Width:', pageWidth);
                 screenshots.push(Buffer.from(screenshot, 'base64'));
             }
             await delay(2000);
@@ -211,16 +218,17 @@ const takeScreenshot = async (siteCode, dataDate) => {
         }
 
         mergeImg(screenshotFiles, { direction: false })
-            .then((image) => {
+            .then(async (image) => {
                 let tempMergedPath = path.join(pathName, 'temp_merged_image.png');
                 image.write(tempMergedPath, async () => {
                     console.log('Temporary merged image saved.');
 
                     let captureImage = await Jimp.read(tempMergedPath);
                     captureImage.quality(60);
-                    await captureImage.writeAsync(path.join(pathName, fileName));
+                    await writeAsync(captureImage, path.join(pathName, fileName));
 
                     fs.unlinkSync(tempMergedPath);
+                    screenshotFiles.forEach(file => fs.unlinkSync(file)); //스크린샷 조각들 삭제
                     console.log('Full page screenshot saved');
                 });
             })
