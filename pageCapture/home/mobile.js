@@ -14,6 +14,7 @@ const path = require('node:path');
 const sharp = require('sharp');
 const { getWeekNumber } = require('../result-utils/getWeekNumber')
 const mergeImg = require('merge-img');
+const Jimp = require('jimp');
 
 const delay = (time) => {
     return new Promise(function (resolve) {
@@ -32,15 +33,15 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
     const url = `https://www.samsung.com/${siteCode}`;
 
-    let mainWidth = 252; //360*0.7
-    let mainHeight = 4200; //6000*0.7
+    let mainWidth = 360;
+    let mainHeight = 6000;
 
     // 브라우저 옵션 설정
     // let mobileEmulation = { deviceName: 'iPhone X' };
     let mobileEmulation = {
         deviceMetrics: {
-            width: 252,
-            height: 4200,
+            width: 360,
+            height: 6000,
             pixelRatio: 1
         },
         userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'
@@ -147,6 +148,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await driver.manage().window().setRect({ width: mainWidth, height: totalHeight });
 
         let totalWidth = await driver.executeScript(`
+            console.log(document.body.scrollWidth);
             return Math.max(
                 document.body.scrollWidth,
                 document.documentElement.scrollWidth,
@@ -164,18 +166,18 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
         // 1. RTL 국가일 경우
         if (siteCode == 'ae_ar' || siteCode == 'il' || siteCode == 'ps' || siteCode == 'sa' || siteCode == 'iran' || siteCode == 'levant_ar' || siteCode == 'iq_ar' || siteCode == 'eg' || siteCode == 'iq_ku') {
-            for (let scrollLeft = totalWidth-mainWidth; scrollLeft > -mainWidth; scrollLeft -= mainWidth) {
+            for (let scrollLeft = totalWidth - mainWidth; scrollLeft > -mainWidth; scrollLeft -= mainWidth) {
                 console.log(scrollLeft);
                 if (scrollLeft < 0) {
                     console.log(scrollLeft);
-                    remainingWidth = (-1)*scrollLeft;
+                    remainingWidth = (-1) * scrollLeft;
                     scrollLeft = 0;
                 }
                 await driver.executeScript(`window.scrollTo(-${scrollLeft}, 0);`); // RTL 음수값 스크롤
                 await driver.sleep(2000);  // 페이지가 스크롤될 시간
                 let screenshot = await driver.takeScreenshot();
                 screenshots.push(Buffer.from(screenshot, 'base64'));
-                if(scrollLeft==0) break;
+                if (scrollLeft == 0) break;
             }
             // 각 스크린샷을 파일로 저장
             for (let i = 0; i < screenshots.length; i++) {
@@ -189,7 +191,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
                     let remainingWidth = totalWidth % mainWidth;
                     console.log(mainWidth - remainingWidth, remainingWidth, totalHeight);
                     await sharp(tempPath)
-                        .extract({ left: mainWidth-remainingWidth, top: 0, width: remainingWidth, height: mainHeight })
+                        .extract({ left: mainWidth - remainingWidth, top: 0, width: remainingWidth, height: mainHeight })
                         .toFile(finalPath);
                 } else {
                     fs.renameSync(tempPath, finalPath);
@@ -200,18 +202,28 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
         }
         else { // 2. RTL 외의 모든 국가
+
             for (let scrollLeft = 0; scrollLeft < totalWidth; scrollLeft += mainWidth) {
                 console.log(scrollLeft);
                 if (totalWidth - scrollLeft < mainWidth) {
                     console.log(totalWidth - scrollLeft);
                     remainingWidth = totalWidth - scrollLeft;
                 }
-                await driver.executeScript(`window.scrollTo(${scrollLeft}, 0);`);
-                await driver.sleep(2000);  // 페이지가 스크롤될 시간
+                // await driver.executeScript(`window.scrollTo(${scrollLeft}, 0);`);
+                await driver.executeScript(`
+                    const scrollableElement = document.querySelector('html');
+                    if (scrollableElement) {
+                        scrollableElement.scrollTo({
+                            left: ${scrollLeft},
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    }`)
+                await driver.sleep(3000);  // 페이지가 스크롤될 시간
                 let screenshot = await driver.takeScreenshot();
                 screenshots.push(Buffer.from(screenshot, 'base64'));
             }
-
+            await delay(2000);
             // 각 스크린샷을 파일로 저장
             for (let i = 0; i < screenshots.length; i++) {
                 let tempPath = path.join(pathName, `temp_screenshot_part_${i}.png`);
@@ -235,8 +247,19 @@ const takeScreenshot = async (siteCode, dataDate) => {
         // 수평 병합 - mergeImg를 사용하여 병합
         mergeImg(screenshotFiles, { direction: false })
             .then((image) => {
-                image.write(path.join(pathName, `${fileName}`), () => {
-                    console.log('Full page screenshot saved.');
+                // 병합된 이미지를 임시 파일로 저장
+                let tempMergedPath = path.join(pathName, 'temp_merged_image.png');
+                image.write(tempMergedPath, async () => {
+                    console.log('Temporary merged image saved.');
+
+                    // Jimp로 임시 파일을 읽고 품질을 조절한 후 최종 파일로 저장
+                    let captureImage = await Jimp.read(tempMergedPath);
+                    captureImage.quality(60); // 화질 60% (0-100 사이의 값)
+                    await captureImage.writeAsync(path.join(pathName, fileName));
+
+                    // 임시 파일 삭제
+                    fs.unlinkSync(tempMergedPath);
+                    console.log('Full page screenshot saved');
                 });
             })
             .catch((err) => {
@@ -246,8 +269,8 @@ const takeScreenshot = async (siteCode, dataDate) => {
         // let screenshot = await driver.takeScreenshot();
         // fs.writeFileSync(`${pathName}/${fileName}`, screenshot, 'base64');
 
-        const fileName2 = `W${weekNumber}_Screenshot_mobile_${dateNow}(${siteCode})_cutting.jpeg`
-        const fullPath2 = `${pathName}/${fileName2}`;
+        // const fileName2 = `W${weekNumber}_Screenshot_mobile_${dateNow}(${siteCode})_cutting.jpeg`
+        // const fullPath2 = `${pathName}/${fileName2}`;
 
         // if (siteCode == 'it') {
         //     try {
@@ -267,7 +290,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         // }
 
     } finally {
-        await driver.quit();
+        // await driver.quit();
     }
 
 }

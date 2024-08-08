@@ -3,13 +3,13 @@ const { Builder, By, until } = require('selenium-webdriver');
  * KV 케로쉘을 펼칩니다. (Desktop/Offer ver)
  * @param {*} driver 
  */
-const kvCarouselBreak = async (driver) =>{
+const kvCarouselBreak = async (driver) => {
     // select할 요소들이 나타날 때 까지 대기
     // await driver.waitForSelector('.indicator__controls')
     // await driver.waitForSelector('.home-kv-carousel__background-media-wrap .image-v2__main')
-    await driver.wait(until.elementLocated(By.css('.swiper-slide')),10000);
+    await driver.wait(until.elementLocated(By.css('.swiper-slide')), 10000);
 
-    await driver.executeScript (async() => {
+    await driver.executeScript(async () => {
 
         const links = document.querySelectorAll('a');
 
@@ -20,39 +20,39 @@ const kvCarouselBreak = async (driver) =>{
 
         //KV Autoplay stop button
         const playButtons = document.querySelectorAll('.indicator__controls')
-        if(playButtons){
-            for(let i=0; i<playButtons.length; i++){
+        if (playButtons) {
+            for (let i = 0; i < playButtons.length; i++) {
                 playButtons[i].click();
             }
         }
 
         const kvtextshow = document.querySelector('.home-kv-carousel__text-wrap--hide')
-        if(kvtextshow) kvtextshow.style.opacity = '1';
+        if (kvtextshow) kvtextshow.style.opacity = '1';
 
         const kvCarouselHoG = document.querySelector('.ho-g-home-kv-carousel')
 
-        if(kvCarouselHoG){ // 1. offer kv가 home kv와 동일한 경우
-            if(kvCarouselHoG){
+        if (kvCarouselHoG) { // 1. offer kv가 home kv와 동일한 경우
+            if (kvCarouselHoG) {
                 kvCarouselHoG.style.width = '1440px';
-                kvCarouselHoG.style.margin ='0 auto';
+                kvCarouselHoG.style.margin = '0 auto';
             }
 
             const swiperContainer = document.querySelector(".ho-g-home-kv-carousel .swiper-container")
-            if(swiperContainer) swiperContainer.style.overflow = 'visible';
+            if (swiperContainer) swiperContainer.style.overflow = 'visible';
 
             const kvCarousel = document.querySelector('.ho-g-home-kv-carousel .home-kv-carousel')
-            if(kvCarousel) {
+            if (kvCarousel) {
                 // kvCarousel.style.overflow = 'visible';
                 kvCarousel.setAttribute('style', 'overflow: visible !important');
             }
 
             const kvWraps = document.querySelectorAll('.swiper-container-fade .swiper-slide')
-            if(kvWraps && kvWraps.length>0){
-                for (let cnt = 0; cnt < kvWraps.length-2; cnt++ ) {
+            if (kvWraps && kvWraps.length > 0) {
+                for (let cnt = 0; cnt < kvWraps.length - 2; cnt++) {
                     const kvWrap = kvWraps[cnt]
                     let getId = kvWrap.getAttribute('id')
 
-                    kvWrap.setAttribute('id',getId+"-broken")
+                    kvWrap.setAttribute('id', getId + "-broken")
                     kvWrap.style.opacity = '1'
                     kvWrap.style.transform = 'translate3d(0, 0, 0)'
                     kvWrap.style.opacity = '1'
@@ -64,7 +64,7 @@ const kvCarouselBreak = async (driver) =>{
 
             const kvCarouselMediaWraps = document.querySelectorAll('.home-kv-carousel__background-media-wrap')
 
-            if(kvCarouselMediaWraps){
+            if (kvCarouselMediaWraps) {
                 kvCarouselMediaWraps.forEach((kvCarouselMediaWrap) => {
                     const kvCarouselMediaImage = document.querySelector('.home-kv-carousel__background-media-wrap .image')
                     const kvCarouselMediaImageV2 = document.querySelector('.home-kv-carousel__background-media-wrap .image-v2')
@@ -89,7 +89,7 @@ const kvCarouselBreak = async (driver) =>{
             // 각 kv 슬라이드의 대표 이미지를 찾는 로직
             const kvCarouselSlides = document.querySelectorAll('.home-kv-carousel__wrapper .home-kv-carousel__slide')
 
-            if(kvCarouselSlides){
+            if (kvCarouselSlides) {
                 kvCarouselSlides.forEach((slide) => {
                     let imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image-v2__main');
                     if (imgArea != null) {
@@ -100,10 +100,10 @@ const kvCarouselBreak = async (driver) =>{
                             imgArea.setAttribute('src', getSrc);
                         }
                     }
-                    else{
+                    else {
                         imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image');
                         let img = imgArea?.querySelector('.image__main');
-                        if(imgArea && img){
+                        if (imgArea && img) {
                             const pcSrc = img.getAttribute('data-desktop-src');
                             img.setAttribute('src', pcSrc);
                             img.style.visibility = 'visible';
@@ -111,13 +111,13 @@ const kvCarouselBreak = async (driver) =>{
                             imgArea.style.visibility = 'visible';
                             imgArea.style.opacity = '1';
                             imgArea.style.zIndex = '10';
-                        } 
-                        else if(slide.querySelector('.home-kv-carousel__background-media-wrap picture')){
+                        }
+                        else if (slide.querySelector('.home-kv-carousel__background-media-wrap picture')) {
                             // 대표이미지 다른 형식으로 존재
                         }
                         else {
                             const vid = slide.querySelector('.video');
-                            if(vid){
+                            if (vid) {
                                 // video preview 이미지 없을 시 border 처리
                                 vid.style.width = 'calc(100% - 14px)';
                                 vid.style.border = '7px solid red';
@@ -130,42 +130,42 @@ const kvCarouselBreak = async (driver) =>{
         }
         // 2. offer kv가 독자적인 경우
         const offerKvHeader = document.querySelector(".of-g-offers-kv")
-        if(offerKvHeader){
-                offerKvHeader.style.width = '1440px';
-                offerKvHeader.style.margin ='0 auto';
-            
+        if (offerKvHeader) {
+            offerKvHeader.style.width = '1440px';
+            offerKvHeader.style.margin = '0 auto';
+
 
             const swiperContainer = document.querySelector(".offer-header__container")
-            if(swiperContainer) swiperContainer.style.overflow = 'visible';
+            if (swiperContainer) swiperContainer.style.overflow = 'visible';
 
             const kvCarousel = document.querySelector('.offer-header')
-            if(kvCarousel) {
+            if (kvCarousel) {
                 kvCarousel.setAttribute('style', 'overflow: visible !important');
             }
 
             const offerWrapper = document.querySelector('.offer-header__wrapper');
-            if(offerWrapper){
+            if (offerWrapper) {
                 offerWrapper.setAttribute('style', 'overflow: visible !important');
             }
 
             const kvWraps = document.querySelectorAll('.offer-header__slide')
-            if(kvWraps && kvWraps.length>0){
+            if (kvWraps && kvWraps.length > 0) {
                 // for (let cnt = 0; cnt < kvWraps.length; cnt++ ) { // length - 2 해야하는 경우도 있음
                 const countBtn = document.querySelectorAll('.offer-header__indicator-wrap .indicator__item');
-                for(let cnt=0; cnt< countBtn.length; cnt++) {
+                for (let cnt = 0; cnt < countBtn.length; cnt++) {
                     const kvWrap = kvWraps[cnt]
                     let getId = kvWrap.getAttribute('id')
 
-                    kvWrap.setAttribute('id',getId+"-broken")
+                    kvWrap.setAttribute('id', getId + "-broken")
                     kvWrap.style.transform = 'translate3d(0, 0, 0)'
                     kvWrap.style.opacity = '1'
                     kvWrap.style.width = '1440px'
                     kvWrap.style.overflow = 'visible'
                 }
-                
+
                 let imgArea = document.querySelector('.offer-header__background-media-wrap')
                 let img = imgArea?.querySelector('.image__main');
-                if(img){
+                if (img) {
                     const pcSrc = img.getAttribute('data-desktop-src');
                     img.setAttribute('src', pcSrc);
                     img.style.visibility = 'visible';
@@ -177,19 +177,19 @@ const kvCarouselBreak = async (driver) =>{
             }
         }
     });
-    
+
 }
 /**
  * KV 케로쉘을 펼칩니다. (Mobile/Offer ver)
  * @param {*} driver 
  */
-const kvMobileCarouselBreak = async (driver) =>{
+const kvMobileCarouselBreak = async (driver) => {
     // select할 요소들이 나타날 때 까지 대기
     // await driver.waitForSelector('.indicator__controls')
     // await driver.waitForSelector('.home-kv-carousel__background-media-wrap .image-v2__main')
-    await driver.wait(until.elementLocated(By.css('.swiper-slide')),10000);
+    await driver.wait(until.elementLocated(By.css('.swiper-slide')), 10000);
 
-    await driver.executeScript (async() => {
+    await driver.executeScript(async () => {
 
         const links = document.querySelectorAll('a');
 
@@ -200,39 +200,39 @@ const kvMobileCarouselBreak = async (driver) =>{
 
         //KV Autoplay stop button
         const playButtons = document.querySelectorAll('.indicator__controls')
-        if(playButtons){
-            for(let i=0; i<playButtons.length; i++){
+        if (playButtons) {
+            for (let i = 0; i < playButtons.length; i++) {
                 playButtons[i].click();
             }
         }
 
         const kvtextshow = document.querySelector('.home-kv-carousel__text-wrap--hide')
-        if(kvtextshow) kvtextshow.style.opacity = '1';
+        if (kvtextshow) kvtextshow.style.opacity = '1';
 
         const kvCarouselHoG = document.querySelector('.ho-g-home-kv-carousel')
 
-        if(kvCarouselHoG){ // 1. offer kv가 home kv와 동일한 경우
-            if(kvCarouselHoG){
+        if (kvCarouselHoG) { // 1. offer kv가 home kv와 동일한 경우
+            if (kvCarouselHoG) {
                 kvCarouselHoG.style.width = '360px';
-                kvCarouselHoG.style.margin ='0 auto';
+                kvCarouselHoG.style.margin = '0 auto';
             }
 
             const swiperContainer = document.querySelector(".ho-g-home-kv-carousel .swiper-container")
-            if(swiperContainer) swiperContainer.style.overflow = 'visible';
+            if (swiperContainer) swiperContainer.style.overflow = 'visible';
 
             const kvCarousel = document.querySelector('.ho-g-home-kv-carousel .home-kv-carousel')
-            if(kvCarousel) {
+            if (kvCarousel) {
                 // kvCarousel.style.overflow = 'visible';
                 kvCarousel.setAttribute('style', 'overflow: visible !important');
             }
 
             const kvWraps = document.querySelectorAll('.swiper-container-fade .swiper-slide')
-            if(kvWraps && kvWraps.length>0){
-                for (let cnt = 0; cnt < kvWraps.length-2; cnt++ ) {
+            if (kvWraps && kvWraps.length > 0) {
+                for (let cnt = 0; cnt < kvWraps.length - 2; cnt++) {
                     const kvWrap = kvWraps[cnt]
                     let getId = kvWrap.getAttribute('id')
 
-                    kvWrap.setAttribute('id',getId+"-broken")
+                    kvWrap.setAttribute('id', getId + "-broken")
                     kvWrap.style.opacity = '1'
                     kvWrap.style.transform = 'translate3d(0, 0, 0)'
                     kvWrap.style.opacity = '1'
@@ -244,7 +244,7 @@ const kvMobileCarouselBreak = async (driver) =>{
 
             const kvCarouselMediaWraps = document.querySelectorAll('.home-kv-carousel__background-media-wrap')
 
-            if(kvCarouselMediaWraps){
+            if (kvCarouselMediaWraps) {
                 kvCarouselMediaWraps.forEach((kvCarouselMediaWrap) => {
                     const kvCarouselMediaImage = document.querySelector('.home-kv-carousel__background-media-wrap .image')
                     const kvCarouselMediaImageV2 = document.querySelector('.home-kv-carousel__background-media-wrap .image-v2')
@@ -267,24 +267,27 @@ const kvMobileCarouselBreak = async (driver) =>{
             }
 
             // 각 kv 슬라이드의 대표 이미지를 찾는 로직
-            const kvCarouselSlides = document.querySelectorAll('.home-kv-carousel__wrapper .home-kv-carousel__slide')
+            const kvCarouselSlides = document.querySelectorAll('.ho-g-home-kv-carousel.aem-GridColumn')
 
-            if(kvCarouselSlides){
+            if (kvCarouselSlides) {
+                // kvCarouselSlides.width = '252px';
                 kvCarouselSlides.forEach((slide) => {
                     let imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image-v2__main');
                     if (imgArea != null) {
                         imgArea.style.visibility = 'visible'
                         imgArea.style.opacity = '1'
+                        // imgArea.style.width = '252px';
                         let getSrc = imgArea?.getAttribute('data-360w1x-src');
                         if (getSrc) {
-                            imgArea.setAttribute('src', getSrc);
+                            let src252 = getSrc.replace('360','252');
+                            imgArea.setAttribute('src', src252);
                             // console.log("*** img src", getSrc);
                         }
                     }
-                    else{
+                    else {
                         imgArea = slide.querySelector('.home-kv-carousel__background-media-wrap .image');
                         let img = imgArea?.querySelector('.image__main');
-                        if(imgArea && img){
+                        if (imgArea && img) {
                             const pcSrc = img.getAttribute('data-mobile-src');
                             img.setAttribute('src', pcSrc);
                             img.style.visibility = 'visible';
@@ -292,13 +295,14 @@ const kvMobileCarouselBreak = async (driver) =>{
                             imgArea.style.visibility = 'visible';
                             imgArea.style.opacity = '1';
                             imgArea.style.zIndex = '10';
-                        } 
-                        else if(slide.querySelector('.home-kv-carousel__background-media-wrap picture')){
+                            imgArea.style.width = '252px';
+                        }
+                        else if (slide.querySelector('.home-kv-carousel__background-media-wrap picture')) {
                             // 대표이미지 다른 형식으로 존재
                         }
                         else {
                             const vid = slide.querySelector('.video');
-                            if(vid){
+                            if (vid) {
                                 // video preview 이미지 없을 시 border 처리
                                 vid.style.width = 'calc(100% - 14px)';
                                 vid.style.border = '7px solid red';
@@ -310,44 +314,44 @@ const kvMobileCarouselBreak = async (driver) =>{
 
         }
         // 2. offer kv가 독자적인 경우
-            const offerKvHeader = document.querySelector(".of-g-offers-kv")
+        const offerKvHeader = document.querySelector(".of-g-offers-kv")
 
-        if(offerKvHeader){
-                offerKvHeader.style.width = '360px';
-                offerKvHeader.style.margin ='0 auto';
-            
+        if (offerKvHeader) {
+            offerKvHeader.style.width = '360px';
+            offerKvHeader.style.margin = '0 auto';
+
 
             const swiperContainer = document.querySelector(".offer-header__container")
-            if(swiperContainer) swiperContainer.style.overflow = 'visible';
+            if (swiperContainer) swiperContainer.style.overflow = 'visible';
 
             const kvCarousel = document.querySelector('.offer-header')
-            if(kvCarousel) {
+            if (kvCarousel) {
                 kvCarousel.setAttribute('style', 'overflow: visible !important');
             }
 
             const offerWrapper = document.querySelector('.offer-header__wrapper');
-            if(offerWrapper){
+            if (offerWrapper) {
                 offerWrapper.setAttribute('style', 'overflow: visible !important');
             }
 
             const kvWraps = document.querySelectorAll('.offer-header__slide')
-            if(kvWraps && kvWraps.length>0){
+            if (kvWraps && kvWraps.length > 0) {
                 // for (let cnt = 0; cnt < kvWraps.length; cnt++ ) { // length - 2 해야하는 경우도 있음
                 const countBtn = document.querySelectorAll('.offer-header__indicator-wrap .indicator__item');
-                for(let cnt=0; cnt< countBtn.length; cnt++) {
+                for (let cnt = 0; cnt < countBtn.length; cnt++) {
                     const kvWrap = kvWraps[cnt]
                     let getId = kvWrap.getAttribute('id')
 
-                    kvWrap.setAttribute('id',getId+"-broken")
+                    kvWrap.setAttribute('id', getId + "-broken")
                     kvWrap.style.transform = 'translate3d(0, 0, 0)'
                     kvWrap.style.opacity = '1'
                     kvWrap.style.width = '360px'
                     kvWrap.style.overflow = 'visible'
                 }
-                
+
                 let imgArea = document.querySelector('.offer-header__background-media-wrap')
                 let img = imgArea?.querySelector('.image__main');
-                if(img){
+                if (img) {
                     const pcSrc = img.getAttribute('data-desktop-src');
                     img.setAttribute('src', pcSrc);
                     img.style.visibility = 'visible';
@@ -357,10 +361,10 @@ const kvMobileCarouselBreak = async (driver) =>{
                     imgArea.style.zIndex = '10';
                 }
             }
-        
+
         }
     });
-    
+
 }
 
 /**
@@ -368,12 +372,12 @@ const kvMobileCarouselBreak = async (driver) =>{
  * @param {*} driver 
  */
 const cardCarouselBreak = async (driver) => {
-    await driver.executeScript (() => {
+    await driver.executeScript(() => {
 
         //     // pd06 케로쉘 깨기
         //     const showCaseCardTab = document.querySelector(".swiper-container.basic-swiper")
         //     const showCaseCardTabWrapper = document.querySelector(".swiper-container.basic-swiper .swiper-wrapper")
-            
+
         //     if(showCaseCardTab) showCaseCardTab.style.overflow = 'visible'
         //     if(showCaseCardTabWrapper) showCaseCardTabWrapper.style.overflow = 'visible'
         // });
@@ -383,9 +387,9 @@ const cardCarouselBreak = async (driver) => {
         const cardTabs = document.querySelectorAll('.co16-discover-column-new')
         const co16Cards = document.querySelectorAll('.co16-discover-column-new__columns');
 
-        if(cardWrappers) cardWrappers.forEach((cardWrapper)=>{cardWrapper.style.overflow = 'visible'})
-        if(cardTabs) cardTabs.forEach((card)=>{card.style.overflow = 'visible'})
-        if(co16Cards) co16Cards.forEach((card)=>{card.style.overflow = 'visible'})
+        if (cardWrappers) cardWrappers.forEach((cardWrapper) => { cardWrapper.style.overflow = 'visible' })
+        if (cardTabs) cardTabs.forEach((card) => { card.style.overflow = 'visible' })
+        if (co16Cards) co16Cards.forEach((card) => { card.style.overflow = 'visible' })
     })
 }
 
@@ -393,9 +397,9 @@ const cardCarouselBreak = async (driver) => {
  * Offer 페이지의 '더보기' 버튼을 눌러 펼칩니다. (Offer ver)
  * @param {*} driver 
  */
-const viewmoreBreak = async (driver) =>{
-    await driver.executeScript(()=>{
-        
+const viewmoreBreak = async (driver) => {
+    await driver.executeScript(() => {
+
         function clickButton() {
             const viewmoreBtn = document.querySelector('.swiper-slide.all-offer-card__panel .cta.cta--outlined');
             if (viewmoreBtn) {
@@ -405,33 +409,33 @@ const viewmoreBreak = async (driver) =>{
         }
         // 1초 간격으로 clickButton 함수를 실행
         const intervalId = setInterval(clickButton, 1000);
-        
+
         // 10초 후에 인터벌 중지
         setTimeout(() => {
             clearInterval(intervalId);
             // console.log("Stopped clicking viewmore button");
         }, 10000); // 10초 후에 중지
     }
-)
+    )
 }
 
 /**
- * 모든 요소들을 좌측 정렬 후 이벤트리스너를 제거합니다. (Offer ver)
+ * 모든 요소들의 이벤트리스너를 제거합니다. (Offer ver)
  * @param {*} driver 
  */
-const eventListenerBreak = async (driver) =>{
-    await driver.executeScript(()=>{
+const eventListenerBreak = async (driver) => {
+    await driver.executeScript(() => {
         const elementsWithListeners = document.querySelectorAll('*');
 
         // 모든 요소를 반복하며 이벤트 리스너를 제거
-        if(elementsWithListeners){
+        if (elementsWithListeners) {
             elementsWithListeners.forEach(element => {
-                element.style.display = 'grid'
-                element.style.justifyItems = 'start'
-                element.style.marginBottom = '0'
-                element.style.left = 0;
+                // element.style.display = 'grid'
+                // element.style.justifyItems = 'start'
+                // element.style.marginBottom = '0'
+                // element.style.left = 0;
                 const clonedElement = element.cloneNode(true);
-                if(element.parentNode) element.parentNode.replaceChild(clonedElement, element);
+                if (element.parentNode) element.parentNode.replaceChild(clonedElement, element);
             });
         }
     })

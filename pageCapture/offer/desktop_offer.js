@@ -40,7 +40,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     try {
         // 화면 크기 설정
         await driver.manage().window().setRect({ width: 1440, height: 15000 });
-        await delay(2000)
+        await delay(1000)
         // 페이지 이동 (= puppeteer goto, 타임아웃 설정 포함), 여기서 waitUntil: 'load'는 기본적으로 수행됨
         await driver.get(url);
         await delay(1000)
@@ -95,7 +95,16 @@ const takeScreenshot = async (siteCode, dataDate) => {
                 document.body.offsetWidth
             );
         `);
-        await driver.manage().window().setRect({ width: width_, height: height_ });
+        let totalHeight = await driver.executeScript(`
+            return Math.max(
+                document.body.scrollHeight,
+                document.documentElement.scrollHeight,
+                document.body.offsetHeight,
+                document.documentElement.offsetHeight,
+            );
+        `);
+        await driver.manage().window().setRect({ width: width_, height: totalHeight });
+        delay(1000);
         let screenshot = await driver.takeScreenshot();
         fs.writeFileSync(`${pathName}/${fileName}`, screenshot, 'base64');
 

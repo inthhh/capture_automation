@@ -11,6 +11,7 @@ const secBreak = require("../capture-utils/secBreak");
 const fs = require('node:fs');
 const path = require('node:path')
 const { getWeekNumber } = require('../result-utils/getWeekNumber')
+const Jimp = require('jimp');
 
 const delay = (time) => {
     return new Promise(function (resolve) {
@@ -135,7 +136,12 @@ const takeScreenshot = async (siteCode, dataDate) => {
         `);
         await driver.manage().window().setRect({ width: width_, height: height_ });
         let screenshot = await driver.takeScreenshot();
-        fs.writeFileSync(`${pathName}/${fileName}`, screenshot, 'base64');
+        let captureImage = await Jimp.read(Buffer.from(screenshot, 'base64'));
+        await captureImage.quality(50); // 화질 50% (0-100 사이의 값)
+        await captureImage.getBufferAsync(Jimp.MIME_JPEG).then(buffer => {
+            fs.writeFileSync(`${pathName}/${fileName}`, buffer);
+        });
+        // fs.writeFileSync(`${pathName}/${fileName}`, captureImage, 'base64');
 
     } finally {
         await driver.quit();

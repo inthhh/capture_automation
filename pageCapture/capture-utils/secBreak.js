@@ -25,6 +25,14 @@ const kvCarouselBreak = async (driver, isDesktop) =>{
         prebtn?.remove();
         nextbtn?.remove();
 
+        const b2cMainKv = document.querySelector('.b2c__main-kv')
+        if(b2cMainKv) b2cMainKv.style.overflow = 'visible';
+        // const slickTrack = document.querySelector('.slick-track');
+        // if(slickTrack) slickTrack.style.overflow = 'visible';
+        // const b = document.querySelector('body')
+        // if(b) b.style.overflow = 'auto';
+        // const h = document.querySelector('html');
+        // if(h) h.style.overflow = 'auto';
         const kvCarouselHoG = document.querySelector('.wrap-component.carousel-container') // ?
         if(kvCarouselHoG){
             if(isDesktop){
@@ -78,8 +86,10 @@ const contentsToLeft = async (driver) => {
         const headerInner = document.querySelector('.header__inner')
         const kvw = document.querySelector('.wrap-component.carousel-container.pt-none')
         const foot = document.querySelector('#footer')
-        if(headerInner) headerInner.style.margin = '0'
-        if(kvw) kvw.style.margin = '0'
+        if(headerInner) {
+            headerInner.style.margin = '0'
+            // headerInner.style.setProperty('max-width', '2520px', 'important');
+        }if(kvw) kvw.style.margin = '0'
         if(foot) {
             foot.style.display = 'grid'
             foot.style.justifyItems = 'start'
@@ -91,6 +101,8 @@ const contentsToLeft = async (driver) => {
             for(let c = 0; c<contents.length; c++){
                 const content = contents[c];
                 content.style.margin = '0'
+                content.style.overflow = 'visible';
+                // content.style.setProperty('max-width', '2520px', 'important');
             }
         }
     })
@@ -106,12 +118,12 @@ const showcaseCardBreak = async (driver) => {
         const conbox = document.querySelector(".conbox.conbox-b2c-main")
         const wrapcontainer = conbox.querySelector(".component-contents.pt-none.pb-none")
         const container = document.querySelector(".tablist-prd-container")
-        // if(conbox) conbox.style.overflow = 'visible'
+        if(conbox) conbox.style.overflow = 'visible'
         if(wrapcontainer) wrapcontainer.style.overflow = 'visible'
         if(container) container.style.overflow = 'visible'
         
-        const slickList = document.querySelectorAll('.common-marketing-content');
-        if(slickList) slickList.forEach((s)=>{s.style.overflow = 'hidden';})
+        // const slickList = document.querySelectorAll('.common-marketing-content');
+        // if(slickList) slickList.forEach((s)=>{s.style.overflow = 'hidden';})
     })
 }
 
