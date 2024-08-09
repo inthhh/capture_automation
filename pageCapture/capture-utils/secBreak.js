@@ -25,23 +25,15 @@ const kvCarouselBreak = async (driver, isDesktop) =>{
         prebtn?.remove();
         nextbtn?.remove();
 
-        const b2cMainKv = document.querySelector('.b2c__main-kv')
-        if(b2cMainKv) b2cMainKv.style.overflow = 'visible';
-        // const slickTrack = document.querySelector('.slick-track');
-        // if(slickTrack) slickTrack.style.overflow = 'visible';
-        // const b = document.querySelector('body')
-        // if(b) b.style.overflow = 'auto';
-        // const h = document.querySelector('html');
-        // if(h) h.style.overflow = 'auto';
-        const kvCarouselHoG = document.querySelector('.wrap-component.carousel-container') // ?
-        if(kvCarouselHoG){
-            if(isDesktop){
-                kvCarouselHoG.style.width = '1440px'
-            }
-            else kvCarouselHoG.style.width = '360px'
-            kvCarouselHoG.style.margin ='0 auto'
-            kvCarouselHoG.style.overflow = 'visible'
-        }
+        // const kvCarouselHoG = document.querySelector('.wrap-component.carousel-container') // ?
+        // if(kvCarouselHoG){
+        //     if(isDesktop){
+        //         kvCarouselHoG.style.width = '1440px'
+        //     }
+        //     else kvCarouselHoG.style.width = '360px'
+        //     kvCarouselHoG.style.margin ='0 auto'
+        //     kvCarouselHoG.style.overflow = 'visible'
+        // }
 
         const cont = document.querySelector('#container')
         if(cont) cont.style.overflow = 'visible'
@@ -49,6 +41,9 @@ const kvCarouselBreak = async (driver, isDesktop) =>{
         if(kvCarouselwrap) kvCarouselwrap.style.overflow = 'visible'
         const kvarea = document.querySelector('.wrap-component .slick-list.draggable')
         if(kvarea) kvarea.style.overflow = 'visible'
+        // const mainKV = document.querySelector('.b2c__main-kv')
+        // if(mainKV) mainKV.style.overflow = 'visible'
+        
         const kvarea2 = document.querySelector('.component-contents.pt-none')
         if(kvarea2) kvarea2.style.overflow = 'visible'
         const track = document.querySelector('.slick-track')
