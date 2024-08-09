@@ -5,9 +5,9 @@ const mobile_offer = require("./pageCapture/offer/mobile_offer")
 const desktop_offer = require("./pageCapture/offer/desktop_offer")
 
 const goScreenshot = async () => {
-  const site_code = ['sec']; // 단일 실행의 경우, 캡쳐를 실행하고 싶은 국가코드만 삽입
-  // const site_code = region.site_code; // sec 포함 총 92개국 리스트 실행
-  const batchSize = 3; // batch 크기 변경 (병렬실행 갯수)
+  // const site_code = ['sec']; // 단일 실행의 경우, 캡쳐를 실행하고 싶은 국가코드만 삽입
+  const site_code = region.site_code; // sec 포함 총 92개국 리스트 실행
+  const batchSize = 2; // batch 크기 변경 (병렬실행 갯수)
   const dataDate = "2024-08-06"; // api 날짜에 맞게 변경
 
   const totalBatches = Math.ceil(site_code.length / batchSize);
@@ -23,7 +23,7 @@ const goScreenshot = async () => {
       try {
         // 주석처리 해제한 스크린샷 작업을 병렬로 실행
         const screenshots = await Promise.all([
-          // desktop.takeScreenshot(site, dataDate), // Desktop home 실행 시
+          desktop.takeScreenshot(site, dataDate), // Desktop home 실행 시
           // desktop_offer.takeScreenshot(site, dataDate), // Desktop offer 실행 시
           mobile.takeScreenshot(site, dataDate), // Mobile home 실행 시
           // mobile_offer.takeScreenshot(site, dataDate) // Mobile offer 실행 시

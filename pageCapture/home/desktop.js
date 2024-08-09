@@ -34,6 +34,9 @@ const takeScreenshot = async (siteCode, dataDate) => {
     let options = new chrome.Options();
     options.addArguments('--start-maximized'); // 창을 최대화하여 시작
     options.addArguments('headless');
+    options.addArguments('disable-gpu');
+    options.addArguments('disable-dev-shm-usage');
+    options.addArguments('--no-sandbox')
 
     // 드라이버 빌드
     let driver = await new Builder()
@@ -47,9 +50,9 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await driver.manage().window().setRect({ width: 1440, height: 10000 });
         await delay(2000)
         // 페이지 이동 (= puppeteer goto, 타임아웃 설정 포함), 여기서 waitUntil: 'load'는 기본적으로 수행됨
-        await driver.get(url); // 
-        await delay(1000);
         await driver.get(url);
+        await delay(1000);
+        // await driver.get(url);
 
         await delay(1000)
         let bodyElement = await driver.findElement(By.css('body'));
@@ -67,17 +70,17 @@ const takeScreenshot = async (siteCode, dataDate) => {
         `);
 
         if (siteCode === "sec") {
-            await driver.manage().window().setRect({ width: 1440 * 7, height: 6500 });
-            await delay(10000)
+            // await driver.manage().window().setRect({ width: 1440 * 7, height: 6500 });
+            await delay(5000)
             await popupBreak.cookiePopupBreaker(driver, false)
             await carouselBreak.eventListenerBreak(driver)
             await secBreak.buttonBreak(driver)
             console.log('is sec')
-            await delay(5000)
+            await delay(2000)
             await secBreak.kvCarouselBreak(driver, true)
-            await delay(5000)
+            await delay(2000)
             await secBreak.contentsToLeft(driver)
-            await delay(10000)
+            await delay(5000)
             await secBreak.showcaseCardBreak(driver)
 
             const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
@@ -87,13 +90,13 @@ const takeScreenshot = async (siteCode, dataDate) => {
                     await secFailChecker.checkFailData(driver, failedData[i], false) // secFailChecker 내부 함수 - 수정 필요
                 }
             }
-            await delay(10000)
+            await delay(5000)
             console.log('out sec')
         }
         else { // 글로벌 캡쳐
             // await driver.set_window_size({ width: Math.floor(width_), height: Math.floor(height_) });
             await driver.manage().window().setRect({ width: width_, height: height_ });
-            await delay(4000)
+            await delay(2000)
             await popupBreak.cookiePopupBreaker(driver, true)
             // // 사이트가 새로고침되며 팝업이 다시 뜨는 경우, popupBreaker 한번 더 실행 필요
             await delay(2000)
@@ -105,7 +108,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
             await carouselBreak.kvCarouselBreak(driver)
             await delay(5000)
             await carouselBreak.showcaseCardBreak(driver)
-            await delay(10000)
+            await delay(5000)
             await popupBreak.accessibilityPopupBreaker(driver)
             await carouselBreak.eventListenerBreak(driver)
 

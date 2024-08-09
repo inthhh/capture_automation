@@ -144,7 +144,7 @@ const buttonBreak = async(driver)=>{
                 const story = document.querySelector(".b2c-box.box-story")
                 if(story) {
                     story.style.overflow = 'hidden';
-                    story.style.width = '360px';
+                    // story.style.width = '360px';
                 }
                 // observer1.disconnect();  // 요소를 찾으면 더 이상 감시하지 않음
             });
