@@ -126,6 +126,10 @@ const removeIframe = async (driver) =>{
 
         const cnBtn = document.querySelector('img.surveyImg')
         if(cnBtn) cnBtn.remove();
+
+        const deVideo = document.querySelector('.cy-player')
+        if (deVideo) deVideo.remove();
+
       });
     });
     

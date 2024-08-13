@@ -28,14 +28,14 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
     const url = `https://www.samsung.com/${siteCode}/offer`;
 
-    let mainWidth = 360; //360*0.7
-    let mainHeight = 15000; //6000*0.7
+    let mainWidth = 360;
+    let mainHeight = 20000;
 
     // 브라우저 옵션 설정
     let mobileEmulation = {
         deviceMetrics: {
             width: 360,
-            height: 15000,
+            height: 20000,
             pixelRatio: 1
         },
         userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'
@@ -44,8 +44,8 @@ const takeScreenshot = async (siteCode, dataDate) => {
     let options = new chrome.Options();
     // options.addArguments('--start-maximized'); // 창을 최대화하여 시작
     options.setMobileEmulation(mobileEmulation);
-    // options.addArguments('headless');
-    // options.addArguments('disable-gpu');
+    options.addArguments('headless');
+    options.addArguments('disable-gpu');
     options.addArguments('disable-dev-shm-usage');
 
     // 드라이버 빌드
@@ -57,23 +57,23 @@ const takeScreenshot = async (siteCode, dataDate) => {
     try {
         // 화면 크기 설정
         await driver.get(url);
-        await delay(5000);
+        await delay(1000);
         await driver.manage().window().setRect({ width: mainWidth, height: mainHeight });
 
         await delay(1000)
 
         await popupBreak.cookiePopupBreaker(driver, false)
-        await delay(10000)
+        await delay(5000)
         await popupBreak.removeIframe(driver)
         await carouselBreak_offer.kvMobileCarouselBreak(driver)
-        await delay(10000)
+        await delay(5000)
         await carouselBreak_offer.viewmoreBreak(driver)
         await carouselBreak_offer.cardCarouselBreak(driver)
 
         await delay(10000)
 
         await popupBreak.accessibilityPopupBreaker(driver)
-        await carouselBreak_offer.eventListenerBreak(driver)
+        await carouselBreak_offer.eventListenerBreak(driver, false)
 
         // const failedData = await getRawData(dataDate, siteCode, "N", "Mobile")
         // if(failedData && failedData.length>0){
@@ -100,7 +100,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
             );
         `);
 
-        await driver.manage().window().setRect({ width: mainWidth, height: 5000 });
+        await driver.manage().window().setRect({ width: mainWidth, height: totalHeight });
 
         let totalWidth = await driver.executeScript(`
             return Math.max(
@@ -196,7 +196,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
             });
 
     } finally {
-        // await driver.quit();
+        await driver.quit();
     }
 
 }

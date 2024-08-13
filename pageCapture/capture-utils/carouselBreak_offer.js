@@ -422,23 +422,26 @@ const viewmoreBreak = async (driver) => {
 /**
  * 모든 요소들의 이벤트리스너를 제거합니다. (Offer ver)
  * @param {*} driver 
+ * @param {*} isDesktop
  */
-const eventListenerBreak = async (driver) => {
-    await driver.executeScript(() => {
+const eventListenerBreak = async (driver, isDesktop) => {
+    await driver.executeScript((isDesktop) => {
         const elementsWithListeners = document.querySelectorAll('*');
 
         // 모든 요소를 반복하며 이벤트 리스너를 제거
         if (elementsWithListeners) {
             elementsWithListeners.forEach(element => {
-                // element.style.display = 'grid'
-                // element.style.justifyItems = 'start'
-                // element.style.marginBottom = '0'
-                // element.style.left = 0;
+                if(isDesktop){
+                    element.style.display = 'grid'
+                    element.style.justifyItems = 'start'
+                    element.style.marginBottom = '0'
+                    element.style.left = 0;
+                }
                 const clonedElement = element.cloneNode(true);
                 if (element.parentNode) element.parentNode.replaceChild(clonedElement, element);
             });
         }
-    })
+    }, isDesktop)
 }
 
 module.exports = {

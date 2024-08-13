@@ -30,6 +30,8 @@ const takeScreenshot = async (siteCode, dataDate) => {
     let options = new chrome.Options();
     options.addArguments('--start-maximized'); // 창을 최대화하여 시작
     options.addArguments('headless');
+    options.addArguments('disable-gpu');
+    options.addArguments('disable-dev-shm-usage');
 
     // 드라이버 빌드
     let driver = await new Builder()
@@ -80,7 +82,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         // }
 
         await popupBreak.accessibilityPopupBreaker(driver)
-        await carouselBreak_offer.eventListenerBreak(driver)
+        await carouselBreak_offer.eventListenerBreak(driver, true)
 
         const dateNow = moment().format("YYMMDD")
         const date = new Date()
