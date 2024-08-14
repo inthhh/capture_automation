@@ -32,6 +32,9 @@ const takeScreenshot = async (siteCode, dataDate) => {
     options.addArguments('headless');
     options.addArguments('disable-gpu');
     options.addArguments('disable-dev-shm-usage');
+    options.addArguments('--remote-debugging-port=9222'); // 원격 디버깅 활성화
+    options.addArguments('--ignore-certificate-errors'); // SSL 인증서 오류 무시
+    options.addArguments('--allow-insecure-localhost'); // 비보안(HTTP) 요청 허용
 
     // 드라이버 빌드
     let driver = await new Builder()

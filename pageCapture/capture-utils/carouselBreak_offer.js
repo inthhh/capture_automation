@@ -7,7 +7,7 @@ const kvCarouselBreak = async (driver) => {
     // select할 요소들이 나타날 때 까지 대기
     // await driver.waitForSelector('.indicator__controls')
     // await driver.waitForSelector('.home-kv-carousel__background-media-wrap .image-v2__main')
-    await driver.wait(until.elementLocated(By.css('.swiper-slide')), 10000);
+    await driver.wait(until.elementLocated(By.css('#component-id')), 50000);
 
     await driver.executeScript(async () => {
 
@@ -187,7 +187,7 @@ const kvMobileCarouselBreak = async (driver) => {
     // select할 요소들이 나타날 때 까지 대기
     // await driver.waitForSelector('.indicator__controls')
     // await driver.waitForSelector('.home-kv-carousel__background-media-wrap .image-v2__main')
-    await driver.wait(until.elementLocated(By.css('.swiper-slide')), 10000);
+    await driver.wait(until.elementLocated(By.css('#component-id')), 50000);
 
     await driver.executeScript(async () => {
 

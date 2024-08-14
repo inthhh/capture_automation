@@ -47,6 +47,9 @@ const takeScreenshot = async (siteCode, dataDate) => {
     options.addArguments('headless');
     options.addArguments('disable-gpu');
     options.addArguments('disable-dev-shm-usage');
+    // options.addArguments('--remote-debugging-port=9222'); // 원격 디버깅 활성화
+    options.addArguments('--ignore-certificate-errors'); // SSL 인증서 오류 무시
+    options.addArguments('--allow-insecure-localhost'); // 비보안(HTTP) 요청 허용
 
     // 드라이버 빌드
     let driver = await new Builder()
@@ -57,20 +60,16 @@ const takeScreenshot = async (siteCode, dataDate) => {
     try {
         // 화면 크기 설정
         await driver.get(url);
-        await delay(1000);
-        await driver.manage().window().setRect({ width: mainWidth, height: mainHeight });
-
         await delay(1000)
 
         await popupBreak.cookiePopupBreaker(driver, false)
-        await delay(5000)
+        await delay(2000)
         await popupBreak.removeIframe(driver)
         await carouselBreak_offer.kvMobileCarouselBreak(driver)
-        await delay(5000)
+        await delay(2000)
         await carouselBreak_offer.viewmoreBreak(driver)
         await carouselBreak_offer.cardCarouselBreak(driver)
-
-        await delay(10000)
+        await delay(5000)
 
         await popupBreak.accessibilityPopupBreaker(driver)
         await carouselBreak_offer.eventListenerBreak(driver, false)
@@ -86,21 +85,8 @@ const takeScreenshot = async (siteCode, dataDate) => {
         const date = new Date()
         const weekNumber = getWeekNumber(date);
         const pathName = `result/${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}/mobile_offer`
-        const fileName = `W${weekNumber}_Screenshot_mobile_offer_${dateNow}(${siteCode}).jpeg`
+        const fileNameOrg = `W${weekNumber}_Screenshot_mobile_offer_${dateNow}(${siteCode})_original.jpeg`
         fs.mkdirSync(pathName, { recursive: true });
-
-        let totalHeight = await driver.executeScript(`
-            return Math.max(
-                document.body.scrollHeight,
-                document.documentElement.scrollHeight,
-                document.body.offsetHeight,
-                document.documentElement.offsetHeight,
-                document.body.clientHeight,
-                document.documentElement.clientHeight
-            );
-        `);
-
-        await driver.manage().window().setRect({ width: mainWidth, height: totalHeight });
 
         let totalWidth = await driver.executeScript(`
             return Math.max(
@@ -108,6 +94,10 @@ const takeScreenshot = async (siteCode, dataDate) => {
                 document.body.offsetWidth,
             );
         `);
+
+        let footer = await driver.findElement(By.css('footer'));
+        let footerLocation = await footer.getRect();  // 요소의 위치와 크기 가져오기
+
         // 가로 스크롤 및 스크린샷
         console.log("total : ", totalWidth)
         let remainingWidth = 0;
@@ -125,6 +115,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
                 }
                 await driver.executeScript(`window.scrollTo(-${scrollLeft}, 0);`); // RTL 음수값 스크롤
                 await driver.sleep(2000);  // 페이지가 스크롤될 시간
+
                 let screenshot = await driver.takeScreenshot();
                 screenshots.push(Buffer.from(screenshot, 'base64'));
                 if (scrollLeft == 0) break;
@@ -139,7 +130,6 @@ const takeScreenshot = async (siteCode, dataDate) => {
                 if (i === screenshots.length - 1 && (totalWidth % mainWidth !== 0)) {
                     // 마지막 스크린샷을 자름
                     let remainingWidth = totalWidth % mainWidth;
-                    console.log(mainWidth - remainingWidth, remainingWidth, totalHeight);
                     await sharp(tempPath)
                         .extract({ left: mainWidth - remainingWidth, top: 0, width: remainingWidth, height: mainHeight })
                         .toFile(finalPath);
@@ -173,7 +163,6 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
                 if (i === screenshots.length - 1 && (totalWidth % mainWidth !== 0)) {
                     // 마지막 스크린샷을 자름
-                    console.log(mainWidth - remainingWidth, remainingWidth, totalHeight)
                     await sharp(tempPath)
                         .extract({ left: mainWidth - remainingWidth, top: 0, width: remainingWidth, height: mainHeight })
                         .toFile(finalPath);
@@ -184,17 +173,31 @@ const takeScreenshot = async (siteCode, dataDate) => {
                 screenshotFiles.push(finalPath);
             }
         }
+        const fileName = `W${weekNumber}_Screenshot_mobile_offer_${dateNow}(${siteCode}).jpeg`
         // 수평 병합 - mergeImg를 사용하여 병합
         mergeImg(screenshotFiles, { direction: false })
-            .then((image) => {
-                image.write(path.join(pathName, `${fileName}`), () => {
-                    console.log('Full page screenshot saved.');
-                });
+            .then(async (image) => {
+                const width = image.bitmap.width; // 기존 이미지의 너비
+                const height = footerLocation.y;  // 자를 높이 (footer 윗부분까지)
+
+                image.crop(0, 0, width, height)
+                    .write(path.join(pathName, `${fileName}`), (err) => {
+                        if (err) {
+                            console.error('Error cropping image:', err);
+                        } else {
+                            console.log('Cropped screenshot saved.');
+                        }
+                    });
+
+                // image.write(path.join(pathName, `${fileNameOrg}`), () => {
+                //     console.log('Full page screenshot saved.');
+                // });
             })
             .catch((err) => {
                 console.error('Error merging images:', err);
             });
 
+        // await driver2.quit();
     } finally {
         await driver.quit();
     }
