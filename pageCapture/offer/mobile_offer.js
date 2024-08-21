@@ -11,6 +11,7 @@ const path = require('node:path');
 const { getWeekNumber } = require('../result-utils/getWeekNumber');
 const sharp = require('sharp');
 const mergeImg = require('merge-img');
+const Jimp = require('jimp');
 
 const delay = (time) => {
     return new Promise(function (resolve) {
@@ -176,22 +177,26 @@ const takeScreenshot = async (siteCode, dataDate) => {
         const fileName = `W${weekNumber}_Screenshot_mobile_offer_${dateNow}(${siteCode}).jpeg`
         // 수평 병합 - mergeImg를 사용하여 병합
         mergeImg(screenshotFiles, { direction: false })
-            .then(async (image) => {
-                const width = image.bitmap.width; // 기존 이미지의 너비
-                const height = footerLocation.y;  // 자를 높이 (footer 윗부분까지)
+            .then((image) => {
+                // 병합된 이미지를 임시 파일로 저장
+                let tempMergedPath = path.join(pathName, 'temp_merged_image.png');
+                image.write(tempMergedPath, async () => {
+                    console.log('Temporary merged image saved.');
 
-                image.crop(0, 0, width, height)
-                    .write(path.join(pathName, `${fileName}`), (err) => {
-                        if (err) {
-                            console.error('Error cropping image:', err);
-                        } else {
-                            console.log('Cropped screenshot saved.');
-                        }
-                    });
+                    // Jimp로 임시 파일을 읽고 품질을 조절한 후 최종 파일로 저장
+                    let captureImage = await Jimp.read(tempMergedPath);
 
-                // image.write(path.join(pathName, `${fileNameOrg}`), () => {
-                //     console.log('Full page screenshot saved.');
-                // });
+                    const width = captureImage.getWidth();
+                    const height = footerLocation.y;
+                    console.log("높이", height, captureImage.getHeight())
+                    captureImage.crop(0, 0, width, height);
+                    captureImage.quality(60); // 화질 60% (0-100 사이의 값)
+                    await captureImage.writeAsync(path.join(pathName, fileName));
+
+                    // 임시 파일 삭제
+                    fs.unlinkSync(tempMergedPath);
+                    console.log(siteCode, ': Full page screenshot saved');
+                });
             })
             .catch((err) => {
                 console.error('Error merging images:', err);

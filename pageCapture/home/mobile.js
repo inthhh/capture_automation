@@ -34,13 +34,13 @@ const takeScreenshot = async (siteCode, dataDate) => {
     const url = `https://www.samsung.com/${siteCode}`;
 
     let mainWidth = 360;
-    let mainHeight = 6000;
+    let mainHeight = 8000;
 
     // 브라우저 옵션 설정
     let mobileEmulation = {
         deviceMetrics: {
             width: 360,
-            height: 6000,
+            height: 8000,
             pixelRatio: 1
         },
         userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'
@@ -158,6 +158,8 @@ const takeScreenshot = async (siteCode, dataDate) => {
                 document.documentElement.clientWidth
             );
         `);
+        let footer = await driver.findElement(By.css('footer'));
+        let footerLocation = await footer.getRect();  // 요소의 위치와 크기 가져오기
         // 가로 스크롤 및 스크린샷
         console.log("total : ", totalWidth)
         let remainingWidth = 0;
@@ -234,7 +236,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
                 //         .extract({ left: mainWidth - remainingWidth, top: 0, width: remainingWidth, height: mainHeight })
                 //         .toFile(finalPath);
                 // } else {
-                    fs.renameSync(tempPath, finalPath);
+                fs.renameSync(tempPath, finalPath);
                 // }
 
                 screenshotFiles.push(finalPath);
@@ -283,6 +285,8 @@ const takeScreenshot = async (siteCode, dataDate) => {
                 screenshotFiles.push(finalPath);
             }
         }
+
+
         // 수평 병합 - mergeImg를 사용하여 병합
         mergeImg(screenshotFiles, { direction: false })
             .then((image) => {
@@ -293,18 +297,22 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
                     // Jimp로 임시 파일을 읽고 품질을 조절한 후 최종 파일로 저장
                     let captureImage = await Jimp.read(tempMergedPath);
+
+                    const width = captureImage.getWidth();
+                    const height = footerLocation.y;
+                    console.log("높이", height, captureImage.getHeight())
+                    captureImage.crop(0, 0, width, height);
                     captureImage.quality(60); // 화질 60% (0-100 사이의 값)
                     await captureImage.writeAsync(path.join(pathName, fileName));
 
                     // 임시 파일 삭제
                     fs.unlinkSync(tempMergedPath);
-                    console.log('Full page screenshot saved');
+                    console.log(siteCode, ': Full page screenshot saved');
                 });
             })
             .catch((err) => {
                 console.error('Error merging images:', err);
             });
-
 
     } finally {
         await driver.quit();
