@@ -23,9 +23,9 @@ const goScreenshot = async () => {
       try {
         // 주석처리 해제한 스크린샷 작업을 병렬로 실행
         const screenshots = await Promise.all([
-          // desktop.takeScreenshot(site, dataDate), // Desktop home 실행 시
+          desktop.takeScreenshot(site, dataDate), // Desktop home 실행 시
           // desktop_offer.takeScreenshot(site, dataDate), // Desktop offer 실행 시
-          mobile.takeScreenshot(site, dataDate), // Mobile home 실행 시
+          // mobile.takeScreenshot(site, dataDate), // Mobile home 실행 시
           // mobile_offer.takeScreenshot(site, dataDate) // Mobile offer 실행 시
         ]);
         return screenshots;
