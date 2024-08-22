@@ -48,17 +48,29 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
     let options = new chrome.Options();
     // options.addArguments('--start-maximized'); // 창을 최대화하여 시작
+    if(process.env.CHROME_BINARY_PATH) {options.setChromeBinaryPath(process.env.CHROME_BINARY_PATH);}
     options.setMobileEmulation(mobileEmulation);
     options.addArguments('headless');
     options.addArguments('disable-gpu');
     options.addArguments('--no-sandbox')
     options.addArguments('disable-dev-shm-usage');
 
+    
+
     // 드라이버 빌드
     let driver = await new Builder()
         .forBrowser('chrome')
         .setChromeOptions(options)
         .build();
+
+    if(process.env.CHROME_DRIVER_PATH){
+        const service = new chrome.ServiceBuilder(process.env.CHROME_DRIVER_PATH);
+        driver = await new Builder()
+        .forBrowser('chrome')
+        .setChromeService(service)
+        .setChromeOptions(options)
+        .build();
+    }
 
     try {
         await driver.get(url);
