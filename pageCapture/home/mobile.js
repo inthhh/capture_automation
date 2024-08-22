@@ -87,14 +87,14 @@ const takeScreenshot = async (siteCode, dataDate) => {
             await secBreak.buttonBreak(driver)
             await delay(2000)
             await popupBreak.cookiePopupBreaker(driver, false)
-            // await popupBreak.removeIframe(page)
+            // await popupBreak.removeIframe(page) // 당분간 사용 X
             console.log('is sec')
             await secBreak.kvCarouselBreak(driver, false)
             await delay(2000)
             await secBreak.contentsToLeft(driver)
             await delay(5000)
             await secBreak.showcaseCardBreak(driver)
-            await carouselBreak.eventListenerBreak(driver)
+            // await carouselBreak.eventListenerBreak(driver)
             await delay(2000)
 
             const badgeData = await getSecRawData(dataDate, siteCode);
@@ -171,7 +171,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
             );
         `);
         let footer = await driver.findElement(By.css('footer'));
-        let footerLocation = await footer.getRect();  // 요소의 위치와 크기 가져오기
+        let footerLocation = await footer.getRect();
         // 가로 스크롤 및 스크린샷
         console.log("total : ", totalWidth)
         let remainingWidth = 0;

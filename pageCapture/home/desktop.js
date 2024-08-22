@@ -124,6 +124,9 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
         }
 
+        let footer = await driver.findElement(By.css('footer'));
+        let footerLocation = await footer.getRect();
+
         const dateNow = moment().format("YYMMDD")
         const date = new Date()
         const weekNumber = getWeekNumber(date);
@@ -140,6 +143,10 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await driver.manage().window().setRect({ width: width_, height: height_ });
         let screenshot = await driver.takeScreenshot();
         let captureImage = await Jimp.read(Buffer.from(screenshot, 'base64'));
+        const width = captureImage.getWidth();
+        const height = footerLocation.y;
+        console.log("높이", height, captureImage.getHeight())
+        await captureImage.crop(0, 0, width, height);
         await captureImage.quality(50); // 화질 50% (0-100 사이의 값)
         await captureImage.getBufferAsync(Jimp.MIME_JPEG).then(buffer => {
             fs.writeFileSync(`${pathName}/${fileName}`, buffer);
