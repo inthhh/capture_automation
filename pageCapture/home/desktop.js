@@ -12,6 +12,7 @@ const fs = require('node:fs');
 const path = require('node:path')
 const { getWeekNumber } = require('../result-utils/getWeekNumber')
 const Jimp = require('jimp');
+require("dotenv").config();
 
 const delay = (time) => {
     return new Promise(function (resolve) {
@@ -32,6 +33,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
     // 브라우저 옵션 설정
     let options = new chrome.Options();
+    if(process.env.CHROME_BINARY_PATH) {options.setChromeBinaryPath(process.env.CHROME_BINARY_PATH);}
     options.addArguments('--start-maximized'); // 창을 최대화하여 시작
     options.addArguments('headless');
     options.addArguments('disable-gpu');
@@ -44,6 +46,15 @@ const takeScreenshot = async (siteCode, dataDate) => {
         .setChromeOptions(options)
         .build();
 
+    if(process.env.CHROME_DRIVER_PATH){
+        const service = new chrome.ServiceBuilder(process.env.CHROME_DRIVER_PATH);
+        driver = await new Builder()
+        .forBrowser('chrome')
+        .setChromeService(service)
+        .setChromeOptions(options)
+        .build();
+    }
+    
     try {
         await driver.get(url);
         // 화면 크기 설정
