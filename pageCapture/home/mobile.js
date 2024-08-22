@@ -15,7 +15,7 @@ const sharp = require('sharp');
 const { getWeekNumber } = require('../result-utils/getWeekNumber')
 const mergeImg = require('merge-img');
 const Jimp = require('jimp');
-
+require("dotenv").config();
 const delay = (time) => {
     return new Promise(function (resolve) {
         setTimeout(resolve, time)
