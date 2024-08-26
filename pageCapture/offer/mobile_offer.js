@@ -48,7 +48,6 @@ const takeScreenshot = async (siteCode, dataDate) => {
     options.addArguments('headless');
     options.addArguments('disable-gpu');
     options.addArguments('disable-dev-shm-usage');
-    // options.addArguments('--remote-debugging-port=9222'); // 원격 디버깅 활성화
     options.addArguments('--ignore-certificate-errors'); // SSL 인증서 오류 무시
     options.addArguments('--allow-insecure-localhost'); // 비보안(HTTP) 요청 허용
 
@@ -73,7 +72,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await delay(5000)
 
         await popupBreak.accessibilityPopupBreaker(driver)
-        await carouselBreak_offer.eventListenerBreak(driver, false)
+        // await carouselBreak_offer.eventListenerBreak(driver, false)
 
         // const failedData = await getRawData(dataDate, siteCode, "N", "Mobile")
         // if(failedData && failedData.length>0){

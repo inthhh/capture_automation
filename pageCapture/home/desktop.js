@@ -70,7 +70,6 @@ const takeScreenshot = async (siteCode, dataDate) => {
         `);
 
         if (siteCode === "sec") {
-            // await driver.manage().window().setRect({ width: 1440 * 7, height: 6500 });
             await delay(5000)
             await popupBreak.cookiePopupBreaker(driver, false)
             await carouselBreak.eventListenerBreak(driver)

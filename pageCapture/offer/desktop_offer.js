@@ -9,6 +9,7 @@ const popupBreak = require("../capture-utils/popupBreak")
 const fs = require('node:fs');
 const path = require('node:path')
 const { getWeekNumber } = require('../result-utils/getWeekNumber')
+const Jimp = require('jimp');
 
 const delay = (time) => {
     return new Promise(function (resolve) {
@@ -28,11 +29,10 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
     // 브라우저 옵션 설정
     let options = new chrome.Options();
-    options.addArguments('--start-maximized'); // 창을 최대화하여 시작
+    // options.addArguments('--start-maximized'); // 창을 최대화하여 시작
     options.addArguments('headless');
     options.addArguments('disable-gpu');
     options.addArguments('disable-dev-shm-usage');
-    options.addArguments('--remote-debugging-port=9222'); // 원격 디버깅 활성화
     options.addArguments('--ignore-certificate-errors'); // SSL 인증서 오류 무시
     options.addArguments('--allow-insecure-localhost'); // 비보안(HTTP) 요청 허용
 
@@ -67,17 +67,19 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await driver.manage().window().setRect({ width: width_, height: height_ });
         await delay(1000)
         await popupBreak.cookiePopupBreaker(driver, false)
-        await delay(10000)
+        await delay(5000)
         await popupBreak.removeIframe(driver)
         await carouselBreak_offer.kvCarouselBreak(driver)
-        await delay(10000)
+        await delay(5000)
         await carouselBreak_offer.viewmoreBreak(driver)
+        await delay(5000)
         await carouselBreak_offer.cardCarouselBreak(driver)
-
-        await delay(10000)
+        
+        await delay(5000)
+        // await carouselBreak_offer.eventListenerBreak(driver, true)
 
         // const failedData = await getRawData(dataDate, siteCode, "N", "Desktop")
-
+ 
         // if(failedData && failedData.length>0){
         //     for (let i = 0; i < failedData.length; i++){
         //         await failChecker.checkFailData(driver,failedData[i])
@@ -108,13 +110,24 @@ const takeScreenshot = async (siteCode, dataDate) => {
                 document.documentElement.offsetHeight,
             );
         `);
+        let footer = await driver.findElement(By.css('footer'));
+        let footerLocation = await footer.getRect();
         await driver.manage().window().setRect({ width: width_, height: totalHeight });
         delay(1000);
         let screenshot = await driver.takeScreenshot();
-        fs.writeFileSync(`${pathName}/${fileName}`, screenshot, 'base64');
+        let captureImage = await Jimp.read(Buffer.from(screenshot, 'base64'));
+        const width = captureImage.getWidth();
+        const height = footerLocation.y;
+        console.log("높이", height, captureImage.getHeight())
+        await captureImage.crop(0, 0, width, height);
+        await captureImage.quality(50); // 화질 50% (0-100 사이의 값)
+        await captureImage.getBufferAsync(Jimp.MIME_JPEG).then(buffer => {
+            fs.writeFileSync(`${pathName}/${fileName}`, buffer);
+        });
+        // fs.writeFileSync(`${pathName}/${fileName}`, screenshot, 'base64');
 
     } finally {
-        await driver.quit();
+        // await driver.quit();
     }
 
 }
