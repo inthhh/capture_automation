@@ -73,7 +73,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await delay(5000)
         await carouselBreak_offer.viewmoreBreak(driver)
         await delay(5000)
-        await carouselBreak_offer.cardCarouselBreak(driver)
+        await carouselBreak_offer.cardCarouselBreak(driver, true)
         
         await delay(5000)
         // await carouselBreak_offer.eventListenerBreak(driver, true)

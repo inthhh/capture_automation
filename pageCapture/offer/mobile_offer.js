@@ -30,13 +30,13 @@ const takeScreenshot = async (siteCode, dataDate) => {
     const url = `https://www.samsung.com/${siteCode}/offer`;
 
     let mainWidth = 360;
-    let mainHeight = 20000;
+    let mainHeight = 30000;
 
     // 브라우저 옵션 설정
     let mobileEmulation = {
         deviceMetrics: {
             width: 360,
-            height: 20000,
+            height: 30000,
             pixelRatio: 1
         },
         userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'
@@ -66,13 +66,14 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await delay(2000)
         await popupBreak.removeIframe(driver)
         await carouselBreak_offer.kvMobileCarouselBreak(driver)
-        await delay(2000)
+        await delay(5000)
         await carouselBreak_offer.viewmoreBreak(driver)
-        await carouselBreak_offer.cardCarouselBreak(driver)
+        await delay(5000)
+        await carouselBreak_offer.cardCarouselBreak(driver, false)
         await delay(5000)
 
         await popupBreak.accessibilityPopupBreaker(driver)
-        // await carouselBreak_offer.eventListenerBreak(driver, false)
+        await carouselBreak_offer.eventListenerBreak(driver, false)
 
         // const failedData = await getRawData(dataDate, siteCode, "N", "Mobile")
         // if(failedData && failedData.length>0){

@@ -371,8 +371,8 @@ const kvMobileCarouselBreak = async (driver) => {
  * Offer 페이지의 co16 카드 케로쉘을 펼칩니다. (Offer ver)
  * @param {*} driver 
  */
-const cardCarouselBreak = async (driver) => {
-    await driver.executeScript(() => {
+const cardCarouselBreak = async (driver, isDesktop) => {
+    await driver.executeScript((isDesktop) => {
 
         // co16 mobile 케로쉘
         const cardWrappers = document.querySelectorAll('.cm-g-discover-column-new')
@@ -383,9 +383,12 @@ const cardCarouselBreak = async (driver) => {
         if (cardTabs) cardTabs.forEach((card) => { card.style.overflow = 'visible' })
         if (co16Cards) co16Cards.forEach((card) => { card.style.overflow = 'visible' })
 
-        const offerCard = document.querySelector('.swiper-slide .all-offer-card__list')
-        if(offerCard) offerCard.style.width = '1440px';
-    })
+        if (isDesktop) {
+            const offerCard = document.querySelector('.swiper-slide .all-offer-card__list')
+            if (offerCard) offerCard.style.width = '1440px';
+        }
+
+    }, isDesktop)
 }
 
 /**
