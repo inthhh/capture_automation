@@ -32,11 +32,14 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
     // 브라우저 옵션 설정
     let options = new chrome.Options();
-    options.addArguments('--start-maximized'); // 창을 최대화하여 시작
+    // options.addArguments('--start-maximized'); // 창을 최대화하여 시작
     options.addArguments('headless');
     options.addArguments('disable-gpu');
     options.addArguments('disable-dev-shm-usage');
     options.addArguments('--no-sandbox')
+    options.addArguments('--disable-extensions');  // 확장 프로그램 비활성화
+    options.addArguments('--disable-logging');  // 로그 레벨 조정
+
 
     // 드라이버 빌드
     let driver = await new Builder()
