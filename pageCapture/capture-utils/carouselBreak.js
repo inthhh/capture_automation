@@ -42,28 +42,6 @@ const kvCarouselBreak = async (driver) =>{
 
         const kvCarouselMediaWraps = document.querySelectorAll('.home-kv-carousel__background-media-wrap')
 
-        // if(kvCarouselMediaWraps){
-        //     kvCarouselMediaWraps.forEach((kvCarouselMediaWrap) => {
-        //         const kvCarouselMediaImage = document.querySelector('.home-kv-carousel__background-media-wrap .image')
-        //         const kvCarouselMediaImageV2 = document.querySelector('.home-kv-carousel__background-media-wrap .image-v2')
-        //         const kvCarouselMediaImageFirstImage = document.querySelector('.home-kv-carousel__background-media-wrap .first-image')
-        //         const kvCarouselMediaImageFirstVideo = document.querySelector('.home-kv-carousel__background-media-wrap .video')
-
-        //         if (kvCarouselMediaImage != null) {
-        //             kvCarouselMediaImage.style.height = '100% !important';
-        //         }
-        //         if (kvCarouselMediaImageV2 != null) {
-        //             kvCarouselMediaImageV2.style.height = '100% !important';
-        //         }
-        //         if (kvCarouselMediaImageFirstImage != null) {
-        //             kvCarouselMediaImageFirstImage.style.height = '100% !important';
-        //         }
-        //         if (kvCarouselMediaImageFirstVideo != null) {
-        //             kvCarouselMediaImageFirstVideo.style.height = '100% !important';
-        //         }
-        //     })
-        // }
-
         // 각 kv 슬라이드의 대표 이미지를 찾는 로직
         const kvCarouselSlides = document.querySelectorAll('.home-kv-carousel__wrapper .home-kv-carousel__slide')
 
@@ -164,29 +142,29 @@ const carouselBreakMobile = async (driver, site_code) =>{
         const kvCarousel = document.querySelector('.home-kv-carousel')
         if(kvCarousel) kvCarousel.style.overflow = 'visible'
 
-        const kvCarouselMediaWraps = document.querySelectorAll('.home-kv-carousel__background-media-wrap')
+        // const kvCarouselMediaWraps = document.querySelectorAll('.home-kv-carousel__background-media-wrap')
         
-        if(kvCarouselMediaWraps){
-            kvCarouselMediaWraps.forEach((kvCarouselMediaWrap) => {
-                const kvCarouselMediaImage = document.querySelector('.home-kv-carousel__background-media-wrap .image')
-                const kvCarouselMediaImageV2 = document.querySelector('.home-kv-carousel__background-media-wrap .image-v2')
-                const kvCarouselMediaImageFirstImage = document.querySelector('.home-kv-carousel__background-media-wrap .first-image')
-                const kvCarouselMediaImageFirstVideo = document.querySelector('.home-kv-carousel__background-media-wrap .video')
+        // if(kvCarouselMediaWraps){
+        //     kvCarouselMediaWraps.forEach((kvCarouselMediaWrap) => {
+        //         const kvCarouselMediaImage = document.querySelector('.home-kv-carousel__background-media-wrap .image')
+        //         const kvCarouselMediaImageV2 = document.querySelector('.home-kv-carousel__background-media-wrap .image-v2')
+        //         const kvCarouselMediaImageFirstImage = document.querySelector('.home-kv-carousel__background-media-wrap .first-image')
+        //         const kvCarouselMediaImageFirstVideo = document.querySelector('.home-kv-carousel__background-media-wrap .video')
 
-                if (kvCarouselMediaImage != null) {
-                    kvCarouselMediaImage.style.height = '100% !important';
-                }
-                if (kvCarouselMediaImageV2 != null) {
-                    kvCarouselMediaImageV2.style.height = '100% !important';
-                }
-                if (kvCarouselMediaImageFirstImage != null) {
-                    kvCarouselMediaImageFirstImage.style.height = '100% !important';
-                }
-                if (kvCarouselMediaImageFirstVideo != null) {
-                    kvCarouselMediaImageFirstVideo.style.height = '100% !important';
-                }
-            })
-        }
+        //         if (kvCarouselMediaImage != null) {
+        //             kvCarouselMediaImage.style.height = '100% !important';
+        //         }
+        //         if (kvCarouselMediaImageV2 != null) {
+        //             kvCarouselMediaImageV2.style.height = '100% !important';
+        //         }
+        //         if (kvCarouselMediaImageFirstImage != null) {
+        //             kvCarouselMediaImageFirstImage.style.height = '100% !important';
+        //         }
+        //         if (kvCarouselMediaImageFirstVideo != null) {
+        //             kvCarouselMediaImageFirstVideo.style.height = '100% !important';
+        //         }
+        //     })
+        // }
 
         // 각 kv 슬라이드의 대표 이미지를 찾는 로직
         const kvCarouselMediaImagePreview = document.querySelector('.home-kv-carousel__background-media-wrap .image-v2__preview+.image-v2__main')
