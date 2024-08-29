@@ -6,7 +6,7 @@ const { Builder, By, until } = require('selenium-webdriver'); // until 포함
  * @param {boolean(Desktop/Home ver일 경우에만 true)} isDesktop 
  */
 const cookiePopupBreaker = async (driver, isDesktop) =>{
-  if(isDesktop) await driver.wait(until.elementLocated(By.css('.tab__item-title')), 10000);
+  if(isDesktop) await driver.wait(until.elementLocated(By.css('.aem-Grid')), 10000);
   await driver.executeScript(()=>{
     //Popup wrap
     const popupWrap = document.querySelector('#truste-consent-track')
@@ -83,7 +83,6 @@ const clickFirstMerchan = async (driver) =>{
  * @param {*} driver 
  */
 const removeIframe = async (driver) =>{
-  // await page.waitForSelector('.tab__item-title')
   await driver.executeScript(async()=>{
     const surveyIframe = document.getElementById('QSIFeedbackButton-survey-iframe');
     if (surveyIframe) surveyIframe.remove();

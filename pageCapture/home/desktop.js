@@ -39,6 +39,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     options.addArguments('--no-sandbox')
     options.addArguments('--disable-extensions');  // 확장 프로그램 비활성화
     options.addArguments('--disable-logging');  // 로그 레벨 조정
+    options.addArguments('--force-device-scale-factor=1'); // 배율 100%로 고정
 
 
     // 드라이버 빌드
@@ -48,29 +49,24 @@ const takeScreenshot = async (siteCode, dataDate) => {
         .build();
 
     try {
+        // 페이지 로드 타임아웃 설정 (30초)
+        await driver.manage().setTimeouts({ pageLoad: 30000 });
+
+        // 스크립트 실행 타임아웃 설정 (30초)
+        await driver.manage().setTimeouts({ script: 30000 });
+
         await driver.get(url);
         // 화면 크기 설정
+        await driver.executeScript(`
+            document.querySelector('html').style.zoom = '100%';
+        `);
         await driver.manage().window().setRect({ width: 1440, height: 10000 });
         await delay(1000)
-        await driver.executeScript("document.body.style.zoom='100%'");
         // 페이지 이동 (= puppeteer goto, 타임아웃 설정 포함), 여기서 waitUntil: 'load'는 기본적으로 수행됨
         // await driver.get(url);
-        await delay(1000);
 
         let bodyElement = await driver.findElement(By.css('body'));
         let rect = await bodyElement.getRect();
-        let width_ = await driver.executeScript(`
-            return Math.max(
-                document.body.scrollWidth,
-                document.body.offsetWidth
-            );
-        `);
-        let height_ = await driver.executeScript(`
-            return Math.max(
-                document.body.scrollHeight,
-                document.body.offsetHeight
-            );
-        `);
 
         if (siteCode === "sec") {
             await delay(2000)
@@ -96,7 +92,6 @@ const takeScreenshot = async (siteCode, dataDate) => {
             console.log('out sec')
         }
         else { // 글로벌 캡쳐
-            await driver.manage().window().setRect({ width: width_, height: height_ });
             await delay(2000)
             await popupBreak.cookiePopupBreaker(driver, true)
             // // 사이트가 새로고침되며 팝업이 다시 뜨는 경우, popupBreaker 한번 더 실행 필요
@@ -107,9 +102,9 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
             await popupBreak.removeIframe(driver)
             await carouselBreak.kvCarouselBreak(driver)
-            await delay(5000)
+            await delay(2000)
             await carouselBreak.showcaseCardBreak(driver)
-            await delay(5000)
+            await delay(2000)
             await popupBreak.accessibilityPopupBreaker(driver)
             await carouselBreak.eventListenerBreak(driver)
 
@@ -157,16 +152,16 @@ const takeScreenshot = async (siteCode, dataDate) => {
         `);
         
         await driver.manage().window().setRect({ width: totalWidth, height: totalHeight });
-        // let footer = await driver.findElement(By.css('.footer'));
-        // let footerLocation = await footer.getRect();
-        // const height = footerLocation.y;
+        let footer = await driver.findElement(By.css('footer'));
+        let footerLocation = await footer.getRect();
+        const height = footerLocation.y;
 
         let screenshot = await driver.takeScreenshot();
 
         let captureImage = await Jimp.read(Buffer.from(screenshot, 'base64'));
-        console.log("높이", totalHeight, captureImage.getHeight(),'\n너비', totalWidth, captureImage.getWidth())
+        console.log("높이", totalHeight, captureImage.getHeight(), height,'\n너비', totalWidth, captureImage.getWidth())
 
-        // await captureImage.crop(0, 0, totalWidth, height);
+        await captureImage.crop(0, 0, captureImage.getWidth(), height);
         await captureImage.quality(30); // 화질 (0-100 사이의 값)
         await captureImage.getBufferAsync(Jimp.MIME_JPEG).then(buffer => {
             fs.writeFileSync(`${pathName}/${fileName}`, buffer);

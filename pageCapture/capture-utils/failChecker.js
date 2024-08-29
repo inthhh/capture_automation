@@ -14,12 +14,10 @@ const checkFailData = async (driver, obj, isMobile) => {
         btns.forEach((button) => {
             if (button.getAttribute('an-ac') == 'merchandising') {
                 result.push(button.innerText);
-                // console.log(button.innerText)
             }
         });
         return result;
     })
-    console.log("fail check 시작")
     let area = obj.area.replace(/&amp;/g, '&');
     const buttonIndex = buttons.findIndex((text, index) => {
         return area.includes(text)
@@ -31,18 +29,18 @@ const checkFailData = async (driver, obj, isMobile) => {
         console.log("obj.contents is null");
         return;
     }
-    // 2. 이미지 오류의 경우
+    // 2. KV 이미지 오류의 경우
     if (obj.area.includes("KV") && obj.contents.includes("images.samsung")) {
         // kv 이미지
         console.log("finding KV image")
-        const src = obj.contents;
-        const kvCarouselSlides = await driver.findElements(By.css(`div[class*="home-kv-carousel__wrapper"]`));
-        if (kvCarouselSlides) {
-            const kvElements = await driver.executeScript((kvCarouselSlides, src) => {
-                const elements = kvCarouselSlides.querySelectorAll('img');
+        // const src = obj.contents;
+        // const kvCarouselSlides = await driver.findElements(By.css(`div[class*="home-kv-carousel__wrapper"]`));
+        // if (kvCarouselSlides) {
+            // const kvElements = await driver.executeScript((kvCarouselSlides, src) => {
+            //     const elements = kvCarouselSlides.querySelectorAll('img');
 
-                elements.forEach(element => {
-                    if (element.src.includes(src)) {
+                // elements.forEach(element => {
+                //     if (element.src.includes(src)) {
                         // const parentEl1 = element.parentElement;
                         // const parentEl2 = parentEl1.parentElement;
                         // const parentEl3 = parentEl2.parentElement;
@@ -51,10 +49,10 @@ const checkFailData = async (driver, obj, isMobile) => {
                         //     parentEl3.style.border = '7px solid red';
                         //     parentEl3.style.transform = 'translate3d(0, 0, 0)'
                         // }
-                        return;
-                    }
-                    else if (kvCarouselSlides.querySelector('source')) {
-                        const els = kvCarouselSlides.querySelectorAll('source');
+                    //     return;
+                    // }
+                    // else if (kvCarouselSlides.querySelector('source')) {
+                    //     const els = kvCarouselSlides.querySelectorAll('source');
                         // els.forEach(el => {
                         //     if(el.getAttribute('srcset')){
                         //         if(el.getAttribute('srcset').includes(src)) {
@@ -70,14 +68,14 @@ const checkFailData = async (driver, obj, isMobile) => {
                         //         return;
                         //     }
                         // })
-                    }
+            //         }
 
-                });
-            }, kvCarouselSlides, src);
-        }
+            //     });
+            // }, kvCarouselSlides, src);
+        // }
 
     }
-    // KV 외의 이미지
+    // 2-1. KV 외의 이미지
     else if (obj.contents.includes("images.samsung")) {
         const src = obj.contents;
         const swiperWrapper = await driver.findElement(By.css('.showcase-card-tab__card-wrap.swiper-container.swiper-container-initialized'))
@@ -128,7 +126,7 @@ const checkFailData = async (driver, obj, isMobile) => {
         }
     }
     // 4. co05 뱃지 개수 오류의 경우
-    else if (obj.contents && obj.contents.length === 1 && obj.desc == "Badge Count") {
+    // else if (obj.contents && obj.contents.length === 1 && obj.desc == "Badge Count") {
         // 3번과 동일하게 버튼의 인덱스를 찾은 후 해당 슬라이드 영역 상단에 표시
         // console.log(obj.contents)
 
@@ -157,7 +155,7 @@ const checkFailData = async (driver, obj, isMobile) => {
         // } else {
         //     console.log(`badge count area select : failed`);
         // }
-    }
+    // }
     // 5. 텍스트 오류의 경우
     else {
         let str = "";
@@ -187,15 +185,16 @@ const checkFailData = async (driver, obj, isMobile) => {
         // 각 영역 별 셀렉터 저장
         if (str == "CO05") {
             selector = await driver.findElement(By.css(`div[class*="ho-g-showcase-card-tab"]`));
-        } else if (str == "HD01") {
-            selector = await driver.findElement(By.css(`div[class*="ho-g-home-kv-carousel"]`));
-        } else if (str == "FT03") {
-            selector = await driver.findElement(By.css(`div[class*="pd-g-feature-benefit-full-bleed"]`));
-        } else if (str == "CO07") {
-            selector = await driver.findElement(By.css(`div[class*="ho-g-key-feature-tab"]`));
-        } else {
-            //
-        }
+        } 
+        // else if (str == "HD01") {
+        //     selector = await driver.findElement(By.css(`div[class*="ho-g-home-kv-carousel"]`));
+        // } else if (str == "FT03") {
+        //     selector = await driver.findElement(By.css(`div[class*="pd-g-feature-benefit-full-bleed"]`));
+        // } else if (str == "CO07") {
+        //     selector = await driver.findElement(By.css(`div[class*="ho-g-key-feature-tab"]`));
+        // } else {
+        //     //
+        // }
 
         if (str == "CO05") {
 
@@ -225,7 +224,6 @@ const checkFailData = async (driver, obj, isMobile) => {
                         }, el);
                         let cleanedContents = obj.contents.replace(/<sup>/g, '').replace(/<\/sup>/g, '').replace(/<br\/>/g, '').replace(/\s/g, '').replace(/&nbsp;/g, '')
                             .replace(/"/g, '').replace(/<small>/g, '').replace(/<\/small>/g, '').replace(/&amp;/g, '&');
-                        // cleanedContents = '>' + cleanedContents + '<';
 
                         // 버그 확인 (콘솔에 내용 출력)
                         // if(cleanedContents.includes("$100")&&innerhtml.includes("$100")&&childrenLength<2) 
@@ -248,8 +246,6 @@ const checkFailData = async (driver, obj, isMobile) => {
                             }, el);
                         }
                         else if (innerhtml == cleanedContents && childrenLength === 0) {
-                            // console.log(innerhtml, " /-----/ ",cleanedContents, isDisplayed)
-                            // console.log("1 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed, desc)
                             if (isMobile && desc === "Badge") {
                                 await driver.executeScript(node => {
                                     let parent = node.parentElement;
@@ -278,8 +274,6 @@ const checkFailData = async (driver, obj, isMobile) => {
                             }
                         }
                         else if (outerhtml.includes('<br>') && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 1) {
-                            // console.log(area, " - ", tileNumber, " index / ", innerhtml)
-                            // console.log("2 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed, desc)
                             await driver.executeScript(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
@@ -287,8 +281,6 @@ const checkFailData = async (driver, obj, isMobile) => {
                             }, el);
                         }
                         else if ((outerhtml.match(/<br>/g) || []).length >= 2 && !innerhtml.includes('span') && innerhtml.includes(cleanedContents) && childrenLength === 2) {
-                            // if (cleanedContents.includes("15%")) console.log(area, " - ", innerhtml, " / ", cleanedContents, childrenLength)
-                            // console.log("3 : ",innerhtml, " /-----/ ",cleanedContents, isDisplayed)
                             await driver.executeScript(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';
@@ -304,7 +296,6 @@ const checkFailData = async (driver, obj, isMobile) => {
                         //     }, el);
                         // }
                         else if (outerhtml.includes('sup') && !innerhtml.includes('span') && innerhtml == cleanedContents && childrenLength <= 2) {
-                            // console.log(merchanArea, " - ", innerHTML, " / ", cleanedContents," ------ ")
                             await driver.executeScript(node => {
                                 let parent = node.parentElement;
                                 parent.style.border = '4px solid red';

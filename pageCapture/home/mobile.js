@@ -56,7 +56,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
     options.addArguments('disable-dev-shm-usage');
     options.addArguments('--disable-extensions');  // 확장 프로그램 비활성화
     options.addArguments('--disable-logging');  // 로그 레벨 조정
-
+    options.addArguments('--force-device-scale-factor=1'); // 배율 100%로 고정
     
 
     // 드라이버 빌드
@@ -160,7 +160,6 @@ const takeScreenshot = async (siteCode, dataDate) => {
         await driver.manage().window().setRect({ width: mainWidth, height: totalHeight });
 
         let totalWidth = await driver.executeScript(`
-            console.log(document.body.scrollWidth);
             return Math.max(
                 document.body.scrollWidth,
                 document.documentElement.scrollWidth,
@@ -283,7 +282,7 @@ const takeScreenshot = async (siteCode, dataDate) => {
         mergeImg(screenshotFiles, { direction: false })
             .then((image) => {
                 // 병합된 이미지를 임시 파일로 저장
-                let tempMergedPath = path.join(pathName, 'temp_merged_image.png');
+                let tempMergedPath = path.join(pathName, `${siteCode}_temp_merged.png`);
                 image.write(tempMergedPath, async () => {
                     console.log('Temporary merged image saved.');
 
@@ -292,7 +291,6 @@ const takeScreenshot = async (siteCode, dataDate) => {
 
                     const width = captureImage.getWidth();
                     const height = footerLocation.y;
-                    console.log("높이", height, captureImage.getHeight())
                     captureImage.crop(0, 0, width, height);
                     captureImage.quality(60); // 화질 60% (0-100 사이의 값)
                     await captureImage.writeAsync(path.join(pathName, fileName));

@@ -239,11 +239,10 @@ const carouselBreakMobile = async (driver, site_code) =>{
  */
 const eventListenerBreak = async (driver) =>{
     await driver.executeScript(()=>{
-        const elementsWithListeners = document.querySelectorAll('*');
-
-        // 모든 요소를 반복하며 이벤트 리스너를 제거
-        if(elementsWithListeners){
-            elementsWithListeners.forEach(element => {
+        const elementsWithChildren = document.querySelectorAll('*:not(:empty)');
+        // const elementsWithChildren = document.querySelectorAll('*');
+        if(elementsWithChildren){
+            elementsWithChildren.forEach(element => {
                 element.style.display = 'grid'
                 element.style.justifyItems = 'start'
                 element.style.marginBottom = '0'
@@ -251,8 +250,19 @@ const eventListenerBreak = async (driver) =>{
                 const clonedElement = element.cloneNode(true);
                 if(element.parentNode) element.parentNode.replaceChild(clonedElement, element);
             });
-
         }
+        // const eventsToBlock = [
+        //     'click', 'dblclick', 'mousedown', 'mouseup', 'mousemove', 'mouseover', 'mouseout',
+        //     'keydown', 'keyup', 'keypress', 'submit', 'change', 'focus', 'blur', 'resize',
+        //     'scroll', 'contextmenu'
+        // ];
+
+        // eventsToBlock.forEach(eventType => {
+        //     document.body.addEventListener(eventType, (e) => {
+        //         // e.stopPropagation();   // 이벤트 전파 차단
+        //         e.preventDefault();    // 기본 동작 차단
+        //     }, true);  // 캡처 단계에서 이벤트를 처리
+        // });
     })
 }
 
