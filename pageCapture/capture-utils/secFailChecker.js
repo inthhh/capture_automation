@@ -1,4 +1,3 @@
-const { text } = require("body-parser");
 const { Builder, By, until } = require('selenium-webdriver');
 /**
  * 페이지 내에서 fail Data와 동일한 요소를 찾아, Border 표시로 시각화합니다. (sec ver)
