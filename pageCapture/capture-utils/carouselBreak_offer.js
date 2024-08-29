@@ -279,7 +279,7 @@ const kvMobileCarouselBreak = async (driver) => {
                         // imgArea.style.width = '252px';
                         let getSrc = imgArea?.getAttribute('data-360w1x-src');
                         if (getSrc) {
-                            let src252 = getSrc.replace('360','252');
+                            let src252 = getSrc.replace('360', '252');
                             imgArea.setAttribute('src', src252);
                             // console.log("*** img src", getSrc);
                         }
@@ -371,16 +371,8 @@ const kvMobileCarouselBreak = async (driver) => {
  * Offer 페이지의 co16 카드 케로쉘을 펼칩니다. (Offer ver)
  * @param {*} driver 
  */
-const cardCarouselBreak = async (driver) => {
-    await driver.executeScript(() => {
-
-        //     // pd06 케로쉘 깨기
-        //     const showCaseCardTab = document.querySelector(".swiper-container.basic-swiper")
-        //     const showCaseCardTabWrapper = document.querySelector(".swiper-container.basic-swiper .swiper-wrapper")
-
-        //     if(showCaseCardTab) showCaseCardTab.style.overflow = 'visible'
-        //     if(showCaseCardTabWrapper) showCaseCardTabWrapper.style.overflow = 'visible'
-        // });
+const cardCarouselBreak = async (driver, isDesktop) => {
+    await driver.executeScript((isDesktop) => {
 
         // co16 mobile 케로쉘
         const cardWrappers = document.querySelectorAll('.cm-g-discover-column-new')
@@ -390,7 +382,13 @@ const cardCarouselBreak = async (driver) => {
         if (cardWrappers) cardWrappers.forEach((cardWrapper) => { cardWrapper.style.overflow = 'visible' })
         if (cardTabs) cardTabs.forEach((card) => { card.style.overflow = 'visible' })
         if (co16Cards) co16Cards.forEach((card) => { card.style.overflow = 'visible' })
-    })
+
+        if (isDesktop) {
+            const offerCard = document.querySelector('.swiper-slide .all-offer-card__list')
+            if (offerCard) offerCard.style.width = '1440px';
+        }
+
+    }, isDesktop)
 }
 
 /**
@@ -401,26 +399,29 @@ const viewmoreBreak = async (driver) => {
     await driver.executeScript(() => {
 
         function clickButton() {
-            const viewmoreBtn = document.querySelector('.swiper-slide.all-offer-card__panel .cta.cta--outlined');
-            if (viewmoreBtn) {
-                viewmoreBtn.click();
-                // console.log("Clicked viewmore button");
+            const allFilter = document.querySelector('.swiper-slide.all-offer-card__panel[data-filtername="all"]')
+            if (allFilter) {
+                const viewmoreBtn = allFilter.querySelector('.cta.cta--outlined');
+                if (viewmoreBtn) {
+                    viewmoreBtn.click();
+                }
             }
         }
         // 1초 간격으로 clickButton 함수를 실행
         const intervalId = setInterval(clickButton, 1000);
 
-        // 10초 후에 인터벌 중지
+        // 8초 후에 인터벌 중지
         setTimeout(() => {
             clearInterval(intervalId);
             // console.log("Stopped clicking viewmore button");
-        }, 10000); // 10초 후에 중지
+        }, 8000); // 8초 후에 중지
     }
     )
 }
 
 /**
  * 모든 요소들의 이벤트리스너를 제거합니다. (Offer ver)
+ * - 일부 국가 card가 노출되지 않는 버그 존재
  * @param {*} driver 
  * @param {*} isDesktop
  */
@@ -431,10 +432,10 @@ const eventListenerBreak = async (driver, isDesktop) => {
         // 모든 요소를 반복하며 이벤트 리스너를 제거
         if (elementsWithListeners) {
             elementsWithListeners.forEach(element => {
-                if(isDesktop){
+                if (isDesktop) {
                     element.style.display = 'grid'
                     element.style.justifyItems = 'start'
-                    element.style.marginBottom = '0'
+                    // element.style.marginBottom = '0'
                     element.style.left = 0;
                 }
                 const clonedElement = element.cloneNode(true);
@@ -443,11 +444,29 @@ const eventListenerBreak = async (driver, isDesktop) => {
         }
     }, isDesktop)
 }
+/**
+ * 모든 요소들을 좌측 정렬합니다. (Offer ver)
+ * @param {*} driver 
+ * @param {*} isDesktop 
+ */
+// const contentsToLeft = async (driver, isDesktop) => {
+//     await driver.executeScript((isDesktop) => {
+//         if (elementsWithListeners && isDesktop) {
+//             elementsWithListeners.forEach(element => {
+//                 element.style.display = 'grid'
+//                 element.style.justifyItems = 'start'
+//                 element.style.marginBottom = '0'
+//                 element.style.left = 0;
+//             });
+//         }
+//     }, isDesktop)
+// }
 
 module.exports = {
     kvCarouselBreak,
     eventListenerBreak,
     cardCarouselBreak,
     viewmoreBreak,
-    kvMobileCarouselBreak
+    kvMobileCarouselBreak,
+    // contentsToLeft
 }

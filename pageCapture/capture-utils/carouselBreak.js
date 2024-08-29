@@ -42,28 +42,6 @@ const kvCarouselBreak = async (driver) =>{
 
         const kvCarouselMediaWraps = document.querySelectorAll('.home-kv-carousel__background-media-wrap')
 
-        if(kvCarouselMediaWraps){
-            kvCarouselMediaWraps.forEach((kvCarouselMediaWrap) => {
-                const kvCarouselMediaImage = document.querySelector('.home-kv-carousel__background-media-wrap .image')
-                const kvCarouselMediaImageV2 = document.querySelector('.home-kv-carousel__background-media-wrap .image-v2')
-                const kvCarouselMediaImageFirstImage = document.querySelector('.home-kv-carousel__background-media-wrap .first-image')
-                const kvCarouselMediaImageFirstVideo = document.querySelector('.home-kv-carousel__background-media-wrap .video')
-
-                if (kvCarouselMediaImage != null) {
-                    kvCarouselMediaImage.style.height = '100% !important';
-                }
-                if (kvCarouselMediaImageV2 != null) {
-                    kvCarouselMediaImageV2.style.height = '100% !important';
-                }
-                if (kvCarouselMediaImageFirstImage != null) {
-                    kvCarouselMediaImageFirstImage.style.height = '100% !important';
-                }
-                if (kvCarouselMediaImageFirstVideo != null) {
-                    kvCarouselMediaImageFirstVideo.style.height = '100% !important';
-                }
-            })
-        }
-
         // 각 kv 슬라이드의 대표 이미지를 찾는 로직
         const kvCarouselSlides = document.querySelectorAll('.home-kv-carousel__wrapper .home-kv-carousel__slide')
 
@@ -164,29 +142,29 @@ const carouselBreakMobile = async (driver, site_code) =>{
         const kvCarousel = document.querySelector('.home-kv-carousel')
         if(kvCarousel) kvCarousel.style.overflow = 'visible'
 
-        const kvCarouselMediaWraps = document.querySelectorAll('.home-kv-carousel__background-media-wrap')
+        // const kvCarouselMediaWraps = document.querySelectorAll('.home-kv-carousel__background-media-wrap')
         
-        if(kvCarouselMediaWraps){
-            kvCarouselMediaWraps.forEach((kvCarouselMediaWrap) => {
-                const kvCarouselMediaImage = document.querySelector('.home-kv-carousel__background-media-wrap .image')
-                const kvCarouselMediaImageV2 = document.querySelector('.home-kv-carousel__background-media-wrap .image-v2')
-                const kvCarouselMediaImageFirstImage = document.querySelector('.home-kv-carousel__background-media-wrap .first-image')
-                const kvCarouselMediaImageFirstVideo = document.querySelector('.home-kv-carousel__background-media-wrap .video')
+        // if(kvCarouselMediaWraps){
+        //     kvCarouselMediaWraps.forEach((kvCarouselMediaWrap) => {
+        //         const kvCarouselMediaImage = document.querySelector('.home-kv-carousel__background-media-wrap .image')
+        //         const kvCarouselMediaImageV2 = document.querySelector('.home-kv-carousel__background-media-wrap .image-v2')
+        //         const kvCarouselMediaImageFirstImage = document.querySelector('.home-kv-carousel__background-media-wrap .first-image')
+        //         const kvCarouselMediaImageFirstVideo = document.querySelector('.home-kv-carousel__background-media-wrap .video')
 
-                if (kvCarouselMediaImage != null) {
-                    kvCarouselMediaImage.style.height = '100% !important';
-                }
-                if (kvCarouselMediaImageV2 != null) {
-                    kvCarouselMediaImageV2.style.height = '100% !important';
-                }
-                if (kvCarouselMediaImageFirstImage != null) {
-                    kvCarouselMediaImageFirstImage.style.height = '100% !important';
-                }
-                if (kvCarouselMediaImageFirstVideo != null) {
-                    kvCarouselMediaImageFirstVideo.style.height = '100% !important';
-                }
-            })
-        }
+        //         if (kvCarouselMediaImage != null) {
+        //             kvCarouselMediaImage.style.height = '100% !important';
+        //         }
+        //         if (kvCarouselMediaImageV2 != null) {
+        //             kvCarouselMediaImageV2.style.height = '100% !important';
+        //         }
+        //         if (kvCarouselMediaImageFirstImage != null) {
+        //             kvCarouselMediaImageFirstImage.style.height = '100% !important';
+        //         }
+        //         if (kvCarouselMediaImageFirstVideo != null) {
+        //             kvCarouselMediaImageFirstVideo.style.height = '100% !important';
+        //         }
+        //     })
+        // }
 
         // 각 kv 슬라이드의 대표 이미지를 찾는 로직
         const kvCarouselMediaImagePreview = document.querySelector('.home-kv-carousel__background-media-wrap .image-v2__preview+.image-v2__main')
@@ -252,24 +230,6 @@ const carouselBreakMobile = async (driver, site_code) =>{
         // })
 
         const trendingCard = document.querySelectorAll('.co69-trending-now__card .co69-trending-now__card-list');
-
-        // if(trendingCard){
-        //     trendingCard.forEach((card) => {
-        //         const imgArea = card.querySelector('.co69-trending-now__card-image');
-        //         if (imgArea != null) {
-        //             const listImg = imgArea.querySelector('.responsive-img')
-        //             if(!listImg) return;
-        //             const isLoad = listImg.classList.contains('image--loaded');
-        //             if (!isLoad) {
-        //                 const img = imgArea.querySelector('.image')
-        //                 const getSrc = img.getAttribute('data-mobile-src');
-        //                 img?.setAttribute('src', getSrc);
-        //             }
-        //         }
-
-        //     });
-        // };
-
     });
 }
 
@@ -279,11 +239,10 @@ const carouselBreakMobile = async (driver, site_code) =>{
  */
 const eventListenerBreak = async (driver) =>{
     await driver.executeScript(()=>{
-        const elementsWithListeners = document.querySelectorAll('*');
-
-        // 모든 요소를 반복하며 이벤트 리스너를 제거
-        if(elementsWithListeners){
-            elementsWithListeners.forEach(element => {
+        const elementsWithChildren = document.querySelectorAll('*:not(:empty)');
+        // const elementsWithChildren = document.querySelectorAll('*');
+        if(elementsWithChildren){
+            elementsWithChildren.forEach(element => {
                 element.style.display = 'grid'
                 element.style.justifyItems = 'start'
                 element.style.marginBottom = '0'
@@ -291,8 +250,19 @@ const eventListenerBreak = async (driver) =>{
                 const clonedElement = element.cloneNode(true);
                 if(element.parentNode) element.parentNode.replaceChild(clonedElement, element);
             });
-
         }
+        // const eventsToBlock = [
+        //     'click', 'dblclick', 'mousedown', 'mouseup', 'mousemove', 'mouseover', 'mouseout',
+        //     'keydown', 'keyup', 'keypress', 'submit', 'change', 'focus', 'blur', 'resize',
+        //     'scroll', 'contextmenu'
+        // ];
+
+        // eventsToBlock.forEach(eventType => {
+        //     document.body.addEventListener(eventType, (e) => {
+        //         // e.stopPropagation();   // 이벤트 전파 차단
+        //         e.preventDefault();    // 기본 동작 차단
+        //     }, true);  // 캡처 단계에서 이벤트를 처리
+        // });
     })
 }
 

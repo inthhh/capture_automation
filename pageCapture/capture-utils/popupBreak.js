@@ -6,8 +6,8 @@ const { Builder, By, until } = require('selenium-webdriver'); // until 포함
  * @param {boolean(Desktop/Home ver일 경우에만 true)} isDesktop 
  */
 const cookiePopupBreaker = async (driver, isDesktop) =>{
-  if(isDesktop) await driver.wait(until.elementLocated(By.css('.tab__item-title')), 10000);
-  await driver.executeScript((isDesktop)=>{
+  if(isDesktop) await driver.wait(until.elementLocated(By.css('.aem-Grid')), 10000);
+  await driver.executeScript(()=>{
     //Popup wrap
     const popupWrap = document.querySelector('#truste-consent-track')
     if(popupWrap) popupWrap.style.display = 'none'
@@ -34,7 +34,7 @@ const cookiePopupBreaker = async (driver, isDesktop) =>{
     // Dialog popup
     document.querySelector('.cookie-bar__close')?.click()
 
-  }, isDesktop)
+  })
   
 }
 
@@ -51,9 +51,8 @@ const clickEveryMerchan = async (driver) =>{
     buttons?.forEach(async (button, index) => {
       if (button.getAttribute('an-ac') === 'merchandising') {
         // 1초 간격으로 클릭
-        await new Promise(resolve => setTimeout(resolve, 1200 * index));
+        await new Promise(resolve => setTimeout(resolve, 1000 * index));
         button.click();
-        // console.log("**button click");
       }
     });
   })
@@ -64,16 +63,14 @@ const clickEveryMerchan = async (driver) =>{
  * @param {*} driver 
  */
 const clickFirstMerchan = async (driver) =>{
-  // await page.waitForSelector('.tab__item-title')
   await driver.executeScript(async()=>{
     const buttons = document.querySelectorAll('.tab__item-title')
-    await new Promise(resolve => setTimeout(resolve, 28000));
+    await new Promise(resolve => setTimeout(resolve, 10000));
     // console.log("btn : ", buttons);
     // 버튼 리스트에서 머천다이징의 첫 버튼을 찾아서 클릭 후 종료
     for (let i = 0; i < buttons.length; i++) {
       if (buttons[i].getAttribute('an-ac') === 'merchandising') {
         buttons[i].click();
-        // console.log("**click first button",buttons[i])
         break;
       }
       else continue;
@@ -86,7 +83,6 @@ const clickFirstMerchan = async (driver) =>{
  * @param {*} driver 
  */
 const removeIframe = async (driver) =>{
-  // await page.waitForSelector('.tab__item-title')
   await driver.executeScript(async()=>{
     const surveyIframe = document.getElementById('QSIFeedbackButton-survey-iframe');
     if (surveyIframe) surveyIframe.remove();
