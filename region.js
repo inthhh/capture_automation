@@ -92,8 +92,8 @@ const site_code = [
   "africa_fr",
   "africa_pt",
   "za",
-  "us", // offer 랜딩 이슈 존재
-  "sec" // offer 없음
+  "us",
+  "sec",
 ];
 
-  module.exports = {site_code};
+module.exports = { site_code };
