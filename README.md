@@ -17,7 +17,7 @@
 # 개요
 
 - 목적 : 글로벌 92개국 웹페이지 모니터링을 위한 QA자동화 프로젝트 중, fail Data 시각화 단계에서 사용되는 캡쳐 프로그램
-- 도구 : Javascript
+- 도구 : Javascript(Node JS)
 - QA 완료 후, Css를 조작하여 fail Data를 웹 상에 표시하고 캡쳐합니다.
 - 역할 : 기획, 개발 진행
 
