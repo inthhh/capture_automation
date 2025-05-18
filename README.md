@@ -1,6 +1,6 @@
 ### Branch 설명
 1. main : puppeteer 최신 버전
-2. deploy : selenium 배포용 최신 버전
+2. deploy : selenium 최신 버전
 
 # 📸 글로벌 OO닷컴 모니터링 툴 - Capture Program
 
